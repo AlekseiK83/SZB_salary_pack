@@ -166,6 +166,32 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 .hook-t{font-weight:600;margin-bottom:4px}
 .honest{background:var(--flag-soft);border-radius:8px;padding:10px 12px;font-size:15px}
 .tool{background:var(--emp-soft);border-radius:8px;padding:10px 12px;font-weight:600}
+
+.rows a.featured{background:var(--biz);color:var(--on-acc);border-radius:10px;border-bottom:0;margin:6px 0}
+.rows a.featured .fig,.rows a.featured .go{color:var(--on-acc)}
+.rows a.featured .ds{color:var(--on-acc);opacity:.85}
+.rows a.featured:hover,.rows a.featured:focus-visible{background:var(--biz);filter:brightness(1.1)}
+.rows-extra a.is-new{background:var(--emp-soft);border-radius:10px;border-bottom:0}
+.rows-extra a.is-new .fig{color:var(--emp)}
+.flag.new{background:var(--emp);color:var(--on-acc)}
+.routes{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:6px}
+.route{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px}
+.route-n{font-family:var(--display);font-weight:700;font-size:32px;line-height:1;color:var(--acc)}
+.route h3{margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:14px}
+.chip.new{border-color:var(--emp);background:var(--emp-soft)}
+.cards3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.citycard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.citycard b{display:block;font-family:var(--display);font-weight:600;color:var(--acc);margin-bottom:4px}
+.citycard span{font-size:14px;color:var(--muted)}
+.linkgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.linkcard{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.linkcard:hover,.linkcard:focus-visible{border-color:var(--acc)}
+.linkcard b{display:block;color:var(--acc);margin-bottom:4px}
+.linkcard span{font-size:14px;color:var(--muted)}
+.awardnote{display:block;margin-top:6px;font-size:14px;color:var(--muted)}
+@media (max-width:860px){.routes{grid-template-columns:1fr}}
 @media (max-width:860px){.fork{grid-template-columns:1fr}}
 @media (max-width:860px){
   .hero,.view-head{grid-template-columns:1fr;gap:20px}
@@ -196,7 +222,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
       <a href="#objections">Возражения</a>
       <a href="#bank-site">Сайт банка</a>
       <a href="#sources">Источники</a>
-      <a class="pdf" href="paket-prodavca-zp.pdf" target="_blank" rel="noopener">PDF, 3 стр.</a>
+      <a class="pdf" href="paket-prodavca-zp.pdf" target="_blank" rel="noopener">PDF, 4 стр.</a>
     </nav>
   </div>
 </header>
@@ -212,28 +238,31 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
         <p class="lede">Слева — выгоды для руководителя и бухгалтерии компании. Справа — привилегии, которые получает каждый сотрудник. Каждая строка ведёт в раздел с условиями, цифрами и формулировкой для клиента.</p>
       </div>
       <div class="stamp">
-        <div><b>Актуально на 21.10.2026.</b> Собрано из материала «Условия и возможности» и публикаций sberbusiness.live.</div>
+        <div><b>Актуально на 22.10.2026.</b> Собрано из материала «Условия и возможности» и публикаций sberbusiness.live.</div>
         <div>Ставки и тарифы меняются. Перед встречей сверьте цифры с действующими условиями.</div>
-        <div>Оранжевая пометка — ограничение или особенность опции: <span class="flag">Пилот</span> работает только на части территорий, <span class="flag">РГС · ККСБ</span> — только для этих сегментов.</div>
+        <div>Оранжевая пометка — ограничение или особенность опции: <span class="flag">Пилот</span> работает только на части территорий, <span class="flag">РГС · ККСБ</span> — только для этих сегментов. Зелёная <span class="flag new">Новое</span> — недавно запущенная опция.</div>
       </div>
     </div>
 
     <div class="cols">
       <section class="col biz" aria-labelledby="h-biz">
-        <div class="col-head"><h2 id="h-biz">Компании</h2><span class="eyebrow">8 разделов</span></div>
-        <div class="say"><span class="eyebrow">Ключевое сообщение</span>«Зачисление зарплаты бесплатное. Сотрудники оформляют карты по QR-коду или отправляют реквизиты по ИНН компании, а бухгалтерия загружает реестр из 1С в СберБизнес за 3–4 клика».</div>
+        <div class="col-head"><h2 id="h-biz">Компании</h2><span class="eyebrow">11 разделов</span></div>
+        <div class="say"><span class="eyebrow">Ключевое сообщение</span>«Зачисление зарплаты бесплатное. Сотрудники отправляют реквизиты прямо из СберБанк Онлайн — по QR-коду или ИНН компании, а бухгалтерия загружает реестр из 1С в СберБизнес за 3–4 клика».</div>
         <ul class="rows">
           <li><a href="#biz-money"><span class="fig">0 <small>₽</small></span><span><span class="tt">Экономика</span><span class="ds">Зачисление зарплаты и выплаты самозанятым без комиссии, скидка по кредиту для бизнеса</span></span><span class="go">→</span></a></li>
+          <li><a class="featured" href="#biz-requisites"><span class="fig">QR · ИНН</span><span><span class="tt">Реквизиты из СберБанк Онлайн</span><span class="ds">Сотрудник сам отправляет реквизиты работодателю: по QR-коду или по ИНН компании — уникально для рынка</span></span><span class="go">→</span></a></li>
           <li><a href="#biz-sberbusiness"><span class="fig">3–4 <small>клика</small></span><span><span class="tt">СберБизнес</span><span class="ds">Инновационный бизнес-ассистент: реестр из 1С, автоматическое получение реквизитов, расчётные листки в СберБанк Онлайн</span></span><span class="go">→</span></a></li>
-          <li><a href="#biz-cards"><span class="fig">2 <small>мин</small></span><span><span class="tt">Выпуск карт</span><span class="ds">Выпуск по QR, реквизиты по ИНН работодателя, выездная выдача, корпоративный дизайн</span></span><span class="go">→</span></a></li>
+          <li><a href="#biz-cards"><span class="fig">2 <small>мин</small></span><span><span class="tt">Выпуск карт</span><span class="ds">Оформление в отделении, выездная выдача моментальных карт, корпоративный дизайн</span></span><span class="go">→</span></a></li>
+          <li><a href="#biz-preferences"><span class="fig">+6 <small>опций</small></span><span><span class="tt">Конструктор преференций</span><span class="ds">Компания сама выбирает привилегии для сотрудников в СберБизнесе. С 9 октября — бизнес-залы, ДМС, СберСпасибо 5%</span></span><span class="go">→</span></a></li>
+          <li><a href="#biz-citycard"><span class="fig">ЕКП</span><span><span class="tt">Зарплата на «Карту жителя»</span><span class="ds">Единая карта петербуржца, ЕКП «Ленинградская», «Псковская», «Карельская»</span></span><span class="go">→</span></a></li>
           <li><a href="#biz-gig"><span class="fig">ГПХ</span><span><span class="tt">Самозанятые и нерезиденты</span><span class="ds">Без комиссии, автопроверка статуса, без валютного контроля по каждой выплате</span></span><span class="go">→</span></a></li>
-          <li><a href="#biz-team"><span class="fig">ТОП</span><span><span class="tt">Руководству и коллективу</span><span class="ds">СберПремьер и СберПервый, «Особая заявка» по кредитам, ИИ-помощник СберЗдоровья</span></span><span class="go">→</span></a></li>
+          <li><a href="#biz-team"><span class="fig">ТОП</span><span><span class="tt">Руководству и коллективу</span><span class="ds">СберПремьер и СберПервый (награда Frank RG 2026), «Особая заявка» по кредитам, ИИ-помощник СберЗдоровья</span></span><span class="go">→</span></a></li>
           <li><a href="#biz-hr"><span class="fig">HR</span><span><span class="tt">Подбор персонала</span><span class="ds">Работа.ру: подбор персонала, в том числе иностранного</span></span><span class="go">→</span></a></li>
           <li><a href="#biz-launch"><span class="fig">4 <small>шага</small></span><span><span class="tt">Как подключить</span><span class="ds">От заявки до первого реестра</span></span><span class="go">→</span></a></li>
         </ul>
-        <div class="rows-sub">Дополнительные опции</div>
+        <div class="rows-sub">Новые и дополнительные опции</div>
         <ul class="rows rows-extra">
-          <li><a href="#biz-anybank"><span class="fig">от 0<small>%</small></span><span><span class="tt">Зарплата в любой банк <span class="flag">РГС · ККСБ</span></span><span class="ds">Один реестр на сотрудников из разных банков. Стоимость зависит от сегмента — уточняйте в SberHelp</span></span><span class="go">→</span></a></li>
+          <li><a class="is-new" href="#biz-anybank"><span class="fig">1 <small>клик</small></span><span><span class="tt">Мультиреестр — зарплата в любой банк <span class="flag new">Новое</span> <span class="flag">РГС · ККСБ</span></span><span class="ds">Отправка из 1С в один клик на сотрудников со счетами в разных банках. Стоимость от 0% — уточняйте в SberHelp</span></span><span class="go">→</span></a></li>
         </ul>
       </section>
 
@@ -250,7 +279,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
           <li><a href="#emp-partners"><span class="fig">−40<small>%</small></span><span><span class="tt">Скидки партнёров</span><span class="ds">СберЗдоровье, СберПраво, СитиДрайв и раздел «Для жизни»</span></span><span class="go">→</span></a></li>
           <li><a href="#emp-promo"><span class="fig">185 <small>млн</small></span><span><span class="tt">Акция «185 млн бонусов»</span><span class="ds">1 000 победителей, второй этап — зарплата в ноябре</span></span><span class="go">→</span></a></li>
           <li><a href="#emp-supreme"><span class="fig">7<small>%</small></span><span><span class="tt">МИР Supreme</span><span class="ds">Кешбэк в ресторанах и на такси с 1 октября</span></span><span class="go">→</span></a></li>
-          <li><a href="#emp-premium"><span class="fig">150+ <small>тыс.</small></span><span><span class="tt">Высокий доход</span><span class="ds">Бесплатные СберПрайм и СберПремьер <span class="flag">Пилот</span></span></span><span class="go">→</span></a></li>
+          <li><a href="#emp-premium"><span class="fig">150+ <small>тыс.</small></span><span><span class="tt">Высокий доход</span><span class="ds">Бесплатные СберПрайм и СберПремьер (СберПремьер — «Лучший банк: комплексное решение для премиальных клиентов», Frank RG 2026) <span class="flag">Пилот</span></span></span><span class="go">→</span></a></li>
           <li><a href="#emp-switch"><span class="fig">3 <small>шага</small></span><span><span class="tt">Как перейти</span><span class="ds">Памятка сотруднику: QR, ИНН работодателя, отделение, заявление</span></span><span class="go">→</span></a></li>
         </ul>
       </section>
@@ -279,7 +308,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 
 <!-- ============================ КОМПАНИИ ============================ -->
 <section class="view biz" id="biz-money" aria-labelledby="t-biz-money"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>1 из 8</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>1 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-money">Экономика для компании</h2><p class="intro">Базовые операции зарплатного проекта бесплатны. С этого стоит начинать разговор с финансовым директором.</p></div><div class="big">0 ₽<small>за зачисление зарплаты сотрудникам и выплаты самозанятым</small></div></div>
   <div class="body">
     <section><h3>Что бесплатно</h3><ul class="ticks">
@@ -292,21 +321,47 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
       <li>Поддержка 24/7 по номеру <span class="num">0321</span> и личный менеджер.</li>
       <li>Пакет привилегий для сотрудников. Для работодателя это аргумент при найме и удержании (<a href="#emp-card">подробнее</a>).</li>
       <li>Отдельные привилегии для руководства и коллектива: премиальное обслуживание, «Особая заявка» по кредитам, ИИ-помощник СберЗдоровья (<a href="#biz-team">подробнее</a>).</li>
-      <li>Сотрудникам с высокими зарплатами — бесплатные СберПрайм (от 150 тыс. ₽/мес) и СберПремьер 2-го уровня (от 500 тыс. ₽/мес). <span class="flag">Пилот · МБ, СРБ, СЗБ</span> (<a href="#emp-premium">условия</a>).</li>
+      <li>Конструктор преференций: компания сама подключает сотрудникам дополнительные привилегии (<a href="#biz-preferences">подробнее</a>).</li>
+      <li>Сотрудникам с высокими зарплатами — бесплатные СберПрайм (от 150 тыс. ₽/мес) и СберПремьер 2-го уровня (от 500 тыс. ₽/мес). <span class="flag">Пилот · МБ, СРБ, СЗБ</span> (<a href="#emp-premium">условия</a>). СберПремьер — победитель Frank Premium Banking Award 2026 в номинации «Лучший банк: комплексное решение для премиальных клиентов».</li>
     </ul></section>
-    <section class="full panel warn"><h3>Важно</h3><p>В материалах банка без комиссии названы зачисление зарплаты, выплаты самозанятым и один договор на все виды выплат. Вопросы об обслуживании расчётного счёта и других операциях уточняйте по действующему тарифу клиента. Стоимость сервиса «Зарплата в любой банк» — от 0% в зависимости от сегмента, уточняйте в SberHelp.</p></section>
+    <section class="full panel warn"><h3>Важно</h3><p>В материалах банка без комиссии названы зачисление зарплаты, выплаты самозанятым и один договор на все виды выплат. Вопросы об обслуживании расчётного счёта и других операциях уточняйте по действующему тарифу клиента. Стоимость опции «Мультиреестр — зарплата в любой банк» — от 0% в зависимости от сегмента, уточняйте в SberHelp.</p></section>
     <section class="full script"><span class="eyebrow">Формулировка для клиента</span>«Зарплата и выплаты самозанятым проводятся без комиссии. Если компании нужен кредит, зарплатный проект даёт скидку до 2 п.п. к ставке».</section>
   </div>
   <p class="src">Источник: sberbusiness.live, «Зарплатный проект Сбера для бизнеса», 21.08.2026; материал «Условия и возможности», слайд «Зарплатный проект снижает нагрузку на бухгалтерию».</p>
-  <nav class="pager"><a href="#home"><span>Назад</span>← Главная</a><a href="#biz-sberbusiness"><span>Дальше</span>СберБизнес →</a></nav>
+  <nav class="pager"><a href="#home"><span>Назад</span>← Главная</a><a href="#biz-requisites"><span>Дальше</span>Реквизиты из СберБанк Онлайн →</a></nav>
+</div></section>
+
+<section class="view biz" id="biz-requisites" aria-labelledby="t-biz-requisites"><div class="wrap">
+  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>2 из 11</span></div>
+  <div class="view-head"><div><h2 id="t-biz-requisites">Реквизиты — напрямую из СберБанк Онлайн</h2><p class="intro">Сотрудник с картой или счётом в Сбере сам отправляет реквизиты своего счёта работодателю — прямо в своём интернет-банке. Бухгалтерии и HR не нужно собирать номера счетов вручную.</p></div><div class="big">2 способа<small>QR-код работодателя или ИНН работодателя</small></div></div>
+  <div class="body">
+    <section class="full"><div class="routes">
+      <div class="route"><div class="route-n">1</div><div><h3>По QR-коду работодателя</h3><p>HR заранее формирует в СберБизнесе единый QR-код для договора (Зарплатный проект → Зарплатные карты → Новая карта → Добавить по QR-коду) и размещает памятку. Сотрудник сканирует QR камерой смартфона и подтверждает отправку реквизитов в СберБанк Онлайн.</p></div></div>
+      <div class="route"><div class="route-n">2</div><div><h3>По ИНН работодателя <span class="flag">Уникально для рынка</span></h3><p>Если у компании есть СберБизнес, сотрудник вводит ИНН работодателя в своём СберБанк Онлайн и отправляет реквизиты счёта для выплаты зарплаты. QR-код не нужен.</p></div></div>
+    </div></section>
+    <section class="panel"><h3>Что происходит дальше</h3><ul class="ticks">
+      <li>Электронное заявление с реквизитами приходит в СберБизнес → «Справочник сотрудников».</li>
+      <li>HR подтверждает запрос и запрашивает бумажное заявление — по ТК оно обязательно.</li>
+      <li>Сотрудник без карты Сбера оформляет её в отделении по QR-коду и паспорту, около 2 минут (<a href="#biz-cards">выпуск карт</a>).</li>
+    </ul></section>
+    <section><h3>Почему это сильный аргумент</h3><ul class="ticks">
+      <li>Отправка реквизитов по ИНН работодателя — опция, которой нет у других зарплатных проектов на рынке.</li>
+      <li>Сотрудники, у которых уже есть карта Сбера, подключаются к зарплатному проекту за минуты, без визита в отделение.</li>
+      <li>Нет ручного ввода реквизитов — меньше ошибок в реестре.</li>
+    </ul></section>
+    <section class="full script"><span class="eyebrow">Формулировка для HR и бухгалтерии</span>«Вам не нужно собирать реквизиты: сотрудник с картой Сбера сам отправит их из своего приложения — по вашему QR-коду или просто введя ИНН компании. Заявка сразу появится в СберБизнесе».</section>
+  </div>
+  <p class="src">Источник: «Условия и возможности», слайды «Формирование QR-кода в СберБизнес», «Памятка по выпуску карт через QR»; уточнения руководителя проекта (21–22.10.2026).</p>
+  <nav class="pager"><a href="#biz-money"><span>Назад</span>← Экономика</a><a href="#biz-sberbusiness"><span>Дальше</span>СберБизнес →</a></nav>
 </div></section>
 
 <section class="view biz" id="biz-sberbusiness" aria-labelledby="t-biz-sberbusiness"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>2 из 8</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>3 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-sberbusiness">СберБизнес: инновационный бизнес-ассистент</h2><p class="intro">Всё про зарплатный проект собрано в одном кабинете: реестры, реквизиты сотрудников, статусы выплат, выпуск карт и документы. Типовые операции автоматизированы, а с реестрами можно работать в мобильном приложении.</p></div><div class="big">3–4 клика<small>примерно столько занимает выгрузка реестра из 1С и загрузка в СберБизнес</small></div></div>
   <div class="body">
     <section><h3>Автоматизация</h3><ul class="ticks">
       <li><b>Привычный способ:</b> бухгалтер выгружает реестр из 1С или другого бухгалтерского либо кадрового сервиса и загружает его в СберБизнес — около 3–4 кликов. Так работает подавляющее большинство клиентов.</li>
+      <li><b>Новое — Мультиреестр:</b> реестр на сотрудников со счетами в разных банках отправляется из 1С в один клик (<a href="#biz-anybank">подробнее</a>).</li>
       <li>Для тех, кому нужна полная автоматизация, есть прямая интеграция через API Сбера. Она требует отдельной настройки на стороне клиента.</li>
       <li>Автоматическое получение реквизитов карт от сотрудников: электронное заявление приходит прямо в СберБизнес.</li>
       <li><b>Расчётные листки — в СберБанк Онлайн сотрудника.</b> Компания загружает листки в СберБизнес, и каждый сотрудник видит свой в приложении: не нужно печатать и раздавать бумагу или рассылать файлы по почте. <a href="https://www.sberbank.ru/help/business/sbbol/salary/other_inform/100459" target="_blank" rel="noopener">Как это работает — справка СберБизнес</a>.</li>
@@ -327,11 +382,11 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
     <section class="full script"><span class="eyebrow">Формулировка для бухгалтерии</span>«Все операции по зарплате собраны в одном кабинете. Реестр выгружается из 1С и загружается в СберБизнес за 3–4 клика, реквизиты сотрудников поступают автоматически, статус виден по каждой строке, а расчётные листки сотрудники получают прямо в приложении».</section>
   </div>
   <p class="src">Источник: «Условия и возможности», слайды «СберБизнес», «Зарплатный проект снижает нагрузку на бухгалтерию», «Формирование QR-кода в СберБизнес», «Как это работает»; sberbusiness.live, 21.08.2026; <a href="https://www.sberbank.ru/help/business/sbbol/salary/other_inform/100459" target="_blank" rel="noopener">справка СберБизнес о расчётных листках</a>.</p>
-  <nav class="pager"><a href="#biz-money"><span>Назад</span>← Экономика</a><a href="#biz-cards"><span>Дальше</span>Выпуск карт →</a></nav>
+  <nav class="pager"><a href="#biz-requisites"><span>Назад</span>← Реквизиты из СберБанк Онлайн</a><a href="#biz-cards"><span>Дальше</span>Выпуск карт →</a></nav>
 </div></section>
 
 <section class="view biz" id="biz-cards" aria-labelledby="t-biz-cards"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>3 из 8</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>4 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-cards">Выпуск карт для сотрудников</h2><p class="intro">Несколько способов передать реквизиты и выпустить карты. Ни один из них не требует организовывать визит всего коллектива в отделение.</p></div><div class="big">2 мин<small>примерно столько занимает оформление карты в отделении по QR-коду и паспорту</small></div></div>
   <div class="body">
     <section><h3>1. Выпуск по QR-коду</h3><ul class="ticks">
@@ -340,7 +395,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
       <li>Нет карты: оформляет её в отделении по QR-коду и паспорту.</li>
       <li>Электронное заявление с реквизитами сотрудника приходит в СберБизнес.</li>
     </ul>
-    <div class="panel" style="margin-top:18px"><h3>Реквизиты по ИНН работодателя <span class="flag">Уникально для рынка</span></h3><p>Если у компании есть СберБизнес, сотрудник может прямо в своём СберБанк Онлайн ввести ИНН работодателя и отправить реквизиты счёта для зарплаты. Если счёт в Сбере уже есть, QR-код и визит в отделение не нужны. Такой опции нет у других зарплатных проектов на рынке.</p></div></section>
+    <div class="panel" style="margin-top:18px"><h3>Реквизиты без QR-кода</h3><p>Сотрудник с картой Сбера может отправить реквизиты по ИНН работодателя прямо в СберБанк Онлайн (<a href="#biz-requisites">оба способа подробно</a>).</p></div></section>
     <section><h3>2. Выездная выдача моментальных карт</h3><ul class="ticks">
       <li>Компания самостоятельно оформляет заявку в СберБизнесе.</li>
       <li>Система проверяет адрес и показывает свободные слоты доставки под нужное число карт. День и время визита выбирает компания.</li>
@@ -360,11 +415,62 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
     <section class="full script"><span class="eyebrow">Формулировка для HR</span>«Достаточно один раз распечатать QR-код и разместить памятку. Сотрудники с картой Сбера могут отправить реквизиты прямо в приложении по ИНН компании, остальные оформляют карты самостоятельно, а для большого коллектива банк организует выездную выдачу моментальных карт в удобный день».</section>
   </div>
   <p class="src">Источник: «Условия и возможности», слайды «Выпуск зарплатных карт», «Формирование QR-кода в СберБизнес», «Памятка по выпуску карт через QR», «Выездная выдача моментальных карт»; sberbusiness.live, 21.08.2026.</p>
-  <nav class="pager"><a href="#biz-sberbusiness"><span>Назад</span>← СберБизнес</a><a href="#biz-gig"><span>Дальше</span>Самозанятые и нерезиденты →</a></nav>
+  <nav class="pager"><a href="#biz-sberbusiness"><span>Назад</span>← СберБизнес</a><a href="#biz-preferences"><span>Дальше</span>Конструктор преференций →</a></nav>
+</div></section>
+
+<section class="view biz" id="biz-preferences" aria-labelledby="t-biz-preferences"><div class="wrap">
+  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>5 из 11</span></div>
+  <div class="view-head"><div><h2 id="t-biz-preferences">Конструктор преференций</h2><p class="intro">Компания сама выбирает в СберБизнесе, какие дополнительные опции и привилегии получат её сотрудники. Соцпакет собирается под задачи бизнеса.</p></div><div class="big">с 9.10<small>новые опции: бизнес-залы, ДМС, СберСпасибо 5%</small></div></div>
+  <div class="body">
+    <section class="panel"><h3>Что можно подключить</h3><div class="chips">
+      <span class="chip">Пакеты услуг для сотрудников</span>
+      <span class="chip">Подписка СберПрайм</span>
+      <span class="chip">Сниженная ставка по кредиту наличными</span>
+    </div></section>
+    <section class="panel"><h3>С 9 октября 2026 <span class="flag new">Новое</span></h3><div class="chips">
+      <span class="chip new">Бизнес-залы</span>
+      <span class="chip new">ДМС</span>
+      <span class="chip new">СберСпасибо 5% в супермаркетах и на АЗС</span>
+    </div></section>
+    <section class="full"><h3>Как использовать в разговоре</h3><ul class="ticks">
+      <li>Для собственника и HR это готовый инструмент удержания: привилегии выбираются в том же кабинете, где проходят выплаты.</li>
+      <li>Начните с вопроса, что компания уже даёт сотрудникам и чего не хватает, — и покажите, какие опции закрывают этот запрос.</li>
+      <li>Состав опций и их стоимость для конкретной компании уточняйте перед встречей.</li>
+    </ul></section>
+    <section class="full script"><span class="eyebrow">Формулировка для руководителя</span>«В СберБизнесе есть конструктор преференций: вы сами выбираете, что получат сотрудники, — подписку СберПрайм, сниженную ставку по кредиту, а с 9 октября ещё бизнес-залы, ДМС и 5% бонусами СберСпасибо в супермаркетах и на АЗС».</section>
+  </div>
+  <p class="src">Источник: уточнения руководителя проекта (22.10.2026).</p>
+  <nav class="pager"><a href="#biz-cards"><span>Назад</span>← Выпуск карт</a><a href="#biz-citycard"><span>Дальше</span>Карта жителя →</a></nav>
+</div></section>
+
+<section class="view biz" id="biz-citycard" aria-labelledby="t-biz-citycard"><div class="wrap">
+  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>6 из 11</span></div>
+  <div class="view-head"><div><h2 id="t-biz-citycard">Зарплата на «Карту жителя»</h2><p class="intro">На Северо-Западе зарплату можно зачислять на региональную карту жителя. Сотрудник может пользоваться одной картой для зарплаты, покупок и региональных сервисов.</p></div><div class="big">ЕКП<small>карты жителя есть в ряде регионов Северо-Запада, например:</small></div></div>
+  <div class="body">
+    <section class="full"><div class="cards3">
+      <div class="citycard"><b>Единая карта петербуржца</b><span>Санкт-Петербург</span></div>
+      <div class="citycard"><b>ЕКП «Ленинградская»</b><span>Ленинградская область</span></div>
+      <div class="citycard"><b>ЕКП «Псковская»</b><span>Псков (Псковская область), с сентября 2026 года</span></div>
+      <div class="citycard"><b>ЕКП «Карельская»</b><span>Карелия, с сентября 2026 года</span></div>
+    </div></section>
+    <section><h3>Почему это удобно</h3><ul class="ticks">
+      <li>Карта жителя — полноценная дебетовая карта «Мир»: зарплата, переводы, покупки, снятие наличных.</li>
+      <li>При оплате автоматически действуют скидки и бонусы партнёров региональной программы; в программе лояльности ЕКП более 770 компаний.</li>
+      <li>Сотруднику не нужна отдельная зарплатная карта — меньше карт в кошельке.</li>
+    </ul></section>
+    <section class="panel"><h3>ЕКП «Псковская» и «Карельская»</h3><ul class="ticks">
+      <li>Заявления на выпуск принимаются с 1 сентября 2026 года в офисах Сбера в регионах.</li>
+      <li>Для оформления нужны паспорт и СНИЛС.</li>
+      <li>Набор региональных функций (проезд, соцвыплаты) различается по регионам и расширяется — уточняйте актуальный перечень.</li>
+    </ul></section>
+    <section class="full script"><span class="eyebrow">Формулировка для HR</span>«Если ваши сотрудники уже пользуются картой жителя, зарплату можно зачислять прямо на неё: одна карта и для зарплаты, и для скидок, и для городских сервисов».</section>
+  </div>
+  <p class="src">Источники: уточнения руководителя проекта (22.10.2026); <a href="https://pln-pskov.ru/society/597015.html" target="_blank" rel="noopener">ПЛН: Сбер запустил выпуск карт «Псковская»</a>; <a href="https://spbit.ru/news/Yedinaya-karta-peterburzhtsa-vyshla-v-Pskov-i-v-Kareliyu-331761" target="_blank" rel="noopener">spbit.ru: ЕКП вышла в Псков и Карелию</a>.</p>
+  <nav class="pager"><a href="#biz-preferences"><span>Назад</span>← Конструктор преференций</a><a href="#biz-gig"><span>Дальше</span>Самозанятые и нерезиденты →</a></nav>
 </div></section>
 
 <section class="view biz" id="biz-gig" aria-labelledby="t-biz-gig"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>4 из 8</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>7 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-gig">Самозанятые, ГПХ и нерезиденты</h2><p class="intro">Самозанятым и нерезидентам по договорам ГПХ тоже можно платить через СберБизнес.</p></div><div class="big">0 ₽<small>комиссия за выплаты самозанятым</small></div></div>
   <div class="body">
     <section><h3>Самозанятые</h3><ul class="ticks">
@@ -380,15 +486,15 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
     <section class="full script"><span class="eyebrow">Формулировка для клиента</span>«Выплаты самозанятым проходят без комиссии, статус проверяется, а чеки формируются автоматически. По выплатам нерезидентам на ГПХ валютный контроль по каждой выплате не требуется».</section>
   </div>
   <p class="src">Источник: «Условия и возможности», слайд «СберБизнес»; sberbusiness.live, 21.08.2026.</p>
-  <nav class="pager"><a href="#biz-cards"><span>Назад</span>← Выпуск карт</a><a href="#biz-team"><span>Дальше</span>Руководству и коллективу →</a></nav>
+  <nav class="pager"><a href="#biz-citycard"><span>Назад</span>← Карта жителя</a><a href="#biz-team"><span>Дальше</span>Руководству и коллективу →</a></nav>
 </div></section>
 
 <section class="view biz" id="biz-team" aria-labelledby="t-biz-team"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>5 из 8</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>8 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-team">Руководству и коллективу</h2><p class="intro">Зарплатный проект даёт отдельные привилегии руководству компании и инструменты заботы о здоровье для всего коллектива.</p></div><div class="big">ТОП<small>отдельные привилегии для руководства и топ-менеджмента</small></div></div>
   <div class="body">
     <section class="panel"><h3>Для руководства и топ-менеджмента</h3><ul class="ticks">
-      <li><b>Пакеты премиального обслуживания</b> СберПремьер и СберПервый: повышенные ставки по вкладам и накопительным счетам, расширенный кешбэк, бизнес-залы, страхование в путешествиях (<a href="#emp-premium">о пакетах СберПремьер и СберПервый</a>).</li>
+      <li><b>Пакеты премиального обслуживания</b> СберПремьер и СберПервый: повышенные ставки по вкладам и накопительным счетам, расширенный кешбэк, бизнес-залы, страхование в путешествиях (<a href="#emp-premium">о пакетах СберПремьер и СберПервый</a>).<span class="awardnote">Победитель Frank Premium Banking Award 2026 от Frank RG (Frank Research Group) в номинации «Лучший банк: комплексное решение для премиальных клиентов» (<a href="https://www.bfm.ru/news/621570" target="_blank" rel="noopener">источник</a>).</span></li>
       <li><b>Индивидуальные условия</b> по потребительскому и ипотечному кредитованию по «Особой заявке».</li>
     </ul></section>
     <section class="panel"><h3>Для всего коллектива</h3><ul class="ticks">
@@ -398,12 +504,12 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
     </ul></section>
     <section class="full script"><span class="eyebrow">Формулировка для руководителя</span>«Для вас и топ-менеджмента — премиальное обслуживание и индивидуальные условия по кредитам и ипотеке через „Особую заявку“. Для коллектива — ИИ-помощник СберЗдоровья и телемедицина: экономичная альтернатива ДМС».</section>
   </div>
-  <p class="src">Источник: условия, предоставленные руководителем проекта (21.10.2026); «Условия и возможности», слайды «СберПремьер», «СберПервый». Детали «Особой заявки» и подключения ИИ-помощника СберЗдоровья уточняйте у профильных подразделений.</p>
+  <p class="src">Источник: условия, предоставленные руководителем проекта (21.10.2026); «Условия и возможности», слайды «СберПремьер», «СберПервый»; <a href="https://www.bfm.ru/news/621570" target="_blank" rel="noopener">BFM.ru о Frank Premium Banking Award, 21.10.2026</a>. Детали «Особой заявки» и подключения ИИ-помощника СберЗдоровья уточняйте у профильных подразделений.</p>
   <nav class="pager"><a href="#biz-gig"><span>Назад</span>← Самозанятые и нерезиденты</a><a href="#biz-hr"><span>Дальше</span>Подбор персонала →</a></nav>
 </div></section>
 
 <section class="view biz" id="biz-hr" aria-labelledby="t-biz-hr"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>6 из 8</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>9 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-hr">Подбор персонала</h2><p class="intro">Работа.ру, профильная компания экосистемы Сбера, помогает закрыть дефицит кадров, в том числе за счёт иностранных работников.</p></div><div class="big">18 млн<small>индийцев уже работают в США, ОАЭ и других странах</small></div></div>
   <div class="body">
     <section><h3>Что делает Работа.ру</h3><ul class="ticks">
@@ -428,7 +534,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 
 <section class="view biz" id="biz-launch" aria-labelledby="t-biz-launch"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>7 из 8</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>10 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-launch">Как подключить</h2><p class="intro">Четыре шага от договора до первой зарплаты на картах.</p></div><div class="big">4 шага<small>договор → QR → реквизиты → реестр</small></div></div>
   <div class="body">
     <section class="full"><ol class="steps">
@@ -440,15 +546,16 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
     <section class="full script"><span class="eyebrow">Завершение встречи</span>«Предлагаю оформить заявку, а я направлю памятку с QR-кодом для ваших сотрудников. Если зарплата поступит на карты Сбера до 30 ноября, а сотрудники зарегистрируются в СберСпасибо, они станут участниками второго этапа акции «185 млн бонусов»».</section>
   </div>
   <p class="src">Источник: «Условия и возможности», слайды «Заполните заявление», «Формирование QR-кода в СберБизнес»; sberbusiness.live, 21.08.2026.</p>
-  <nav class="pager"><a href="#biz-hr"><span>Назад</span>← Подбор персонала</a><a href="#biz-anybank"><span>Дальше</span>Зарплата в любой банк →</a></nav>
+  <nav class="pager"><a href="#biz-hr"><span>Назад</span>← Подбор персонала</a><a href="#biz-anybank"><span>Дальше</span>Мультиреестр →</a></nav>
 </div></section>
 
 <section class="view biz" id="biz-anybank" aria-labelledby="t-biz-anybank"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>8 из 8</span></div>
-  <div class="view-head"><div><h2 id="t-biz-anybank">Зарплата сотрудникам в любой банк <span class="flag">РГС · ККСБ</span></h2><p class="intro">Дополнительная опция для компаний, у которых сотрудники получают зарплату в разных банках. Один договор со Сбером закрывает все выплаты.</p></div><div class="big">от 0%<small>стоимость зависит от сегмента клиента — уточняйте в SberHelp</small></div></div>
+  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>11 из 11</span></div>
+  <div class="view-head"><div><h2 id="t-biz-anybank">Мультиреестр — зарплата в любой банк <span class="flag new">Новое</span> <span class="flag">РГС · ККСБ</span></h2><p class="intro">Новая опция для компаний, у которых сотрудники получают зарплату в разных банках: мультиреестр отправляется из 1С в один клик, а один договор со Сбером закрывает все выплаты.</p></div><div class="big">от 0%<small>стоимость зависит от сегмента клиента — уточняйте в SberHelp</small></div></div>
   <div class="body">
     <section class="full panel"><h3>Для кого и сколько стоит</h3><p>Опция для клиентов сегментов <b>РГС и ККСБ</b> (по уточнению руководителя проекта, 21.10.2026). В материале сентября 2026 года условия описаны так: клиенты сегмента «Крупнейший, крупный и средний бизнес» без РКО в ПАО Сбербанк, а также клиенты любого сегмента из холдингов KeyClients; нужен зарплатный договор «без резервирования» или допсоглашение к уже заключённому.</p><p style="margin-top:10px"><b>Стоимость — от 0%</b> в зависимости от сегмента. Точные условия для конкретного клиента уточняйте в SberHelp, не называйте клиенту «бесплатно» без проверки.</p></section>
     <section><h3>Преимущества</h3><ul class="ticks">
+      <li><b>Отправка из 1С в один клик.</b> Мультиреестр уходит из 1С в один клик, деньги — одним платёжным поручением.</li>
       <li><b>Один реестр — все сотрудники.</b> Сбербанк, Альфа-Банк, Т-Банк, ВТБ и любой другой банк России.</li>
       <li><b>Одно платёжное поручение</b> на сумму реестра, независимо от банков получателей.</li>
       <li><b>Один договор</b> вместо договоров с каждым банком.</li>
@@ -463,7 +570,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
         <li><span><b>Сбер</b> автоматически возвращает незачисленные суммы на счёт отправителя.</span></li>
       </ol></section>
     <section class="full"><h3>Где смотреть статус</h3><p>СберБизнес → «Зарплатный проект» → «Выплаты»: статус всего реестра и каждой строки (Сбер / другой банк). В отчётной форме есть номер ПП, созданного для перевода в другой банк. Если деньги вернулись из другого банка, ПП на возврат видно только в банке-отправителе, откуда пришло исходное поручение.</p></section>
-    <section class="full script"><span class="eyebrow">Формулировка для клиента</span>«Не нужно заключать договоры с каждым банком и готовить реестры в разных форматах. Один реестр и одно платёжное поручение, а Сбер распределит средства по банкам и автоматически вернёт незачисленные суммы».</section>
+    <section class="full script"><span class="eyebrow">Формулировка для клиента</span>«Мультиреестр отправляется из 1С в один клик. Не нужно заключать договоры с каждым банком и готовить реестры в разных форматах. Один реестр и одно платёжное поручение, а Сбер распределит средства по банкам и автоматически вернёт незачисленные суммы».</section>
   </div>
   <p class="src">Источник: «Условия и возможности», раздел «Сервис зачисления на счета ФЛ в другие банки в рамках зарплатного договора», сентябрь 2026.</p>
   <nav class="pager"><a href="#biz-launch"><span>Назад</span>← Как подключить</a><a href="#emp-card"><span>Дальше</span>Сотрудникам: карта и переводы →</a></nav>
@@ -490,17 +597,22 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
     <section class="full script"><span class="eyebrow">Формулировка для сотрудника</span>«Обслуживание карты бесплатное без условий. Снятие наличных до 300 тысяч рублей в сутки и переводы клиентам Сбера без комиссии».</section>
   </div>
   <p class="src">Источник: «Условия и возможности», слайды «Базовые привилегии для зарплатных клиентов», «СберКарта стала ещё выгоднее».</p>
-  <nav class="pager"><a href="#biz-anybank"><span>Назад</span>← Зарплата в любой банк</a><a href="#emp-security"><span>Дальше</span>Безопасность →</a></nav>
+  <nav class="pager"><a href="#biz-anybank"><span>Назад</span>← Мультиреестр</a><a href="#emp-security"><span>Дальше</span>Безопасность →</a></nav>
 </div></section>
 
 <section class="view emp" id="emp-security" aria-labelledby="t-emp-security"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Сотрудникам</span><span>2 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-emp-security">Безопасность</h2><p class="intro">Зарплата поступает в один из самых надёжных банков страны, а в СберБанк Онлайн есть раздел «Безопасность» с более чем 30 бесплатными инструментами защиты от мошенников.</p></div><div class="big">AAA(RU)<small>кредитный рейтинг АКРА, прогноз «Стабильный»</small></div></div>
+  <div class="view-head"><div><h2 id="t-emp-security">Безопасность</h2><p class="intro">Зарплата поступает в один из самых надёжных банков страны. В СберБанк Онлайн есть более 30 бесплатных инструментов защиты от мошенников, а на портале СберСова — бесплатное обучение финансовой и киберграмотности.</p></div><div class="big">AAA(RU)<small>кредитный рейтинг АКРА, прогноз «Стабильный»</small></div></div>
   <div class="body">
     <section><h3>Надёжность банка</h3><ul class="ticks">
       <li>ПАО Сбербанк входит в перечень <b>системно значимых кредитных организаций</b> Банка России. Перечень опубликован 07.10.2026: в нём 12 банков, на которые приходится около 80% активов банковского сектора.</li>
       <li>Кредитный рейтинг <b>АКРА — AAA(RU)</b>, прогноз «Стабильный», подтверждён в мае 2026 года.</li>
       <li>Вклады застрахованы в системе АСВ: до <span class="num">1,4 млн ₽</span> на вкладчика в одном банке, в особых случаях (продажа жилья, наследство и др.) — до <span class="num">10 млн ₽</span>.</li>
+    </ul></section>
+    <section><h3>Защищённость денег и данных</h3><ul class="ticks">
+      <li>Банк выявляет подозрительные операции; такую операцию может дополнительно подтвердить доверенное лицо клиента.</li>
+      <li>Номера мошенников, о которых сообщают клиенты, проходят проверку и затем блокируются или помечаются у других пользователей определителя номера.</li>
+      <li>Клиент видит все устройства, с которых входили в СберБанк Онлайн, и может закрыть доступ к картам и счетам в один шаг.</li>
     </ul></section>
     <section class="panel"><h3>Результаты защиты в 2026 году</h3><ul class="ticks">
       <li>От киберпреступников защищены <b>7,4 млн</b> человек, банк помог сохранить более <b>220 млрд ₽</b>.</li>
@@ -524,6 +636,21 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
         </tbody>
       </table></div>
       <p class="cap">Сервисы находятся в разделе «Безопасность» СберБанк Онлайн. Кроме того, в тарифе СберМобайл «Для профессионалов» есть бесплатная защита от спама и мошенников (<a href="#emp-mobile">подробнее</a>).</p>
+    </section>
+    <section class="full"><h3>Финансовая грамотность</h3><p>Сбер развивает финансовую и киберграмотность клиентов: на портале СберСова есть бесплатные курсы, статьи и тест уровня финансовой грамотности. Это хороший повод для HR — предложить сотрудникам обучение как часть заботы о команде.</p></section>
+    <section class="full"><h3>Полезные ссылки</h3>
+      <div class="linkgrid">
+        <a class="linkcard" href="https://sbersova.ru/sections/protection" target="_blank" rel="noopener"><b>СберСова: Защита</b><span>Статьи о мошеннических схемах и защите денег</span></a>
+        <a class="linkcard" href="https://sbersova.ru/sections/protection/subsections/kiberbezopasnost" target="_blank" rel="noopener"><b>СберСова: Кибербезопасность</b><span>Как защитить данные и устройства</span></a>
+        <a class="linkcard" href="https://sbersova.ru/academy/courses/cybersecurity" target="_blank" rel="noopener"><b>Курс «Кибермошенники»</b><span>Как защитить свои данные и деньги</span></a>
+        <a class="linkcard" href="https://sbersova.ru/sections/protection/pozabottes-o-bezopasnosti-s-besplatnymi-servisami-sbera" target="_blank" rel="noopener"><b>Бесплатные защитные сервисы Сбера</b><span>Обзор инструментов СберБанк Онлайн</span></a>
+        <a class="linkcard" href="https://sbersova.ru/academy/courses/osnovy_finansov" target="_blank" rel="noopener"><b>Курс «Основы финансовой системы»</b><span>СберСова, финансовая грамотность</span></a>
+        <a class="linkcard" href="https://sbersova.ru/academy/courses/finansovoye_planirovaniye" target="_blank" rel="noopener"><b>Курс «Финансовое планирование»</b><span>Как ставить финансовые цели и достигать их</span></a>
+        <a class="linkcard" href="https://ifg.sbersova.ru/" target="_blank" rel="noopener"><b>Тест финансовой грамотности</b><span>Индекс финансовой грамотности СберСовы</span></a>
+        <a class="linkcard" href="https://www.sberbank.ru/common/img/uploaded/cards/pamyatka_po_bezopasnosti.pdf" target="_blank" rel="noopener"><b>Памятка по безопасности</b><span>sberbank.ru, PDF</span></a>
+        <a class="linkcard" href="https://www.sberbank.ru/promo/marathon_cyber" target="_blank" rel="noopener"><b>Марафон кибербезопасности</b><span>sberbank.ru</span></a>
+      </div>
+      <p class="cap">Для клиентов-компаний: <a href="https://www.sberbank.ru/ru/s_m_business/cybersecurity" target="_blank" rel="noopener">«Безопасность вашего бизнеса» на sberbank.ru</a>.</p>
     </section>
     <section class="full script"><span class="eyebrow">Формулировка для сотрудника</span>«Сбер — системно значимый банк с наивысшим рейтингом АКРА. В приложении бесплатно доступны определитель номера, антивирус и доверенное лицо для подтверждения подозрительных операций».</section>
   </div>
@@ -606,7 +733,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
         <tr><td>Лучший % Золотой</td><td class="c num">до 14,8%</td><td>от 100 000 ₽, от 1 мес.</td><td>нет / нет</td><td>—</td></tr>
         <tr><td>Накопительный счёт</td><td class="c num">до 12,5%</td><td>от 0 ₽, на любой срок</td><td>да / да</td><td>Проценты на ежедневный остаток, доход каждый месяц</td></tr>
       </tbody></table></div>
-      <p class="cap">Ставки «до», на дату материала. У клиентов СберПремьер и СберПервый свои продукты: вклад «Премиум» до 13,6% и 13,7%, накопительный счёт «Премиум» до 12,75% и 13% (<a href="#emp-premium">подробнее</a>).</p></section>
+      <p class="cap">Ставки «до», на дату материала. У клиентов СберПремьер и СберПервый (победители Frank Premium Banking Award 2026 в номинации «Лучший банк: комплексное решение для премиальных клиентов») свои продукты: вклад «Премиум» до 13,6% и 13,7%, накопительный счёт «Премиум» до 12,75% и 13% (<a href="#emp-premium">подробнее</a>).</p></section>
     <section class="full script"><span class="eyebrow">Формулировка для сотрудника</span>«Для зарплатных клиентов есть отдельный вклад — до 12,65%. Если средства могут понадобиться в любой момент, подойдёт накопительный счёт: до 12,5% на ежедневный остаток».</section>
   </div>
   <p class="src">Источник: «Условия и возможности», слайды «Приумножайте накопления», «Вклады и кредиты», «СберПремьер», «СберПервый».</p>
@@ -724,7 +851,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
       <li>Пролонгация по зарплатному критерию с 07.10, в том числе тем, у кого Премьер уже был.</li>
       <li>При первом подключении — пробный период до 2 календарных месяцев с неснижаемым набором привилегий. Если критерий не выполнен, клиента переводят на 0 уровень Премьер на 2 месяца.</li>
     </ul></section>
-    <section><h3>Что даёт СберПремьер</h3><ul class="ticks">
+    <section><h3>Что даёт СберПремьер</h3><p class="cap" style="margin-bottom:10px">Победитель Frank Premium Banking Award 2026 (Frank RG) в номинации «Лучший банк: комплексное решение для премиальных клиентов» (<a href="https://www.bfm.ru/news/621570" target="_blank" rel="noopener">источник</a>).</p><ul class="ticks">
       <li>Вклад «Премиум» до <span class="num">13,6%</span>, накопительный счёт «Премиум» до <span class="num">12,75%</span>.</li>
       <li>Кешбэк до 10% в 5 из 8 категорий, 1% на всё.</li>
       <li>Страхование в путешествиях, включая задержку рейса: 25 € в час с 3-го по 12-й час.</li>
@@ -766,7 +893,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
   <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Продажа</span></div>
   <div class="view-head"><div><h2 id="t-obj">Возражения</h2><p class="intro">Краткие ответы на типовые возражения при подписании договора. Каждый ответ опирается на условия из разделов пакета.</p></div><div class="big">7<small>типовых возражений</small></div></div>
   <div class="body"><div class="full qa">
-    <details open><summary>«У нас уже есть зарплатный банк»</summary><p>Сотрудники могут оставить свою личную карту Сбера: передать реквизиты по QR и принести заявление. Реквизиты можно отправить и прямо в приложении по ИНН работодателя. Если люди получают зарплату в разных банках, для клиентов РГС и ККСБ есть опция «Зарплата в любой банк»: один реестр на всех, стоимость от 0% в зависимости от сегмента — уточняйте в SberHelp (<a href="#biz-anybank">условия</a>). А если расчётный счёт компании в другом банке, зарплатный договор со Сбером всё равно работает (<a href="#biz-sberbusiness">как</a>).</p></details>
+    <details open><summary>«У нас уже есть зарплатный банк»</summary><p>Сотрудники могут оставить свою личную карту Сбера: передать реквизиты по QR и принести заявление. Реквизиты можно отправить и прямо в приложении по ИНН работодателя. Если люди получают зарплату в разных банках, для клиентов РГС и ККСБ есть новая опция «Мультиреестр — зарплата в любой банк»: один реестр на всех, стоимость от 0% в зависимости от сегмента — уточняйте в SberHelp (<a href="#biz-anybank">условия</a>). А если расчётный счёт компании в другом банке, зарплатный договор со Сбером всё равно работает (<a href="#biz-sberbusiness">как</a>).</p></details>
     <details><summary>«Бухгалтерии будет больше работы»</summary><p>Напротив: реестр выгружается из 1С и загружается в СберБизнес за 3–4 клика, реквизиты сотрудников поступают в СберБизнес автоматически, расчётные листки сотрудники видят в своём приложении, а с реестрами можно работать в мобильном приложении (<a href="#biz-sberbusiness">подробнее</a>).</p></details>
     <details><summary>«Сколько это стоит?»</summary><p>Зачисление зарплаты сотрудникам и выплаты самозанятым без комиссии, один договор на все виды выплат тоже без комиссии. Вопросы про обслуживание счёта сверяйте с тарифом клиента (<a href="#biz-money">подробнее</a>).</p></details>
     <details class="obj-cash"><summary>«У меня есть кешбэк от другого банка»</summary>
@@ -790,7 +917,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
         </div>
       </div>
     </details>
-    <details><summary>«Сотрудники не пойдут в отделение»</summary><p>Визит в отделение не обязателен. С картой Сбера реквизиты передаются по QR или прямо в приложении по ИНН работодателя. Без карты — 2 минуты в отделении или выездная выдача моментальных карт прямо на предприятии (<a href="#biz-cards">как это устроено</a>).</p></details>
+    <details><summary>«Сотрудники не пойдут в отделение»</summary><p>Визит в отделение не обязателен. С картой Сбера реквизиты передаются по QR или прямо в приложении по ИНН работодателя. Без карты — 2 минуты в отделении или выездная выдача моментальных карт прямо на предприятии (<a href="#biz-requisites">реквизиты</a>, <a href="#biz-cards">выпуск карт</a>).</p></details>
     <details><summary>«В чём выгода для сотрудников?»</summary><p>Бесплатная карта без условий, кешбэк до 10% в повышенных категориях, ставка по кредиту на 2% ниже, связь до 12 месяцев за 0 ₽ при переносе номера, возможность выиграть 185 000 бонусов за ноябрьскую зарплату, а также надёжный банк и бесплатные сервисы защиты от мошенников (<a href="#emp-card">все привилегии</a>, <a href="#emp-security">безопасность</a>).</p></details>
     <details><summary>«У нас подрядчики и иностранцы»</summary><p>Самозанятым без комиссии, с автопроверкой статуса и чеками. Нерезидентам по ГПХ — без валютного контроля по каждой выплате. При дефиците кадров Работа.ру поможет с подбором (<a href="#biz-gig">подробнее</a>).</p></details>
   </div></div>
@@ -807,6 +934,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
       <li>Раздел «Безопасность»: перечень системно значимых банков Банка России (07.10.2026), АКРА (19.05.2026), лимиты АСВ, данные Сбера о защите клиентов (12.10.2026), описание сервисов СберБанк Онлайн. Ссылки — на <a href="#emp-security">странице раздела</a>.</li>
       <li><a href="https://www.sberbank.ru/help/business/sbbol/salary/other_inform/100459" target="_blank" rel="noopener">Справка СберБизнес о расчётных листках</a> и сайт программы <a href="https://spasibosberbank.ru/how_it_works" target="_blank" rel="noopener">СберСпасибо</a>.</li>
       <li>Условия, уточнённые руководителем проекта 21.10.2026: загрузка реестра из 1С, отправка реквизитов по ИНН работодателя, зарплатный договор при счёте в другом банке, привилегии для руководства, ИИ-помощник СберЗдоровья, корпоративный дизайн карт, стоимость сервиса «Зарплата в любой банк», сценарии возражения о кешбэке.</li>
+      <li>Обновления 22.10.2026: <a href="https://www.bfm.ru/news/621570" target="_blank" rel="noopener">Frank Premium Banking Award 2026 (BFM.ru)</a>; ЕКП «Псковская» и «Карельская» (<a href="https://spbit.ru/news/Yedinaya-karta-peterburzhtsa-vyshla-v-Pskov-i-v-Kareliyu-331761" target="_blank" rel="noopener">spbit.ru</a>); материалы <a href="https://sbersova.ru/" target="_blank" rel="noopener">СберСова</a> о кибербезопасности и финансовой грамотности; уточнения руководителя проекта о реквизитах через СберБанк Онлайн, Мультиреестре и Конструкторе преференций.</li>
       <li><a href="https://sberbusiness.live/publications/skolko-stoit-zarplatnii-proekt" target="_blank" rel="noopener">sberbusiness.live: «Зарплатный проект: комиссии и тарифы»</a>, 24.02.2025: путь подачи заявки в СберБизнесе.</li>
       <li><a href="https://sberbusiness.live/news/sber-rasskazal-o-vozmozhnostyah-zarplatnogo-proekta-dlya-biznesa" target="_blank" rel="noopener">sberbusiness.live: «Зарплатный проект Сбера для бизнеса»</a>, 21.08.2026: 0 ₽ за зарплату и выплаты самозанятым, скидка до 2 п.п. по кредиту для бизнеса, выплаты в выходные от 1 минуты, поддержка 0321, нерезиденты по ГПХ, загрузка реестров из учётных систем.</li>
     </ul></section>
@@ -822,7 +950,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 </main>
 
-<footer class="site"><div class="wrap">Пакет продавца · Зарплатный проект Сбера · внутренний материал, актуально на 21.10.2026. Условия могут меняться.</div></footer>
+<footer class="site"><div class="wrap">Пакет продавца · Зарплатный проект Сбера · внутренний материал, актуально на 22.10.2026. Условия могут меняться.</div></footer>
 
 <script>
 (function(){
