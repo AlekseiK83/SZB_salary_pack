@@ -141,6 +141,7 @@ tr.hl td{background:var(--acc-soft)}
 footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;color:var(--muted)}
 
 .view,#home{scroll-margin-top:240px}
+#companies,#employees{scroll-margin-top:80px}
 .js .view{display:none}
 .js .view.on{display:block}
 .js #home.off{display:none}
@@ -191,6 +192,51 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 .linkcard b{display:block;color:var(--acc);margin-bottom:4px}
 .linkcard span{font-size:14px;color:var(--muted)}
 .awardnote{display:block;margin-top:6px;font-size:14px;color:var(--muted)}
+
+/* ---------- Mobile hub ---------- */
+.hub,.col-back,.tabbar{display:none}
+a.tag{text-decoration:none}
+@media (max-width:760px){
+  .bar nav a:not(.pdf){display:none}
+  .bar .wrap{flex-wrap:nowrap;justify-content:space-between}
+  .bar nav{margin-left:0}
+  .logo span{display:none}
+  body{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+  .tabbar{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);padding:6px max(8px,env(safe-area-inset-left,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-right,0px))}
+  .tabbar a{display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;font-size:12px;font-weight:500;color:var(--muted);padding:6px 4px;border-radius:8px;min-height:44px;justify-content:center}
+  .tabbar a[aria-current="page"]{color:var(--ink);background:var(--bg)}
+  .tb-dot{width:22px;height:5px;border-radius:3px;background:var(--line)}
+  .tabbar a[aria-current="page"] .tb-dot.biz{background:var(--biz)}
+  .tabbar a[aria-current="page"] .tb-dot.emp{background:var(--emp)}
+  .tabbar a[aria-current="page"] .tb-dot.obj{background:var(--flag)}
+
+  /* hub screen */
+  .js .m-hub .hub{display:flex;flex-direction:column;gap:12px;min-height:calc(100svh - 64px - 64px - env(safe-area-inset-bottom,0px));padding-block:18px 14px}
+  .js .m-hub .hero,.js .m-hub .cols,.js .m-hub .official,.js .m-hub .extras{display:none}
+  .hub-title{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.05;letter-spacing:-.02em;margin-top:6px}
+  .hub-tile{flex:1;min-height:170px;display:flex;flex-direction:column;justify-content:flex-start;gap:8px;position:relative;text-decoration:none;color:var(--on-acc);border-radius:18px;padding:18px 20px;background:var(--biz);overflow:hidden}
+  .hub-tile.emp{background:var(--emp)}
+  .hub-tile:active{transform:scale(.99)}
+  .hub-k{order:-2;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.85;margin-bottom:auto;padding-right:40px}
+  .hub-go{position:absolute;top:12px;right:18px;font-size:28px;line-height:1}
+  .hub-h{font-family:var(--display);font-weight:700;font-size:clamp(26px,8.6vw,34px);line-height:1;letter-spacing:-.02em;margin-top:10px}
+  .hub-d{font-size:15px;line-height:1.35;opacity:.92}
+  .hub-chips{display:flex;flex-wrap:wrap;gap:6px}
+  .hub-chips span{font-size:12px;font-weight:600;border:1px solid currentColor;border-radius:999px;padding:3px 9px;opacity:.9}
+  .hub-links{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  @media (max-height:700px){.hub-d{display:none}}
+  .hub-links a{text-align:center;text-decoration:none;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:12px 6px;font-size:14px;font-weight:500}
+  .hub-date{font-size:12px;color:var(--muted);text-align:center}
+
+  /* one audience at a time */
+  .js .m-biz .hub,.js .m-emp .hub,.js .m-bank .hub{display:none}
+  .js .m-biz .hero,.js .m-emp .hero,.js .m-bank .hero,.js .m-biz .official,.js .m-emp .official,.js .m-biz .extras,.js .m-emp .extras,.js .m-bank .extras,.js .m-bank .cols{display:none}
+  .js .m-biz .col.emp,.js .m-emp .col.biz{display:none}
+  .js .m-biz .cols,.js .m-emp .cols{padding-top:14px}
+  .js .m-bank .official{margin-top:16px}
+  .col-back{display:inline-block;margin-bottom:10px;font-size:14px;color:var(--muted);text-decoration:none;padding:6px 0}
+  .m-hub .col-back{display:none}
+}
 @media (max-width:860px){.routes{grid-template-columns:1fr}}
 @media (max-width:860px){.fork{grid-template-columns:1fr}}
 @media (max-width:860px){
@@ -201,6 +247,8 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 }
 @media (max-width:600px){.bar{position:static}}
 @media (max-width:480px){
+  .rows .fig{white-space:normal;font-size:17px;line-height:1.05}
+  .rows .fig small{font-size:11px}
   .rows a{grid-template-columns:86px minmax(0,1fr) 14px;gap:12px}
   .rows .fig{font-size:18px}
   .bar nav a{padding:5px 7px;font-size:13px}
@@ -217,8 +265,8 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
     <a class="logo" href="#home">Пакет продавца <span>· Зарплатный проект</span></a>
     <nav aria-label="Разделы">
       <a href="#home">Главная</a>
-      <a href="#biz-money">Компании</a>
-      <a href="#emp-card">Сотрудникам</a>
+      <a href="#companies">Компании</a>
+      <a href="#employees">Сотрудникам</a>
       <a href="#objections">Возражения</a>
       <a href="#bank-site">Сайт банка</a>
       <a href="#sources">Источники</a>
@@ -231,6 +279,33 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 <!-- ============================ ГЛАВНАЯ ============================ -->
 <div id="home">
   <div class="wrap">
+    <section class="hub" aria-label="Выбор аудитории">
+      <div class="hub-top">
+        <div class="eyebrow">Зарплатный проект Сбера · пакет продавца</div>
+        <h1 class="hub-title">С кем разговор?</h1>
+      </div>
+      <a class="hub-tile biz" href="#companies">
+        <span class="hub-k">11 разделов</span>
+        <span class="hub-h">Компании</span>
+        <span class="hub-d">Руководителю, бухгалтерии и HR: экономика, СберБизнес, реквизиты из СберБанк Онлайн, конструктор преференций</span>
+        <span class="hub-chips"><span>0 ₽ зачисление</span><span>QR · ИНН</span><span>3–4 клика</span></span>
+        <span class="hub-go" aria-hidden="true">→</span>
+      </a>
+      <a class="hub-tile emp" href="#employees">
+        <span class="hub-k">11 разделов</span>
+        <span class="hub-h">Сотрудникам</span>
+        <span class="hub-d">Каждому получателю зарплаты: карта, кешбэк, кредиты, связь, безопасность</span>
+        <span class="hub-chips"><span>0 ₽ карта</span><span>до 10% кешбэк</span><span>−2% к ставке</span></span>
+        <span class="hub-go" aria-hidden="true">→</span>
+      </a>
+      <nav class="hub-links" aria-label="Быстрые ссылки">
+        <a href="#objections">Возражения</a>
+        <a href="#bank-site">Сайт банка</a>
+        <a href="paket-prodavca-zp.pdf" target="_blank" rel="noopener">PDF</a>
+      </nav>
+      <p class="hub-date">Актуально на 22.10.2026 · внутренний материал</p>
+    </section>
+
     <div class="hero">
       <div>
         <div class="eyebrow">Зарплатный проект Сбера · пакет продавца</div>
@@ -245,7 +320,8 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
     </div>
 
     <div class="cols">
-      <section class="col biz" aria-labelledby="h-biz">
+      <section class="col biz" id="companies" aria-labelledby="h-biz">
+        <a class="col-back" href="#home">← К выбору</a>
         <div class="col-head"><h2 id="h-biz">Компании</h2><span class="eyebrow">11 разделов</span></div>
         <div class="say"><span class="eyebrow">Ключевое сообщение</span>«Зачисление зарплаты бесплатное. Сотрудники отправляют реквизиты прямо из СберБанк Онлайн — по QR-коду или ИНН компании, а бухгалтерия загружает реестр из 1С в СберБизнес за 3–4 клика».</div>
         <ul class="rows">
@@ -266,7 +342,8 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
         </ul>
       </section>
 
-      <section class="col emp" aria-labelledby="h-emp">
+      <section class="col emp" id="employees" aria-labelledby="h-emp">
+        <a class="col-back" href="#home">← К выбору</a>
         <div class="col-head"><h2 id="h-emp">Сотрудникам</h2><span class="eyebrow">11 разделов</span></div>
         <div class="say"><span class="eyebrow">Ключевое сообщение</span>«Обслуживание карты бесплатное без условий, кешбэк до 10%, ставка по кредиту на 2% ниже. При переносе номера в СберМобайл связь до 12 месяцев за 0 ₽. Условие одно: зарплата на СберКарту».</div>
         <ul class="rows">
@@ -308,7 +385,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 
 <!-- ============================ КОМПАНИИ ============================ -->
 <section class="view biz" id="biz-money" aria-labelledby="t-biz-money"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>1 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>1 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-money">Экономика для компании</h2><p class="intro">Базовые операции зарплатного проекта бесплатны. С этого стоит начинать разговор с финансовым директором.</p></div><div class="big">0 ₽<small>за зачисление зарплаты сотрудникам и выплаты самозанятым</small></div></div>
   <div class="body">
     <section><h3>Что бесплатно</h3><ul class="ticks">
@@ -328,11 +405,11 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
     <section class="full script"><span class="eyebrow">Формулировка для клиента</span>«Зарплата и выплаты самозанятым проводятся без комиссии. Если компании нужен кредит, зарплатный проект даёт скидку до 2 п.п. к ставке».</section>
   </div>
   <p class="src">Источник: sberbusiness.live, «Зарплатный проект Сбера для бизнеса», 21.08.2026; материал «Условия и возможности», слайд «Зарплатный проект снижает нагрузку на бухгалтерию».</p>
-  <nav class="pager"><a href="#home"><span>Назад</span>← Главная</a><a href="#biz-requisites"><span>Дальше</span>Реквизиты из СберБанк Онлайн →</a></nav>
+  <nav class="pager"><a href="#companies"><span>Назад</span>← Компании</a><a href="#biz-requisites"><span>Дальше</span>Реквизиты из СберБанк Онлайн →</a></nav>
 </div></section>
 
 <section class="view biz" id="biz-requisites" aria-labelledby="t-biz-requisites"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>2 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>2 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-requisites">Реквизиты — напрямую из СберБанк Онлайн</h2><p class="intro">Сотрудник с картой или счётом в Сбере сам отправляет реквизиты своего счёта работодателю — прямо в своём интернет-банке. Бухгалтерии и HR не нужно собирать номера счетов вручную.</p></div><div class="big">2 способа<small>QR-код работодателя или ИНН работодателя</small></div></div>
   <div class="body">
     <section class="full"><div class="routes">
@@ -356,7 +433,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 
 <section class="view biz" id="biz-sberbusiness" aria-labelledby="t-biz-sberbusiness"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>3 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>3 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-sberbusiness">СберБизнес: инновационный бизнес-ассистент</h2><p class="intro">Всё про зарплатный проект собрано в одном кабинете: реестры, реквизиты сотрудников, статусы выплат, выпуск карт и документы. Типовые операции автоматизированы, а с реестрами можно работать в мобильном приложении.</p></div><div class="big">3–4 клика<small>примерно столько занимает выгрузка реестра из 1С и загрузка в СберБизнес</small></div></div>
   <div class="body">
     <section><h3>Автоматизация</h3><ul class="ticks">
@@ -386,7 +463,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 
 <section class="view biz" id="biz-cards" aria-labelledby="t-biz-cards"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>4 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>4 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-cards">Выпуск карт для сотрудников</h2><p class="intro">Несколько способов передать реквизиты и выпустить карты. Ни один из них не требует организовывать визит всего коллектива в отделение.</p></div><div class="big">2 мин<small>примерно столько занимает оформление карты в отделении по QR-коду и паспорту</small></div></div>
   <div class="body">
     <section><h3>1. Выпуск по QR-коду</h3><ul class="ticks">
@@ -419,7 +496,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 
 <section class="view biz" id="biz-preferences" aria-labelledby="t-biz-preferences"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>5 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>5 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-preferences">Конструктор преференций</h2><p class="intro">Компания сама выбирает в СберБизнесе, какие дополнительные опции и привилегии получат её сотрудники. Соцпакет собирается под задачи бизнеса.</p></div><div class="big">с 9.10<small>новые опции: бизнес-залы, ДМС, СберСпасибо 5%</small></div></div>
   <div class="body">
     <section class="panel"><h3>Что можно подключить</h3><div class="chips">
@@ -444,7 +521,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 
 <section class="view biz" id="biz-citycard" aria-labelledby="t-biz-citycard"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>6 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>6 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-citycard">Зарплата на «Карту жителя»</h2><p class="intro">На Северо-Западе зарплату можно зачислять на региональную карту жителя. Сотрудник может пользоваться одной картой для зарплаты, покупок и региональных сервисов.</p></div><div class="big">ЕКП<small>карты жителя есть в ряде регионов Северо-Запада, например:</small></div></div>
   <div class="body">
     <section class="full"><div class="cards3">
@@ -470,7 +547,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 
 <section class="view biz" id="biz-gig" aria-labelledby="t-biz-gig"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>7 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>7 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-gig">Самозанятые, ГПХ и нерезиденты</h2><p class="intro">Самозанятым и нерезидентам по договорам ГПХ тоже можно платить через СберБизнес.</p></div><div class="big">0 ₽<small>комиссия за выплаты самозанятым</small></div></div>
   <div class="body">
     <section><h3>Самозанятые</h3><ul class="ticks">
@@ -490,7 +567,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 
 <section class="view biz" id="biz-team" aria-labelledby="t-biz-team"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>8 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>8 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-team">Руководству и коллективу</h2><p class="intro">Зарплатный проект даёт отдельные привилегии руководству компании и инструменты заботы о здоровье для всего коллектива.</p></div><div class="big">ТОП<small>отдельные привилегии для руководства и топ-менеджмента</small></div></div>
   <div class="body">
     <section class="panel"><h3>Для руководства и топ-менеджмента</h3><ul class="ticks">
@@ -509,7 +586,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 
 <section class="view biz" id="biz-hr" aria-labelledby="t-biz-hr"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>9 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>9 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-hr">Подбор персонала</h2><p class="intro">Работа.ру, профильная компания экосистемы Сбера, помогает закрыть дефицит кадров, в том числе за счёт иностранных работников.</p></div><div class="big">18 млн<small>индийцев уже работают в США, ОАЭ и других странах</small></div></div>
   <div class="body">
     <section><h3>Что делает Работа.ру</h3><ul class="ticks">
@@ -534,7 +611,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 
 <section class="view biz" id="biz-launch" aria-labelledby="t-biz-launch"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>10 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>10 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-launch">Как подключить</h2><p class="intro">Четыре шага от договора до первой зарплаты на картах.</p></div><div class="big">4 шага<small>договор → QR → реквизиты → реестр</small></div></div>
   <div class="body">
     <section class="full"><ol class="steps">
@@ -550,7 +627,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 
 <section class="view biz" id="biz-anybank" aria-labelledby="t-biz-anybank"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Компании</span><span>11 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>11 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-anybank">Мультиреестр — зарплата в любой банк <span class="flag new">Новое</span> <span class="flag">РГС · ККСБ</span></h2><p class="intro">Новая опция для компаний, у которых сотрудники получают зарплату в разных банках: мультиреестр отправляется из 1С в один клик, а один договор со Сбером закрывает все выплаты.</p></div><div class="big">от 0%<small>стоимость зависит от сегмента клиента — уточняйте в SberHelp</small></div></div>
   <div class="body">
     <section class="full panel"><h3>Для кого и сколько стоит</h3><p>Опция для клиентов сегментов <b>РГС и ККСБ</b> (по уточнению руководителя проекта, 21.10.2026). В материале сентября 2026 года условия описаны так: клиенты сегмента «Крупнейший, крупный и средний бизнес» без РКО в ПАО Сбербанк, а также клиенты любого сегмента из холдингов KeyClients; нужен зарплатный договор «без резервирования» или допсоглашение к уже заключённому.</p><p style="margin-top:10px"><b>Стоимость — от 0%</b> в зависимости от сегмента. Точные условия для конкретного клиента уточняйте в SberHelp, не называйте клиенту «бесплатно» без проверки.</p></section>
@@ -578,7 +655,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 
 <!-- ============================ СОТРУДНИКАМ ============================ -->
 <section class="view emp" id="emp-card" aria-labelledby="t-emp-card"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Сотрудникам</span><span>1 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>1 из 11</span></div>
   <div class="view-head"><div><h2 id="t-emp-card">Карта и переводы</h2><p class="intro">Базовые банковские операции для зарплатного клиента бесплатны. Обслуживание карты не зависит от объёма покупок.</p></div><div class="big">0 ₽<small>годовое обслуживание СберКарты МИР, всегда без условий</small></div></div>
   <div class="body">
     <section><h3>Бесплатно</h3><ul class="ticks">
@@ -601,7 +678,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 
 <section class="view emp" id="emp-security" aria-labelledby="t-emp-security"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Сотрудникам</span><span>2 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>2 из 11</span></div>
   <div class="view-head"><div><h2 id="t-emp-security">Безопасность</h2><p class="intro">Зарплата поступает в один из самых надёжных банков страны. В СберБанк Онлайн есть более 30 бесплатных инструментов защиты от мошенников, а на портале СберСова — бесплатное обучение финансовой и киберграмотности.</p></div><div class="big">AAA(RU)<small>кредитный рейтинг АКРА, прогноз «Стабильный»</small></div></div>
   <div class="body">
     <section><h3>Надёжность банка</h3><ul class="ticks">
@@ -659,7 +736,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 
 <section class="view emp" id="emp-cashback" aria-labelledby="t-emp-cashback"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Сотрудникам</span><span>3 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>3 из 11</span></div>
   <div class="view-head"><div><h2 id="t-emp-cashback">Кешбэк СберСпасибо</h2><p class="intro">Новые получатели зарплаты на СберКарту получают СберПрайм Зарплатный: на одну категорию больше, чем у обычной карты. С зарплатой от 70 тысяч кешбэк на всё растёт до 1%, лимит до 5 000 бонусов.</p></div><div class="big">до 10%<small>в категориях повышенного кешбэка, категории выбираются каждый месяц</small></div></div>
   <div class="body">
     <section class="full"><h3>Линейка продуктов для зарплатных клиентов, 2026</h3>
@@ -694,7 +771,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 
 <section class="view emp" id="emp-credit" aria-labelledby="t-emp-credit"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Сотрудникам</span><span>4 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>4 из 11</span></div>
   <div class="view-head"><div><h2 id="t-emp-credit">Кредиты и ипотека</h2><p class="intro">Для зарплатных клиентов есть скидки к ставке по кредиту на любые цели, рефинансированию и ипотеке.</p></div><div class="big">−2%<small>к ставке по кредиту на любые цели и по рефинансированию</small></div></div>
   <div class="body">
     <section><h3>Кредиты</h3><ul class="ticks">
@@ -720,7 +797,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 
 <section class="view emp" id="emp-savings" aria-labelledby="t-emp-savings"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Сотрудникам</span><span>5 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>5 из 11</span></div>
   <div class="view-head"><div><h2 id="t-emp-savings">Вклады и счета</h2><p class="intro">Сбер — лучший банк для сбережений по версии Frank Saving Awards 2025. Для зарплатных клиентов есть отдельный вклад.</p></div><div class="big">12,65%<small>до, вклад «Зарплатный Максимум» при зарплате на карту Сбера</small></div></div>
   <div class="body">
     <section class="full"><div class="tbl"><table>
@@ -741,7 +818,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 
 <section class="view emp" id="emp-mobile" aria-labelledby="t-emp-mobile"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Сотрудникам</span><span>6 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>6 из 11</span></div>
   <div class="view-head"><div><h2 id="t-emp-mobile">Мобильная связь за 0 ₽</h2><p class="intro">Тариф СберМобайл «Для профессионалов»: плату за связь зарплатным клиентам отменили на срок до 12 месяцев.</p></div><div class="big">0 ₽<small>в месяц вместо 630 ₽, скидка 100% на срок до 12 месяцев</small></div></div>
   <div class="body">
     <section><h3>Что в тарифе</h3><ul class="ticks">
@@ -764,7 +841,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 
 <section class="view emp" id="emp-partners" aria-labelledby="t-emp-partners"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Сотрудникам</span><span>7 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>7 из 11</span></div>
   <div class="view-head"><div><h2 id="t-emp-partners">Скидки партнёров</h2><p class="intro">Скидки СберМобайл и СберЗдоровье подключаются в СберБанк Онлайн: «Профиль» → «Ваши привилегии». У СберПраво свои правила акции, у СитиДрайв — промокод.</p></div><div class="big">−40%<small>на услуги СберПраво</small></div></div>
   <div class="body">
     <section><h3>Для зарплатных клиентов</h3><ul class="ticks">
@@ -786,7 +863,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 
 <section class="view emp" id="emp-promo" aria-labelledby="t-emp-promo"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Сотрудникам</span><span>8 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>8 из 11</span></div>
   <div class="view-head"><div><h2 id="t-emp-promo">185 млн бонусов СберСпасибо</h2><p class="intro">Акция с 01.10.2026 по 25.12.2026. Участвуют клиенты старше 18 лет, новые и действующие получатели зарплаты.</p></div><div class="big">185 000<small>бонусов каждому победителю, в каждом из двух этапов</small></div></div>
   <div class="body">
     <section><h3>Как участвовать</h3><ol class="steps">
@@ -807,7 +884,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 
 <section class="view emp" id="emp-supreme" aria-labelledby="t-emp-supreme"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Сотрудникам</span><span>9 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>9 из 11</span></div>
   <div class="view-head"><div><h2 id="t-emp-supreme">Привилегии МИР Supreme</h2><p class="intro">С 1 октября 2026. Кешбэк начисляется сверх выбранных категорий СберСпасибо и текущих скидок экосистемы. Перевыпуск карты и регистрация не нужны.</p></div><div class="big">10%<small>на такси Ultima, первые 3 поездки в месяц</small></div></div>
   <div class="body">
     <section><h3>Рестораны: 7%</h3><ul class="ticks">
@@ -836,7 +913,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 
 <section class="view emp" id="emp-premium" aria-labelledby="t-emp-premium"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Сотрудникам</span><span>10 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>10 из 11</span></div>
   <div class="view-head"><div><h2 id="t-emp-premium">Высокий доход <span class="flag">Пилот</span></h2><p class="intro">Пилоты работают только для клиентов со счетом в Московском, Среднерусском и Северо-Западном банках (МБ, СРБ, СЗБ), 18+. Подключение по акцепту клиента.</p></div><div class="big">500+<small>тыс. ₽ в месяц — бесплатный СберПремьер 2-го уровня</small></div></div>
   <div class="body">
     <section class="panel"><h3>Зарплата от 150 тыс. ₽/мес → СберПрайм бесплатно</h3><ul class="ticks">
@@ -868,7 +945,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 
 <section class="view emp" id="emp-switch" aria-labelledby="t-emp-switch"><div class="wrap">
-  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Сотрудникам</span><span>11 из 11</span></div>
+  <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>11 из 11</span></div>
   <div class="view-head"><div><h2 id="t-emp-switch">Как перейти на Сбер</h2><p class="intro">Можно оставить свою личную карту Сбера или оформить новую. Реквизиты новой карты видны в СберБанк Онлайн сразу после оформления.</p></div><div class="big">2 мин<small>примерно столько занимает оформление карты в отделении</small></div></div>
   <div class="body">
     <section class="full panel"><h3>Без QR-кода: по ИНН работодателя <span class="flag">Уникально для рынка</span></h3><p>Если у сотрудника уже есть карта или счёт в Сбере, а работодатель обслуживается в СберБизнесе, сотрудник может прямо в своём СберБанк Онлайн ввести ИНН работодателя и отправить реквизиты счёта для выплаты зарплаты. QR-код и визит в отделение не нужны. Такой опции нет у других зарплатных проектов на рынке.</p></section>
@@ -950,6 +1027,12 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 </div></section>
 </main>
 
+<nav class="tabbar" aria-label="Быстрая навигация">
+  <a href="#companies" data-tab="biz"><span class="tb-dot biz"></span>Компании</a>
+  <a href="#employees" data-tab="emp"><span class="tb-dot emp"></span>Сотрудникам</a>
+  <a href="#objections" data-tab="obj"><span class="tb-dot obj"></span>Возражения</a>
+</nav>
+
 <footer class="site"><div class="wrap">Пакет продавца · Зарплатный проект Сбера · внутренний материал, актуально на 22.10.2026. Условия могут меняться.</div></footer>
 
 <script>
@@ -961,20 +1044,25 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
   function show(){
     var h=(location.hash||'').replace('#','');
     var hit=ids.indexOf(h)>-1;
+    var mode=hit?'':(h==='companies'?'m-biz':h==='employees'?'m-emp':h==='bank-site'?'m-bank':'m-hub');
+    ['m-hub','m-biz','m-emp','m-bank'].forEach(function(c){home.classList.toggle(c,c===mode)});
+    var mobile=window.matchMedia('(max-width:760px)').matches;
+    var tab=/^biz-/.test(h)||h==='companies'?'biz':(/^emp-/.test(h)||h==='employees'?'emp':(h==='objections'?'obj':''));
+    document.querySelectorAll('.tabbar a').forEach(function(a){if(a.getAttribute('data-tab')===tab)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
     views.forEach(function(v){v.classList.toggle('on',v.id===h)});
     home.classList.toggle('off',hit);
     document.querySelectorAll('.bar nav a').forEach(function(a){
       var t=a.getAttribute('href').slice(1);
-      var active=(t===h)||(t==='home'&&!hit&&h!=='bank-site')||(t==='biz-money'&&/^biz-/.test(h))||(t==='emp-card'&&/^emp-/.test(h));
+      var active=(t===h)||(t==='home'&&(h===''||h==='home'))||(t==='companies'&&/^biz-/.test(h))||(t==='employees'&&/^emp-/.test(h));
       if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
     });
     var inHome=h&&!hit&&document.getElementById(h);
-    if(inHome){inHome.scrollIntoView();}else{window.scrollTo(0,0);}
+    if(inHome&&!mobile){inHome.scrollIntoView();}else{window.scrollTo(0,0);}
     if(hit){var t=document.querySelector('#'+h+' h2');if(t){t.setAttribute('tabindex','-1');t.focus({preventScroll:true})}}
   }
   window.addEventListener('hashchange',show);
   show();
-  window.addEventListener('load',function(){setTimeout(function(){var h=(location.hash||'').slice(1);var e=h&&ids.indexOf(h)<0&&document.getElementById(h);if(e)e.scrollIntoView();else window.scrollTo(0,0)},0)});
+  window.addEventListener('load',function(){setTimeout(function(){var h=(location.hash||'').slice(1);var e=h&&ids.indexOf(h)<0&&document.getElementById(h);if(e&&!window.matchMedia('(max-width:760px)').matches)e.scrollIntoView();else window.scrollTo(0,0)},0)});
   // Кнопка «Ссылка на раздел» — только когда страница открыта напрямую (например, GitHub Pages)
   var top=true; try{top=window.self===window.top}catch(e){top=false}
   if(top){
