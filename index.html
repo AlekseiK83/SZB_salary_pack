@@ -111,7 +111,7 @@ p{margin:0}
 .rows-extra .fig{color:var(--muted)}
 .rows .go{color:var(--acc);font-size:18px;transition:transform .15s}
 .rows a:hover .go{transform:translateX(3px)}
-.extras{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding-block:20px 64px}
+.extras{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;padding-block:20px 64px}
 .extra{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
 .extra:hover,.extra:focus-visible{border-color:var(--ink)}
 .extra h3{color:var(--ink);margin-bottom:6px}
@@ -261,6 +261,7 @@ footer.site{border-top:1px solid var(--line);padding-block:22px;font-size:13px;c
 .op-box.warn{background:var(--flag-soft)}
 .op-box h4{margin:0 0 6px;font-size:15px}
 .op-box.warn h4{color:var(--flag)}
+.op-discuss{margin-top:18px}
 .op-box ul{margin:0;padding-left:18px;font-size:14px;display:grid;gap:4px}
 .op-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:18px}
 .op-actions button{font:inherit;font-size:14px;font-weight:600;border-radius:8px;padding:9px 14px;cursor:pointer;border:1px solid var(--biz);background:var(--biz);color:var(--on-acc)}
@@ -354,6 +355,28 @@ a.tag{text-decoration:none}
   .pager a{max-width:100%;flex:1 1 100%}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* r18: обновления, дисклеймер */
+.upd-widget:empty{display:none}
+.upd-card{display:block;text-decoration:none;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 14px;color:var(--ink)}
+.upd-card:hover{border-color:var(--biz)}
+.upd-top{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.upd-new{display:inline-flex;align-items:center;gap:5px;color:var(--flag);font-weight:600}
+.upd-new::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--flag)}
+.upd-card ul{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:3px;font-size:14px;line-height:1.35}
+.upd-card li::before{content:"· ";color:var(--muted)}
+.upd-more{display:block;margin-top:6px;font-size:13px;color:var(--biz);font-weight:600}
+.upd-day{margin-bottom:22px}
+.upd-day h3{font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.upd-item{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.upd-item .flag{align-self:start;margin-top:3px}
+.upd-item a{font-weight:600;text-decoration:none}
+.upd-item a:hover{text-decoration:underline}
+.upd-item p{grid-column:2;margin:0;font-size:14px;color:var(--muted)}
+.upd-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--flag);margin-left:6px;vertical-align:2px}
+footer.site .disc{font-size:12px;line-height:1.5;margin:0 0 6px;max-width:920px}
+footer.site p{margin:0}
+@media (max-width:760px){.stamp .upd-widget{display:none}}
 /* r17: поиск, таблицы, зоны нажатия */
 .srch{font:inherit;font-size:14px;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:6px 9px;min-width:34px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
 .srch svg{width:15px;height:15px}
@@ -376,7 +399,7 @@ a.tag{text-decoration:none}
 .tbl:focus-visible{outline:2px solid var(--emp);outline-offset:2px}
 .crumbs a,.logo{position:relative}
 .crumbs a::after,.logo::after{content:"";position:absolute;inset:-11px -6px}
-@media (max-width:1100px){.logo span{display:none}}
+@media (max-width:1100px){.logo span{display:none}.extras{grid-template-columns:repeat(3,minmax(0,1fr))}}
 
 </style>
 </head>
@@ -423,12 +446,13 @@ a.tag{text-decoration:none}
         <span class="hub-go" aria-hidden="true">→</span>
       </a>
       <a class="hub-pick has-beta" href="#pick"><span>Подобрать ТОП фич для компании<small>5 вопросов → шпаргалка к встрече</small></span><span aria-hidden="true">→</span><span class="beta-badge"><i aria-hidden="true"></i><b>Beta version</b><span class="bb-sep" aria-hidden="true"></span>в режиме тестирования</span></a>
+      <div class="upd-widget" data-upd></div>
       <nav class="hub-links" aria-label="Быстрые ссылки">
         <a href="#objections">Возражения</a>
         <a href="#bank-site">Сайт банка</a>
         <a href="paket-prodavca-zp.pdf" target="_blank" rel="noopener nofollow">PDF</a>
       </nav>
-      <p class="hub-date">Актуально на 22.10.2026 · внутренний материал</p>
+      <p class="hub-date">Актуально на 23.10.2026 · неофициальный материал</p>
     </section>
 
     <div class="hero">
@@ -440,8 +464,9 @@ a.tag{text-decoration:none}
         <a class="hero-cta has-beta" href="#pick">Подобрать ТОП фич для компании →<span class="beta-badge"><i aria-hidden="true"></i><b>Beta version</b><span class="bb-sep" aria-hidden="true"></span>в режиме тестирования</span></a>
       </div>
       <div class="stamp">
-        <div><b>Актуально на 22.10.2026.</b> Собрано из материала «Условия и возможности» и публикаций sberbusiness.live.</div>
+        <div><b>Актуально на 23.10.2026.</b> Неофициальный материал, собран из информации в открытых источниках. Для передачи клиентам используйте только утверждённые формы офферов и презентаций.</div>
         <div>Ставки и тарифы меняются. Перед встречей сверьте цифры с действующими условиями.</div>
+        <div class="upd-widget" data-upd></div>
         <div>Пометки у строк: <span class="flag">Пилот</span> — работает только на части территорий, <span class="flag">РГС · КСБ</span> — только для этих сегментов, <span class="flag new">Новое</span> — недавно запущенная опция.</div>
       </div>
     </div>
@@ -506,6 +531,7 @@ a.tag{text-decoration:none}
       <a class="extra" href="#pick"><h3>Подбор ТОП фич</h3><p>Выберите сегмент и признаки компании — получите шпаргалку к встрече.</p></a>
       <a class="extra" href="#objections"><h3>Возражения</h3><p>Семь типовых возражений руководителя и бухгалтерии и ответы на них.</p></a>
       <a class="extra" href="#biz-cards"><h3>Памятка для HR</h3><p>Где в СберБизнесе создать QR-код и как подтвердить реквизиты сотрудника.</p></a>
+      <a class="extra" href="#updates"><h3>Обновления</h3><p>Что нового в базе знаний: последние изменения со ссылками на разделы.</p></a>
       <a class="extra" href="#sources"><h3>Источники и оговорки</h3><p>Источники цифр и ограничения, которые важно учитывать в разговоре.</p></a>
     </div>
   </div>
@@ -528,12 +554,12 @@ a.tag{text-decoration:none}
       <li>Пакет привилегий для сотрудников. Для работодателя это аргумент при найме и удержании (<a href="#emp-card">подробнее</a>).</li>
       <li>Отдельные привилегии для руководства и коллектива: премиальное обслуживание, «Особая заявка» по кредитам, ИИ-помощник СберЗдоровья (<a href="#biz-team">подробнее</a>).</li>
       <li>Конструктор преференций: компания сама подключает сотрудникам дополнительные привилегии (<a href="#biz-preferences">подробнее</a>).</li>
-      <li>Сотрудникам с высокими зарплатами — бесплатные СберПрайм (от 150 тыс. ₽/мес) и СберПремьер 2-го уровня (от 500 тыс. ₽/мес). <span class="flag">Пилот · МБ, СРБ, СЗБ</span> (<a href="#emp-premium">условия</a>). СберПремьер — победитель Frank Premium Banking Award 2026 в номинации «Лучший банк: комплексное решение для премиальных клиентов».</li>
+      <li>Сотрудникам с высокими зарплатами — бесплатные СберПрайм (от 150 тыс. ₽/мес) и СберПремьер 2-го уровня (от 500 тыс. ₽/мес). <span class="flag">Пилот</span> — доступно в части территорий, географию уточняйте у закреплённого МЗП/СЗП (<a href="#emp-premium">условия</a>). СберПремьер — победитель Frank Premium Banking Award 2026 в номинации «Лучший банк: комплексное решение для премиальных клиентов».</li>
     </ul></section>
     <section class="full panel warn"><h3>Важно</h3><p>В материалах банка без комиссии названы зачисление зарплаты, выплаты самозанятым и один договор на все виды выплат. Вопросы об обслуживании расчётного счёта и других операциях уточняйте по действующему тарифу клиента. Опция «Мультиреестр — зарплата в любой банк» для клиентов с расчётным счётом в другом банке — 0%.</p></section>
     <section class="full script"><span class="eyebrow">Формулировка для клиента</span>«Зарплата и выплаты самозанятым проводятся без комиссии. Если компании нужен кредит, зарплатный проект даёт скидку до 2 п.п. к ставке».</section>
   </div>
-  <p class="src">Источник: sberbusiness.live, «Зарплатный проект Сбера для бизнеса», 21.08.2026; материал «Условия и возможности», слайд «Зарплатный проект снижает нагрузку на бухгалтерию».</p>
+  <p class="src">Источник: sberbusiness.live, «Зарплатный проект Сбера для бизнеса», 21.08.2026; материалы банка.</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#companies"><span>Назад</span>← Компании</a><a href="#biz-requisites"><span>Дальше</span>Реквизиты из СберБанк Онлайн →</a></nav>
 </div></section>
 
@@ -557,7 +583,7 @@ a.tag{text-decoration:none}
     </ul></section>
     <section class="full script"><span class="eyebrow">Формулировка для HR и бухгалтерии</span>«Вам не нужно собирать реквизиты: сотрудник с картой Сбера сам отправит их из своего приложения — по вашему QR-коду или просто введя ИНН компании. Заявка сразу появится в СберБизнесе».</section>
   </div>
-  <p class="src">Источник: «Условия и возможности», слайды «Формирование QR-кода в СберБизнес», «Памятка по выпуску карт через QR»; уточнения команды зарплатного проекта (21–22.10.2026).</p>
+  <p class="src">Источник: материалы банка; внутренние документы банка (подробности — у закреплённого МЗП/СЗП).</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-money"><span>Назад</span>← Экономика</a><a href="#biz-sberbusiness"><span>Дальше</span>СберБизнес →</a></nav>
 </div></section>
 
@@ -588,7 +614,7 @@ a.tag{text-decoration:none}
     <section class="full panel"><h3>Покажите на встрече</h3><p>Откройте кабинет вместе с бухгалтером или HR-специалистом и покажите три раздела: «Зарплатный проект» → «Зарплатные карты» (QR-код для сотрудников), «Справочник сотрудников» (запросы реквизитов), «Зарплатный проект» → «Выплаты» (статусы по каждой строке реестра). Демонстрация в кабинете убедительнее слайдов.</p></section>
     <section class="full script"><span class="eyebrow">Формулировка для бухгалтерии</span>«Все операции по зарплате собраны в одном кабинете. Ведомость отправляется прямо из 1С, и статус по каждой строке виден там же. Реквизиты сотрудников поступают автоматически, а расчётные листки сотрудники получают прямо в приложении».</section>
   </div>
-  <p class="src">Источник: «Условия и возможности», слайды «СберБизнес», «Зарплатный проект снижает нагрузку на бухгалтерию», «Формирование QR-кода в СберБизнес», «Как это работает»; sberbusiness.live, 21.08.2026; <a href="https://www.sberbank.ru/help/business/sbbol/salary/other_inform/100459" target="_blank" rel="noopener">справка СберБизнес о расчётных листках</a>.</p>
+  <p class="src">Источник: материалы банка; sberbusiness.live, 21.08.2026; <a href="https://www.sberbank.ru/help/business/sbbol/salary/other_inform/100459" target="_blank" rel="noopener">справка СберБизнес о расчётных листках</a>.</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-requisites"><span>Назад</span>← Реквизиты из СберБанк Онлайн</a><a href="#biz-cards"><span>Дальше</span>Выпуск карт →</a></nav>
 </div></section>
 
@@ -621,7 +647,7 @@ a.tag{text-decoration:none}
     </section>
     <section class="full script"><span class="eyebrow">Формулировка для HR</span>«Достаточно один раз распечатать QR-код и разместить памятку. Сотрудники с картой Сбера могут отправить реквизиты прямо в приложении по ИНН компании, остальные оформляют карты самостоятельно, а для большого коллектива банк организует выездную выдачу моментальных карт в удобный день».</section>
   </div>
-  <p class="src">Источник: «Условия и возможности», слайды «Выпуск зарплатных карт», «Формирование QR-кода в СберБизнес», «Памятка по выпуску карт через QR», «Выездная выдача моментальных карт»; sberbusiness.live, 21.08.2026.</p>
+  <p class="src">Источник: материалы банка; sberbusiness.live, 21.08.2026.</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-sberbusiness"><span>Назад</span>← СберБизнес</a><a href="#biz-preferences"><span>Дальше</span>Конструктор преференций →</a></nav>
 </div></section>
 
@@ -646,7 +672,7 @@ a.tag{text-decoration:none}
     </ul></section>
     <section class="full script"><span class="eyebrow">Формулировка для руководителя</span>«В СберБизнесе есть конструктор преференций: вы сами выбираете, что получат сотрудники, — подписку СберПрайм, сниженную ставку по кредиту, а с 9 октября ещё бизнес-залы, ДМС и 5% бонусами СберСпасибо в супермаркетах и на АЗС».</section>
   </div>
-  <p class="src">Источник: уточнения команды зарплатного проекта (22.10.2026).</p>
+  <p class="src">Источник: внутренние документы банка (подробности — у закреплённого МЗП/СЗП).</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-cards"><span>Назад</span>← Выпуск карт</a><a href="#biz-citycard"><span>Дальше</span>Карта жителя →</a></nav>
 </div></section>
 
@@ -672,7 +698,7 @@ a.tag{text-decoration:none}
     </ul></section>
     <section class="full script"><span class="eyebrow">Формулировка для HR</span>«Если ваши сотрудники уже пользуются картой жителя, зарплату можно зачислять прямо на неё: одна карта и для зарплаты, и для скидок, и для городских сервисов».</section>
   </div>
-  <p class="src">Источники: уточнения команды зарплатного проекта (22.10.2026); <a href="https://pln-pskov.ru/society/597015.html" target="_blank" rel="noopener">ПЛН: Сбер запустил выпуск карт «Псковская»</a>; <a href="https://spbit.ru/news/Yedinaya-karta-peterburzhtsa-vyshla-v-Pskov-i-v-Kareliyu-331761" target="_blank" rel="noopener">spbit.ru: ЕКП вышла в Псков и Карелию</a>.</p>
+  <p class="src">Источники: внутренние документы банка (подробности — у закреплённого МЗП/СЗП); <a href="https://pln-pskov.ru/society/597015.html" target="_blank" rel="noopener">ПЛН: Сбер запустил выпуск карт «Псковская»</a>; <a href="https://spbit.ru/news/Yedinaya-karta-peterburzhtsa-vyshla-v-Pskov-i-v-Kareliyu-331761" target="_blank" rel="noopener">spbit.ru: ЕКП вышла в Псков и Карелию</a>.</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-preferences"><span>Назад</span>← Конструктор преференций</a><a href="#biz-gig"><span>Дальше</span>Самозанятые и нерезиденты →</a></nav>
 </div></section>
 
@@ -693,7 +719,7 @@ a.tag{text-decoration:none}
     </ul></section>
     <section class="full script"><span class="eyebrow">Формулировка для клиента</span>«Выплаты самозанятым проходят без комиссии, статус проверяется, а чеки формируются автоматически. По выплатам нерезидентам на ГПХ валютный контроль проходит один раз — по общей сумме реестра, а не по каждой выплате».</section>
   </div>
-  <p class="src">Источник: «Условия и возможности», слайд «СберБизнес»; sberbusiness.live, 21.08.2026.</p>
+  <p class="src">Источник: материалы банка; sberbusiness.live, 21.08.2026.</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-citycard"><span>Назад</span>← Карта жителя</a><a href="#biz-team"><span>Дальше</span>Руководству и коллективу →</a></nav>
 </div></section>
 
@@ -712,7 +738,7 @@ a.tag{text-decoration:none}
     </ul></section>
     <section class="full script"><span class="eyebrow">Формулировка для руководителя</span>«Для вас и топ-менеджмента — премиальное обслуживание и индивидуальные условия по кредитам и ипотеке через „Особую заявку“. Для коллектива — ИИ-помощник СберЗдоровья и телемедицина как альтернатива ДМС».</section>
   </div>
-  <p class="src">Источник: уточнения команды зарплатного проекта (21.10.2026); «Условия и возможности», слайды «СберПремьер», «СберПервый»; <a href="https://www.bfm.ru/news/621570" target="_blank" rel="noopener">BFM.ru о Frank Premium Banking Award, 21.10.2026</a>. Детали «Особой заявки» и подключения ИИ-помощника СберЗдоровья уточняйте у профильных подразделений.</p>
+  <p class="src">Источник: внутренние документы банка (подробности — у закреплённого МЗП/СЗП); материалы банка; <a href="https://www.bfm.ru/news/621570" target="_blank" rel="noopener">BFM.ru о Frank Premium Banking Award, 21.10.2026</a>. Детали «Особой заявки» и подключения ИИ-помощника СберЗдоровья уточняйте у профильных подразделений.</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-gig"><span>Назад</span>← Самозанятые и нерезиденты</a><a href="#biz-hr"><span>Дальше</span>Подбор персонала →</a></nav>
 </div></section>
 
@@ -730,14 +756,20 @@ a.tag{text-decoration:none}
     </ul></section>
     <section><h3>Сервисный пакет для мигранта</h3><ul class="ticks">
       <li>Медицинские программы и анализы, ДМС.</li>
-      <li>Биометрия: Сбер — лидер по сбору, больше 70%.</li>
-      <li>SIM-карты и зарплатные карты.</li>
+      <li>Биометрия: Сбер принимает большую часть регистраций в стране — сдать её можно в отделении.</li>
+      <li>SIM-карты и зарплатные карты. <a href="https://www.sberbank.ru/ru/person/bank_cards/debit/foreign" target="_blank" rel="noopener">Карты для иностранных граждан — на сайте Сбера</a>.</li>
       <li>Денежные переводы и правовая поддержка.</li>
     </ul>
     <p class="cap" style="margin-top:14px">Один из источников кадров — Индия: развитая инфраструктура отбора и подготовки, работник приезжает под конкретного работодателя.</p></section>
-    <section class="full script"><span class="eyebrow">Формулировка для клиента</span>«При дефиците кадров можно оставить заявку на Работа.ру: компания поможет с подбором, визами и разрешениями. Зарплатные карты и SIM-карты для новых сотрудников предоставит Сбер».</section>
+    <section class="full panel"><h3>Для компаний Санкт-Петербурга и Ленобласти: ЭКТМ</h3><p style="margin-bottom:10px">Электронная карта трудового мигранта (ЭКТМ) — совместный проект Сбера с Санкт-Петербургом и Ленинградской областью.</p><ul class="ticks">
+      <li>Иностранный работник получает банковскую карту Сбера ещё при оформлении документов в миграционном центре.</li>
+      <li>На карту можно сразу зачислять зарплату — отдельный выпуск карты не нужен.</li>
+      <li>QR-код на карте позволяет уполномоченным органам онлайн подтвердить законность пребывания.</li>
+      <li>С карты удобно оплачивать обязательные платежи и переводить деньги в страны СНГ через СберБанк Онлайн.</li>
+    </ul><p class="cap">Актуальные условия — <a href="https://www.sberbank.ru/ru/person/bank_cards/debit/karta_migranta" target="_blank" rel="noopener">в официальном разделе на сайте Сбера</a>.</p></section>
+    <section class="full script"><span class="eyebrow">Формулировка для клиента</span>«При дефиците кадров можно оставить заявку на Работа.ру: компания поможет с подбором, визами и разрешениями. Зарплатные карты и SIM-карты для новых сотрудников предоставит Сбер, а в Петербурге и Ленобласти зарплату можно зачислять на электронную карту трудового мигранта».</section>
   </div>
-  <p class="src">Источник: «Условия и возможности», слайд «Столкнулись с дефицитом кадров?». Заявка оставляется на Работа.ру по QR-коду из материала.</p>
+  <p class="src">Источник: материалы банка. Заявка оставляется на Работа.ру; ссылку и QR-код для заявки уточняйте у закреплённого МЗП/СЗП.</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-team"><span>Назад</span>← Руководству и коллективу</a><a href="#biz-launch"><span>Дальше</span>Как подключить →</a></nav>
 </div></section>
 
@@ -753,7 +785,7 @@ a.tag{text-decoration:none}
     </ol></section>
     <section class="full script"><span class="eyebrow">Завершение встречи</span>«Предлагаю оформить заявку, а я направлю памятку с QR-кодом для ваших сотрудников. Если с 1 по 30 ноября на карты Сбера придёт хотя бы одно зарплатное зачисление, а сотрудники зарегистрируются в СберСпасибо, они станут участниками второго этапа акции «185 млн бонусов»».</section>
   </div>
-  <p class="src">Источник: «Условия и возможности», слайды «Заполните заявление», «Формирование QR-кода в СберБизнес»; sberbusiness.live, 21.08.2026.</p>
+  <p class="src">Источник: материалы банка; sberbusiness.live, 21.08.2026.</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-hr"><span>Назад</span>← Подбор персонала</a><a href="#biz-anybank"><span>Дальше</span>Мультиреестр →</a></nav>
 </div></section>
 
@@ -761,7 +793,7 @@ a.tag{text-decoration:none}
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>11 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-anybank">Мультиреестр — зарплата в любой банк <span class="flag new">Новое</span> <span class="flag">РГС · КСБ</span></h2><p class="intro">Новая опция для компаний, у которых сотрудники получают зарплату в разных банках: мультиреестр отправляется из 1С в один клик, а один договор со Сбером закрывает все выплаты.</p></div><div class="big">0%<small>тариф для клиентов с расчётным счётом в другом банке</small></div></div>
   <div class="body">
-    <section class="full panel"><h3>Для кого и сколько стоит</h3><p>Опция для клиентов сегментов <b>РГС и КСБ</b> (по уточнению команды зарплатного проекта, 21.10.2026). В материале сентября 2026 года условия описаны так: клиенты сегмента «Крупнейший, крупный и средний бизнес» без РКО в ПАО Сбербанк, а также клиенты любого сегмента из холдингов KeyClients; нужен зарплатный договор «без резервирования» или допсоглашение к уже заключённому.</p><p style="margin-top:10px"><b>Тариф — 0%</b> для клиентов с расчётным счётом в другом банке.</p></section>
+    <section class="full panel"><h3>Для кого и сколько стоит</h3><p>Опция для клиентов сегментов <b>РГС и КСБ</b> (по внутренним документам банка; подробности — у закреплённого МЗП/СЗП). В материале сентября 2026 года условия описаны так: клиенты сегмента «Крупнейший, крупный и средний бизнес» без РКО в ПАО Сбербанк, а также клиенты любого сегмента из холдингов KeyClients; нужен зарплатный договор «без резервирования» или допсоглашение к уже заключённому.</p><p style="margin-top:10px"><b>Тариф — 0%</b> для клиентов с расчётным счётом в другом банке.</p></section>
     <section><h3>Преимущества</h3><ul class="ticks">
       <li><b>Отправка из 1С в один клик</b>, деньги — одним платёжным поручением.</li>
       <li><b>Один реестр — все сотрудники.</b> Сбер, Альфа-Банк, Т-Банк, ВТБ и любой другой банк России.</li>
@@ -780,7 +812,7 @@ a.tag{text-decoration:none}
     <section class="full"><h3>Где смотреть статус</h3><p>СберБизнес → «Зарплатный проект» → «Выплаты»: статус всего реестра и каждой строки (Сбер / другой банк). В отчётной форме есть номер ПП, созданного для перевода в другой банк. Если деньги вернулись из другого банка, ПП на возврат видно только в банке-отправителе, откуда пришло исходное поручение.</p></section>
     <section class="full script"><span class="eyebrow">Формулировка для клиента</span>«Мультиреестр отправляется из 1С в один клик. Не нужно заключать договоры с каждым банком и готовить реестры в разных форматах. Один реестр и одно платёжное поручение, а Сбер распределит средства по банкам и автоматически вернёт незачисленные суммы».</section>
   </div>
-  <p class="src">Источник: «Условия и возможности», раздел «Сервис зачисления на счета ФЛ в другие банки в рамках зарплатного договора», сентябрь 2026.</p>
+  <p class="src">Источник: внутренние документы банка (подробности — у закреплённого МЗП/СЗП).</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-launch"><span>Назад</span>← Как подключить</a><a href="#emp-card"><span>Дальше</span>Сотрудникам: карта и переводы →</a></nav>
 </div></section>
 
@@ -804,7 +836,7 @@ a.tag{text-decoration:none}
     </ul></section>
     <section class="full script"><span class="eyebrow">Формулировка для сотрудника</span>«Обслуживание карты бесплатное без условий. Снятие наличных до 300 тысяч рублей в сутки и переводы клиентам Сбера без комиссии».</section>
   </div>
-  <p class="src">Источник: «Условия и возможности», слайды «Базовые привилегии для зарплатных клиентов», «СберКарта стала ещё выгоднее».</p>
+  <p class="src">Источник: материалы банка.</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-anybank"><span>Назад</span>← Мультиреестр</a><a href="#emp-security"><span>Дальше</span>Безопасность →</a></nav>
 </div></section>
 
@@ -896,7 +928,7 @@ a.tag{text-decoration:none}
     </ul><p class="cap">Курс и условия обмена меняются — называйте их клиенту только по актуальной странице программы.</p></section>
     <section class="full script"><span class="eyebrow">Формулировка для сотрудника</span>«Новым получателям зарплаты на СберКарту подключается СберПрайм Зарплатный: четыре категории повышенного кешбэка до 10%. При зарплате от 70 тысяч рублей — дополнительно 1% на все покупки».</section>
   </div>
-  <p class="src">Источник: «Условия и возможности», слайды «Линейка продуктов для ЗП клиентов 2026», «СберПрайм Зарплатный», «СберКарта стала ещё выгоднее»; <a href="https://spasibosberbank.ru/how_it_works" target="_blank" rel="noopener">spasibosberbank.ru</a>.</p>
+  <p class="src">Источник: материалы банка; <a href="https://spasibosberbank.ru/how_it_works" target="_blank" rel="noopener">spasibosberbank.ru</a>.</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-security"><span>Назад</span>← Безопасность</a><a href="#emp-credit"><span>Дальше</span>Кредиты и ипотека →</a></nav>
 </div></section>
 
@@ -923,7 +955,7 @@ a.tag{text-decoration:none}
     </ul><p class="cap">Актуально для сотрудников, у которых есть дети-подростки.</p></section>
     <section class="full script"><span class="eyebrow">Формулировка для сотрудника</span>«Кредит из другого банка можно рефинансировать в Сбере со скидкой 2 п.п. к ставке. По ипотеке для зарплатных клиентов ставка на 1 п.п. ниже».</section>
   </div>
-  <p class="src">Источник: «Условия и возможности», слайды «Вклады и кредиты», «Образовательный кредит с гос.поддержкой», «Жилищные кредиты», «СберПрайм Зарплатный».</p>
+  <p class="src">Источник: материалы банка.</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-cashback"><span>Назад</span>← Кешбэк СберСпасибо</a><a href="#emp-savings"><span>Дальше</span>Вклады и счета →</a></nav>
 </div></section>
 
@@ -944,7 +976,7 @@ a.tag{text-decoration:none}
       <p class="cap">Ставки «до», на дату материала. У клиентов СберПремьер и СберПервый (победители Frank Premium Banking Award 2026 в номинации «Лучший банк: комплексное решение для премиальных клиентов») свои продукты: вклад «Премиум» до 13,6% и 13,7%, накопительный счёт «Премиум» до 12,75% и 13% (<a href="#emp-premium">подробнее</a>).</p></section>
     <section class="full script"><span class="eyebrow">Формулировка для сотрудника</span>«Для зарплатных клиентов есть отдельный вклад — до 12,65%. Если средства могут понадобиться в любой момент, подойдёт накопительный счёт: до 12,5% на ежедневный остаток».</section>
   </div>
-  <p class="src">Источник: «Условия и возможности», слайды «Приумножайте накопления», «Вклады и кредиты», «СберПремьер», «СберПервый».</p>
+  <p class="src">Источник: материалы банка.</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-credit"><span>Назад</span>← Кредиты и ипотека</a><a href="#emp-mobile"><span>Дальше</span>СберМобайл →</a></nav>
 </div></section>
 
@@ -967,7 +999,7 @@ a.tag{text-decoration:none}
     <section class="full"><h3>Как подключить</h3><p>Действующие получатели зарплаты — в СберБанк Онлайн, раздел «Выгода и привилегии». Новые — в отделении банка при оформлении зарплатной карты. Помимо акции, у зарплатных клиентов есть базовая привилегия: бессрочная скидка 20% на все тарифы СберМобайл и в 2 раза больше гигабайт за перенос номера.</p></section>
     <section class="full script"><span class="eyebrow">Формулировка для сотрудника</span>«При переносе номера в СберМобайл связь до 12 месяцев бесплатна: 300 минут и 50 ГБ за 0 ₽, пока зарплата поступает на карту Сбера».</section>
   </div>
-  <p class="src">Источник: «Условия и возможности», слайды «Тарифный план СберМобайл „Для профессионалов“» и «Базовые привилегии для зарплатных клиентов».</p>
+  <p class="src">Источник: материалы банка.</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-savings"><span>Назад</span>← Вклады и счета</a><a href="#emp-partners"><span>Дальше</span>Скидки партнёров →</a></nav>
 </div></section>
 
@@ -989,7 +1021,7 @@ a.tag{text-decoration:none}
     </ul></section>
     <section class="full script"><span class="eyebrow">Формулировка для сотрудника</span>«Анализы в СберЗдоровье со скидкой 35%, налоговая декларация в СберПраво со скидкой 40%, три поездки в СитиДрайв бесплатно».</section>
   </div>
-  <p class="src">Источник: «Условия и возможности», слайды «Базовые привилегии для зарплатных клиентов» (сноски) и «Раздел — для жизни».</p>
+  <p class="src">Источник: материалы банка.</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-mobile"><span>Назад</span>← СберМобайл</a><a href="#emp-promo"><span>Дальше</span>Акция «185 млн бонусов» →</a></nav>
 </div></section>
 
@@ -1010,7 +1042,7 @@ a.tag{text-decoration:none}
       <p class="cap">500 победителей в каждом этапе, 1 000 всего. 185 000 × 1 000 = 185 млн бонусов. В этап засчитывается дата зачисления, а не месяц, за который начислена зарплата. Победа не гарантирована — говорите о шансе выиграть.</p></section>
     <section class="full script"><span class="eyebrow">Формулировка для клиента</span>«Любое зарплатное зачисление на карту Сбера с 1 по 30 ноября — зарплата, аванс или премия — даёт шанс выиграть 185 тысяч бонусов. Обязательное условие — регистрация в СберСпасибо».</section>
   </div>
-  <p class="src">Источник: «Условия и возможности», слайд «185 млн бонусов СберСпасибо зарплатным клиентам».</p>
+  <p class="src">Источник: внутренние документы банка (подробности — у закреплённого МЗП/СЗП).</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-partners"><span>Назад</span>← Скидки партнёров</a><a href="#emp-supreme"><span>Дальше</span>МИР Supreme →</a></nav>
 </div></section>
 
@@ -1039,13 +1071,13 @@ a.tag{text-decoration:none}
       <p class="cap">Действующим клиентам привилегии подключены с 1 октября; новым зарплатным клиентам — 8-го числа месяца, следующего за выполнением условий. Пролонгация каждый сезон 8-го числа. Если условия не выполнены, МИР Supreme отключается в последний день сезона, следующего за сезоном присвоения (сезоны: зима, весна, лето, осень).</p></section>
     <section class="full script"><span class="eyebrow">Формулировка для сотрудника</span>«При зарплате от 150 тысяч рублей на СберКарту МИР и оплате покупок этой картой подключаются привилегии МИР Supreme: 7% в ресторанах и 10% на такси бизнес-класса. Перевыпуск карты не требуется».</section>
   </div>
-  <p class="src">Источник: «Условия и возможности», слайды «Новые привилегии МИР Supreme» и «Условия подключения МИР Supreme».</p>
+  <p class="src">Источник: внутренние документы банка (подробности — у закреплённого МЗП/СЗП).</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-promo"><span>Назад</span>← Акция «185 млн бонусов»</a><a href="#emp-premium"><span>Дальше</span>Высокий доход →</a></nav>
 </div></section>
 
 <section class="view emp" id="emp-premium" aria-labelledby="t-emp-premium"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>10 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-emp-premium">Высокий доход <span class="flag">Пилот</span></h2><p class="intro">Пилоты работают только для клиентов со счётом в Московском, Среднерусском и Северо-Западном банках (МБ, СРБ, СЗБ), 18+. Подключение по акцепту клиента.</p></div><div class="big">500+<small>тыс. ₽ в месяц — бесплатный СберПремьер 2-го уровня</small></div></div>
+  <div class="view-head"><div><h2 id="t-emp-premium">Высокий доход <span class="flag">Пилот</span></h2><p class="intro">Пилоты доступны в части территорий — точную географию уточняйте у закреплённого МЗП/СЗП. Для клиентов 18+, подключение по акцепту клиента.</p></div><div class="big">500+<small>тыс. ₽ в месяц — бесплатный СберПремьер 2-го уровня</small></div></div>
   <div class="body">
     <section class="panel"><h3>Зарплата от 150 тыс. ₽/мес → СберПрайм бесплатно</h3><ul class="ticks">
       <li>Срок пилота: 10.09.2026 – 28.02.2027.</li>
@@ -1069,9 +1101,9 @@ a.tag{text-decoration:none}
     </ul></section>
     <section><h3>Что учитывается как зарплата</h3><p>Заработная плата, аванс, премия и иные поощрительные выплаты, стипендия, отпускные (в том числе будущего периода), денежное довольствие, денежное вознаграждение и поощрение, денежное содержание, депонированная зарплата, выплаты по договорам ГПХ.</p>
       <h3 style="margin-top:22px">Для сведения: СберПервый</h3><p>Вклад «Премиум» до 13,7%, накопительный счёт до 13%, безлимитные бизнес-залы по всему миру.</p></section>
-    <section class="full panel warn"><h3>Что не обещать</h3><p>Пилот действует только для клиентов МБ, СРБ и СЗБ. Бесплатность сохраняется, пока выполняется зарплатный критерий (проверка 7-го числа). Условия после окончания пилота не определены — не обещайте их клиенту.</p></section>
+    <section class="full panel warn"><h3>Важно</h3><p>Пилот действует в части территорий. Бесплатность сохраняется, пока выполняется зарплатный критерий (проверка 7-го числа). Условия после окончания пилота не определены — не обещайте их клиенту.</p></section>
   </div>
-  <p class="src">Источник: «Условия и возможности», слайды «Пилоты для высокодоходных клиентов», «Предоставление продукта в рамках пилота», «СберПремьер», «СберПервый».</p>
+  <p class="src">Источник: внутренние документы банка (подробности — у закреплённого МЗП/СЗП).</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-supreme"><span>Назад</span>← МИР Supreme</a><a href="#emp-switch"><span>Дальше</span>Как перейти →</a></nav>
 </div></section>
 
@@ -1092,14 +1124,14 @@ a.tag{text-decoration:none}
     </ol></section>
     <section class="full"><p>Бонусы и привилегии открываются <b>после первого зачисления</b> зарплаты. Все условия — в <a href="https://www.sberbank.ru/ru/person/privilegii-dlya-zarplatnikov#perevod_zp" target="_blank" rel="noopener">едином разделе на сайте банка</a>. По ТК работодатель должен получить от сотрудника заявление в бумажном виде с реквизитами счёта или карты и согласием на перечисление зарплаты.</p></section>
   </div>
-  <p class="src">Источник: «Условия и возможности», слайды «Заполните заявление», «Выпуск зарплатных карт», «Памятка по выпуску карт через QR».</p>
+  <p class="src">Источник: материалы банка.</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-premium"><span>Назад</span>← Высокий доход</a><a href="#objections"><span>Дальше</span>Возражения →</a></nav>
 </div></section>
 
 <!-- ============================ ПОДБОР ТОП-ФИЧ ============================ -->
 <section class="view neutral" id="pick" aria-labelledby="t-pick"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Подбор</span><span class="flag">Бета-версия</span></div>
-  <div class="view-head"><div><h2 id="t-pick">ТОП фич для компании</h2><p class="intro">Отметьте, что знаете о клиенте. Рядом (на телефоне — ниже) сразу соберётся шпаргалка для менеджера: какие возможности рассказать первыми, почему именно этой компании, что сказать и чего не обещать.</p></div><div class="big">1 стр.<small>готовая шпаргалка к встрече</small></div></div>
+  <div class="view-head"><div><h2 id="t-pick">ТОП фич для компании</h2><p class="intro">Отметьте, что знаете о клиенте. Рядом (на телефоне — ниже) сразу соберётся шпаргалка для менеджера: какие возможности рассказать первыми, почему именно этой компании, что сказать и что важно обсудить с компанией.</p></div><div class="big">1 стр.<small>готовая шпаргалка к встрече</small></div></div>
 
   <div class="pick">
     <form class="pick-form" id="pick-form" autocomplete="off">
@@ -1110,7 +1142,7 @@ a.tag{text-decoration:none}
           <label><input type="radio" name="seg" id="seg-ksb" value="ksb" checked><span><b>Крупный и средний</b><small>КСБ</small></span></label>
           <label><input type="radio" name="seg" id="seg-mmb" value="mmb"><span><b>Малый и микро</b><small>ММБ, ИП</small></span></label>
           <label><input type="radio" name="seg" id="seg-gov" value="gov"><span><b>Бюджетная организация</b><small>учреждения, госсектор</small></span></label>
-          <label><input type="radio" name="seg" id="seg-skm" value="skm"><span><b>СКМ</b><small>машиностроение, в том числе предприятия ОПК</small></span></label>
+          <label><input type="radio" name="seg" id="seg-skm" value="skm"><span><b>СКМ</b><small>машиностроение</small></span></label>
         </div>
       </fieldset>
       <fieldset>
@@ -1152,7 +1184,7 @@ a.tag{text-decoration:none}
           <label><input type="checkbox" id="f-nw" name="f" value="nw"><span>СПб, Ленобласть, Псков или Карелия (карта жителя)</span></label>
         </div>
       </fieldset>
-      <p class="pick-note">Территория по умолчанию — СЗБ: пилоты для высоких зарплат учитываются автоматически.</p>
+      <p class="pick-note">Пилоты для высоких зарплат учитываются автоматически; они доступны в части территорий — географию уточняйте у закреплённого МЗП/СЗП.</p>
       <button type="reset" class="pick-reset" id="pick-reset">Сбросить</button>
     </form>
 
@@ -1176,22 +1208,22 @@ a.tag{text-decoration:none}
       <p>Сначала уточните сегмент клиента — ответ строится по-разному.</p>
       <div class="fork">
         <div class="fork-col">
-          <div class="fork-tag">Клиент КСБ → сценарий №1</div>
-          <p><b>Суть возражения — на уровне компании.</b> Конкурент платит работодателю ежемесячную долю от объёма ФОТ, перечисляемого на карты этого банка. Это не мелочь для сотрудника, а строка в бюджете клиента.</p>
-          <div class="hook"><div class="hook-t">Заход «Покажите мне, я посчитаю»</div><p>«Чтобы говорить предметно, а не общими словами, назовите две вещи: объём ФОТ, который сейчас идёт через тот банк, и процент, который вам платят. Я на месте прогоню их через наш калькулятор и покажу, что вы получите у нас при тех же вводных. Если по цифрам выгоднее остаться — я так прямо и скажу, убеждать меня в этом не придётся».</p></div>
-          <div class="honest"><b>Если по расчёту конкурент выгоднее в деньгах,</b> не спорьте с цифрой. Форму и размер предложения показывает только расчёт; дальше говорите о комплексной выгоде: бесплатное зачисление, СберБизнес для бухгалтерии, привилегии сотрудников и HR-бренд.</div>
-          <div class="tool">Используйте инструмент расчёта предложения для клиента в рамках проекта «Умный кэшбек».</div>
+          <div class="fork-tag">Крупный и средний бизнес (КСБ) → сценарий №1</div>
+          <p><b>Вопрос решается на уровне компании.</b> Клиент сравнивает условия, которые ему предлагает другой банк. Задача — перейти от одной цифры к полной выгоде зарплатного проекта для компании и сотрудников.</p>
+          <div class="hook"><div class="hook-t">Заход «Покажите мне, я посчитаю»</div><p>«Чтобы говорить предметно, давайте сравним на ваших цифрах: объём выплат и условия, которые вам сейчас предлагают. Я подготовлю расчёт и покажу, что получит компания у нас при тех же вводных. Если текущий вариант окажется выгоднее, я скажу об этом прямо».</p></div>
+          <div class="honest"><b>Если другое предложение выгоднее в деньгах,</b> не спорьте с цифрой. Форму и размер предложения показывает только расчёт; дальше говорите о комплексной выгоде: бесплатное зачисление, СберБизнес для бухгалтерии, привилегии сотрудников и HR-бренд.</div>
+          <div class="tool">Расчёт предложения для компании — по утверждённой методике; инструмент и порядок расчёта уточняйте у закреплённого МЗП/СЗП.</div>
         </div>
         <div class="fork-col">
-          <div class="fork-tag">Клиент ММБ → сценарий №2</div>
+          <div class="fork-tag">Малый и микробизнес (ММБ) → сценарий №2</div>
           <p><b>Признайте важность вопроса и переведите разговор к комплексной выгоде.</b></p>
           <div class="hook"><p>«Вы правильно делаете, что считаете: цена и размер кешбэка — важная часть решения, и сравнивать предложения нужно обязательно».</p></div>
           <div class="hook"><p>«Предлагаю сравнить не только процент кешбэка, но и всю выгоду от обслуживания: бесплатное зачисление зарплаты, выплаты самозанятым без комиссии, удобство СберБизнеса для бухгалтерии и привилегии, которые получает каждый сотрудник».</p></div>
           <div class="hook"><p>«Давайте посчитаем на ваших цифрах — тогда решение будет опираться на факты, а не на ощущения. Если окажется, что текущий вариант выгоднее, я скажу об этом прямо».</p></div>
-          <div class="tool">Используйте инструмент расчёта предложения для клиента в рамках проекта «Кэшбек за ФОТ 1% бонусами СберБизнес Спасибо».</div>
+          <div class="tool">Расчёт выгоды для компании — по утверждённой методике; инструмент уточняйте у закреплённого МЗП/СЗП.</div>
         </div>
       </div>
-      <p class="cap" style="margin-top:12px"><b>Крупнейший бизнес и СКМ</b> — сценарий №1. <b>Бюджетная организация</b> — вознаграждение учреждению не предусмотрено: говорите о выгодах для сотрудников, как в сценарии №2, без расчёта кешбэка.</p>
+      <p class="cap" style="margin-top:12px"><b>Крупнейший бизнес и СКМ</b> — сценарий №1. <b>Бюджетная организация</b> — расчёт выгоды для учреждения не применяется: говорите о выгодах для сотрудников, как в сценарии №2.</p>
     </details>
     <details><summary>«Сотрудники не пойдут в отделение»</summary><p>Визит в отделение не обязателен. С картой Сбера реквизиты передаются по QR или прямо в приложении по ИНН работодателя. Без карты — от 2 минут в отделении или выездная выдача моментальных карт прямо на предприятии (<a href="#biz-requisites">реквизиты</a>, <a href="#biz-cards">выпуск карт</a>).</p></details>
     <details><summary>«В чём выгода для сотрудников?»</summary><p>Бесплатная карта без условий, кешбэк до 10% в повышенных категориях, ставка по кредиту на 2 п.п. ниже, связь до 12 месяцев за 0 ₽ при переносе номера, шанс выиграть 185 000 бонусов за зарплатное зачисление до 30 ноября, а также надёжный банк и бесплатные сервисы защиты от мошенников (<a href="#emp-card">все привилегии</a>, <a href="#emp-security">безопасность</a>).</p></details>
@@ -1202,27 +1234,34 @@ a.tag{text-decoration:none}
 
 <section class="view neutral" id="sources" aria-labelledby="t-src"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Справка</span></div>
-  <div class="view-head"><div><h2 id="t-src">Источники и оговорки</h2><p class="intro">Источники цифр и ограничения, которые важно учитывать в разговоре с клиентом.</p></div><div class="big">22.10<small>2026 — дата сборки пакета</small></div></div>
+  <div class="view-head"><div><h2 id="t-src">Источники и оговорки</h2><p class="intro">Источники цифр и ограничения, которые важно учитывать в разговоре с клиентом.</p></div><div class="big">23.10<small>2026 — дата последнего обновления</small></div></div>
   <div class="body">
     <section><h3>Источники</h3><ul class="ticks">
-      <li>Материал «Условия и возможности» (33 слайда, сентябрь–октябрь 2026): привилегии, линейка карт, вклады, кредиты, акции, МИР Supreme, пилоты, СберБизнес, выпуск карт по QR, сервис зачисления в другие банки, выездная выдача карт.</li>
+      <li>Материалы банка по зарплатному проекту (сентябрь–октябрь 2026): привилегии, линейка карт, вклады, кредиты, акции, МИР Supreme, пилоты, СберБизнес, выпуск карт по QR, сервис зачисления в другие банки, выездная выдача карт.</li>
       <li><a href="https://www.sberbank.ru/ru/person/privilegii-dlya-zarplatnikov#perevod_zp" target="_blank" rel="noopener">sberbank.ru: «Привилегии для зарплатных клиентов»</a> — единый раздел на сайте банка, приоритетный источник актуальных условий.</li>
       <li>Раздел «Безопасность»: перечень системно значимых банков Банка России (07.10.2026), АКРА (19.05.2026), лимиты АСВ, данные Сбера о защите клиентов (12.10.2026), описание сервисов СберБанк Онлайн. Ссылки — на <a href="#emp-security">странице раздела</a>.</li>
       <li><a href="https://www.sberbank.ru/help/business/sbbol/salary/other_inform/100459" target="_blank" rel="noopener">Справка СберБизнес о расчётных листках</a> и сайт программы <a href="https://spasibosberbank.ru/how_it_works" target="_blank" rel="noopener">СберСпасибо</a>.</li>
-      <li>Условия, уточнённые командой зарплатного проекта 21.10.2026: загрузка реестра из 1С, отправка реквизитов по ИНН работодателя, зарплатный договор при счёте в другом банке, привилегии для руководства, ИИ-помощник СберЗдоровья, корпоративный дизайн карт, стоимость сервиса «Зарплата в любой банк», сценарии возражения о кешбэке.</li>
-      <li>Обновления 22.10.2026: <a href="https://www.bfm.ru/news/621570" target="_blank" rel="noopener">Frank Premium Banking Award 2026 (BFM.ru)</a>; ЕКП «Псковская» и «Карельская» (<a href="https://spbit.ru/news/Yedinaya-karta-peterburzhtsa-vyshla-v-Pskov-i-v-Kareliyu-331761" target="_blank" rel="noopener">spbit.ru</a>); материалы <a href="https://sbersova.ru/" target="_blank" rel="noopener">СберСова</a> о кибербезопасности и финансовой грамотности; уточнения команды зарплатного проекта о реквизитах через СберБанк Онлайн, Мультиреестре и Конструкторе преференций.</li>
+      <li>Пилоты, Конструктор преференций, «Особая заявка», ИИ-помощник СберЗдоровья, корпоративный дизайн карт, тариф Мультиреестра, условия МИР Supreme и акции «185 млн бонусов» подтверждены внутренними нормативными документами банка; подробности и документы — у закреплённого МЗП/СЗП.</li>
+      <li>Обновления 22.10.2026: <a href="https://www.bfm.ru/news/621570" target="_blank" rel="noopener">Frank Premium Banking Award 2026 (BFM.ru)</a>; ЕКП «Псковская» и «Карельская» (<a href="https://spbit.ru/news/Yedinaya-karta-peterburzhtsa-vyshla-v-Pskov-i-v-Kareliyu-331761" target="_blank" rel="noopener">spbit.ru</a>); материалы <a href="https://sbersova.ru/" target="_blank" rel="noopener">СберСова</a> о кибербезопасности и финансовой грамотности.</li>
       <li><a href="https://sberbusiness.live/publications/skolko-stoit-zarplatnii-proekt" target="_blank" rel="noopener">sberbusiness.live: «Зарплатный проект: комиссии и тарифы»</a>, 24.02.2025: путь подачи заявки в СберБизнесе (интерфейс мог измениться — сверяйте в кабинете).</li>
-      <li>Публикации, на которые ссылаются разделы: <a href="https://sberbusiness.live/news/zarplatnuyu-vedomost-v-sber-mozhno-otpravit-iz-1s" target="_blank" rel="noopener">ведомость из 1С (sberbusiness.live, 21.10.2026)</a>; <a href="https://perm.aif.ru/economic/details/sber-priznan-luchshim-zarplatnym-onlayn-bankom-po-versii-frank-rg" target="_blank" rel="noopener">Frank Award 2026 (АиФ, 28.08.2026)</a>; <a href="https://developers.sber.ru/docs/ru/sber-api/scenarios/salary/salary-project/overview" target="_blank" rel="noopener">документация Sber API</a>; <a href="https://pln-pskov.ru/society/597015.html" target="_blank" rel="noopener">ЕКП «Псковская» (ПЛН, 01.09.2026)</a>; <a href="https://pnz.ru/finance/ne-zhdite-zarplatu-i-pensiyu-sberbank-nazval-populyarnyj-produkt-s-fiksirovannoj-vyplatoj/" target="_blank" rel="noopener">«Деньги до зарплаты» (22.05.2026)</a>.</li>
+      <li>Публикации, на которые ссылаются разделы: <a href="https://sberbusiness.live/news/zarplatnuyu-vedomost-v-sber-mozhno-otpravit-iz-1s" target="_blank" rel="noopener">ведомость из 1С (sberbusiness.live, 21.10.2026)</a>; <a href="https://perm.aif.ru/economic/details/sber-priznan-luchshim-zarplatnym-onlayn-bankom-po-versii-frank-rg" target="_blank" rel="noopener">Frank Award 2026 (АиФ, 28.08.2026)</a>; <a href="https://developers.sber.ru/docs/ru/sber-api/scenarios/salary/salary-project/overview" target="_blank" rel="noopener">документация Sber API</a>; <a href="https://pln-pskov.ru/society/597015.html" target="_blank" rel="noopener">ЕКП «Псковская» (ПЛН, 01.09.2026)</a>; <a href="https://pnz.ru/finance/ne-zhdite-zarplatu-i-pensiyu-sberbank-nazval-populyarnyj-produkt-s-fiksirovannoj-vyplatoj/" target="_blank" rel="noopener">«Деньги до зарплаты» (22.05.2026)</a>; <a href="https://www.sberbank.ru/ru/person/bank_cards/debit/foreign" target="_blank" rel="noopener">карты для иностранных граждан</a> и <a href="https://www.sberbank.ru/ru/person/bank_cards/debit/karta_migranta" target="_blank" rel="noopener">электронная карта трудового мигранта</a> (sberbank.ru); <a href="https://www.comnews.ru/content/214802/2021-06-03/2021-w22/sber-obyavil-o-zapuske-pervoy-rossii-elektronnoy-karty-trudovogo-migranta" target="_blank" rel="noopener">запуск ЭКТМ (ComNews, 2021)</a>.</li>
       <li><a href="https://sberbusiness.live/news/sber-rasskazal-o-vozmozhnostyah-zarplatnogo-proekta-dlya-biznesa" target="_blank" rel="noopener">sberbusiness.live: «Зарплатный проект Сбера для бизнеса»</a>, 21.08.2026: 0 ₽ за зарплату и выплаты самозанятым, скидка до 2 п.п. по кредиту для бизнеса, выплаты в выходные от 1 минуты, поддержка 0321, нерезиденты по ГПХ, загрузка реестров из учётных систем.</li>
     </ul></section>
     <section><h3>Оговорки</h3><ul class="ticks">
+      <li>Неофициальный материал, собран из информации в открытых источниках. Это информационное саммари по продуктам и услугам Сбера для сотрудников банка; для передачи клиентам используйте только утверждённые формы офферов и презентаций. Не является публичной офертой. ПАО Сбербанк, генеральная лицензия Банка России № 1481. Актуальные условия — на <a href="https://www.sberbank.ru" target="_blank" rel="noopener">sberbank.ru</a>.</li>
       <li>Ставки по вкладам и кредитам указаны «до» и «от» на дату материала и могут меняться.</li>
       <li>Ипотечные ставки действуют при страховании жизни и здоровья заёмщика.</li>
-      <li>Пилоты для высокого дохода — только МБ, СРБ, СЗБ, до 07.02.2027 (СберПремьер) и 28.02.2027 (СберПрайм); бесплатность — пока выполняется зарплатный критерий.</li>
+      <li>Пилоты для высокого дохода доступны в части территорий (география — у закреплённого МЗП/СЗП), до 07.02.2027 (СберПремьер) и 28.02.2027 (СберПрайм); бесплатность — пока выполняется зарплатный критерий.</li>
       <li>Акции ограничены по срокам: «185 млн бонусов» до 25.12.2026 (зачисления до 30.11.2026 — после этой даты формулировки об акции в пакете устаревают), СберМобайл до 31.12.2027.</li>
           </ul></section>
   </div>
-  <nav class="pager" aria-label="Соседние разделы"><a href="#objections"><span>Назад</span>← Возражения</a><a href="#home"><span>В начало</span>Главная →</a></nav>
+  <nav class="pager" aria-label="Соседние разделы"><a href="#objections"><span>Назад</span>← Возражения</a><a href="#updates"><span>Дальше</span>Обновления →</a></nav>
+</div></section>
+<section class="view neutral" id="updates" aria-labelledby="t-upd"><div class="wrap">
+  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Справка</span></div>
+  <div class="view-head"><div><h2 id="t-upd">Обновления базы знаний</h2><p class="intro">Что добавили и изменили в пакете — от новых к старым. Каждая запись ведёт в раздел с подробностями. Разделы, обновлённые за последние две недели, отмечены точкой на главной.</p></div><div class="big" id="upd-big">—<small>дата последнего обновления</small></div></div>
+  <div class="body"><section class="full"><div class="upd-list" id="upd-list"></div></section></div>
+  <nav class="pager" aria-label="Соседние разделы"><a href="#sources"><span>Назад</span>← Источники</a><a href="#home"><span>В начало</span>Главная →</a></nav>
 </div></section>
 </main>
 
@@ -1233,7 +1272,7 @@ a.tag{text-decoration:none}
   <a href="#objections" data-tab="obj"><span class="tb-dot obj"></span>Возражения</a>
 </nav>
 
-<footer class="site"><div class="wrap">Пакет продавца · Зарплатный проект Сбера · внутренний материал, актуально на 22.10.2026. Условия могут меняться.</div></footer>
+<footer class="site"><div class="wrap"><p class="disc">Неофициальный материал, собран из информации в открытых источниках. Это информационное саммари по продуктам и услугам Сбера для сотрудников банка; для передачи клиентам используйте только утверждённые формы офферов и презентаций. Не является публичной офертой. ПАО Сбербанк, генеральная лицензия Банка России № 1481. Актуальные условия — на <a href="https://www.sberbank.ru" target="_blank" rel="noopener">sberbank.ru</a>.</p><p>Пакет продавца · Зарплатный проект Сбера · актуально на 23.10.2026 · <a href="#updates">Обновления</a> · <a href="#sources">Источники</a></p></div></footer>
 
 <script>
 (function(){
@@ -1280,6 +1319,48 @@ a.tag{text-decoration:none}
       c.appendChild(b);
     });
   }
+})();
+
+/* ===== Обновления базы знаний =====
+   Как добавить запись: допишите объект в начало массива UPDATES.
+   d — дата (ГГГГ-ММ-ДД), tag — раздел, t — заголовок, href — ссылка на раздел, x — короткое пояснение. */
+var UPDATES=[
+ {d:'2026-10-23',tag:'Компании',t:'ЭКТМ для компаний Санкт-Петербурга и Ленобласти',href:'#biz-hr',x:'Электронная карта трудового мигранта и ссылка на карты для иностранных граждан.'},
+ {d:'2026-10-23',tag:'Продажа',t:'Возражение о кешбэке другого банка',href:'#objections',x:'Нейтральные формулировки, расчёт — по утверждённой методике.'},
+ {d:'2026-10-23',tag:'Подбор',t:'Блок «Важно обсудить с компанией»',href:'#pick',x:'Вместо списка вопросов — темы для разговора с клиентом.'},
+ {d:'2026-10-23',tag:'Справка',t:'Раздел «Обновления» и дисклеймер',href:'#updates',x:'История изменений и правила использования материала.'},
+ {d:'2026-10-22',tag:'Подбор',t:'Подбор ТОП-фич: средняя зарплата и МИР Supreme',href:'#pick',x:'Новый вопрос о средней зарплате, универсальный набор для сотрудника всегда в ТОП.'},
+ {d:'2026-10-22',tag:'Компании',t:'Мультиреестр: тариф 0% при счёте в другом банке',href:'#biz-anybank',x:'Для клиентов РГС и КСБ.'},
+ {d:'2026-10-22',tag:'Компании',t:'Корпоративный дизайн карт — 0 ₽',href:'#biz-cards',x:'В рамках зарплатного проекта.'},
+ {d:'2026-10-22',tag:'Сотрудникам',t:'Frank Premium Banking Award 2026',href:'#emp-premium',x:'Награда для премиального обслуживания.'},
+ {d:'2026-10-22',tag:'Компании',t:'ЕКП «Псковская» и «Карельская»',href:'#biz-citycard',x:'Зарплата на карту жителя в новых регионах.'},
+ {d:'2026-10-22',tag:'Сотрудникам',t:'Безопасность и финансовая грамотность',href:'#emp-security',x:'Надёжность банка, сервисы защиты и курсы СберСовы.'},
+ {d:'2026-10-21',tag:'Компании',t:'Ведомость прямо из 1С',href:'#biz-sberbusiness',x:'Отправка через 1С:ДиректБанк, статус возвращается в 1С.'}
+];
+(function(){
+  if(!UPDATES.length) return;
+  function dt(x){var p=x.split('-');return p[2]+'.'+p[1]+'.'+p[0]}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  var last=UPDATES[0].d, seen=null;
+  try{seen=localStorage.getItem('upd-seen')}catch(e){}
+  var fresh=UPDATES.filter(function(u){return u.d===last});
+  var isNew=!seen||seen<last;
+  var card='<a class="upd-card" href="#updates"><span class="upd-top">Что нового · '+dt(last)+(isNew?' <span class="upd-new">новое</span>':'')+'</span><ul>'+fresh.slice(0,3).map(function(u){return '<li>'+esc(u.t)+'</li>'}).join('')+'</ul><span class="upd-more">Все обновления →</span></a>';
+  [].forEach.call(document.querySelectorAll('[data-upd]'),function(w){w.innerHTML=card});
+  // список в разделе
+  var list=document.getElementById('upd-list'), big=document.getElementById('upd-big');
+  if(big) big.firstChild.nodeValue=dt(last).slice(0,5);
+  if(list){
+    var days={},order=[];UPDATES.forEach(function(u){if(!days[u.d]){days[u.d]=[];order.push(u.d)}days[u.d].push(u)});
+    list.innerHTML=order.map(function(d){return '<div class="upd-day"><h3>'+dt(d)+'</h3>'+days[d].map(function(u){return '<div class="upd-item"><span class="flag">'+esc(u.tag)+'</span><a href="'+u.href+'">'+esc(u.t)+'</a><p>'+esc(u.x)+'</p></div>'}).join('')+'</div>'}).join('');
+  }
+  // точки у строк главной: обновления за 14 дней
+  var lim=new Date(last); lim.setDate(lim.getDate()-14);
+  UPDATES.forEach(function(u){ if(new Date(u.d)<lim) return;
+    [].forEach.call(document.querySelectorAll('.rows a[href="'+u.href+'"] .tt'),function(t){ if(!t.querySelector('.upd-dot')){var s=document.createElement('span');s.className='upd-dot';s.title='Обновлено '+dt(u.d);s.setAttribute('aria-label','обновлено');t.appendChild(s)} });
+  });
+  function mark(){ if((location.hash||'')==='#updates'){ try{localStorage.setItem('upd-seen',last)}catch(e){} [].forEach.call(document.querySelectorAll('.upd-new'),function(n){n.remove()}) } }
+  window.addEventListener('hashchange',mark); mark();
 })();
 /* ===== Таблицы: подсказка о прокрутке и доступ с клавиатуры ===== */
 (function(){
@@ -1349,57 +1430,10 @@ a.tag{text-decoration:none}
 (function(){
   var form=document.getElementById('pick-form'); if(!form) return;
   var out=document.getElementById('onepage');
-  var SEG={key:'Крупнейший бизнес',ksb:'Крупный и средний бизнес (КСБ)',mmb:'Малый и микробизнес',gov:'Бюджетная организация',skm:'СКМ (машиностроение)'};
-  var SIZE={s:'до 50 сотрудников',m:'50–250 сотрудников',l:'250–1000 сотрудников',xl:'1000+ сотрудников'};
-  var PAY={p0:'средняя ЗП до 70 тыс. ₽',p70:'средняя ЗП 70–150 тыс. ₽',p150:'средняя ЗП 150–500 тыс. ₽',p500:'средняя ЗП от 500 тыс. ₽'};
-  // w — вес по сегментам [key,ksb,mmb,gov,skm]; t — бонусы за признаки; need — показывать только при признаках; segs — только для сегментов
-  var F=[
-    {id:'univ',pin:true,t0:'Универсальный набор для каждого сотрудника',href:'#emp-card',w:[3,3,3,4,4],t:{retain:1,hire:1},
-     dfn:function(c){return 'Бесплатное обслуживание карты и уведомления. Новым получателям зарплаты на СберКарту — СберПрайм Зарплатный: 4 категории кешбэка до 10%, '+(c.s70?'при зарплате от 70 тыс. ₽ — 1% на всё и до 5 000 бонусов в месяц':'до 2 000 бонусов в месяц')+'; льготный пробный период полной подписки СберПрайм (условия — в СберБанк Онлайн). Оплата ЖКХ без комиссии, снятие до 300 000 ₽ в сутки, переводы клиентам Сбера без лимитов. СберМобайл 0 ₽ до 12 месяцев при переносе номера и ежемесячной зарплате на карту Сбера. Ставка по кредиту ниже на 2 п.п., по ипотеке — на 1 п.п., «Деньги до зарплаты», вклад «Зарплатный Максимум».'},
-     say:'«С первой зарплатой на карту Сбера сотрудник получает бесплатное обслуживание и уведомления, повышенный кешбэк и скидки по кредитам, а при переносе номера — связь за 0 ₽».'},
-    {id:'free',t0:'Бесплатное зачисление зарплаты',d:'Зарплата сотрудникам и выплаты самозанятым — без комиссии, от 1 минуты, в том числе в выходные.',say:'«Зачисление зарплаты для вас бесплатное — и в будни, и в выходные».',href:'#biz-money',w:[2,3,4,4,3],t:{}},
-    {id:'req',t0:'Реквизиты из СберБанк Онлайн по QR или ИНН',d:'Сотрудник сам отправляет реквизиты работодателю из приложения. Способ по ИНН — собственная разработка Сбера.',say:'«Собирать реквизиты не придётся: сотрудник отправит их из приложения по вашему QR-коду или ИНН компании».',href:'#biz-requisites',w:[3,4,4,3,3],t:{l:1,xl:1,sites:1}},
-    {id:'c1',t0:'Ведомость прямо из 1С',d:'С 21.10.2026 ведомость уходит в Сбер прямо из интерфейса 1С (1С:ДиректБанк), статус возвращается в 1С; привычный способ — выгрузка и загрузка в СберБизнес за 3–4 клика.',say:'«Бухгалтер отправляет ведомость прямо из 1С и видит статус зачисления там же».',href:'#biz-sberbusiness',w:[1,2,3,2,2],t:{c1:1}},
-    {id:'api',t0:'Интеграция через Sber API',d:'Выпуск карт, ведомости и статусы через API (бывш. Host2Host) — для собственных учётных систем и холдинговых процессов.',say:'«Зарплатный процесс можно встроить в ваши системы через Sber API».',href:'#biz-sberbusiness',w:[4,2,0,0,1],t:{xl:1}},
-    {id:'multi',t0:'Мультиреестр — зарплата в любой банк',d:'Один реестр и одно платёжное поручение на сотрудников со счетами в разных банках, отправка из 1С в один клик. Для клиентов с РКО в другом банке — тариф 0%.',say:'«Один реестр на всех: Сбер сам разошлёт деньги по банкам и вернёт незачисленное. При счёте в другом банке — 0%».',href:'#biz-anybank',w:[2,2,0,0,0],t:{multibank:4,other:1},need:['multibank'],segs:['key','ksb']},
-    {id:'rko',t0:'Зарплатный проект без перехода на РКО',d:'Реестр загружается в СберБизнес, платёжное поручение на сумму реестра идёт из банка клиента. Тариф 0%.',say:'«Счёт можно оставить в вашем банке — зарплатный проект всё равно заработает, тариф 0%».',href:'#biz-anybank',w:[1,1,0,0,0],t:{other:5},need:['other'],segs:['key','ksb']},
-    {id:'gig',t0:'Самозанятые: 0% и автоуплата налога',d:'Выплаты самозанятым без комиссии, автопроверка статуса, чеки; по указанию клиента банк сам рассчитывает и уплачивает НПД.',say:'«Самозанятым платите без комиссии, а налог и чек банк сформирует сам».',href:'#biz-gig',w:[1,1,2,0,0],t:{gig:5},need:['gig']},
-    {id:'foreign',t0:'Иностранные работники',d:'Выплаты нерезидентам по ГПХ: валютный контроль проходит по общей сумме выплат по реестру, а не по каждой выплате. Работа.ру, цифровая платформа найма из-за рубежа, пакет мигранта.',say:'«По иностранцам на ГПХ валютный контроль — один раз на весь реестр, а с наймом поможет Работа.ру».',href:'#biz-gig',w:[1,1,1,0,1],t:{foreign:5},need:['foreign']},
-    {id:'cards',t0:'Выездная выдача моментальных карт',d:'Заявка в СберБизнесе, выбор дня и времени, выдача на площадке резидентам и нерезидентам.',say:'«Карты привезём к вам на площадку в удобный день».',href:'#biz-cards',w:[3,2,0,2,3],t:{l:1,xl:2,sites:2}},
-    {id:'pref',t0:'Конструктор преференций',d:'Компания сама выбирает привилегии сотрудникам в СберБизнесе: пакеты, СберПрайм, сниженная ставка по кредиту; с 9 октября — бизнес-залы, ДМС, СберСпасибо 5%.',say:'«Соцпакет можно собрать самим: от СберПрайма до ДМС и бизнес-залов».',href:'#biz-preferences',w:[3,3,1,0,1],t:{retain:3,hire:1}},
-    {id:'supreme',t0:'МИР Supreme для сотрудников с зарплатой от 150 тыс. ₽',d:'Карта автоматически получает привилегии МИР Supreme: 7% в ресторанах (до 5 000 бонусов в месяц) и 10% на такси Ultima (первые 3 поездки в месяц, до 500 бонусов за каждую). Условия: зарплата от 150 тыс. ₽ на СберКарту МИР и покупки по ней за 3 месяца; перевыпуск не нужен.',say:'«Сотрудникам с зарплатой от 150 тысяч карта сама даёт привилегии МИР Supreme: 7% в ресторанах и 10% на бизнес-такси».',href:'#emp-supreme',w:[1,1,1,1,1],t:{s150:5,top:2},needAny:['s150','top']},
-    {id:'pilot',t0:'Пилот для высоких зарплат: бесплатные СберПрайм и СберПремьер',href:'#emp-premium',w:[1,1,1,0,1],t:{s150:3,s500:2,top:2},needAny:['s150','top'],
-     dfn:function(c){return 'Пилот в МБ, СРБ и СЗБ. Сотрудникам с зарплатой от 150 тыс. ₽ в месяц — бесплатная подписка СберПрайм (пилот до 28.02.2027), от 500 тыс. ₽ — бесплатный СберПремьер 2-го уровня (пилот до 07.02.2027). Бесплатно, пока выполняется зарплатный критерий; проверка 7-го числа.'},
-     say:'«Сотрудникам с высокой зарплатой — бесплатная подписка или премиальное обслуживание, пока зарплата приходит на карту Сбера».'},
-    {id:'top',t0:'Премиум для руководства',d:'СберПремьер и СберПервый (Frank Premium Banking Award 2026), «Особая заявка» по кредитам и ипотеке.',say:'«Для руководства — премиальное обслуживание, признанное лучшим комплексным решением по версии Frank RG».',href:'#biz-team',w:[3,2,1,0,1],t:{top:4,s500:2}},
-    {id:'health',t0:'ИИ-помощник СберЗдоровья и телемедицина',d:'Альтернатива ДМС для коллектива. Условия подключения для компании уточняйте у профильного подразделения.',say:'«Для всего коллектива — ИИ-помощник СберЗдоровья и телемедицина как альтернатива ДМС».',href:'#biz-team',w:[1,2,3,3,2],t:{retain:2}},
-    {id:'city',t0:'Зарплата на «Карту жителя»',d:'ЕКП в СПб, Ленобласти, Пскове и Карелии: одна карта для зарплаты, скидок и региональных сервисов.',say:'«Зарплату можно получать прямо на карту жителя».',href:'#biz-citycard',w:[1,1,1,2,1],t:{nw:5},need:['nw']},
-    {id:'payslip',t0:'Расчётные листки в СберБанк Онлайн',d:'Загрузка в СберБизнес вместо печати и рассылок.',say:'«Расчётные листки сотрудники увидят в своём приложении».',href:'#biz-sberbusiness',w:[2,2,1,3,2],t:{l:1,xl:1,sites:1}},
-    {id:'safe',t0:'Надёжность и защита от мошенников',d:'Системно значимый банк, рейтинг АКРА AAA(RU), 30+ бесплатных инструментов защиты в СберБанк Онлайн.',say:'«Деньги сотрудников в системно значимом банке с бесплатной защитой от мошенников».',href:'#emp-security',w:[1,1,1,3,3],t:{}},
-    {id:'credit',t0:'Скидка до 2 п.п. по кредиту для бизнеса',d:'Зарплатный проект снижает ставку по кредиту для компании.',say:'«Если нужен кредит — зарплатный проект даёт скидку до 2 п.п.».',href:'#biz-money',w:[1,2,3,0,0],t:{}},
-    {id:'hire',t0:'Подбор персонала',d:'Работа.ру: поиск кандидатов, разрешения и визы, сопровождение найма, в том числе иностранных работников.',say:'«При дефиците кадров поможет Работа.ру — от поиска кандидатов до выхода на работу».',href:'#biz-hr',w:[0,1,2,0,0],t:{hire:4},need:['hire']},
-    {id:'brand',t0:'Карты в корпоративном дизайне — 0 ₽',d:'Зарплатные карты с символикой компании бесплатно в рамках зарплатного проекта. Работает на HR-бренд.',say:'«Карты можно выпустить в вашем фирменном дизайне — в рамках зарплатного проекта это бесплатно».',href:'#biz-cards',w:[2,2,1,0,1],t:{retain:1,xl:1,hire:1}},
-    {id:'award',t0:'Лучший зарплатный онлайн-банк',d:'Frank Award 2026: Сбер — «Лучший зарплатный онлайн-банк для корпоративных клиентов».',say:'«По версии Frank RG у нас лучший зарплатный онлайн-банк для компаний».',href:'#biz-money',w:[1,1,1,1,1],t:{}}
-  ];
-  var COMMON=['Не обещать перевод 100% сотрудников: работник вправе выбрать банк (ст. 136 ТК).','Все условия — для компании и её сотрудников, по официальным тарифам и правилам акций.'];
-  var NOPE={
-    key:['Вознаграждение компании от ФОТ — только расчётом в инструменте «Умный кэшбек», без обещаний на встрече.','Мультиреестр: тариф 0% — для клиентов с РКО в другом банке; при РКО в Сбере тариф уточняйте.'],
-    ksb:['Вознаграждение компании от ФОТ — только расчётом в инструменте «Умный кэшбек».','Мультиреестр: тариф 0% — для клиентов с РКО в другом банке; при РКО в Сбере тариф уточняйте.'],
-    mmb:['Выгоду от ФОТ считать только в инструменте «Кэшбек за ФОТ 1% бонусами СберБизнес Спасибо».','Не говорить «бесплатно всё»: без комиссии — зачисление зарплаты, выплаты самозанятым и выплаты по зарплатному договору; обслуживание счёта и прочие операции — по тарифу клиента.'],
-    gov:['Не обещать карты других платёжных систем: бюджетникам — только «Мир».','Выбор банка учреждением может проходить через закупку — порядок уточняйте с юристами.','Вознаграждение учреждению не предусмотрено — говорите о выгодах для сотрудников.'],
-    skm:['Если предприятие работает по гособоронзаказу: счета ГОЗ ведёт уполномоченный банк, зарплатный проект в Сбере не означает перевод этих расчётов.','Порядок выплаты зарплаты с отдельного счёта ГОЗ согласуйте с уполномоченным банком клиента.','На режимных площадках соблюдайте пропускной режим и запрашивайте минимум персональных данных.']
-  };
-  var ASK={
-    key:['Сколько юрлиц и площадок в периметре?','Через какую систему считается зарплата (1С:ЗУП, SAP, своя)?','В каких банках сейчас получают зарплату сотрудники и сколько платит текущий банк?'],
-    ksb:['Где сейчас зарплатный проект и что не устраивает?','В скольких банках получают зарплату сотрудники?','Что компания уже даёт сотрудникам в соцпакете?'],
-    mmb:['Кто ведёт зарплату — бухгалтер, аутсорс или сам собственник?','Сколько выплат самозанятым в месяц?','Есть ли планы по кредиту для бизнеса?'],
-    gov:['Кто принимает решение — учреждение, централизованная бухгалтерия или учредитель?','Есть ли рядом отделения и банкоматы Сбера?','Какие карты сейчас у сотрудников?'],
-    skm:['Работает ли предприятие по гособоронзаказу и где открыт отдельный счёт ГОЗ?','Какой порядок доступа на территорию для выездной выдачи карт?','Сколько сотрудников и смен работает на площадках?']
-  };
+  var D; try{D=JSON.parse(decodeURIComponent(escape(atob('eyJTRUciOnsia2V5Ijoi0JrRgNGD0L/QvdC10LnRiNC40Lkg0LHQuNC30L3QtdGBIiwia3NiIjoi0JrRgNGD0L/QvdGL0Lkg0Lgg0YHRgNC10LTQvdC40Lkg0LHQuNC30L3QtdGBICjQmtCh0JEpIiwibW1iIjoi0JzQsNC70YvQuSDQuCDQvNC40LrRgNC+0LHQuNC30L3QtdGBIiwiZ292Ijoi0JHRjtC00LbQtdGC0L3QsNGPINC+0YDQs9Cw0L3QuNC30LDRhtC40Y8iLCJza20iOiLQodCa0JwgKNC80LDRiNC40L3QvtGB0YLRgNC+0LXQvdC40LUpIn0sIlNJWkUiOnsicyI6ItC00L4gNTAg0YHQvtGC0YDRg9C00L3QuNC60L7QsiIsIm0iOiI1MOKAkzI1MCDRgdC+0YLRgNGD0LTQvdC40LrQvtCyIiwibCI6IjI1MOKAkzEwMDAg0YHQvtGC0YDRg9C00L3QuNC60L7QsiIsInhsIjoiMTAwMCsg0YHQvtGC0YDRg9C00L3QuNC60L7QsiJ9LCJQQVkiOnsicDAiOiLRgdGA0LXQtNC90Y/RjyDQl9CfINC00L4gNzAg0YLRi9GBLiDigr0iLCJwNzAiOiLRgdGA0LXQtNC90Y/RjyDQl9CfIDcw4oCTMTUwINGC0YvRgS4g4oK9IiwicDE1MCI6ItGB0YDQtdC00L3Rj9GPINCX0J8gMTUw4oCTNTAwINGC0YvRgS4g4oK9IiwicDUwMCI6ItGB0YDQtdC00L3Rj9GPINCX0J8g0L7RgiA1MDAg0YLRi9GBLiDigr0ifSwiRiI6W3siaWQiOiJ1bml2IiwicGluIjp0cnVlLCJ0MCI6ItCj0L3QuNCy0LXRgNGB0LDQu9GM0L3Ri9C5INC90LDQsdC+0YAg0LTQu9GPINC60LDQttC00L7Qs9C+INGB0L7RgtGA0YPQtNC90LjQutCwIiwiaHJlZiI6IiNlbXAtY2FyZCIsInciOlszLDMsMyw0LDRdLCJ0Ijp7InJldGFpbiI6MSwiaGlyZSI6MX0sInNheSI6IsKr0KEg0L/QtdGA0LLQvtC5INC30LDRgNC/0LvQsNGC0L7QuSDQvdCwINC60LDRgNGC0YMg0KHQsdC10YDQsCDRgdC+0YLRgNGD0LTQvdC40Log0L/QvtC70YPRh9Cw0LXRgiDQsdC10YHQv9C70LDRgtC90L7QtSDQvtCx0YHQu9GD0LbQuNCy0LDQvdC40LUg0Lgg0YPQstC10LTQvtC80LvQtdC90LjRjywg0L/QvtCy0YvRiNC10L3QvdGL0Lkg0LrQtdGI0LHRjdC6INC4INGB0LrQuNC00LrQuCDQv9C+INC60YDQtdC00LjRgtCw0LwsINCwINC/0YDQuCDQv9C10YDQtdC90L7RgdC1INC90L7QvNC10YDQsCDigJQg0YHQstGP0LfRjCDQt9CwIDAg4oK9wrsuIiwiZCI6ItCR0LXRgdC/0LvQsNGC0L3QvtC1INC+0LHRgdC70YPQttC40LLQsNC90LjQtSDQutCw0YDRgtGLINC4INGD0LLQtdC00L7QvNC70LXQvdC40Y8uINCd0L7QstGL0Lwg0L/QvtC70YPRh9Cw0YLQtdC70Y/QvCDQt9Cw0YDQv9C70LDRgtGLINC90LAg0KHQsdC10YDQmtCw0YDRgtGDIOKAlCDQodCx0LXRgNCf0YDQsNC50Lwg0JfQsNGA0L/Qu9Cw0YLQvdGL0Lk6IDQg0LrQsNGC0LXQs9C+0YDQuNC4INC60LXRiNCx0Y3QutCwINC00L4gMTAlLCDQtNC+IDIgMDAwINCx0L7QvdGD0YHQvtCyINCyINC80LXRgdGP0YY7INC70YzQs9C+0YLQvdGL0Lkg0L/RgNC+0LHQvdGL0Lkg0L/QtdGA0LjQvtC0INC/0L7Qu9C90L7QuSDQv9C+0LTQv9C40YHQutC4INCh0LHQtdGA0J/RgNCw0LnQvCAo0YPRgdC70L7QstC40Y8g4oCUINCyINCh0LHQtdGA0JHQsNC90Log0J7QvdC70LDQudC9KS4g0J7Qv9C70LDRgtCwINCW0JrQpSDQsdC10Lcg0LrQvtC80LjRgdGB0LjQuCwg0YHQvdGP0YLQuNC1INC00L4gMzAwIDAwMCDigr0g0LIg0YHRg9GC0LrQuCwg0L/QtdGA0LXQstC+0LTRiyDQutC70LjQtdC90YLQsNC8INCh0LHQtdGA0LAg0LHQtdC3INC70LjQvNC40YLQvtCyLiDQodCx0LXRgNCc0L7QsdCw0LnQuyAwIOKCvSDQtNC+IDEyINC80LXRgdGP0YbQtdCyINC/0YDQuCDQv9C10YDQtdC90L7RgdC1INC90L7QvNC10YDQsCDQuCDQtdC20LXQvNC10YHRj9GH0L3QvtC5INC30LDRgNC/0LvQsNGC0LUg0L3QsCDQutCw0YDRgtGDINCh0LHQtdGA0LAuINCh0YLQsNCy0LrQsCDQv9C+INC60YDQtdC00LjRgtGDINC90LjQttC1INC90LAgMiDQvy7Qvy4sINC/0L4g0LjQv9C+0YLQtdC60LUg4oCUINC90LAgMSDQvy7Qvy4sIMKr0JTQtdC90YzQs9C4INC00L4g0LfQsNGA0L/Qu9Cw0YLRi8K7LCDQstC60LvQsNC0IMKr0JfQsNGA0L/Qu9Cw0YLQvdGL0Lkg0JzQsNC60YHQuNC80YPQvMK7LiIsImQ3MCI6ItCR0LXRgdC/0LvQsNGC0L3QvtC1INC+0LHRgdC70YPQttC40LLQsNC90LjQtSDQutCw0YDRgtGLINC4INGD0LLQtdC00L7QvNC70LXQvdC40Y8uINCd0L7QstGL0Lwg0L/QvtC70YPRh9Cw0YLQtdC70Y/QvCDQt9Cw0YDQv9C70LDRgtGLINC90LAg0KHQsdC10YDQmtCw0YDRgtGDIOKAlCDQodCx0LXRgNCf0YDQsNC50Lwg0JfQsNGA0L/Qu9Cw0YLQvdGL0Lk6IDQg0LrQsNGC0LXQs9C+0YDQuNC4INC60LXRiNCx0Y3QutCwINC00L4gMTAlLCDQv9GA0Lgg0LfQsNGA0L/Qu9Cw0YLQtSDQvtGCIDcwINGC0YvRgS4g4oK9IOKAlCAxJSDQvdCwINCy0YHRkSDQuCDQtNC+IDUgMDAwINCx0L7QvdGD0YHQvtCyINCyINC80LXRgdGP0YY7INC70YzQs9C+0YLQvdGL0Lkg0L/RgNC+0LHQvdGL0Lkg0L/QtdGA0LjQvtC0INC/0L7Qu9C90L7QuSDQv9C+0LTQv9C40YHQutC4INCh0LHQtdGA0J/RgNCw0LnQvCAo0YPRgdC70L7QstC40Y8g4oCUINCyINCh0LHQtdGA0JHQsNC90Log0J7QvdC70LDQudC9KS4g0J7Qv9C70LDRgtCwINCW0JrQpSDQsdC10Lcg0LrQvtC80LjRgdGB0LjQuCwg0YHQvdGP0YLQuNC1INC00L4gMzAwIDAwMCDigr0g0LIg0YHRg9GC0LrQuCwg0L/QtdGA0LXQstC+0LTRiyDQutC70LjQtdC90YLQsNC8INCh0LHQtdGA0LAg0LHQtdC3INC70LjQvNC40YLQvtCyLiDQodCx0LXRgNCc0L7QsdCw0LnQuyAwIOKCvSDQtNC+IDEyINC80LXRgdGP0YbQtdCyINC/0YDQuCDQv9C10YDQtdC90L7RgdC1INC90L7QvNC10YDQsCDQuCDQtdC20LXQvNC10YHRj9GH0L3QvtC5INC30LDRgNC/0LvQsNGC0LUg0L3QsCDQutCw0YDRgtGDINCh0LHQtdGA0LAuINCh0YLQsNCy0LrQsCDQv9C+INC60YDQtdC00LjRgtGDINC90LjQttC1INC90LAgMiDQvy7Qvy4sINC/0L4g0LjQv9C+0YLQtdC60LUg4oCUINC90LAgMSDQvy7Qvy4sIMKr0JTQtdC90YzQs9C4INC00L4g0LfQsNGA0L/Qu9Cw0YLRi8K7LCDQstC60LvQsNC0IMKr0JfQsNGA0L/Qu9Cw0YLQvdGL0Lkg0JzQsNC60YHQuNC80YPQvMK7LiJ9LHsiaWQiOiJmcmVlIiwidDAiOiLQkdC10YHQv9C70LDRgtC90L7QtSDQt9Cw0YfQuNGB0LvQtdC90LjQtSDQt9Cw0YDQv9C70LDRgtGLIiwiZCI6ItCX0LDRgNC/0LvQsNGC0LAg0YHQvtGC0YDRg9C00L3QuNC60LDQvCDQuCDQstGL0L/Qu9Cw0YLRiyDRgdCw0LzQvtC30LDQvdGP0YLRi9C8IOKAlCDQsdC10Lcg0LrQvtC80LjRgdGB0LjQuCwg0L7RgiAxINC80LjQvdGD0YLRiywg0LIg0YLQvtC8INGH0LjRgdC70LUg0LIg0LLRi9GF0L7QtNC90YvQtS4iLCJzYXkiOiLCq9CX0LDRh9C40YHQu9C10L3QuNC1INC30LDRgNC/0LvQsNGC0Ysg0LTQu9GPINCy0LDRgSDQsdC10YHQv9C70LDRgtC90L7QtSDigJQg0Lgg0LIg0LHRg9C00L3QuCwg0Lgg0LIg0LLRi9GF0L7QtNC90YvQtcK7LiIsImhyZWYiOiIjYml6LW1vbmV5IiwidyI6WzIsMyw0LDQsM10sInQiOnt9fSx7ImlkIjoicmVxIiwidDAiOiLQoNC10LrQstC40LfQuNGC0Ysg0LjQtyDQodCx0LXRgNCR0LDQvdC6INCe0L3Qu9Cw0LnQvSDQv9C+IFFSINC40LvQuCDQmNCd0J0iLCJkIjoi0KHQvtGC0YDRg9C00L3QuNC6INGB0LDQvCDQvtGC0L/RgNCw0LLQu9GP0LXRgiDRgNC10LrQstC40LfQuNGC0Ysg0YDQsNCx0L7RgtC+0LTQsNGC0LXQu9GOINC40Lcg0L/RgNC40LvQvtC20LXQvdC40Y8uINCh0L/QvtGB0L7QsSDQv9C+INCY0J3QnSDigJQg0YHQvtCx0YHRgtCy0LXQvdC90LDRjyDRgNCw0LfRgNCw0LHQvtGC0LrQsCDQodCx0LXRgNCwLiIsInNheSI6IsKr0KHQvtCx0LjRgNCw0YLRjCDRgNC10LrQstC40LfQuNGC0Ysg0L3QtSDQv9GA0LjQtNGR0YLRgdGPOiDRgdC+0YLRgNGD0LTQvdC40Log0L7RgtC/0YDQsNCy0LjRgiDQuNGFINC40Lcg0L/RgNC40LvQvtC20LXQvdC40Y8g0L/QviDQstCw0YjQtdC80YMgUVIt0LrQvtC00YMg0LjQu9C4INCY0J3QnSDQutC+0LzQv9Cw0L3QuNC4wrsuIiwiaHJlZiI6IiNiaXotcmVxdWlzaXRlcyIsInciOlszLDQsNCwzLDNdLCJ0Ijp7ImwiOjEsInhsIjoxLCJzaXRlcyI6MX19LHsiaWQiOiJjMSIsInQwIjoi0JLQtdC00L7QvNC+0YHRgtGMINC/0YDRj9C80L4g0LjQtyAx0KEiLCJkIjoi0KEgMjEuMTAuMjAyNiDQstC10LTQvtC80L7RgdGC0Ywg0YPRhdC+0LTQuNGCINCyINCh0LHQtdGAINC/0YDRj9C80L4g0LjQtyDQuNC90YLQtdGA0YTQtdC50YHQsCAx0KEgKDHQoTrQlNC40YDQtdC60YLQkdCw0L3QuiksINGB0YLQsNGC0YPRgSDQstC+0LfQstGA0LDRidCw0LXRgtGB0Y8g0LIgMdChOyDQv9GA0LjQstGL0YfQvdGL0Lkg0YHQv9C+0YHQvtCxIOKAlCDQstGL0LPRgNGD0LfQutCwINC4INC30LDQs9GA0YPQt9C60LAg0LIg0KHQsdC10YDQkdC40LfQvdC10YEg0LfQsCAz4oCTNCDQutC70LjQutCwLiIsInNheSI6IsKr0JHRg9GF0LPQsNC70YLQtdGAINC+0YLQv9GA0LDQstC70Y/QtdGCINCy0LXQtNC+0LzQvtGB0YLRjCDQv9GA0Y/QvNC+INC40LcgMdChINC4INCy0LjQtNC40YIg0YHRgtCw0YLRg9GBINC30LDRh9C40YHQu9C10L3QuNGPINGC0LDQvCDQttC1wrsuIiwiaHJlZiI6IiNiaXotc2JlcmJ1c2luZXNzIiwidyI6WzEsMiwzLDIsMl0sInQiOnsiYzEiOjF9fSx7ImlkIjoiYXBpIiwidDAiOiLQmNC90YLQtdCz0YDQsNGG0LjRjyDRh9C10YDQtdC3IFNiZXIgQVBJIiwiZCI6ItCS0YvQv9GD0YHQuiDQutCw0YDRgiwg0LLQtdC00L7QvNC+0YHRgtC4INC4INGB0YLQsNGC0YPRgdGLINGH0LXRgNC10LcgQVBJIOKAlCDQtNC70Y8g0YHQvtCx0YHRgtCy0LXQvdC90YvRhSDRg9GH0ZHRgtC90YvRhSDRgdC40YHRgtC10Lwg0Lgg0YXQvtC70LTQuNC90LPQvtCy0YvRhSDQv9GA0L7RhtC10YHRgdC+0LIuIiwic2F5IjoiwqvQl9Cw0YDQv9C70LDRgtC90YvQuSDQv9GA0L7RhtC10YHRgSDQvNC+0LbQvdC+INCy0YHRgtGA0L7QuNGC0Ywg0LIg0LLQsNGI0Lgg0YHQuNGB0YLQtdC80Ysg0YfQtdGA0LXQtyBTYmVyIEFQScK7LiIsImhyZWYiOiIjYml6LXNiZXJidXNpbmVzcyIsInciOls0LDIsMCwwLDFdLCJ0Ijp7InhsIjoxfX0seyJpZCI6Im11bHRpIiwidDAiOiLQnNGD0LvRjNGC0LjRgNC10LXRgdGC0YAg4oCUINC30LDRgNC/0LvQsNGC0LAg0LIg0LvRjtCx0L7QuSDQsdCw0L3QuiIsImQiOiLQntC00LjQvSDRgNC10LXRgdGC0YAg0Lgg0L7QtNC90L4g0L/Qu9Cw0YLRkdC20L3QvtC1INC/0L7RgNGD0YfQtdC90LjQtSDQvdCwINGB0L7RgtGA0YPQtNC90LjQutC+0LIg0YHQviDRgdGH0LXRgtCw0LzQuCDQsiDRgNCw0LfQvdGL0YUg0LHQsNC90LrQsNGFLCDQvtGC0L/RgNCw0LLQutCwINC40LcgMdChINCyINC+0LTQuNC9INC60LvQuNC6LiDQlNC70Y8g0LrQu9C40LXQvdGC0L7QsiDRgSDQoNCa0J4g0LIg0LTRgNGD0LPQvtC8INCx0LDQvdC60LUg4oCUINGC0LDRgNC40YQgMCUuIiwic2F5IjoiwqvQntC00LjQvSDRgNC10LXRgdGC0YAg0L3QsCDQstGB0LXRhTog0KHQsdC10YAg0YHQsNC8INGA0LDQt9C+0YjQu9GR0YIg0LTQtdC90YzQs9C4INC/0L4g0LHQsNC90LrQsNC8INC4INCy0LXRgNC90ZHRgiDQvdC10LfQsNGH0LjRgdC70LXQvdC90L7QtS4g0J/RgNC4INGB0YfRkdGC0LUg0LIg0LTRgNGD0LPQvtC8INCx0LDQvdC60LUg4oCUIDAlwrsuIiwiaHJlZiI6IiNiaXotYW55YmFuayIsInciOlsyLDIsMCwwLDBdLCJ0Ijp7Im11bHRpYmFuayI6NCwib3RoZXIiOjF9LCJuZWVkIjpbIm11bHRpYmFuayJdLCJzZWdzIjpbImtleSIsImtzYiJdfSx7ImlkIjoicmtvIiwidDAiOiLQl9Cw0YDQv9C70LDRgtC90YvQuSDQv9GA0L7QtdC60YIg0LHQtdC3INC/0LXRgNC10YXQvtC00LAg0L3QsCDQoNCa0J4iLCJkIjoi0KDQtdC10YHRgtGAINC30LDQs9GA0YPQttCw0LXRgtGB0Y8g0LIg0KHQsdC10YDQkdC40LfQvdC10YEsINC/0LvQsNGC0ZHQttC90L7QtSDQv9C+0YDRg9GH0LXQvdC40LUg0L3QsCDRgdGD0LzQvNGDINGA0LXQtdGB0YLRgNCwINC40LTRkdGCINC40Lcg0LHQsNC90LrQsCDQutC70LjQtdC90YLQsC4g0KLQsNGA0LjRhCAwJS4iLCJzYXkiOiLCq9Ch0YfRkdGCINC80L7QttC90L4g0L7RgdGC0LDQstC40YLRjCDQsiDQstCw0YjQtdC8INCx0LDQvdC60LUg4oCUINC30LDRgNC/0LvQsNGC0L3Ri9C5INC/0YDQvtC10LrRgiDQstGB0ZEg0YDQsNCy0L3QviDQt9Cw0YDQsNCx0L7RgtCw0LXRgiwg0YLQsNGA0LjRhCAwJcK7LiIsImhyZWYiOiIjYml6LWFueWJhbmsiLCJ3IjpbMSwxLDAsMCwwXSwidCI6eyJvdGhlciI6NX0sIm5lZWQiOlsib3RoZXIiXSwic2VncyI6WyJrZXkiLCJrc2IiXX0seyJpZCI6ImdpZyIsInQwIjoi0KHQsNC80L7Qt9Cw0L3Rj9GC0YvQtTogMCUg0Lgg0LDQstGC0L7Rg9C/0LvQsNGC0LAg0L3QsNC70L7Qs9CwIiwiZCI6ItCS0YvQv9C70LDRgtGLINGB0LDQvNC+0LfQsNC90Y/RgtGL0Lwg0LHQtdC3INC60L7QvNC40YHRgdC40LgsINCw0LLRgtC+0L/RgNC+0LLQtdGA0LrQsCDRgdGC0LDRgtGD0YHQsCwg0YfQtdC60Lg7INC/0L4g0YPQutCw0LfQsNC90LjRjiDQutC70LjQtdC90YLQsCDQsdCw0L3QuiDRgdCw0Lwg0YDQsNGB0YHRh9C40YLRi9Cy0LDQtdGCINC4INGD0L/Qu9Cw0YfQuNCy0LDQtdGCINCd0J/QlC4iLCJzYXkiOiLCq9Ch0LDQvNC+0LfQsNC90Y/RgtGL0Lwg0L/Qu9Cw0YLQuNGC0LUg0LHQtdC3INC60L7QvNC40YHRgdC40LgsINCwINC90LDQu9C+0LMg0Lgg0YfQtdC6INCx0LDQvdC6INGB0YTQvtGA0LzQuNGA0YPQtdGCINGB0LDQvMK7LiIsImhyZWYiOiIjYml6LWdpZyIsInciOlsxLDEsMiwwLDBdLCJ0Ijp7ImdpZyI6NX0sIm5lZWQiOlsiZ2lnIl19LHsiaWQiOiJmb3JlaWduIiwidDAiOiLQmNC90L7RgdGC0YDQsNC90L3Ri9C1INGA0LDQsdC+0YLQvdC40LrQuCIsImQiOiLQktGL0L/Qu9Cw0YLRiyDQvdC10YDQtdC30LjQtNC10L3RgtCw0Lwg0L/QviDQk9Cf0KU6INCy0LDQu9GO0YLQvdGL0Lkg0LrQvtC90YLRgNC+0LvRjCDQv9GA0L7RhdC+0LTQuNGCINC/0L4g0L7QsdGJ0LXQuSDRgdGD0LzQvNC1INCy0YvQv9C70LDRgiDQv9C+INGA0LXQtdGB0YLRgNGDLCDQsCDQvdC1INC/0L4g0LrQsNC20LTQvtC5INCy0YvQv9C70LDRgtC1LiDQoNCw0LHQvtGC0LAu0YDRgywg0YbQuNGE0YDQvtCy0LDRjyDQv9C70LDRgtGE0L7RgNC80LAg0L3QsNC50LzQsCDQuNC3LdC30LAg0YDRg9Cx0LXQttCwLCDQv9Cw0LrQtdGCINC80LjQs9GA0LDQvdGC0LAuINCSINCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCz0LUg0Lgg0JvQtdC90L7QsdC70LDRgdGC0Lgg4oCUINGN0LvQtdC60YLRgNC+0L3QvdCw0Y8g0LrQsNGA0YLQsCDRgtGA0YPQtNC+0LLQvtCz0L4g0LzQuNCz0YDQsNC90YLQsCAo0K3QmtCi0JwpINC+0YIg0KHQsdC10YDQsC4iLCJzYXkiOiLCq9Cf0L4g0LjQvdC+0YHRgtGA0LDQvdGG0LDQvCDQvdCwINCT0J/QpSDQstCw0LvRjtGC0L3Ri9C5INC60L7QvdGC0YDQvtC70Ywg4oCUINC+0LTQuNC9INGA0LDQtyDQvdCwINCy0LXRgdGMINGA0LXQtdGB0YLRgCwg0LAg0YEg0L3QsNC50LzQvtC8INC/0L7QvNC+0LbQtdGCINCg0LDQsdC+0YLQsC7RgNGDwrsuIiwiaHJlZiI6IiNiaXotaHIiLCJ3IjpbMSwxLDEsMCwxXSwidCI6eyJmb3JlaWduIjo1LCJudyI6MX0sIm5lZWQiOlsiZm9yZWlnbiJdfSx7ImlkIjoiY2FyZHMiLCJ0MCI6ItCS0YvQtdC30LTQvdCw0Y8g0LLRi9C00LDRh9CwINC80L7QvNC10L3RgtCw0LvRjNC90YvRhSDQutCw0YDRgiIsImQiOiLQl9Cw0Y/QstC60LAg0LIg0KHQsdC10YDQkdC40LfQvdC10YHQtSwg0LLRi9Cx0L7RgCDQtNC90Y8g0Lgg0LLRgNC10LzQtdC90LgsINCy0YvQtNCw0YfQsCDQvdCwINC/0LvQvtGJ0LDQtNC60LUg0YDQtdC30LjQtNC10L3RgtCw0Lwg0Lgg0L3QtdGA0LXQt9C40LTQtdC90YLQsNC8LiIsInNheSI6IsKr0JrQsNGA0YLRiyDQv9GA0LjQstC10LfRkdC8INC6INCy0LDQvCDQvdCwINC/0LvQvtGJ0LDQtNC60YMg0LIg0YPQtNC+0LHQvdGL0Lkg0LTQtdC90YzCuy4iLCJocmVmIjoiI2Jpei1jYXJkcyIsInciOlszLDIsMCwyLDNdLCJ0Ijp7ImwiOjEsInhsIjoyLCJzaXRlcyI6Mn19LHsiaWQiOiJwcmVmIiwidDAiOiLQmtC+0L3RgdGC0YDRg9C60YLQvtGAINC/0YDQtdGE0LXRgNC10L3RhtC40LkiLCJkIjoi0JrQvtC80L/QsNC90LjRjyDRgdCw0LzQsCDQstGL0LHQuNGA0LDQtdGCINC/0YDQuNCy0LjQu9C10LPQuNC4INGB0L7RgtGA0YPQtNC90LjQutCw0Lwg0LIg0KHQsdC10YDQkdC40LfQvdC10YHQtTog0L/QsNC60LXRgtGLLCDQodCx0LXRgNCf0YDQsNC50LwsINGB0L3QuNC20LXQvdC90LDRjyDRgdGC0LDQstC60LAg0L/QviDQutGA0LXQtNC40YLRgzsg0YEgOSDQvtC60YLRj9Cx0YDRjyDigJQg0LHQuNC30L3QtdGBLdC30LDQu9GLLCDQlNCc0KEsINCh0LHQtdGA0KHQv9Cw0YHQuNCx0L4gNSUuIiwic2F5IjoiwqvQodC+0YbQv9Cw0LrQtdGCINC80L7QttC90L4g0YHQvtCx0YDQsNGC0Ywg0YHQsNC80LjQvDog0L7RgiDQodCx0LXRgNCf0YDQsNC50LzQsCDQtNC+INCU0JzQoSDQuCDQsdC40LfQvdC10YEt0LfQsNC70L7QssK7LiIsImhyZWYiOiIjYml6LXByZWZlcmVuY2VzIiwidyI6WzMsMywxLDAsMV0sInQiOnsicmV0YWluIjozLCJoaXJlIjoxfX0seyJpZCI6InN1cHJlbWUiLCJ0MCI6ItCc0JjQoCBTdXByZW1lINC00LvRjyDRgdC+0YLRgNGD0LTQvdC40LrQvtCyINGBINC30LDRgNC/0LvQsNGC0L7QuSDQvtGCIDE1MCDRgtGL0YEuIOKCvSIsImQiOiLQmtCw0YDRgtCwINCw0LLRgtC+0LzQsNGC0LjRh9C10YHQutC4INC/0L7Qu9GD0YfQsNC10YIg0L/RgNC40LLQuNC70LXQs9C40Lgg0JzQmNCgIFN1cHJlbWU6IDclINCyINGA0LXRgdGC0L7RgNCw0L3QsNGFICjQtNC+IDUgMDAwINCx0L7QvdGD0YHQvtCyINCyINC80LXRgdGP0YYpINC4IDEwJSDQvdCwINGC0LDQutGB0LggVWx0aW1hICjQv9C10YDQstGL0LUgMyDQv9C+0LXQt9C00LrQuCDQsiDQvNC10YHRj9GGLCDQtNC+IDUwMCDQsdC+0L3Rg9GB0L7QsiDQt9CwINC60LDQttC00YPRjikuINCj0YHQu9C+0LLQuNGPOiDQt9Cw0YDQv9C70LDRgtCwINC+0YIgMTUwINGC0YvRgS4g4oK9INC90LAg0KHQsdC10YDQmtCw0YDRgtGDINCc0JjQoCDQuCDQv9C+0LrRg9C/0LrQuCDQv9C+INC90LXQuSDQt9CwIDMg0LzQtdGB0Y/RhtCwOyDQv9C10YDQtdCy0YvQv9GD0YHQuiDQvdC1INC90YPQttC10L0uIiwic2F5IjoiwqvQodC+0YLRgNGD0LTQvdC40LrQsNC8INGBINC30LDRgNC/0LvQsNGC0L7QuSDQvtGCIDE1MCDRgtGL0YHRj9GHINC60LDRgNGC0LAg0YHQsNC80LAg0LTQsNGR0YIg0L/RgNC40LLQuNC70LXQs9C40Lgg0JzQmNCgIFN1cHJlbWU6IDclINCyINGA0LXRgdGC0L7RgNCw0L3QsNGFINC4IDEwJSDQvdCwINCx0LjQt9C90LXRgS3RgtCw0LrRgdC4wrsuIiwiaHJlZiI6IiNlbXAtc3VwcmVtZSIsInciOlsxLDEsMSwxLDFdLCJ0Ijp7InMxNTAiOjUsInRvcCI6Mn0sIm5lZWRBbnkiOlsiczE1MCIsInRvcCJdfSx7ImlkIjoicGlsb3QiLCJ0MCI6ItCf0LjQu9C+0YIg0LTQu9GPINCy0YvRgdC+0LrQuNGFINC30LDRgNC/0LvQsNGCOiDQsdC10YHQv9C70LDRgtC90YvQtSDQodCx0LXRgNCf0YDQsNC50Lwg0Lgg0KHQsdC10YDQn9GA0LXQvNGM0LXRgCIsImhyZWYiOiIjZW1wLXByZW1pdW0iLCJ3IjpbMSwxLDEsMCwxXSwidCI6eyJzMTUwIjozLCJzNTAwIjoyLCJ0b3AiOjJ9LCJuZWVkQW55IjpbInMxNTAiLCJ0b3AiXSwic2F5IjoiwqvQodC+0YLRgNGD0LTQvdC40LrQsNC8INGBINCy0YvRgdC+0LrQvtC5INC30LDRgNC/0LvQsNGC0L7QuSDigJQg0LHQtdGB0L/Qu9Cw0YLQvdCw0Y8g0L/QvtC00L/QuNGB0LrQsCDQuNC70Lgg0L/RgNC10LzQuNCw0LvRjNC90L7QtSDQvtCx0YHQu9GD0LbQuNCy0LDQvdC40LUsINC/0L7QutCwINC30LDRgNC/0LvQsNGC0LAg0L/RgNC40YXQvtC00LjRgiDQvdCwINC60LDRgNGC0YMg0KHQsdC10YDQsMK7LiIsImQiOiLQn9C40LvQvtGCINC00L7RgdGC0YPQv9C10L0g0LIg0YfQsNGB0YLQuCDRgtC10YDRgNC40YLQvtGA0LjQuSDigJQg0LPQtdC+0LPRgNCw0YTQuNGOINGD0YLQvtGH0L3Rj9C50YLQtSDRgyDQt9Cw0LrRgNC10L/Qu9GR0L3QvdC+0LPQviDQnNCX0J8v0KHQl9CfLiDQodC+0YLRgNGD0LTQvdC40LrQsNC8INGBINC30LDRgNC/0LvQsNGC0L7QuSDQvtGCIDE1MCDRgtGL0YEuIOKCvSDQsiDQvNC10YHRj9GGIOKAlCDQsdC10YHQv9C70LDRgtC90LDRjyDQv9C+0LTQv9C40YHQutCwINCh0LHQtdGA0J/RgNCw0LnQvCAo0L/QuNC70L7RgiDQtNC+IDI4LjAyLjIwMjcpLCDQvtGCIDUwMCDRgtGL0YEuIOKCvSDigJQg0LHQtdGB0L/Qu9Cw0YLQvdGL0Lkg0KHQsdC10YDQn9GA0LXQvNGM0LXRgCAyLdCz0L4g0YPRgNC+0LLQvdGPICjQv9C40LvQvtGCINC00L4gMDcuMDIuMjAyNykuINCR0LXRgdC/0LvQsNGC0L3Qviwg0L/QvtC60LAg0LLRi9C/0L7Qu9C90Y/QtdGC0YHRjyDQt9Cw0YDQv9C70LDRgtC90YvQuSDQutGA0LjRgtC10YDQuNC5OyDQv9GA0L7QstC10YDQutCwIDct0LPQviDRh9C40YHQu9CwLiJ9LHsiaWQiOiJ0b3AiLCJ0MCI6ItCf0YDQtdC80LjRg9C8INC00LvRjyDRgNGD0LrQvtCy0L7QtNGB0YLQstCwIiwiZCI6ItCh0LHQtdGA0J/RgNC10LzRjNC10YAg0Lgg0KHQsdC10YDQn9C10YDQstGL0LkgKEZyYW5rIFByZW1pdW0gQmFua2luZyBBd2FyZCAyMDI2KSwgwqvQntGB0L7QsdCw0Y8g0LfQsNGP0LLQutCwwrsg0L/QviDQutGA0LXQtNC40YLQsNC8INC4INC40L/QvtGC0LXQutC1LiIsInNheSI6IsKr0JTQu9GPINGA0YPQutC+0LLQvtC00YHRgtCy0LAg4oCUINC/0YDQtdC80LjQsNC70YzQvdC+0LUg0L7QsdGB0LvRg9C20LjQstCw0L3QuNC1LCDQv9GA0LjQt9C90LDQvdC90L7QtSDQu9GD0YfRiNC40Lwg0LrQvtC80L/Qu9C10LrRgdC90YvQvCDRgNC10YjQtdC90LjQtdC8INC/0L4g0LLQtdGA0YHQuNC4IEZyYW5rIFJHwrsuIiwiaHJlZiI6IiNiaXotdGVhbSIsInciOlszLDIsMSwwLDFdLCJ0Ijp7InRvcCI6NCwiczUwMCI6Mn19LHsiaWQiOiJoZWFsdGgiLCJ0MCI6ItCY0Jgt0L/QvtC80L7RidC90LjQuiDQodCx0LXRgNCX0LTQvtGA0L7QstGM0Y8g0Lgg0YLQtdC70LXQvNC10LTQuNGG0LjQvdCwIiwiZCI6ItCQ0LvRjNGC0LXRgNC90LDRgtC40LLQsCDQlNCc0KEg0LTQu9GPINC60L7Qu9C70LXQutGC0LjQstCwLiDQo9GB0LvQvtCy0LjRjyDQv9C+0LTQutC70Y7Rh9C10L3QuNGPINC00LvRjyDQutC+0LzQv9Cw0L3QuNC4INGD0YLQvtGH0L3Rj9C50YLQtSDRgyDQv9GA0L7RhNC40LvRjNC90L7Qs9C+INC/0L7QtNGA0LDQt9C00LXQu9C10L3QuNGPLiIsInNheSI6IsKr0JTQu9GPINCy0YHQtdCz0L4g0LrQvtC70LvQtdC60YLQuNCy0LAg4oCUINCY0Jgt0L/QvtC80L7RidC90LjQuiDQodCx0LXRgNCX0LTQvtGA0L7QstGM0Y8g0Lgg0YLQtdC70LXQvNC10LTQuNGG0LjQvdCwINC60LDQuiDQsNC70YzRgtC10YDQvdCw0YLQuNCy0LAg0JTQnNChwrsuIiwiaHJlZiI6IiNiaXotdGVhbSIsInciOlsxLDIsMywzLDJdLCJ0Ijp7InJldGFpbiI6Mn19LHsiaWQiOiJjaXR5IiwidDAiOiLQl9Cw0YDQv9C70LDRgtCwINC90LAgwqvQmtCw0YDRgtGDINC20LjRgtC10LvRj8K7IiwiZCI6ItCV0JrQnyDQsiDQodCf0LEsINCb0LXQvdC+0LHQu9Cw0YHRgtC4LCDQn9GB0LrQvtCy0LUg0Lgg0JrQsNGA0LXQu9C40Lg6INC+0LTQvdCwINC60LDRgNGC0LAg0LTQu9GPINC30LDRgNC/0LvQsNGC0YssINGB0LrQuNC00L7QuiDQuCDRgNC10LPQuNC+0L3QsNC70YzQvdGL0YUg0YHQtdGA0LLQuNGB0L7Qsi4iLCJzYXkiOiLCq9CX0LDRgNC/0LvQsNGC0YMg0LzQvtC20L3QviDQv9C+0LvRg9GH0LDRgtGMINC/0YDRj9C80L4g0L3QsCDQutCw0YDRgtGDINC20LjRgtC10LvRj8K7LiIsImhyZWYiOiIjYml6LWNpdHljYXJkIiwidyI6WzEsMSwxLDIsMV0sInQiOnsibnciOjV9LCJuZWVkIjpbIm53Il19LHsiaWQiOiJwYXlzbGlwIiwidDAiOiLQoNCw0YHRh9GR0YLQvdGL0LUg0LvQuNGB0YLQutC4INCyINCh0LHQtdGA0JHQsNC90Log0J7QvdC70LDQudC9IiwiZCI6ItCX0LDQs9GA0YPQt9C60LAg0LIg0KHQsdC10YDQkdC40LfQvdC10YEg0LLQvNC10YHRgtC+INC/0LXRh9Cw0YLQuCDQuCDRgNCw0YHRgdGL0LvQvtC6LiIsInNheSI6IsKr0KDQsNGB0YfRkdGC0L3Ri9C1INC70LjRgdGC0LrQuCDRgdC+0YLRgNGD0LTQvdC40LrQuCDRg9Cy0LjQtNGP0YIg0LIg0YHQstC+0ZHQvCDQv9GA0LjQu9C+0LbQtdC90LjQuMK7LiIsImhyZWYiOiIjYml6LXNiZXJidXNpbmVzcyIsInciOlsyLDIsMSwzLDJdLCJ0Ijp7ImwiOjEsInhsIjoxLCJzaXRlcyI6MX19LHsiaWQiOiJzYWZlIiwidDAiOiLQndCw0LTRkdC20L3QvtGB0YLRjCDQuCDQt9Cw0YnQuNGC0LAg0L7RgiDQvNC+0YjQtdC90L3QuNC60L7QsiIsImQiOiLQodC40YHRgtC10LzQvdC+INC30L3QsNGH0LjQvNGL0Lkg0LHQsNC90LosINGA0LXQudGC0LjQvdCzINCQ0JrQoNCQIEFBQShSVSksIDMwKyDQsdC10YHQv9C70LDRgtC90YvRhSDQuNC90YHRgtGA0YPQvNC10L3RgtC+0LIg0LfQsNGJ0LjRgtGLINCyINCh0LHQtdGA0JHQsNC90Log0J7QvdC70LDQudC9LiIsInNheSI6IsKr0JTQtdC90YzQs9C4INGB0L7RgtGA0YPQtNC90LjQutC+0LIg0LIg0YHQuNGB0YLQtdC80L3QviDQt9C90LDRh9C40LzQvtC8INCx0LDQvdC60LUg0YEg0LHQtdGB0L/Qu9Cw0YLQvdC+0Lkg0LfQsNGJ0LjRgtC+0Lkg0L7RgiDQvNC+0YjQtdC90L3QuNC60L7QssK7LiIsImhyZWYiOiIjZW1wLXNlY3VyaXR5IiwidyI6WzEsMSwxLDMsM10sInQiOnt9fSx7ImlkIjoiY3JlZGl0IiwidDAiOiLQodC60LjQtNC60LAg0LTQviAyINC/LtC/LiDQv9C+INC60YDQtdC00LjRgtGDINC00LvRjyDQsdC40LfQvdC10YHQsCIsImQiOiLQl9Cw0YDQv9C70LDRgtC90YvQuSDQv9GA0L7QtdC60YIg0YHQvdC40LbQsNC10YIg0YHRgtCw0LLQutGDINC/0L4g0LrRgNC10LTQuNGC0YMg0LTQu9GPINC60L7QvNC/0LDQvdC40LguIiwic2F5IjoiwqvQldGB0LvQuCDQvdGD0LbQtdC9INC60YDQtdC00LjRgiDigJQg0LfQsNGA0L/Qu9Cw0YLQvdGL0Lkg0L/RgNC+0LXQutGCINC00LDRkdGCINGB0LrQuNC00LrRgyDQtNC+IDIg0L8u0L8uwrsuIiwiaHJlZiI6IiNiaXotbW9uZXkiLCJ3IjpbMSwyLDMsMCwwXSwidCI6e319LHsiaWQiOiJoaXJlIiwidDAiOiLQn9C+0LTQsdC+0YAg0L/QtdGA0YHQvtC90LDQu9CwIiwiZCI6ItCg0LDQsdC+0YLQsC7RgNGDOiDQv9C+0LjRgdC6INC60LDQvdC00LjQtNCw0YLQvtCyLCDRgNCw0LfRgNC10YjQtdC90LjRjyDQuCDQstC40LfRiywg0YHQvtC/0YDQvtCy0L7QttC00LXQvdC40LUg0L3QsNC50LzQsCwg0LIg0YLQvtC8INGH0LjRgdC70LUg0LjQvdC+0YHRgtGA0LDQvdC90YvRhSDRgNCw0LHQvtGC0L3QuNC60L7Qsi4iLCJzYXkiOiLCq9Cf0YDQuCDQtNC10YTQuNGG0LjRgtC1INC60LDQtNGA0L7QsiDQv9C+0LzQvtC20LXRgiDQoNCw0LHQvtGC0LAu0YDRgyDigJQg0L7RgiDQv9C+0LjRgdC60LAg0LrQsNC90LTQuNC00LDRgtC+0LIg0LTQviDQstGL0YXQvtC00LAg0L3QsCDRgNCw0LHQvtGC0YPCuy4iLCJocmVmIjoiI2Jpei1ociIsInciOlswLDEsMiwwLDBdLCJ0Ijp7ImhpcmUiOjR9LCJuZWVkIjpbImhpcmUiXX0seyJpZCI6ImJyYW5kIiwidDAiOiLQmtCw0YDRgtGLINCyINC60L7RgNC/0L7RgNCw0YLQuNCy0L3QvtC8INC00LjQt9Cw0LnQvdC1IOKAlCAwIOKCvSIsImQiOiLQl9Cw0YDQv9C70LDRgtC90YvQtSDQutCw0YDRgtGLINGBINGB0LjQvNCy0L7Qu9C40LrQvtC5INC60L7QvNC/0LDQvdC40Lgg0LHQtdGB0L/Qu9Cw0YLQvdC+INCyINGA0LDQvNC60LDRhSDQt9Cw0YDQv9C70LDRgtC90L7Qs9C+INC/0YDQvtC10LrRgtCwLiDQoNCw0LHQvtGC0LDQtdGCINC90LAgSFIt0LHRgNC10L3QtC4iLCJzYXkiOiLCq9Ca0LDRgNGC0Ysg0LzQvtC20L3QviDQstGL0L/Rg9GB0YLQuNGC0Ywg0LIg0LLQsNGI0LXQvCDRhNC40YDQvNC10L3QvdC+0Lwg0LTQuNC30LDQudC90LUg4oCUINCyINGA0LDQvNC60LDRhSDQt9Cw0YDQv9C70LDRgtC90L7Qs9C+INC/0YDQvtC10LrRgtCwINGN0YLQviDQsdC10YHQv9C70LDRgtC90L7Cuy4iLCJocmVmIjoiI2Jpei1jYXJkcyIsInciOlsyLDIsMSwwLDFdLCJ0Ijp7InJldGFpbiI6MSwieGwiOjEsImhpcmUiOjF9fSx7ImlkIjoiYXdhcmQiLCJ0MCI6ItCb0YPRh9GI0LjQuSDQt9Cw0YDQv9C70LDRgtC90YvQuSDQvtC90LvQsNC50L0t0LHQsNC90LoiLCJkIjoiRnJhbmsgQXdhcmQgMjAyNjog0KHQsdC10YAg4oCUIMKr0JvRg9GH0YjQuNC5INC30LDRgNC/0LvQsNGC0L3Ri9C5INC+0L3Qu9Cw0LnQvS3QsdCw0L3QuiDQtNC70Y8g0LrQvtGA0L/QvtGA0LDRgtC40LLQvdGL0YUg0LrQu9C40LXQvdGC0L7QssK7LiIsInNheSI6IsKr0J/QviDQstC10YDRgdC40LggRnJhbmsgUkcg0YMg0L3QsNGBINC70YPRh9GI0LjQuSDQt9Cw0YDQv9C70LDRgtC90YvQuSDQvtC90LvQsNC50L0t0LHQsNC90Log0LTQu9GPINC60L7QvNC/0LDQvdC40LnCuy4iLCJocmVmIjoiI2Jpei1tb25leSIsInciOlsxLDEsMSwxLDFdLCJ0Ijp7fX1dLCJBU0siOnsia2V5IjpbItCf0LXRgNC40LzQtdGC0YA6INGB0LrQvtC70YzQutC+INGO0YDQu9C40YYg0Lgg0L/Qu9C+0YnQsNC00L7QuiIsItCSINC60LDQutC+0Lkg0YHQuNGB0YLQtdC80LUg0YHRh9C40YLQsNC10YLRgdGPINC30LDRgNC/0LvQsNGC0LAgKDHQoTrQl9Cj0J8sIFNBUCwg0YHQvtCx0YHRgtCy0LXQvdC90LDRjykiLCLQkiDQutCw0LrQuNGFINCx0LDQvdC60LDRhSDRgdC10LnRh9Cw0YEg0L/QvtC70YPRh9Cw0Y7RgiDQt9Cw0YDQv9C70LDRgtGDINGB0L7RgtGA0YPQtNC90LjQutC4INC4INC60LDQuiDRg9GB0YLRgNC+0LXQvSDRgtC10LrRg9GJ0LjQuSDQt9Cw0YDQv9C70LDRgtC90YvQuSDQv9GA0L7QtdC60YIiXSwia3NiIjpbItCT0LTQtSDRgdC10LnRh9Cw0YEg0LfQsNGA0L/Qu9Cw0YLQvdGL0Lkg0L/RgNC+0LXQutGCINC4INGH0YLQviDQsiDQvdGR0Lwg0LzQvtC20L3QviDRg9C70YPRh9GI0LjRgtGMIiwi0JIg0YHQutC+0LvRjNC60LjRhSDQsdCw0L3QutCw0YUg0L/QvtC70YPRh9Cw0Y7RgiDQt9Cw0YDQv9C70LDRgtGDINGB0L7RgtGA0YPQtNC90LjQutC4Iiwi0KfRgtC+INC60L7QvNC/0LDQvdC40Y8g0YPQttC1INC00LDRkdGCINGB0L7RgtGA0YPQtNC90LjQutCw0Lwg0LIg0YHQvtGG0L/QsNC60LXRgtC1Il0sIm1tYiI6WyLQmtGC0L4g0LLQtdC00ZHRgiDQt9Cw0YDQv9C70LDRgtGDIOKAlCDQsdGD0YXQs9Cw0LvRgtC10YAsINCw0YPRgtGB0L7RgNGBINC40LvQuCDRgdC+0LHRgdGC0LLQtdC90L3QuNC6Iiwi0KHQutC+0LvRjNC60L4g0LLRi9C/0LvQsNGCINGB0LDQvNC+0LfQsNC90Y/RgtGL0Lwg0LIg0LzQtdGB0Y/RhiIsItCf0LvQsNC90Ysg0L/QviDQutGA0LXQtNC40YLQvtCy0LDQvdC40Y4g0LHQuNC30L3QtdGB0LAiXSwiZ292IjpbItCa0YLQviDQv9GA0LjQvdC40LzQsNC10YIg0YDQtdGI0LXQvdC40LUg4oCUINGD0YfRgNC10LbQtNC10L3QuNC1LCDRhtC10L3RgtGA0LDQu9C40LfQvtCy0LDQvdC90LDRjyDQsdGD0YXQs9Cw0LvRgtC10YDQuNGPINC40LvQuCDRg9GH0YDQtdC00LjRgtC10LvRjCIsItCT0LTQtSDQsdC70LjQttCw0LnRiNC40LUg0L7RgtC00LXQu9C10L3QuNGPINC4INCx0LDQvdC60L7QvNCw0YLRiyDQodCx0LXRgNCwIiwi0JrQsNC60LjQvNC4INC60LDRgNGC0LDQvNC4INGB0LXQudGH0LDRgSDQv9C+0LvRjNC30YPRjtGC0YHRjyDRgdC+0YLRgNGD0LTQvdC40LrQuCJdLCJza20iOlsi0KHQutC+0LvRjNC60L4g0L/Qu9C+0YnQsNC00L7QuiDQuCDRgdC80LXQvSwg0L3Rg9C20L3QsCDQu9C4INCy0YvQtdC30LTQvdCw0Y8g0LLRi9C00LDRh9CwINC60LDRgNGCIiwi0J/QvtGA0Y/QtNC+0Log0LTQvtGB0YLRg9C/0LAg0L3QsCDRgtC10YDRgNC40YLQvtGA0LjRjiDQtNC70Y8g0LLRi9C00LDRh9C4INC60LDRgNGCIiwi0KHQutC+0LvRjNC60L4g0YHQvtGC0YDRg9C00L3QuNC60L7QsiDQuCDQsiDQutCw0LrQuNGFINGA0LXQs9C40L7QvdCw0YUg0YDQsNCx0L7RgtCw0LXRgiDQv9GA0LXQtNC/0YDQuNGP0YLQuNC1Il19LCJXSFkiOnsibXVsdGliYW5rIjoi0YHQvtGC0YDRg9C00L3QuNC60Lgg0LIg0YDQsNC30L3Ri9GFINCx0LDQvdC60LDRhSIsImMxIjoi0LHRg9GF0LPQsNC70YLQtdGA0LjRjyDQsiAx0KEiLCJnaWciOiLQtdGB0YLRjCDRgdCw0LzQvtC30LDQvdGP0YLRi9C1IC8g0JPQn9ClIiwiZm9yZWlnbiI6ItC10YHRgtGMINC40L3QvtGB0YLRgNCw0L3QvdGL0LUg0YDQsNCx0L7RgtC90LjQutC4IiwiaGlyZSI6ItC00LXRhNC40YbQuNGCINC60LDQtNGA0L7QsiIsInJldGFpbiI6ItCy0LDQttC90L4g0YPQtNC10YDQttCw0L3QuNC1IiwidG9wIjoi0YHQuNC70YzQvdGL0Lkg0KLQntCfLdC80LXQvdC10LTQttC80LXQvdGCIiwic2l0ZXMiOiLQvdC10YHQutC+0LvRjNC60L4g0L/Qu9C+0YnQsNC00L7QuiIsIm53Ijoi0YDQtdCz0LjQvtC9INGBINC60LDRgNGC0L7QuSDQttC40YLQtdC70Y8iLCJvdGhlciI6ItGB0YfRkdGCINCyINC00YDRg9Cz0L7QvCDQsdCw0L3QutC1IiwibCI6IjI1MOKAkzEwMDAg0YHQvtGC0YDRg9C00L3QuNC60L7QsiIsInhsIjoiMTAwMCsg0YHQvtGC0YDRg9C00L3QuNC60L7QsiIsInMxNTAiOiLRgdGA0LXQtNC90Y/RjyDQl9CfINC+0YIgMTUwINGC0YvRgS4g4oK9IiwiczUwMCI6ItGB0YDQtdC00L3Rj9GPINCX0J8g0L7RgiA1MDAg0YLRi9GBLiDigr0ifSwiU0kiOnsia2V5IjowLCJrc2IiOjEsIm1tYiI6MiwiZ292IjozLCJza20iOjR9LCJFWCI6eyJtdWx0aSI6ItCa0LDQuiDRgdC10LnRh9Cw0YEg0LLRi9C/0LvQsNGH0LjQstCw0LXRgtGB0Y8g0LfQsNGA0L/Qu9Cw0YLQsCDQsiDRgNCw0LfQvdGL0LUg0LHQsNC90LrQuCDigJQg0LLQvtC30LzQvtC20L3QvtGB0YLRjCDQnNGD0LvRjNGC0LjRgNC10LXRgdGC0YDQsCDQtNC70Y8g0Y3RgtC+0LPQviDQutC70LjQtdC90YLQsCDRg9GC0L7Rh9C90LjRgtC1INGDINC30LDQutGA0LXQv9C70ZHQvdC90L7Qs9C+INCc0JfQny/QodCX0J8iLCJya28iOiLQk9C00LUg0L7RgtC60YDRi9GCINGA0LDRgdGH0ZHRgtC90YvQuSDRgdGH0ZHRgiDigJQg0LLQvtC30LzQvtC20L3QvtGB0YLRjCDQt9Cw0YDQv9C70LDRgtC90L7Qs9C+INC/0YDQvtC10LrRgtCwINCx0LXQtyDQoNCa0J4g0LIg0KHQsdC10YDQtSDRg9GC0L7Rh9C90LjRgtC1INGDINC30LDQutGA0LXQv9C70ZHQvdC90L7Qs9C+INCc0JfQny/QodCX0J8ifX0='))))}catch(e){return}
+  var SEG=D.SEG,SIZE=D.SIZE,PAY=D.PAY,F=D.F,ASK=D.ASK,WHY=D.WHY,SI=D.SI,EX=D.EX;
   function val(n){var e=form.querySelector('input[name="'+n+'"]:checked');return e?e.value:''}
   function flags(){var o={};[].forEach.call(form.querySelectorAll('input[name="f"]:checked'),function(e){o[e.value]=1});return o}
-  var WHY={multibank:'сотрудники в разных банках',c1:'бухгалтерия в 1С',gig:'есть самозанятые / ГПХ',foreign:'есть иностранные работники',hire:'дефицит кадров',retain:'важно удержание',top:'сильный ТОП-менеджмент',sites:'несколько площадок',nw:'регион с картой жителя',other:'счёт в другом банке',l:'250–1000 сотрудников',xl:'1000+ сотрудников',s150:'средняя ЗП от 150 тыс. ₽',s500:'средняя ЗП от 500 тыс. ₽'};
-  var SI={key:0,ksb:1,mmb:2,gov:3,skm:4};
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   function render(){
     var seg=val('seg')||'ksb', size=val('size')||'m', pay=val('pay')||'p70', rko=val('rko')||'sber', fl=flags();
@@ -1414,29 +1448,28 @@ a.tag{text-decoration:none}
       var s=f.w[SI[seg]], why=[];
       for(var k in f.t){ if(ctx[k]){ s+=f.t[k]; if(WHY[k] && why.indexOf(WHY[k])<0) why.push(WHY[k]); } }
       if(s<=0 && !f.pin) return;
-      list.push({f:f,s:s,why:why,d:f.dfn?f.dfn(ctx):f.d});
+      list.push({f:f,s:s,why:why,d:(ctx.s70&&f.d70)?f.d70:f.d});
     });
     list.sort(function(a,b){return b.s-a.s});
     var pi=-1; list.forEach(function(x,i){if(x.f.pin)pi=i});
     if(pi>6){ var p=list.splice(pi,1)[0]; list.splice(6,0,p); }
     var top=list.slice(0,7), more=list.slice(7,12);
-    var warn=COMMON.concat(NOPE[seg]);
-    if(rko==='other' && ['mmb','skm'].indexOf(seg)>-1) warn.unshift('Зарплатный проект без РКО в Сбере — опция для РГС и КСБ (и холдингов KeyClients): возможность для этого клиента уточните в SberHelp.');
-    if(ctx.multibank && ['mmb','gov','skm'].indexOf(seg)>-1) warn.unshift('Сотрудники в разных банках, но Мультиреестр — опция для РГС и КСБ: возможность для этого клиента уточните в SberHelp.');
-    var prof=[SEG[seg],SIZE[size],PAY[pay],rko==='other'?'РКО в другом банке':rko==='gov'?'казначейство':'РКО в Сбере','СЗБ'].concat(Object.keys(fl).map(function(k){return WHY[k]}).filter(Boolean));
+    var topics=ASK[seg].slice();
+    if(ctx.multibank && ['mmb','gov','skm'].indexOf(seg)>-1) topics.push(EX.multi);
+    if(rko==='other' && ['mmb','skm'].indexOf(seg)>-1) topics.push(EX.rko);
+    var prof=[SEG[seg],SIZE[size],PAY[pay],rko==='other'?'РКО в другом банке':rko==='gov'?'казначейство':'РКО в Сбере'].concat(Object.keys(fl).map(function(k){return WHY[k]}).filter(Boolean));
     var h='';
     h+='<header class="op-head"><div class="eyebrow">Шпаргалка к встрече · '+new Date().toLocaleDateString('ru-RU')+'</div><h3>ТОП фич для компании</h3><div class="op-prof">'+prof.map(function(p){return '<span>'+esc(p)+'</span>'}).join('')+'</div></header>';
     h+='<ol class="op-top">';
     top.forEach(function(x,i){
-      h+='<li><div class="op-n">'+(i+1)+'</div><div class="op-b"><div class="op-t"><a href="'+x.f.href+'">'+esc(x.f.t0)+'</a>'+(x.f.pin?' <span class="flag">Всегда в ТОП</span>':'')+(x.f.check?' <span class="flag">Уточнить</span>':'')+'</div><p>'+esc(x.d)+'</p>'+(x.why.length?'<div class="op-why">Почему для них: '+esc(x.why.join(', '))+'</div>':'')+'<div class="op-say">'+esc(x.f.say)+'</div></div></li>';
+      h+='<li><div class="op-n">'+(i+1)+'</div><div class="op-b"><div class="op-t"><a href="'+x.f.href+'">'+esc(x.f.t0)+'</a>'+(x.f.pin?' <span class="flag">Всегда в ТОП</span>':'')+'</div><p>'+esc(x.d)+'</p>'+(x.why.length?'<div class="op-why">Почему для них: '+esc(x.why.join(', '))+'</div>':'')+'<div class="op-say">'+esc(x.f.say)+'</div></div></li>';
     });
     h+='</ol>';
     if(more.length) h+='<div class="op-more"><b>Если останется время:</b> '+more.map(function(x){return '<a href="'+x.f.href+'">'+esc(x.f.t0)+'</a>'}).join(' · ')+'</div>';
-    h+='<div class="op-grid"><div class="op-box warn"><h4>Не обещать</h4><ul>'+warn.map(function(w){return '<li>'+esc(w)+'</li>'}).join('')+'</ul></div>';
-    h+='<div class="op-box"><h4>Спросить на встрече</h4><ul>'+ASK[seg].map(function(w){return '<li>'+esc(w)+'</li>'}).join('')+'</ul></div></div>';
+    h+='<div class="op-box op-discuss"><h4>Важно обсудить с компанией</h4><ul>'+topics.map(function(w){return '<li>'+esc(w)+'</li>'}).join('')+'</ul></div>';
     h+='<div class="op-actions"><button type="button" id="op-copy">Скопировать текстом</button><button type="button" id="op-print" hidden>Печать / PDF</button><span id="op-msg" role="status"></span></div>';
     out.innerHTML=h;
-    out._text=['ТОП фич для компании — '+prof.join(', '),''].concat(top.map(function(x,i){return (i+1)+'. '+x.f.t0+(x.f.check?' (уточнить)':'')+' — '+x.d+(x.why.length?' Почему для них: '+x.why.join(', ')+'.':'')+' Сказать: '+x.f.say})).concat(['','Не обещать:'],warn.map(function(w){return '— '+w}),['','Спросить:'],ASK[seg].map(function(w){return '— '+w})).join('\n');
+    out._text=['ТОП фич для компании — '+prof.join(', '),''].concat(top.map(function(x,i){return (i+1)+'. '+x.f.t0+' — '+x.d+(x.why.length?' Почему для них: '+x.why.join(', ')+'.':'')+' Сказать: '+x.f.say})).concat(['','Важно обсудить с компанией:'],topics.map(function(w){return '— '+w})).join('\n');
     var top_=true; try{top_=window.self===window.top}catch(e){top_=false}
     var pb=document.getElementById('op-print'); if(top_){pb.hidden=false;pb.onclick=function(){document.documentElement.classList.add('printing-pick');window.print();setTimeout(function(){document.documentElement.classList.remove('printing-pick')},500)}}
     document.getElementById('op-copy').onclick=function(){
@@ -1449,7 +1482,6 @@ a.tag{text-decoration:none}
   form.addEventListener('reset',function(){setTimeout(render,0)});
   render();
 })();
-
 </script>
 
 </body>
