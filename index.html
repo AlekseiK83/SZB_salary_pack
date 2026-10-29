@@ -356,6 +356,14 @@ a.tag{text-decoration:none}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
+
+/* сроки: автопометка завершённых акций и пилотов */
+.exp-banner{background:var(--flag-soft);color:var(--ink);border-left:4px solid var(--flag);border-radius:10px;padding:12px 14px;margin:0 0 18px;font-size:15px}
+.exp-banner b{color:var(--flag)}
+.is-expired > a .tt,.is-expired > a .ds,.is-expired > a .fig{opacity:.55}
+.exp-flag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;background:var(--flag);color:var(--on-acc);border-radius:4px;padding:2px 7px;margin-left:6px;vertical-align:2px;opacity:1!important}
+.exp-note{display:block;margin-top:6px;font-size:13px;color:var(--flag);font-weight:600}
+section.panel.is-expired{outline:2px dashed var(--flag);outline-offset:-2px}
 /* r18: обновления, дисклеймер */
 .upd-widget:empty{display:none}
 .upd-card{display:block;text-decoration:none;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 14px;color:var(--ink)}
@@ -452,7 +460,7 @@ footer.site p{margin:0}
         <a href="#bank-site">Сайт банка</a>
         <a href="paket-prodavca-zp.pdf" target="_blank" rel="noopener nofollow">PDF</a>
       </nav>
-      <p class="hub-date">Актуально на 28.10.2026 · неофициальный материал</p>
+      <p class="hub-date">Актуально на 29.10.2026 · неофициальный материал</p>
     </section>
 
     <div class="hero">
@@ -464,7 +472,7 @@ footer.site p{margin:0}
         <a class="hero-cta has-beta" href="#pick">Подобрать ТОП фич для компании →<span class="beta-badge"><i aria-hidden="true"></i><b>Beta version</b><span class="bb-sep" aria-hidden="true"></span>в режиме тестирования</span></a>
       </div>
       <div class="stamp">
-        <div><b>Актуально на 28.10.2026.</b> Неофициальный материал, собран из информации в открытых источниках. Для передачи клиентам используйте только утверждённые формы офферов и презентаций.</div>
+        <div><b>Актуально на 29.10.2026.</b> Неофициальный материал, собран из информации в открытых источниках. Для передачи клиентам используйте только утверждённые формы офферов и презентаций.</div>
         <div>Ставки и тарифы меняются. Перед встречей сверьте цифры с действующими условиями.</div>
         <div class="upd-widget" data-upd></div>
         <div>Пометки у строк: <span class="flag">Пилот</span> — работает только на части территорий, <span class="flag">РГС · КСБ</span> — только для этих сегментов, <span class="flag new">Новое</span> — недавно запущенная опция.</div>
@@ -504,11 +512,11 @@ footer.site p{margin:0}
           <li><a href="#emp-cashback"><span class="fig">до 10<small>%</small></span><span><span class="tt">Кешбэк СберСпасибо</span><span class="ds">Вся линейка карт 2026 и лимиты бонусов</span></span><span class="go">→</span></a></li>
           <li><a href="#emp-credit"><span class="fig">−2 <small>п.п.</small></span><span><span class="tt">Кредиты и ипотека</span><span class="ds">Скидки к ставке, «Деньги до зарплаты», кредитная карта 120 дней без процентов</span></span><span class="go">→</span></a></li>
           <li><a href="#emp-savings"><span class="fig">12,65<small>%</small></span><span><span class="tt">Вклады и счета</span><span class="ds">Зарплатный Максимум и вся линейка сбережений</span></span><span class="go">→</span></a></li>
-          <li><a href="#emp-mobile"><span class="fig">0 <small>₽/мес</small></span><span><span class="tt">СберМобайл</span><span class="ds">Тариф «Для профессионалов» бесплатно до 12 месяцев</span></span><span class="go">→</span></a></li>
+          <li data-until="2027-12-31" data-until-text="Акция СберМобайл «Для профессионалов» завершилась 31.12.2027. Актуальные условия — на sberbank.ru."><a href="#emp-mobile"><span class="fig">0 <small>₽/мес</small></span><span><span class="tt">СберМобайл</span><span class="ds">Тариф «Для профессионалов» бесплатно до 12 месяцев</span></span><span class="go">→</span></a></li>
           <li><a href="#emp-partners"><span class="fig">−40<small>%</small></span><span><span class="tt">Скидки партнёров</span><span class="ds">СберЗдоровье, СберПраво, СитиДрайв и раздел «Для жизни»</span></span><span class="go">→</span></a></li>
-          <li><a href="#emp-promo"><span class="fig">185 <small>млн</small></span><span><span class="tt">Акция «185 млн бонусов»</span><span class="ds">1 000 победителей. Этап 2 — любое зарплатное зачисление с 1 по 30 ноября</span></span><span class="go">→</span></a></li>
+          <li data-until="2026-11-30" data-until-text="Приём зарплатных зачислений для акции «185 млн бонусов» завершился 30.11.2026. Не предлагайте акцию клиентам — актуальные акции смотрите на sberbank.ru."><a href="#emp-promo"><span class="fig">185 <small>млн</small></span><span><span class="tt">Акция «185 млн бонусов»</span><span class="ds">1 000 победителей. Этап 2 — любое зарплатное зачисление с 1 по 30 ноября</span></span><span class="go">→</span></a></li>
           <li><a href="#emp-supreme"><span class="fig">7<small>%</small></span><span><span class="tt">МИР Supreme</span><span class="ds">Кешбэк в ресторанах и на такси с 1 октября</span></span><span class="go">→</span></a></li>
-          <li><a href="#emp-premium"><span class="fig">150+ <small>тыс.</small></span><span><span class="tt">Высокий доход</span><span class="ds">Бесплатные СберПрайм (от 150 тыс. ₽) и СберПремьер (от 500 тыс. ₽), пока выполняется зарплатный критерий <span class="flag">Пилот</span></span></span><span class="go">→</span></a></li>
+          <li data-until="2027-02-28" data-until-text="Пилот бесплатного СберПрайм завершился 28.02.2027. Условия после пилота уточняйте у закреплённого МЗП/СЗП."><a href="#emp-premium"><span class="fig">150+ <small>тыс.</small></span><span><span class="tt">Высокий доход</span><span class="ds">Бесплатные СберПрайм (от 150 тыс. ₽) и СберПремьер (от 500 тыс. ₽), пока выполняется зарплатный критерий <span class="flag">Пилот</span></span></span><span class="go">→</span></a></li>
           <li><a href="#emp-switch"><span class="fig">3 <small>шага</small></span><span><span class="tt">Как перейти</span><span class="ds">Памятка сотруднику: QR, ИНН работодателя, отделение, заявление</span></span><span class="go">→</span></a></li>
         </ul>
       </section>
@@ -787,7 +795,7 @@ footer.site p{margin:0}
       <li><span><b>Реквизиты.</b> Сотрудники оформляют новую карту или используют имеющуюся: реквизиты можно отправить по QR-коду или прямо в СберБанк Онлайн по ИНН работодателя. HR запрашивает бумажное заявление и после его получения подтверждает запрос в «Справочнике сотрудников».</span></li>
       <li><span><b>Первый реестр.</b> Отправка ведомости прямо из 1С (1С:ДиректБанк) или выгрузка и загрузка в СберБизнес — 3–4 клика. После первого зачисления у сотрудников включаются бонусы и скидки.</span></li>
     </ol></section>
-    <section class="full script"><span class="eyebrow">Завершение встречи</span>«Предлагаю оформить заявку, а я направлю памятку с QR-кодом для ваших сотрудников. Если с 1 по 30 ноября на карты Сбера придёт хотя бы одно зарплатное зачисление, а сотрудники зарегистрируются в СберСпасибо, они станут участниками второго этапа акции «185 млн бонусов»».</section>
+    <section class="full script" data-until="2026-11-30" data-until-text="акция «185 млн бонусов» завершена"><span class="eyebrow">Завершение встречи</span>«Предлагаю оформить заявку, а я направлю памятку с QR-кодом для ваших сотрудников. Если с 1 по 30 ноября на карты Сбера придёт хотя бы одно зарплатное зачисление, а сотрудники зарегистрируются в СберСпасибо, они станут участниками второго этапа акции «185 млн бонусов»».</section>
   </div>
   <p class="src">Источник: материалы банка; sberbusiness.live, 21.08.2026.</p>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-hr"><span>Назад</span>← Подбор персонала</a><a href="#biz-anybank"><span>Дальше</span>Мультиреестр →</a></nav>
@@ -984,7 +992,7 @@ footer.site p{margin:0}
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-credit"><span>Назад</span>← Кредиты и ипотека</a><a href="#emp-mobile"><span>Дальше</span>СберМобайл →</a></nav>
 </div></section>
 
-<section class="view emp" id="emp-mobile" aria-labelledby="t-emp-mobile"><div class="wrap">
+<section class="view emp" id="emp-mobile" aria-labelledby="t-emp-mobile" data-until="2027-12-31" data-until-text="Акция СберМобайл «Для профессионалов» завершилась 31.12.2027. Актуальные условия — на sberbank.ru."><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>6 из 11</span></div>
   <div class="view-head"><div><h2 id="t-emp-mobile">Мобильная связь за 0 ₽</h2><p class="intro">Тариф СберМобайл «Для профессионалов»: плату за связь зарплатным клиентам отменили на срок до 12 месяцев.</p></div><div class="big">0 ₽<small>в месяц вместо 630 ₽, скидка 100% на срок до 12 месяцев</small></div></div>
   <div class="body">
@@ -1029,7 +1037,7 @@ footer.site p{margin:0}
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-mobile"><span>Назад</span>← СберМобайл</a><a href="#emp-promo"><span>Дальше</span>Акция «185 млн бонусов» →</a></nav>
 </div></section>
 
-<section class="view emp" id="emp-promo" aria-labelledby="t-emp-promo"><div class="wrap">
+<section class="view emp" id="emp-promo" aria-labelledby="t-emp-promo" data-until="2026-11-30" data-until-text="Приём зарплатных зачислений для акции «185 млн бонусов» завершился 30.11.2026. Не предлагайте акцию клиентам — актуальные акции смотрите на sberbank.ru."><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>8 из 11</span></div>
   <div class="view-head"><div><h2 id="t-emp-promo">185 млн бонусов СберСпасибо</h2><p class="intro">Акция с 01.10.2026 по 25.12.2026. Участвуют клиенты старше 18 лет, новые и действующие получатели зарплаты.</p></div><div class="big">185 000<small>бонусов каждому победителю, в каждом из двух этапов</small></div></div>
   <div class="body">
@@ -1083,13 +1091,13 @@ footer.site p{margin:0}
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>10 из 11</span></div>
   <div class="view-head"><div><h2 id="t-emp-premium">Высокий доход <span class="flag">Пилот</span></h2><p class="intro">Пилоты доступны в части территорий — точную географию уточняйте у закреплённого МЗП/СЗП. Для клиентов 18+, подключение по акцепту клиента.</p></div><div class="big">500+<small>тыс. ₽ в месяц — бесплатный СберПремьер 2-го уровня</small></div></div>
   <div class="body">
-    <section class="panel"><h3>Зарплата от 150 тыс. ₽/мес → СберПрайм бесплатно</h3><ul class="ticks">
+    <section class="panel" data-until="2027-02-28" data-until-text="Пилот бесплатного СберПрайм завершился 28.02.2027. Условия после пилота уточняйте у закреплённого МЗП/СЗП."><h3>Зарплата от 150 тыс. ₽/мес → СберПрайм бесплатно</h3><ul class="ticks">
       <li>Срок пилота: 10.09.2026 – 28.02.2027.</li>
       <li>Подключение — по зарплатным зачислениям за прошлый месяц, с 8-го числа.</li>
       <li>Выполнение критерия проверяется ежемесячно, 7-го числа. Не выполнен — подписка отключается в дату завершения клиентского месяца.</li>
       <li>Недоступно клиентам с подключённой экосистемной подпиской Прайм.</li>
     </ul></section>
-    <section class="panel"><h3>Зарплата от 500 тыс. ₽/мес → СберПремьер 2-го уровня бесплатно</h3><ul class="ticks">
+    <section class="panel" data-until="2027-02-07" data-until-text="Пилот бесплатного СберПремьер завершился 07.02.2027. Условия после пилота уточняйте у закреплённого МЗП/СЗП."><h3>Зарплата от 500 тыс. ₽/мес → СберПремьер 2-го уровня бесплатно</h3><ul class="ticks">
       <li>Срок пилота: 08.09.2026 – 07.02.2027.</li>
       <li>Подключение — тем, у кого нет пакета Премьер. Проверка для подключения — ежедневно, для пролонгации — 7-го числа.</li>
       <li>Пролонгация по зарплатному критерию — в том числе тем, у кого Премьер уже был.</li>
@@ -1230,7 +1238,7 @@ footer.site p{margin:0}
       <p class="cap" style="margin-top:12px"><b>Крупнейший бизнес и СКМ</b> — сценарий №1. <b>Бюджетная организация</b> — расчёт выгоды для учреждения не применяется: говорите о выгодах для сотрудников, как в сценарии №2.</p>
     </details>
     <details><summary>«Сотрудники не пойдут в отделение»</summary><p>Визит в отделение не обязателен. С картой Сбера реквизиты передаются по QR или прямо в приложении по ИНН работодателя. Без карты — от 2 минут в отделении или выездная выдача моментальных карт прямо на предприятии (<a href="#biz-requisites">реквизиты</a>, <a href="#biz-cards">выпуск карт</a>).</p></details>
-    <details><summary>«В чём выгода для сотрудников?»</summary><p>Бесплатная карта без условий, кешбэк до 10% в повышенных категориях, ставка по кредиту на 2 п.п. ниже, связь до 12 месяцев за 0 ₽ при переносе номера, шанс выиграть 185 000 бонусов за зарплатное зачисление до 30 ноября, а также надёжный банк и бесплатные сервисы защиты от мошенников (<a href="#emp-card">все привилегии</a>, <a href="#emp-security">безопасность</a>).</p></details>
+    <details><summary>«В чём выгода для сотрудников?»</summary><p data-until="2026-11-30" data-until-text="акция «185 млн бонусов» завершена">Бесплатная карта без условий, кешбэк до 10% в повышенных категориях, ставка по кредиту на 2 п.п. ниже, связь до 12 месяцев за 0 ₽ при переносе номера, шанс выиграть 185 000 бонусов за зарплатное зачисление до 30 ноября, а также надёжный банк и бесплатные сервисы защиты от мошенников (<a href="#emp-card">все привилегии</a>, <a href="#emp-security">безопасность</a>).</p></details>
     <details><summary>«У нас подрядчики и иностранцы»</summary><p>Самозанятым можно платить без комиссии, с автопроверкой статуса и чеками. Нерезидентам по ГПХ — валютный контроль по общей сумме реестра, а не по каждой выплате. При дефиците кадров Работа.ру поможет с подбором (<a href="#biz-gig">подробнее</a>).</p></details>
   </div></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-switch"><span>Назад</span>← Как перейти</a><a href="#sources"><span>Дальше</span>Источники →</a></nav>
@@ -1276,7 +1284,7 @@ footer.site p{margin:0}
   <a href="#objections" data-tab="obj"><span class="tb-dot obj"></span>Возражения</a>
 </nav>
 
-<footer class="site"><div class="wrap"><p class="disc">Неофициальный материал, собран из информации в открытых источниках. Это информационное саммари по продуктам и услугам Сбера для сотрудников банка; для передачи клиентам используйте только утверждённые формы офферов и презентаций. Не является публичной офертой. ПАО Сбербанк, генеральная лицензия Банка России № 1481. Актуальные условия — на <a href="https://www.sberbank.ru" target="_blank" rel="noopener">sberbank.ru</a>.</p><p>Пакет продавца · Зарплатный проект Сбера · актуально на 28.10.2026 · <a href="#updates">Обновления</a> · <a href="#sources">Источники</a></p></div></footer>
+<footer class="site"><div class="wrap"><p class="disc">Неофициальный материал, собран из информации в открытых источниках. Это информационное саммари по продуктам и услугам Сбера для сотрудников банка; для передачи клиентам используйте только утверждённые формы офферов и презентаций. Не является публичной офертой. ПАО Сбербанк, генеральная лицензия Банка России № 1481. Актуальные условия — на <a href="https://www.sberbank.ru" target="_blank" rel="noopener">sberbank.ru</a>.</p><p>Пакет продавца · Зарплатный проект Сбера · актуально на 29.10.2026 · <a href="#updates">Обновления</a> · <a href="#sources">Источники</a></p></div></footer>
 
 <script>
 (function(){
@@ -1325,10 +1333,34 @@ footer.site p{margin:0}
   }
 })();
 
+/* ===== Сроки: акции и пилоты с истёкшей датой помечаются автоматически =====
+   Дата берётся из data-until (ГГГГ-ММ-ДД, из справочника фактов). Для проверки: ?today=ГГГГ-ММ-ДД */
+(function(){
+  var q=(location.search.match(/[?&]today=(\d{4}-\d{2}-\d{2})/)||[])[1];
+  var d=new Date(), today=q||(d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'));
+  [].forEach.call(document.querySelectorAll('[data-until]'),function(el){
+    var until=el.getAttribute('data-until'); if(!until||today<=until) return;
+    var txt=el.getAttribute('data-until-text')||'Срок истёк';
+    el.classList.add('is-expired');
+    if(el.matches('section.view')){
+      var b=document.createElement('div'); b.className='exp-banner'; b.setAttribute('role','note');
+      b.innerHTML='<b>Срок истёк.</b> '; b.appendChild(document.createTextNode(txt));
+      var vh=el.querySelector('.view-head'); vh.parentNode.insertBefore(b,vh);
+    } else if(el.matches('li')){
+      var tt=el.querySelector('.tt'); if(tt){var f=document.createElement('span'); f.className='exp-flag'; f.textContent='Завершено'; f.title=txt; tt.appendChild(f)}
+    } else if(el.matches('section.panel')){
+      var h=el.querySelector('h3'); var f2=document.createElement('span'); f2.className='exp-flag'; f2.textContent='Завершено'; h.appendChild(f2);
+      var n=document.createElement('p'); n.className='exp-note'; n.textContent=txt; h.parentNode.insertBefore(n,h.nextSibling);
+    } else {
+      var n2=document.createElement('span'); n2.className='exp-note'; n2.textContent='Внимание: '+txt+'.'; el.appendChild(n2);
+    }
+  });
+})();
 /* ===== Обновления базы знаний =====
    Как добавить запись: допишите объект в начало массива UPDATES.
    d — дата (ГГГГ-ММ-ДД), tag — раздел, t — заголовок, href — ссылка на раздел, x — короткое пояснение. */
 var UPDATES=[
+ {d:'2026-10-29',tag:'Справка',t:'Сроки акций и пилотов отслеживаются автоматически',href:'#emp-promo',x:'После даты окончания раздел и строка на главной получают пометку «Срок истёк» / «Завершено».'},
  {d:'2026-10-28',tag:'Компании',t:'Конструктор выгод и «Скоро на полке»',href:'#biz-preferences',x:'С 9 октября — Конструктор выгод; скоро — телемедицина и электронная образовательная платформа.'},
  {d:'2026-10-28',tag:'Компании',t:'Скидка до 2 п.п. по кредиту для бизнеса — для сегмента ММБ',href:'#biz-money',x:'Уточнено, для каких клиентов действует скидка.'},
  {d:'2026-10-23',tag:'Компании',t:'ЭКТМ для компаний Санкт-Петербурга и Ленобласти',href:'#biz-hr',x:'Электронная карта трудового мигранта и ссылка на карты для иностранных граждан.'},
