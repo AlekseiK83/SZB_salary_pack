@@ -371,6 +371,62 @@ a.tag{text-decoration:none}
 .exp-flag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;background:var(--flag);color:var(--on-acc);border-radius:4px;padding:2px 7px;margin-left:6px;vertical-align:2px;opacity:1!important}
 .exp-note{display:block;margin-top:6px;font-size:13px;color:var(--flag);font-weight:600}
 section.panel.is-expired{outline:2px dashed var(--flag);outline-offset:-2px}
+
+/* r20: калькулятор выгоды, строка актуальности, отзывы о разделах, поиск */
+#cl-big{font-size:clamp(30px,4.6vw,52px)}
+.cl-kpi b small{font-family:var(--body);font-size:14px;font-weight:600;letter-spacing:0}
+.calc{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:28px;align-items:start;margin-top:26px}
+.calc-form{display:grid;gap:14px}
+.calc-form fieldset{border:0;margin:0;padding:0;display:grid;gap:10px;min-width:0}
+.calc>*{min-width:0}
+.calc-form legend{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;padding:0}
+.cl-f{display:grid;gap:4px;font-size:14px;color:var(--muted)}
+.cl-f input{font:inherit;font-size:16px;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:9px 12px;width:100%}
+.cl-f input:focus-visible{outline:2px solid var(--emp);outline-offset:1px;border-color:var(--emp)}
+.calc-ass{border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--surface)}
+.calc-ass summary{cursor:pointer;font-weight:600;font-size:15px}
+.calc-ass[open]{display:grid;gap:10px}
+.calc-ass[open] summary{margin-bottom:4px}
+.cl-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--emp)}
+.cl-kpi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.cl-kpi div{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;gap:4px}
+.cl-kpi div:first-child{border-color:var(--emp);background:var(--emp-soft)}
+.cl-kpi b{font-family:var(--display);font-size:clamp(20px,2.4vw,26px);line-height:1.1;letter-spacing:-.01em}
+.cl-kpi span{font-size:13px;color:var(--muted)}
+.cl-t{width:100%;min-width:0!important;border-collapse:collapse;margin-top:16px;font-size:15px}
+.cl-t th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:1.5px solid var(--line)}
+.cl-t td{padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.cl-t td small{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.cl-t .r{text-align:right;white-space:nowrap}
+.cl-t td.r{font-weight:600}
+.cl-t tr.zero td{color:var(--muted)}
+.cl-comp{margin-top:14px;background:var(--biz-soft);border-radius:12px;padding:12px 14px;font-size:15px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:600px){.cl-t thead{display:none}.cl-t,.cl-t tbody,.cl-t tr,.cl-t td{display:block;width:100%}.cl-t tr{border-bottom:1px solid var(--line);padding:10px 0}.cl-t td{border:0;padding:2px 0}.cl-t td.r{text-align:left;white-space:normal}.cl-t td.r small{display:inline;margin-left:4px}.cl-t td:nth-child(2)::before{content:'Кому: ';color:var(--muted)}.cl-t td:nth-child(3)::before{content:'В год: ';color:var(--muted);font-weight:400}}
+
+@media (max-width:900px){.calc{grid-template-columns:1fr}.cl-kpi{grid-template-columns:1fr}}
+.sec-meta{font-size:13px;color:var(--muted);margin:10px 0 0;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+.sec-meta .sec-src{font:inherit;font-size:13px;background:none;border:0;padding:0;color:var(--muted);text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+.sec-meta .sec-src:hover{color:var(--ink)}
+.src-flash{animation:srcflash 1.6s ease}
+@keyframes srcflash{0%,40%{background:var(--flag-soft)}100%{background:transparent}}
+.fb-box{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:28px;padding:14px 16px;border:1px dashed var(--line);border-radius:12px;font-size:15px}
+.fb-q{font-weight:600;margin-right:4px}
+.fb-b{font:inherit;font-size:14px;font-weight:600;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer}
+.fb-b:hover{border-color:var(--ink)}
+.fb-b[disabled]{opacity:.6;cursor:default}
+.fb-more{flex-basis:100%;display:grid;gap:8px}
+.fb-more textarea{font:inherit;font-size:15px;border:1.5px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--bg);color:var(--ink);width:100%;min-height:70px;resize:vertical}
+.fb-more div{display:flex;gap:8px;flex-wrap:wrap}
+.fb-msg{font-size:14px;color:var(--muted)}
+.fb-msg.err{color:var(--flag)}
+.sr-fix{font-style:italic}
+@media print{.fb-box,.sec-meta .sec-src{display:none}}
+.hero-cta.alt{display:flex;width:max-content;max-width:100%;margin-top:14px;background:var(--surface);color:var(--ink);border:1.5px solid var(--line)}
+.hero-cta.alt:hover{border-color:var(--emp)}
+.hero-cta.alt .flag{background:var(--flag-soft);color:var(--flag)}
+.hub-pick.cl-hub{border-color:var(--emp)}
+.op-calc{font-size:14px;font-weight:600;color:var(--biz);text-decoration:underline;text-underline-offset:2px}
 /* r18: обновления, дисклеймер */
 .upd-widget:empty{display:none}
 .upd-card{display:block;text-decoration:none;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 14px;color:var(--ink)}
@@ -461,13 +517,14 @@ footer.site p{margin:0}
         <span class="hub-go" aria-hidden="true">→</span>
       </a>
       <a class="hub-pick has-beta" href="#pick"><span>Подобрать ТОП фич для компании<small>5 вопросов → шпаргалка к встрече</small></span><span aria-hidden="true">→</span><span class="beta-badge"><i aria-hidden="true"></i><b>Beta version</b><span class="bb-sep" aria-hidden="true"></span>в режиме тестирования</span></a>
+      <a class="hub-pick cl-hub" href="#calc"><span>Выгода для коллектива <span class="flag">Beta</span><small>Сколько сотрудники получат за год — в рублях и бонусах</small></span><span aria-hidden="true">→</span></a>
       <div class="upd-widget" data-upd></div>
       <nav class="hub-links" aria-label="Быстрые ссылки">
         <a href="#objections">Возражения</a>
         <a href="#bank-site">Сайт банка</a>
         <a href="paket-prodavca-zp.pdf" target="_blank" rel="noopener nofollow">PDF</a>
       </nav>
-      <p class="hub-date">Актуально на 29.10.2026 · неофициальный материал</p>
+      <p class="hub-date">Актуально на 03.11.2026 · неофициальный материал</p>
     </section>
 
     <div class="hero">
@@ -477,9 +534,10 @@ footer.site p{margin:0}
         <p class="lede">В колонке «Компании» — выгоды для руководителя и бухгалтерии, в колонке «Сотрудникам» — привилегии, которые получает каждый сотрудник. Каждая строка ведёт в раздел с условиями, цифрами и формулировкой для клиента.</p>
         <p class="award-line">Сбер — «Лучший зарплатный онлайн-банк для корпоративных клиентов» по версии Frank RG, Frank Award 2026.</p>
         <a class="hero-cta has-beta" href="#pick">Подобрать ТОП фич для компании →<span class="beta-badge"><i aria-hidden="true"></i><b>Beta version</b><span class="bb-sep" aria-hidden="true"></span>в режиме тестирования</span></a>
+        <a class="hero-cta alt" href="#calc">Посчитать выгоду для коллектива <span class="flag">Beta</span> →</a>
       </div>
       <div class="stamp">
-        <div><b>Актуально на 29.10.2026.</b> Неофициальный материал, собран из информации в открытых источниках. Для передачи клиентам используйте только утверждённые формы офферов и презентаций.</div>
+        <div><b>Актуально на 03.11.2026.</b> Неофициальный материал, собран из информации в открытых источниках. Для передачи клиентам используйте только утверждённые формы офферов и презентаций.</div>
         <div>Ставки и тарифы меняются. Перед встречей сверьте цифры с действующими условиями.</div>
         <div class="upd-widget" data-upd></div>
         <div>Пометки у строк: <span class="flag">Пилот</span> — работает только на части территорий, <span class="flag">РГС · КСБ</span> — только для этих сегментов, <span class="flag new">Новое</span> — недавно запущенная опция.</div>
@@ -555,7 +613,7 @@ footer.site p{margin:0}
 <!-- ============================ КОМПАНИИ ============================ -->
 <section class="view biz" id="biz-money" aria-labelledby="t-biz-money"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>1 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-biz-money">Экономика для компании</h2><p class="intro">Базовые операции зарплатного проекта бесплатны. С этого стоит начинать разговор с финансовым директором.</p></div><div class="big">0 ₽<small>за зачисление зарплаты сотрудникам и выплаты самозанятым</small></div></div>
+  <div class="view-head"><div><h2 id="t-biz-money">Экономика для компании</h2><p class="intro">Базовые операции зарплатного проекта бесплатны. С этого стоит начинать разговор с финансовым директором.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 28.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">0 ₽<small>за зачисление зарплаты сотрудникам и выплаты самозанятым</small></div></div>
   <div class="body">
     <section><h3>Что бесплатно</h3><ul class="ticks">
       <li>Перечисление зарплаты сотрудникам и выплаты самозанятым без комиссии.</li>
@@ -575,12 +633,13 @@ footer.site p{margin:0}
     <section class="full script"><span class="eyebrow">Формулировка для клиента</span>«Зарплата и выплаты самозанятым проводятся без комиссии. Для малого и микробизнеса зарплатный проект даёт скидку до 2 п.п. к ставке по кредиту».</section>
   </div>
   <p class="src">Источник: sberbusiness.live, «Зарплатный проект Сбера для бизнеса», 21.08.2026; материалы банка.</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-biz-money">Что улучшить в разделе</label><textarea id="fb-biz-money" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#companies"><span>Назад</span>← Компании</a><a href="#biz-requisites"><span>Дальше</span>Реквизиты из СберБанк Онлайн →</a></nav>
 </div></section>
 
 <section class="view biz" id="biz-requisites" aria-labelledby="t-biz-requisites"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>2 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-biz-requisites">Реквизиты — напрямую из СберБанк Онлайн</h2><p class="intro">Сотрудник с картой или счётом в Сбере сам отправляет реквизиты своего счёта работодателю — прямо в СберБанк Онлайн. Бухгалтерии и HR не нужно собирать номера счетов вручную.</p></div><div class="big">2 способа<small>QR-код работодателя или ИНН работодателя</small></div></div>
+  <div class="view-head"><div><h2 id="t-biz-requisites">Реквизиты — напрямую из СберБанк Онлайн</h2><p class="intro">Сотрудник с картой или счётом в Сбере сам отправляет реквизиты своего счёта работодателю — прямо в СберБанк Онлайн. Бухгалтерии и HR не нужно собирать номера счетов вручную.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">2 способа<small>QR-код работодателя или ИНН работодателя</small></div></div>
   <div class="body">
     <section class="full"><div class="routes">
       <div class="route"><div class="route-n">1</div><div><h3>По QR-коду работодателя</h3><p>HR заранее формирует в СберБизнесе единый QR-код для договора (Зарплатный проект → Зарплатные карты → Новая карта → Добавить по QR-коду) и размещает памятку. Сотрудник сканирует QR камерой смартфона и подтверждает отправку реквизитов в СберБанк Онлайн.</p></div></div>
@@ -599,12 +658,13 @@ footer.site p{margin:0}
     <section class="full script"><span class="eyebrow">Формулировка для HR и бухгалтерии</span>«Вам не нужно собирать реквизиты: сотрудник с картой Сбера сам отправит их из своего приложения — по вашему QR-коду или просто введя ИНН компании. Заявка сразу появится в СберБизнесе».</section>
   </div>
   <p class="src">Источник: материалы банка; внутренние документы банка (подробности — у закреплённого МЗП/СЗП).</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-biz-requisites">Что улучшить в разделе</label><textarea id="fb-biz-requisites" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-money"><span>Назад</span>← Экономика</a><a href="#biz-sberbusiness"><span>Дальше</span>СберБизнес →</a></nav>
 </div></section>
 
 <section class="view biz" id="biz-sberbusiness" aria-labelledby="t-biz-sberbusiness"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>3 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-biz-sberbusiness">СберБизнес: инновационный бизнес-ассистент</h2><p class="intro">Всё про зарплатный проект собрано в одном кабинете: реестры, реквизиты сотрудников, статусы выплат, выпуск карт и документы. Типовые операции автоматизированы, а с реестрами можно работать в мобильном приложении.</p></div><div class="big">из 1С<small>с 21.10.2026 ведомость уходит в Сбер прямо из 1С, статус возвращается туда же</small></div></div>
+  <div class="view-head"><div><h2 id="t-biz-sberbusiness">СберБизнес: инновационный бизнес-ассистент</h2><p class="intro">Всё про зарплатный проект собрано в одном кабинете: реестры, реквизиты сотрудников, статусы выплат, выпуск карт и документы. Типовые операции автоматизированы, а с реестрами можно работать в мобильном приложении.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">из 1С<small>с 21.10.2026 ведомость уходит в Сбер прямо из 1С, статус возвращается туда же</small></div></div>
   <div class="body">
     <section><h3>Автоматизация</h3><ul class="ticks">
       <li><b>Новое с 21.10.2026 — ведомость прямо из 1С.</b> Бухгалтер отправляет зарплатную ведомость в Сбер из интерфейса 1С (1С:ДиректБанк), без выгрузки и ручной загрузки, а статус обработки и зачисления возвращается в 1С. Если обмен через Sber API уже был настроен, его нужно настроить заново (<a href="https://sberbusiness.live/news/zarplatnuyu-vedomost-v-sber-mozhno-otpravit-iz-1s" target="_blank" rel="noopener">новость Сбера</a>).</li>
@@ -630,12 +690,13 @@ footer.site p{margin:0}
     <section class="full script"><span class="eyebrow">Формулировка для бухгалтерии</span>«Все операции по зарплате собраны в одном кабинете. Ведомость отправляется прямо из 1С, и статус по каждой строке виден там же. Реквизиты сотрудников поступают автоматически, а расчётные листки сотрудники получают прямо в приложении».</section>
   </div>
   <p class="src">Источник: материалы банка; sberbusiness.live, 21.08.2026; <a href="https://www.sberbank.ru/help/business/sbbol/salary/other_inform/100459" target="_blank" rel="noopener">справка СберБизнес о расчётных листках</a>.</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-biz-sberbusiness">Что улучшить в разделе</label><textarea id="fb-biz-sberbusiness" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-requisites"><span>Назад</span>← Реквизиты из СберБанк Онлайн</a><a href="#biz-cards"><span>Дальше</span>Выпуск карт →</a></nav>
 </div></section>
 
 <section class="view biz" id="biz-cards" aria-labelledby="t-biz-cards"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>4 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-biz-cards">Выпуск карт для сотрудников</h2><p class="intro">Несколько способов передать реквизиты и выпустить карты. Ни один из них не требует организовывать визит всего коллектива в отделение.</p></div><div class="big">от 2 мин<small>занимает оформление карты в отделении по QR-коду и паспорту</small></div></div>
+  <div class="view-head"><div><h2 id="t-biz-cards">Выпуск карт для сотрудников</h2><p class="intro">Несколько способов передать реквизиты и выпустить карты. Ни один из них не требует организовывать визит всего коллектива в отделение.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">от 2 мин<small>занимает оформление карты в отделении по QR-коду и паспорту</small></div></div>
   <div class="body">
     <section><h3>1. Выпуск по QR-коду</h3><ul class="ticks">
       <li>HR создаёт в СберБизнесе <b>единый QR-код</b> для договора и размещает памятку «Выпуск карт по QR» там, где её увидят сотрудники.</li>
@@ -663,12 +724,13 @@ footer.site p{margin:0}
     <section class="full script"><span class="eyebrow">Формулировка для HR</span>«Достаточно один раз распечатать QR-код и разместить памятку. Сотрудники с картой Сбера могут отправить реквизиты прямо в приложении по ИНН компании, остальные оформляют карты самостоятельно, а для большого коллектива банк организует выездную выдачу моментальных карт в удобный день».</section>
   </div>
   <p class="src">Источник: материалы банка; sberbusiness.live, 21.08.2026.</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-biz-cards">Что улучшить в разделе</label><textarea id="fb-biz-cards" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-sberbusiness"><span>Назад</span>← СберБизнес</a><a href="#biz-preferences"><span>Дальше</span>Конструктор преференций →</a></nav>
 </div></section>
 
 <section class="view biz" id="biz-preferences" aria-labelledby="t-biz-preferences"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>5 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-biz-preferences">Конструктор преференций</h2><p class="intro">Компания сама выбирает в СберБизнесе, какие дополнительные опции и привилегии получат её сотрудники. Соцпакет собирается под задачи бизнеса.</p></div><div class="big">с 9.10<small>Конструктор выгод: бизнес-залы, ДМС, СберСпасибо 5%; скоро — телемедицина и образовательная платформа</small></div></div>
+  <div class="view-head"><div><h2 id="t-biz-preferences">Конструктор преференций</h2><p class="intro">Компания сама выбирает в СберБизнесе, какие дополнительные опции и привилегии получат её сотрудники. Соцпакет собирается под задачи бизнеса.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 28.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">с 9.10<small>Конструктор выгод: бизнес-залы, ДМС, СберСпасибо 5%; скоро — телемедицина и образовательная платформа</small></div></div>
   <div class="body">
     <section class="panel"><h3>Что можно подключить</h3><div class="chips">
       <span class="chip">Пакеты услуг для сотрудников</span>
@@ -692,12 +754,13 @@ footer.site p{margin:0}
     <section class="full script"><span class="eyebrow">Формулировка для руководителя</span>«В СберБизнесе есть конструктор преференций: вы сами выбираете, что получат сотрудники, — подписку СберПрайм, сниженную ставку по кредиту, а с 9 октября в Конструкторе выгод ещё бизнес-залы, ДМС и 5% бонусами СберСпасибо в супермаркетах и на АЗС. Скоро появятся телемедицина и электронная образовательная платформа».</section>
   </div>
   <p class="src">Источник: внутренние документы банка (подробности — у закреплённого МЗП/СЗП).</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-biz-preferences">Что улучшить в разделе</label><textarea id="fb-biz-preferences" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-cards"><span>Назад</span>← Выпуск карт</a><a href="#biz-citycard"><span>Дальше</span>Карта жителя →</a></nav>
 </div></section>
 
 <section class="view biz" id="biz-citycard" aria-labelledby="t-biz-citycard"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>6 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-biz-citycard">Зарплата на «Карту жителя»</h2><p class="intro">На Северо-Западе зарплату можно зачислять на региональную карту жителя. Сотрудник может пользоваться одной картой для зарплаты, покупок и региональных сервисов.</p></div><div class="big">ЕКП<small>карты жителя в регионах Северо-Запада</small></div></div>
+  <div class="view-head"><div><h2 id="t-biz-citycard">Зарплата на «Карту жителя»</h2><p class="intro">На Северо-Западе зарплату можно зачислять на региональную карту жителя. Сотрудник может пользоваться одной картой для зарплаты, покупок и региональных сервисов.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">ЕКП<small>карты жителя в регионах Северо-Запада</small></div></div>
   <div class="body">
     <section class="full"><div class="cards3">
       <div class="citycard"><b>Единая карта петербуржца</b><span>Санкт-Петербург</span></div>
@@ -718,12 +781,13 @@ footer.site p{margin:0}
     <section class="full script"><span class="eyebrow">Формулировка для HR</span>«Если ваши сотрудники уже пользуются картой жителя, зарплату можно зачислять прямо на неё: одна карта и для зарплаты, и для скидок, и для городских сервисов».</section>
   </div>
   <p class="src">Источники: внутренние документы банка (подробности — у закреплённого МЗП/СЗП); <a href="https://pln-pskov.ru/society/597015.html" target="_blank" rel="noopener">ПЛН: Сбер запустил выпуск карт «Псковская»</a>; <a href="https://spbit.ru/news/Yedinaya-karta-peterburzhtsa-vyshla-v-Pskov-i-v-Kareliyu-331761" target="_blank" rel="noopener">spbit.ru: ЕКП вышла в Псков и Карелию</a>.</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-biz-citycard">Что улучшить в разделе</label><textarea id="fb-biz-citycard" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-preferences"><span>Назад</span>← Конструктор преференций</a><a href="#biz-gig"><span>Дальше</span>Самозанятые и нерезиденты →</a></nav>
 </div></section>
 
 <section class="view biz" id="biz-gig" aria-labelledby="t-biz-gig"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>7 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-biz-gig">Самозанятые, ГПХ и нерезиденты</h2><p class="intro">Самозанятым и нерезидентам по договорам ГПХ тоже можно платить через СберБизнес.</p></div><div class="big">0 ₽<small>комиссия за выплаты самозанятым</small></div></div>
+  <div class="view-head"><div><h2 id="t-biz-gig">Самозанятые, ГПХ и нерезиденты</h2><p class="intro">Самозанятым и нерезидентам по договорам ГПХ тоже можно платить через СберБизнес.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">0 ₽<small>комиссия за выплаты самозанятым</small></div></div>
   <div class="body">
     <section><h3>Самозанятые</h3><ul class="ticks">
       <li>Выплаты без комиссии.</li>
@@ -739,12 +803,13 @@ footer.site p{margin:0}
     <section class="full script"><span class="eyebrow">Формулировка для клиента</span>«Выплаты самозанятым проходят без комиссии, статус проверяется, а чеки формируются автоматически. По выплатам нерезидентам на ГПХ валютный контроль проходит один раз — по общей сумме реестра, а не по каждой выплате».</section>
   </div>
   <p class="src">Источник: материалы банка; sberbusiness.live, 21.08.2026.</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-biz-gig">Что улучшить в разделе</label><textarea id="fb-biz-gig" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-citycard"><span>Назад</span>← Карта жителя</a><a href="#biz-team"><span>Дальше</span>Руководству и коллективу →</a></nav>
 </div></section>
 
 <section class="view biz" id="biz-team" aria-labelledby="t-biz-team"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>8 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-biz-team">Руководству и коллективу</h2><p class="intro">Зарплатный проект даёт отдельные привилегии руководству компании и инструменты заботы о здоровье для всего коллектива.</p></div><div class="big">ТОП<small>отдельные привилегии для руководства и топ-менеджмента</small></div></div>
+  <div class="view-head"><div><h2 id="t-biz-team">Руководству и коллективу</h2><p class="intro">Зарплатный проект даёт отдельные привилегии руководству компании и инструменты заботы о здоровье для всего коллектива.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">ТОП<small>отдельные привилегии для руководства и топ-менеджмента</small></div></div>
   <div class="body">
     <section class="panel"><h3>Для руководства и топ-менеджмента</h3><ul class="ticks">
       <li><b>Пакеты премиального обслуживания</b> СберПремьер и СберПервый: повышенные ставки по вкладам и накопительным счетам, расширенный кешбэк, бизнес-залы, страхование в путешествиях (<a href="#emp-premium">о пакетах СберПремьер и СберПервый</a>).<span class="awardnote">Победитель Frank Premium Banking Award 2026 от Frank RG (Frank Research Group) в номинации «Лучший банк: комплексное решение для премиальных клиентов» (<a href="https://www.bfm.ru/news/621570" target="_blank" rel="noopener">источник</a>).</span></li>
@@ -758,12 +823,13 @@ footer.site p{margin:0}
     <section class="full script"><span class="eyebrow">Формулировка для руководителя</span>«Для вас и топ-менеджмента — премиальное обслуживание и индивидуальные условия по кредитам и ипотеке через „Особую заявку“. Для коллектива — ИИ-помощник СберЗдоровья и телемедицина как альтернатива ДМС».</section>
   </div>
   <p class="src">Источник: внутренние документы банка (подробности — у закреплённого МЗП/СЗП); материалы банка; <a href="https://www.bfm.ru/news/621570" target="_blank" rel="noopener">BFM.ru о Frank Premium Banking Award, 21.10.2026</a>. Детали «Особой заявки» и подключения ИИ-помощника СберЗдоровья уточняйте у профильных подразделений.</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-biz-team">Что улучшить в разделе</label><textarea id="fb-biz-team" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-gig"><span>Назад</span>← Самозанятые и нерезиденты</a><a href="#biz-hr"><span>Дальше</span>Подбор персонала →</a></nav>
 </div></section>
 
 <section class="view biz" id="biz-hr" aria-labelledby="t-biz-hr"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>9 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-biz-hr">Подбор персонала</h2><p class="intro">Работа.ру, профильная компания экосистемы Сбера, помогает закрыть дефицит кадров, в том числе за счёт иностранных работников.</p></div><div class="big">6 этапов<small>Работа.ру сопровождает найм: от разрешений до выхода на работу</small></div></div>
+  <div class="view-head"><div><h2 id="t-biz-hr">Подбор персонала</h2><p class="intro">Работа.ру, профильная компания экосистемы Сбера, помогает закрыть дефицит кадров, в том числе за счёт иностранных работников.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">6 этапов<small>Работа.ру сопровождает найм: от разрешений до выхода на работу</small></div></div>
   <div class="body">
     <section><h3>Что делает Работа.ру</h3><ul class="ticks">
       <li>Получение разрешений на привлечение трудовых ресурсов.</li>
@@ -789,12 +855,13 @@ footer.site p{margin:0}
     <section class="full script"><span class="eyebrow">Формулировка для клиента</span>«При дефиците кадров можно оставить заявку на Работа.ру: компания поможет с подбором, визами и разрешениями. Зарплатные карты и SIM-карты для новых сотрудников предоставит Сбер, а в Петербурге и Ленобласти зарплату можно зачислять на электронную карту трудового мигранта».</section>
   </div>
   <p class="src">Источник: материалы банка. Заявка оставляется на Работа.ру; ссылку и QR-код для заявки уточняйте у закреплённого МЗП/СЗП.</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-biz-hr">Что улучшить в разделе</label><textarea id="fb-biz-hr" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-team"><span>Назад</span>← Руководству и коллективу</a><a href="#biz-launch"><span>Дальше</span>Как подключить →</a></nav>
 </div></section>
 
 <section class="view biz" id="biz-launch" aria-labelledby="t-biz-launch"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>10 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-biz-launch">Как подключить</h2><p class="intro">Четыре шага от договора до первой зарплаты на картах.</p></div><div class="big">4 шага<small>договор → QR → реквизиты → реестр</small></div></div>
+  <div class="view-head"><div><h2 id="t-biz-launch">Как подключить</h2><p class="intro">Четыре шага от договора до первой зарплаты на картах.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">4 шага<small>договор → QR → реквизиты → реестр</small></div></div>
   <div class="body">
     <section class="full"><ol class="steps">
       <li><span><b>Договор.</b> Заявка на зарплатный проект в СберБизнесе (Все продукты и услуги → Ведение счёта → Зарплатный проект) или через клиентского менеджера. Если расчётный счёт компании в другом банке (клиенты РГС и КСБ), зарплатный проект всё равно работает: реестр загружается в СберБизнес, а платёжное поручение на сумму реестра отправляется из банка клиента; тариф 0%.</span></li>
@@ -805,12 +872,13 @@ footer.site p{margin:0}
     <section class="full script" data-until="2026-11-30" data-until-text="акция «185 млн бонусов» завершена"><span class="eyebrow">Завершение встречи</span>«Предлагаю оформить заявку, а я направлю памятку с QR-кодом для ваших сотрудников. Если с 1 по 30 ноября на карты Сбера придёт хотя бы одно зарплатное зачисление, а сотрудники зарегистрируются в СберСпасибо, они станут участниками второго этапа акции «185 млн бонусов»».</section>
   </div>
   <p class="src">Источник: материалы банка; sberbusiness.live, 21.08.2026.</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-biz-launch">Что улучшить в разделе</label><textarea id="fb-biz-launch" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-hr"><span>Назад</span>← Подбор персонала</a><a href="#biz-anybank"><span>Дальше</span>Мультиреестр →</a></nav>
 </div></section>
 
 <section class="view biz" id="biz-anybank" aria-labelledby="t-biz-anybank"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>11 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-biz-anybank">Мультиреестр — зарплата в любой банк <span class="flag new">Новое</span> <span class="flag">РГС · КСБ</span></h2><p class="intro">Новая опция для компаний, у которых сотрудники получают зарплату в разных банках: мультиреестр отправляется из 1С в один клик, а один договор со Сбером закрывает все выплаты.</p></div><div class="big">0%<small>тариф для клиентов с расчётным счётом в другом банке</small></div></div>
+  <div class="view-head"><div><h2 id="t-biz-anybank">Мультиреестр — зарплата в любой банк <span class="flag new">Новое</span> <span class="flag">РГС · КСБ</span></h2><p class="intro">Новая опция для компаний, у которых сотрудники получают зарплату в разных банках: мультиреестр отправляется из 1С в один клик, а один договор со Сбером закрывает все выплаты.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">0%<small>тариф для клиентов с расчётным счётом в другом банке</small></div></div>
   <div class="body">
     <section class="full panel"><h3>Для кого и сколько стоит</h3><p>Опция для клиентов сегментов <b>РГС и КСБ</b> (по внутренним документам банка; подробности — у закреплённого МЗП/СЗП). В материале сентября 2026 года условия описаны так: клиенты сегмента «Крупнейший, крупный и средний бизнес» без РКО в ПАО Сбербанк, а также клиенты любого сегмента из холдингов KeyClients; нужен зарплатный договор «без резервирования» или допсоглашение к уже заключённому.</p><p style="margin-top:10px"><b>Тариф — 0%</b> для клиентов с расчётным счётом в другом банке.</p></section>
     <section><h3>Преимущества</h3><ul class="ticks">
@@ -832,18 +900,19 @@ footer.site p{margin:0}
     <section class="full script"><span class="eyebrow">Формулировка для клиента</span>«Мультиреестр отправляется из 1С в один клик. Не нужно заключать договоры с каждым банком и готовить реестры в разных форматах. Один реестр и одно платёжное поручение, а Сбер распределит средства по банкам и автоматически вернёт незачисленные суммы».</section>
   </div>
   <p class="src">Источник: внутренние документы банка (подробности — у закреплённого МЗП/СЗП).</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-biz-anybank">Что улучшить в разделе</label><textarea id="fb-biz-anybank" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-launch"><span>Назад</span>← Как подключить</a><a href="#emp-card"><span>Дальше</span>Сотрудникам: карта и переводы →</a></nav>
 </div></section>
 
 <!-- ============================ СОТРУДНИКАМ ============================ -->
 <section class="view emp" id="emp-card" aria-labelledby="t-emp-card"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>1 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-emp-card">Карта и переводы</h2><p class="intro">Базовые банковские операции для зарплатного клиента бесплатны. Обслуживание карты не зависит от объёма покупок.</p></div><div class="big">0 ₽<small>годовое обслуживание СберКарты МИР, всегда без условий</small></div></div>
+  <div class="view-head"><div><h2 id="t-emp-card">Карта и переводы</h2><p class="intro">Базовые банковские операции для зарплатного клиента бесплатны. Обслуживание карты не зависит от объёма покупок.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 03.11.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">0 ₽<small>годовое обслуживание СберКарты МИР, всегда без условий</small></div></div>
   <div class="body">
     <section><h3>Бесплатно</h3><ul class="ticks">
       <li>Снятие наличных до <span class="num">300 000 ₽</span> в сутки в банкоматах Сбера.</li>
       <li>Переводы с карты на карту клиентам Сбера без лимитов.</li>
-      <li>Переводы клиентам других банков по СБП до <span class="num">300 000 ₽</span> в месяц.</li>
+      <li>Переводы клиентам других банков по СБП до <span class="num">100 000 ₽</span> в месяц.</li>
       <li>Переводы на свои счета в других банках по СБП до <span class="num">30 млн ₽</span> в месяц.</li>
       <li>Оплата ЖКХ в СберБанк Онлайн без комиссии.</li>
     </ul></section>
@@ -856,12 +925,13 @@ footer.site p{margin:0}
     <section class="full script"><span class="eyebrow">Формулировка для сотрудника</span>«Обслуживание карты бесплатное без условий. Снятие наличных до 300 тысяч рублей в сутки и переводы клиентам Сбера без комиссии».</section>
   </div>
   <p class="src">Источник: материалы банка.</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-emp-card">Что улучшить в разделе</label><textarea id="fb-emp-card" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#biz-anybank"><span>Назад</span>← Мультиреестр</a><a href="#emp-security"><span>Дальше</span>Безопасность →</a></nav>
 </div></section>
 
 <section class="view emp" id="emp-security" aria-labelledby="t-emp-security"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>2 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-emp-security">Безопасность</h2><p class="intro">Зарплата поступает в один из самых надёжных банков страны. В СберБанк Онлайн есть более 30 бесплатных инструментов защиты от мошенников, а на портале СберСова — бесплатное обучение финансовой и киберграмотности.</p></div><div class="big">AAA(RU)<small>кредитный рейтинг АКРА, прогноз «Стабильный»</small></div></div>
+  <div class="view-head"><div><h2 id="t-emp-security">Безопасность</h2><p class="intro">Зарплата поступает в один из самых надёжных банков страны. В СберБанк Онлайн есть более 30 бесплатных инструментов защиты от мошенников, а на портале СберСова — бесплатное обучение финансовой и киберграмотности.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 22.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">AAA(RU)<small>кредитный рейтинг АКРА, прогноз «Стабильный»</small></div></div>
   <div class="body">
     <section><h3>Надёжность банка</h3><ul class="ticks">
       <li>ПАО Сбербанк входит в перечень <b>системно значимых кредитных организаций</b> Банка России. Перечень опубликован 07.10.2026: в нём 12 банков, на которые приходится около 80% активов банковского сектора.</li>
@@ -914,12 +984,13 @@ footer.site p{margin:0}
     <section class="full script"><span class="eyebrow">Формулировка для сотрудника</span>«Сбер — системно значимый банк с наивысшим рейтингом АКРА. В приложении бесплатно доступны определитель номера, антивирус и доверенное лицо для подтверждения подозрительных операций».</section>
   </div>
   <p class="src">Источники: <a href="https://www.vbr.ru/novosti/banki/2026/10/08/bank-rossii-ytverdil-perecen-sistemno-znacimih-bankov/" target="_blank" rel="noopener">перечень системно значимых банков, 07.10.2026</a>; <a href="https://www.finmarket.ru/currency/news/6624008" target="_blank" rel="noopener">АКРА о ПАО Сбербанк, 19.05.2026</a>; <a href="https://finuslugi.ru/navigator/nakopit-i-sohranit/stat_agentstvo-strahovaniya-vkladov-zaschita-deneg-2026" target="_blank" rel="noopener">лимиты страхования вкладов, 2026</a>; <a href="https://rb.ru/news/sber-zablokiroval-bolee-11-mln-moshennicheskih-zvonkov-s-nachala-goda-bank-pomog-sohranit-klientam-220-mlrd-rublej/" target="_blank" rel="noopener">данные Сбера о защите клиентов, 12.10.2026</a>; <a href="https://sbersova.ru/sections/protection/pozabottes-o-bezopasnosti-s-besplatnymi-servisami-sbera" target="_blank" rel="noopener">СберСова: бесплатные защитные сервисы</a>; <a href="https://ria.ru/20260525/sberbank-2094519342.html" target="_blank" rel="noopener">обновление «Определителя номера», 25.05.2026</a>.</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-emp-security">Что улучшить в разделе</label><textarea id="fb-emp-security" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-card"><span>Назад</span>← Карта и переводы</a><a href="#emp-cashback"><span>Дальше</span>Кешбэк СберСпасибо →</a></nav>
 </div></section>
 
 <section class="view emp" id="emp-cashback" aria-labelledby="t-emp-cashback"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>3 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-emp-cashback">Кешбэк СберСпасибо</h2><p class="intro">Новые получатели зарплаты на СберКарту получают СберПрайм Зарплатный: на одну категорию больше, чем у обычной карты. С зарплатой от 70 тысяч кешбэк на всё растёт до 1%, лимит до 5 000 бонусов.</p></div><div class="big">до 10%<small>в категориях повышенного кешбэка, категории выбираются каждый месяц</small></div></div>
+  <div class="view-head"><div><h2 id="t-emp-cashback">Кешбэк СберСпасибо</h2><p class="intro">Новые получатели зарплаты на СберКарту получают СберПрайм Зарплатный: на одну категорию больше, чем у обычной карты. С зарплатой от 70 тысяч кешбэк на всё растёт до 1%, лимит до 5 000 бонусов.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">до 10%<small>в категориях повышенного кешбэка, категории выбираются каждый месяц</small></div></div>
   <div class="body">
     <section class="full"><h3>Линейка продуктов для зарплатных клиентов, 2026</h3>
       <div class="tbl"><table>
@@ -948,12 +1019,13 @@ footer.site p{margin:0}
     <section class="full script"><span class="eyebrow">Формулировка для сотрудника</span>«Новым получателям зарплаты на СберКарту подключается СберПрайм Зарплатный: четыре категории повышенного кешбэка до 10%. При зарплате от 70 тысяч рублей — дополнительно 1% на все покупки».</section>
   </div>
   <p class="src">Источник: материалы банка; <a href="https://spasibosberbank.ru/how_it_works" target="_blank" rel="noopener">spasibosberbank.ru</a>.</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-emp-cashback">Что улучшить в разделе</label><textarea id="fb-emp-cashback" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-security"><span>Назад</span>← Безопасность</a><a href="#emp-credit"><span>Дальше</span>Кредиты и ипотека →</a></nav>
 </div></section>
 
 <section class="view emp" id="emp-credit" aria-labelledby="t-emp-credit"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>4 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-emp-credit">Кредиты и ипотека</h2><p class="intro">Для зарплатных клиентов есть скидки к ставке по кредиту на любые цели, рефинансированию и ипотеке.</p></div><div class="big">−2 п.п.<small>к ставке по кредиту на любые цели и по рефинансированию</small></div></div>
+  <div class="view-head"><div><h2 id="t-emp-credit">Кредиты и ипотека</h2><p class="intro">Для зарплатных клиентов есть скидки к ставке по кредиту на любые цели, рефинансированию и ипотеке.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">−2 п.п.<small>к ставке по кредиту на любые цели и по рефинансированию</small></div></div>
   <div class="body">
     <section><h3>Кредиты</h3><ul class="ticks">
       <li>Кредит на любые цели: ставка на 2 п.п. ниже.</li>
@@ -975,12 +1047,13 @@ footer.site p{margin:0}
     <section class="full script"><span class="eyebrow">Формулировка для сотрудника</span>«Кредит из другого банка можно рефинансировать в Сбере со скидкой 2 п.п. к ставке. По ипотеке для зарплатных клиентов ставка на 1 п.п. ниже».</section>
   </div>
   <p class="src">Источник: материалы банка.</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-emp-credit">Что улучшить в разделе</label><textarea id="fb-emp-credit" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-cashback"><span>Назад</span>← Кешбэк СберСпасибо</a><a href="#emp-savings"><span>Дальше</span>Вклады и счета →</a></nav>
 </div></section>
 
 <section class="view emp" id="emp-savings" aria-labelledby="t-emp-savings"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>5 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-emp-savings">Вклады и счета</h2><p class="intro">Сбер — лучший банк для сбережений по версии Frank Saving Awards 2025. Для зарплатных клиентов есть отдельный вклад.</p></div><div class="big">12,65%<small>до, вклад «Зарплатный Максимум» при зарплате на карту Сбера</small></div></div>
+  <div class="view-head"><div><h2 id="t-emp-savings">Вклады и счета</h2><p class="intro">Сбер — лучший банк для сбережений по версии Frank Saving Awards 2025. Для зарплатных клиентов есть отдельный вклад.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">12,65%<small>до, вклад «Зарплатный Максимум» при зарплате на карту Сбера</small></div></div>
   <div class="body">
     <section class="full"><div class="tbl"><table>
       <thead><tr><th>Продукт</th><th class="c">Ставка</th><th>Сумма и срок</th><th>Снятие / пополнение</th><th>Особенность</th></tr></thead>
@@ -996,12 +1069,13 @@ footer.site p{margin:0}
     <section class="full script"><span class="eyebrow">Формулировка для сотрудника</span>«Для зарплатных клиентов есть отдельный вклад — до 12,65%. Если средства могут понадобиться в любой момент, подойдёт накопительный счёт: до 12,5% на ежедневный остаток».</section>
   </div>
   <p class="src">Источник: материалы банка.</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-emp-savings">Что улучшить в разделе</label><textarea id="fb-emp-savings" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-credit"><span>Назад</span>← Кредиты и ипотека</a><a href="#emp-mobile"><span>Дальше</span>СберМобайл →</a></nav>
 </div></section>
 
 <section class="view emp" id="emp-mobile" aria-labelledby="t-emp-mobile" data-until="2027-12-31" data-until-text="Акция СберМобайл «Для профессионалов» завершилась 31.12.2027. Актуальные условия — на sberbank.ru."><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>6 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-emp-mobile">Мобильная связь за 0 ₽</h2><p class="intro">Тариф СберМобайл «Для профессионалов»: плату за связь зарплатным клиентам отменили на срок до 12 месяцев.</p></div><div class="big">0 ₽<small>в месяц вместо 630 ₽, скидка 100% на срок до 12 месяцев</small></div></div>
+  <div class="view-head"><div><h2 id="t-emp-mobile">Мобильная связь за 0 ₽</h2><p class="intro">Тариф СберМобайл «Для профессионалов»: плату за связь зарплатным клиентам отменили на срок до 12 месяцев.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">0 ₽<small>в месяц вместо 630 ₽, скидка 100% на срок до 12 месяцев</small></div></div>
   <div class="body">
     <section><h3>Что в тарифе</h3><ul class="ticks">
       <li><span class="num">300</span> минут и <span class="num">50 ГБ</span> интернета в месяц.</li>
@@ -1019,12 +1093,13 @@ footer.site p{margin:0}
     <section class="full script"><span class="eyebrow">Формулировка для сотрудника</span>«При переносе номера в СберМобайл связь до 12 месяцев бесплатна: 300 минут и 50 ГБ за 0 ₽, пока зарплата поступает на карту Сбера».</section>
   </div>
   <p class="src">Источник: материалы банка.</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-emp-mobile">Что улучшить в разделе</label><textarea id="fb-emp-mobile" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-savings"><span>Назад</span>← Вклады и счета</a><a href="#emp-partners"><span>Дальше</span>Скидки партнёров →</a></nav>
 </div></section>
 
 <section class="view emp" id="emp-partners" aria-labelledby="t-emp-partners"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>7 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-emp-partners">Скидки партнёров</h2><p class="intro">Скидки СберМобайл и СберЗдоровье подключаются в СберБанк Онлайн: «Профиль» → «Ваши привилегии». У СберПраво свои правила акции, у СитиДрайв — промокод.</p></div><div class="big">−40%<small>на подписку и налоговую декларацию в СберПраво</small></div></div>
+  <div class="view-head"><div><h2 id="t-emp-partners">Скидки партнёров</h2><p class="intro">Скидки СберМобайл и СберЗдоровье подключаются в СберБанк Онлайн: «Профиль» → «Ваши привилегии». У СберПраво свои правила акции, у СитиДрайв — промокод.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">−40%<small>на подписку и налоговую декларацию в СберПраво</small></div></div>
   <div class="body">
     <section><h3>Для зарплатных клиентов</h3><ul class="ticks">
       <li><b>СберМобайл:</b> 20% бессрочно на тарифы и в 2 раза больше гигабайт каждый месяц за перенос номера.</li>
@@ -1041,12 +1116,13 @@ footer.site p{margin:0}
     <section class="full script"><span class="eyebrow">Формулировка для сотрудника</span>«Анализы в СберЗдоровье со скидкой 35%, налоговая декларация в СберПраво со скидкой 40%, три поездки в СитиДрайв бесплатно».</section>
   </div>
   <p class="src">Источник: материалы банка.</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-emp-partners">Что улучшить в разделе</label><textarea id="fb-emp-partners" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-mobile"><span>Назад</span>← СберМобайл</a><a href="#emp-promo"><span>Дальше</span>Акция «185 млн бонусов» →</a></nav>
 </div></section>
 
 <section class="view emp" id="emp-promo" aria-labelledby="t-emp-promo" data-until="2026-11-30" data-until-text="Приём зарплатных зачислений для акции «185 млн бонусов» завершился 30.11.2026. Не предлагайте акцию клиентам — актуальные акции смотрите на sberbank.ru."><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>8 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-emp-promo">185 млн бонусов СберСпасибо</h2><p class="intro">Акция с 01.10.2026 по 25.12.2026. Участвуют клиенты старше 18 лет, новые и действующие получатели зарплаты.</p></div><div class="big">185 000<small>бонусов каждому победителю, в каждом из двух этапов</small></div></div>
+  <div class="view-head"><div><h2 id="t-emp-promo">185 млн бонусов СберСпасибо</h2><p class="intro">Акция с 01.10.2026 по 25.12.2026. Участвуют клиенты старше 18 лет, новые и действующие получатели зарплаты.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">185 000<small>бонусов каждому победителю, в каждом из двух этапов</small></div></div>
   <div class="body">
     <section><h3>Как участвовать</h3><ol class="steps">
       <li><span><b>Зарегистрироваться в СберСпасибо.</b> Регистрация в программе лояльности обязательна.</span></li>
@@ -1062,12 +1138,13 @@ footer.site p{margin:0}
     <section class="full script"><span class="eyebrow">Формулировка для клиента</span>«Любое зарплатное зачисление на карту Сбера с 1 по 30 ноября — зарплата, аванс или премия — даёт шанс выиграть 185 тысяч бонусов. Обязательное условие — регистрация в СберСпасибо».</section>
   </div>
   <p class="src">Источник: внутренние документы банка (подробности — у закреплённого МЗП/СЗП).</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-emp-promo">Что улучшить в разделе</label><textarea id="fb-emp-promo" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-partners"><span>Назад</span>← Скидки партнёров</a><a href="#emp-supreme"><span>Дальше</span>МИР Supreme →</a></nav>
 </div></section>
 
 <section class="view emp" id="emp-supreme" aria-labelledby="t-emp-supreme"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>9 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-emp-supreme">Привилегии МИР Supreme</h2><p class="intro">С 1 октября 2026. Кешбэк начисляется сверх выбранных категорий СберСпасибо и текущих скидок экосистемы. Перевыпуск карты и регистрация не нужны.</p></div><div class="big">10%<small>на такси Ultima, первые 3 поездки в месяц</small></div></div>
+  <div class="view-head"><div><h2 id="t-emp-supreme">Привилегии МИР Supreme</h2><p class="intro">С 1 октября 2026. Кешбэк начисляется сверх выбранных категорий СберСпасибо и текущих скидок экосистемы. Перевыпуск карты и регистрация не нужны.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">10%<small>на такси Ultima, первые 3 поездки в месяц</small></div></div>
   <div class="body">
     <section><h3>Рестораны: 7%</h3><ul class="ticks">
       <li>7% от суммы чека, но не больше 30% общего оборота по карте за месяц.</li>
@@ -1091,12 +1168,13 @@ footer.site p{margin:0}
     <section class="full script"><span class="eyebrow">Формулировка для сотрудника</span>«При зарплате от 150 тысяч рублей на СберКарту МИР и оплате покупок этой картой подключаются привилегии МИР Supreme: 7% в ресторанах и 10% на такси бизнес-класса. Перевыпуск карты не требуется».</section>
   </div>
   <p class="src">Источник: внутренние документы банка (подробности — у закреплённого МЗП/СЗП).</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-emp-supreme">Что улучшить в разделе</label><textarea id="fb-emp-supreme" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-promo"><span>Назад</span>← Акция «185 млн бонусов»</a><a href="#emp-premium"><span>Дальше</span>Высокий доход →</a></nav>
 </div></section>
 
 <section class="view emp" id="emp-premium" aria-labelledby="t-emp-premium"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>10 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-emp-premium">Высокий доход <span class="flag">Пилот</span></h2><p class="intro">Пилоты доступны в части территорий — точную географию уточняйте у закреплённого МЗП/СЗП. Для клиентов 18+, подключение по акцепту клиента.</p></div><div class="big">500+<small>тыс. ₽ в месяц — бесплатный СберПремьер 2-го уровня</small></div></div>
+  <div class="view-head"><div><h2 id="t-emp-premium">Высокий доход <span class="flag">Пилот</span></h2><p class="intro">Пилоты доступны в части территорий — точную географию уточняйте у закреплённого МЗП/СЗП. Для клиентов 18+, подключение по акцепту клиента.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">500+<small>тыс. ₽ в месяц — бесплатный СберПремьер 2-го уровня</small></div></div>
   <div class="body">
     <section class="panel" data-until="2027-02-28" data-until-text="Пилот бесплатного СберПрайм завершился 28.02.2027. Условия после пилота уточняйте у закреплённого МЗП/СЗП."><h3>Зарплата от 150 тыс. ₽/мес → СберПрайм бесплатно</h3><ul class="ticks">
       <li>Срок пилота: 10.09.2026 – 28.02.2027.</li>
@@ -1123,12 +1201,13 @@ footer.site p{margin:0}
     <section class="full panel warn"><h3>Важно</h3><p>Пилот действует в части территорий. Бесплатность сохраняется, пока выполняется зарплатный критерий (проверка 7-го числа). Условия после окончания пилота не определены — не обещайте их клиенту.</p></section>
   </div>
   <p class="src">Источник: внутренние документы банка (подробности — у закреплённого МЗП/СЗП).</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-emp-premium">Что улучшить в разделе</label><textarea id="fb-emp-premium" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-supreme"><span>Назад</span>← МИР Supreme</a><a href="#emp-switch"><span>Дальше</span>Как перейти →</a></nav>
 </div></section>
 
 <section class="view emp" id="emp-switch" aria-labelledby="t-emp-switch"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>11 из 11</span></div>
-  <div class="view-head"><div><h2 id="t-emp-switch">Как перейти на Сбер</h2><p class="intro">Можно оставить свою личную карту Сбера или оформить новую. Реквизиты новой карты видны в СберБанк Онлайн сразу после оформления.</p></div><div class="big">от 2 мин<small>занимает оформление карты в отделении</small></div></div>
+  <div class="view-head"><div><h2 id="t-emp-switch">Как перейти на Сбер</h2><p class="intro">Можно оставить свою личную карту Сбера или оформить новую. Реквизиты новой карты видны в СберБанк Онлайн сразу после оформления.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">от 2 мин<small>занимает оформление карты в отделении</small></div></div>
   <div class="body">
     <section class="full panel"><h3>Без QR-кода: по ИНН работодателя <span class="flag new">Собственная разработка Сбера</span></h3><p>Если у сотрудника уже есть карта или счёт в Сбере, а работодатель обслуживается в СберБизнесе, сотрудник может прямо в своём СберБанк Онлайн ввести ИНН работодателя и отправить реквизиты счёта для выплаты зарплаты. QR-код и визит в отделение не нужны. Это собственная разработка Сбера.</p></section>
     <section class="panel"><h3>Если карта Сбера уже есть</h3><ol class="steps">
@@ -1144,6 +1223,7 @@ footer.site p{margin:0}
     <section class="full"><p>Бонусы и привилегии открываются <b>после первого зачисления</b> зарплаты. Все условия — в <a href="https://www.sberbank.ru/ru/person/privilegii-dlya-zarplatnikov#perevod_zp" target="_blank" rel="noopener">едином разделе на сайте банка</a>. По ТК работодатель должен получить от сотрудника заявление в бумажном виде с реквизитами счёта или карты и согласием на перечисление зарплаты.</p></section>
   </div>
   <p class="src">Источник: материалы банка.</p>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-emp-switch">Что улучшить в разделе</label><textarea id="fb-emp-switch" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-premium"><span>Назад</span>← Высокий доход</a><a href="#objections"><span>Дальше</span>Возражения →</a></nav>
 </div></section>
 
@@ -1214,13 +1294,53 @@ footer.site p{margin:0}
     </article>
   </div>
   <p class="src">Подбор строится по правилам, которые собраны из материалов пакета и открытых источников (22.10.2026). Это подсказка к встрече, а не расчёт условий: тарифы и условия для конкретного клиента подтверждайте по действующим документам. Для бюджетных организаций вопрос о расчётном счёте скрыт: у них лицевые счета в казначействе.</p>
-  <nav class="pager" aria-label="Соседние разделы"><a href="#home"><span>Назад</span>← Главная</a><a href="#objections"><span>Дальше</span>Возражения →</a></nav>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-pick">Что улучшить в разделе</label><textarea id="fb-pick" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
+  <nav class="pager" aria-label="Соседние разделы"><a href="#home"><span>Назад</span>← Главная</a><a href="#calc"><span>Дальше</span>Выгода для коллектива →</a></nav>
+</div></section>
+
+<!-- ============================ КАЛЬКУЛЯТОР ============================ -->
+<section class="view neutral" id="calc" aria-labelledby="t-calc"><div class="wrap">
+  <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Подбор</span><span class="flag">Бета-версия</span></div>
+  <div class="view-head"><div><h2 id="t-calc">Выгода для коллектива</h2><p class="intro">Сколько получат сотрудники за год, если зарплата будет приходить на карту Сбера. Аргумент для собственника и HR: деньги и бонусы считаются отдельно, все допущения видны и меняются.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 03.11.2026</span></p></div><div class="big" id="cl-big">—<small>в год на коллектив, оценка</small></div></div>
+  <div class="calc">
+    <form class="calc-form" id="calc-form" autocomplete="off" novalidate>
+      <fieldset>
+        <legend>Компания</legend>
+        <label class="cl-f"><span>Сотрудников</span><input type="number" id="cl-n" min="1" max="200000" step="1" value="100" inputmode="numeric"></label>
+        <label class="cl-f"><span>Средняя зарплата, ₽ в месяц</span><input type="number" id="cl-s" min="10000" max="5000000" step="1000" value="80000" inputmode="numeric"></label>
+        <label class="cl-f"><span>Перейдут на зарплату в Сбер, % сотрудников</span><input type="number" id="cl-sh" min="1" max="100" step="1" value="80" inputmode="numeric"></label>
+      </fieldset>
+      <details class="calc-ass">
+        <summary>Допущения — можно менять</summary>
+        <label class="cl-f"><span>Тратят картой, % зарплаты</span><input type="number" id="cl-spend" min="0" max="100" step="5" value="40"></label>
+        <label class="cl-f"><span>Переносят номер в СберМобайл, % перешедших</span><input type="number" id="cl-mob" min="0" max="100" step="5" value="15"></label>
+        <label class="cl-f"><span>Берут кредит на любые цели за год, % перешедших</span><input type="number" id="cl-cr" min="0" max="100" step="1" value="10"></label>
+        <label class="cl-f"><span>Средняя сумма кредита, ₽</span><input type="number" id="cl-crs" min="0" step="10000" value="300000"></label>
+        <label class="cl-f"><span>Берут ипотеку за год, % перешедших</span><input type="number" id="cl-mo" min="0" max="100" step="1" value="2"></label>
+        <label class="cl-f"><span>Средняя сумма ипотеки, ₽</span><input type="number" id="cl-mos" min="0" step="100000" value="5000000"></label>
+        <label class="cl-f"><span>Комиссия компании за зачисление в текущем банке, % от суммы</span><input type="number" id="cl-fee" min="0" max="5" step="0.1" value="0"></label>
+      </details>
+      <div class="cl-actions"><button type="reset" class="pick-reset">Сбросить</button><button type="button" class="pick-reset" id="cl-copy">Скопировать расчёт</button><span id="cl-msg" role="status"></span></div>
+    </form>
+    <div class="calc-out" id="calc-out" aria-live="polite"></div>
+  </div>
+  <div class="body"><section class="full"><h3>Что не вошло в расчёт</h3>
+    <ul>
+      <li>Повышенный кешбэк до 10% в выбранных категориях — считаем только бонусы на все покупки.</li>
+      <li>Бесплатное обслуживание карты и уведомления, переводы клиентам Сбера без лимитов, оплата ЖКХ без комиссии.</li>
+      <li>Привилегии МИР Supreme для зарплаты от 150 тыс. ₽, пилоты для высоких зарплат, проценты по вкладам и накопительным счетам.</li>
+      <li>Скидки партнёров, акции и бонусы за участие в них.</li>
+    </ul>
+    <p class="cap">Оценка по средним значениям, а не расчёт для конкретного сотрудника. Это не оферта и не обещание клиенту: показывайте компании утверждённые формы, а калькулятор используйте для подготовки разговора. Бонусы СберСпасибо — не рубли: курс обмена и условия трат — на сайте программы. Скидки по кредитам действуют на новые кредиты; ставки зависят от решения банка.</p>
+  </section></div>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-calc">Что улучшить в разделе</label><textarea id="fb-calc" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
+  <nav class="pager" aria-label="Соседние разделы"><a href="#pick"><span>Назад</span>← ТОП фич для компании</a><a href="#objections"><span>Дальше</span>Возражения →</a></nav>
 </div></section>
 
 <!-- ============================ ВОЗРАЖЕНИЯ ============================ -->
 <section class="view neutral" id="objections" aria-labelledby="t-obj"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Продажа</span></div>
-  <div class="view-head"><div><h2 id="t-obj">Возражения</h2><p class="intro">Краткие ответы на типовые возражения при подписании договора. Каждый ответ опирается на условия из разделов пакета.</p></div><div class="big">9<small>типовых возражений</small></div></div>
+  <div class="view-head"><div><h2 id="t-obj">Возражения</h2><p class="intro">Краткие ответы на типовые возражения при подписании договора. Каждый ответ опирается на условия из разделов пакета.</p><p class="sec-meta"><span>Актуально на 03.11.2026</span><span>· обновлено 29.10.2026</span></p></div><div class="big">9<small>типовых возражений</small></div></div>
   <div class="body"><div class="full qa">
     <details open><summary>«У нас уже есть зарплатный банк»</summary><p>Сотрудники могут оставить свою личную карту Сбера: передать реквизиты по QR и принести заявление. Реквизиты можно отправить и прямо в приложении по ИНН работодателя. Если люди получают зарплату в разных банках, для клиентов РГС и КСБ есть опция «Мультиреестр — зарплата в любой банк»: один реестр на всех. Если расчётный счёт компании в другом банке, тариф 0%, а зарплатный договор со Сбером работает без перехода на РКО (<a href="#biz-anybank">условия</a>).</p></details>
     <details><summary>«Бухгалтерии будет больше работы»</summary><p>Напротив: реестр выгружается из 1С и загружается в СберБизнес за 3–4 клика, реквизиты сотрудников поступают в СберБизнес автоматически, расчётные листки сотрудники видят в своём приложении, а с реестрами можно работать в мобильном приложении (<a href="#biz-sberbusiness">подробнее</a>).</p></details>
@@ -1268,6 +1388,7 @@ footer.site p{margin:0}
     </details>
     <details><summary>«У нас подрядчики и иностранцы»</summary><p>Самозанятым можно платить без комиссии, с автопроверкой статуса и чеками. Нерезидентам по ГПХ — валютный контроль по общей сумме реестра, а не по каждой выплате. При дефиците кадров Работа.ру поможет с подбором (<a href="#biz-gig">подробнее</a>).</p></details>
   </div></div>
+  <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-objections">Что улучшить в разделе</label><textarea id="fb-objections" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#emp-switch"><span>Назад</span>← Как перейти</a><a href="#sources"><span>Дальше</span>Источники →</a></nav>
 </div></section>
 
@@ -1311,8 +1432,9 @@ footer.site p{margin:0}
   <a href="#objections" data-tab="obj"><span class="tb-dot obj"></span>Возражения</a>
 </nav>
 
-<footer class="site"><div class="wrap"><p class="disc">Неофициальный материал, собран из информации в открытых источниках. Это информационное саммари по продуктам и услугам Сбера для сотрудников банка; для передачи клиентам используйте только утверждённые формы офферов и презентаций. Не является публичной офертой. ПАО Сбербанк, генеральная лицензия Банка России № 1481. Актуальные условия — на <a href="https://www.sberbank.ru" target="_blank" rel="noopener">sberbank.ru</a>.</p><p>Пакет продавца · Зарплатный проект Сбера · актуально на 29.10.2026 · <a href="#updates">Обновления</a> · <a href="#sources">Источники</a></p></div></footer>
+<footer class="site"><div class="wrap"><p class="disc">Неофициальный материал, собран из информации в открытых источниках. Это информационное саммари по продуктам и услугам Сбера для сотрудников банка; для передачи клиентам используйте только утверждённые формы офферов и презентаций. Не является публичной офертой. ПАО Сбербанк, генеральная лицензия Банка России № 1481. Актуальные условия — на <a href="https://www.sberbank.ru" target="_blank" rel="noopener">sberbank.ru</a>.</p><p>Пакет продавца · Зарплатный проект Сбера · актуально на 03.11.2026 · <a href="#updates">Обновления</a> · <a href="#sources">Источники</a></p></div></footer>
 
+<script>window.ASK_EP='';</script>
 <script>
 (function(){
   var root=document.documentElement; root.classList.add('js');
@@ -1325,7 +1447,7 @@ footer.site p{margin:0}
     var mode=hit?'':(h==='companies'?'m-biz':h==='employees'?'m-emp':h==='bank-site'?'m-bank':'m-hub');
     ['m-hub','m-biz','m-emp','m-bank'].forEach(function(c){home.classList.toggle(c,c===mode)});
     var mobile=window.matchMedia('(max-width:760px)').matches;
-    var tab=/^biz-/.test(h)||h==='companies'?'biz':(/^emp-/.test(h)||h==='employees'?'emp':(h==='objections'?'obj':(h==='pick'?'pick':'')));
+    var tab=/^biz-/.test(h)||h==='companies'?'biz':(/^emp-/.test(h)||h==='employees'?'emp':(h==='objections'?'obj':(h==='pick'||h==='calc'?'pick':'')));
     document.querySelectorAll('.tabbar a').forEach(function(a){if(a.getAttribute('data-tab')===tab)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
     views.forEach(function(v){v.classList.toggle('on',v.id===h)});
     home.classList.toggle('off',hit);
@@ -1383,10 +1505,111 @@ footer.site p{margin:0}
     }
   });
 })();
+/* ===== Калькулятор выгоды для коллектива (бета) ===== */
+(function(){
+  var form=document.getElementById('calc-form'); if(!form) return;
+  var CF={mp:'630 ₽',mm:'12',mu:'2027-12-31',cr:'2 п.п.',mo:'1 п.п.',
+          thr:'70',l70:'5 000',lb:'2 000',r70:'1%',rb:'0,5%'};
+  function n(s){return parseFloat(String(s).replace(/[^\d,.-]/g,'').replace(',','.').replace(/\.+$/,''))||0}
+  var P={mp:n(CF.mp),mm:n(CF.mm),cr:n(CF.cr),mo:n(CF.mo),thr:n(CF.thr)*1000,l70:n(CF.l70),lb:n(CF.lb),r70:n(CF.r70),rb:n(CF.rb)};
+  var q=(location.search.match(/[?&]today=(\d{4}-\d{2}-\d{2})/)||[])[1], d0=new Date();
+  var today=q||(d0.getFullYear()+'-'+String(d0.getMonth()+1).padStart(2,'0')+'-'+String(d0.getDate()).padStart(2,'0'));
+  var mobileOn=today<=CF.mu;
+  var out=document.getElementById('calc-out'), big=document.getElementById('cl-big');
+  function v(id,min,max){var x=n(document.getElementById(id).value);if(isNaN(x))x=0;return Math.min(max,Math.max(min,x))}
+  function rub(x){return Math.round(x).toLocaleString('ru-RU')+' ₽'}
+  function num(x){return Math.round(x).toLocaleString('ru-RU')}
+  function short(x){return x>=1e6?(x/1e6).toLocaleString('ru-RU',{maximumFractionDigits:1})+' млн':x>=1e4?Math.round(x/1e3).toLocaleString('ru-RU')+' тыс.':num(x)}
+  function ppl(x){var k=Math.round(x),m10=k%10,m100=k%100;return num(k)+' '+((m10===1&&m100!==11)?'человек':(m10>=2&&m10<=4&&(m100<10||m100>=20))?'человека':'человек')}
+  function fmtD(s){return s.split('-').reverse().join('.')}
+  var LAST='';
+  function calc(){
+    var N=v('cl-n',1,200000), S=v('cl-s',0,5e6), sh=v('cl-sh',0,100)/100, sp=v('cl-spend',0,100)/100,
+        mb=v('cl-mob',0,100)/100, cr=v('cl-cr',0,100)/100, crs=v('cl-crs',0,1e8), mo=v('cl-mo',0,100)/100, mos=v('cl-mos',0,1e9), fee=v('cl-fee',0,5)/100;
+    var M=N*sh, hi=S>=P.thr, rate=(hi?P.r70:P.rb)/100, lim=hi?P.l70:P.lb;
+    var bon1=Math.min(S*sp*rate,lim)*12, bonAll=bon1*M;
+    var rows=[];
+    rows.push({t:'Бонусы СберСпасибо на все покупки',who:ppl(M),how:'зарплата × '+Math.round(sp*100)+'% трат картой × '+(hi?P.r70:P.rb).toLocaleString('ru-RU')+'%, не больше '+num(lim)+' бонусов в месяц, × 12'+(hi?'':' · 1% и лимит '+num(P.l70)+' — при зарплате от '+num(P.thr)+' ₽'),y:bonAll,b:true});
+    var mob=mobileOn?M*mb*P.mp*Math.min(P.mm,12):0;
+    rows.push({t:'Связь СберМобайл за 0 ₽',who:ppl(M*mb),how:mobileOn?'тариф «Для профессионалов» '+num(P.mp)+' ₽ × '+Math.min(P.mm,12)+' мес. при переносе номера (акция до '+fmtD(CF.mu)+')':'акция завершилась '+fmtD(CF.mu)+' — не учитывается',y:mob});
+    var crd=M*cr*crs*P.cr/100*0.85;
+    rows.push({t:'Скидка '+CF.cr+' по кредиту на любые цели',who:ppl(M*cr),how:'сумма × '+CF.cr+' × 0,85 — средний остаток в первый год кредита на 3 года',y:crd});
+    var mor=M*mo*mos*P.mo/100;
+    rows.push({t:'Скидка '+CF.mo+' по ипотеке',who:ppl(M*mo),how:'сумма × '+CF.mo+' — экономия процентов в первый год',y:mor});
+    var rubAll=mob+crd+mor, comp=N*sh*S*12*fee;
+    big.innerHTML='≈ '+short(rubAll)+' ₽<small>в год на коллектив + '+short(bonAll)+' бонусов, оценка</small>';
+    var per=M>0?rubAll/M:0, perB=M>0?bonAll/M:0;
+    var h='<div class="cl-kpi"><div><b>'+rub(rubAll)+'</b><span>деньгами в год на '+ppl(M)+'</span></div><div><b>'+num(bonAll)+'</b><span>бонусов СберСпасибо в год</span></div><div><b>'+rub(per)+'<small> и '+num(perB)+' бонусов</small></b><span>на одного перешедшего в год</span></div></div>';
+    h+='<table class="cl-t"><caption class="vh">Из чего складывается выгода</caption><thead><tr><th scope="col">Что</th><th scope="col">Кому</th><th scope="col" class="r">В год</th></tr></thead><tbody>';
+    rows.forEach(function(r){h+='<tr'+(r.y?'':' class="zero"')+'><td><b>'+r.t+'</b><small>'+r.how+'</small></td><td>'+r.who+'</td><td class="r">'+(r.b?num(r.y)+'<small>бонусов</small>':rub(r.y))+'</td></tr>'});
+    h+='</tbody></table>';
+    if(comp>0) h+='<div class="cl-comp"><b>Компании:</b> зачисление в Сбере бесплатное, сейчас комиссия '+(fee*100).toLocaleString('ru-RU')+'% — это около <b>'+rub(comp)+'</b> в год.</div>';
+    out.innerHTML=h;
+    LAST=['Выгода для коллектива — оценка (бета) · '+fmtD(today),
+      'Сотрудников: '+num(N)+', средняя зарплата '+rub(S)+', перейдут '+Math.round(sh*100)+'% ('+ppl(M)+')',
+      'Деньгами: '+rub(rubAll)+' в год; бонусами СберСпасибо: '+num(bonAll)+' в год; на одного: '+rub(per)+' + '+num(perB)+' бонусов']
+      .concat(rows.map(function(r){return '— '+r.t+': '+(r.b?num(r.y)+' бонусов':rub(r.y))+' ('+r.how+')'}))
+      .concat(comp>0?['Компании: экономия на комиссии за зачисление около '+rub(comp)+' в год']:[])
+      .concat(['Оценка по средним допущениям, не оферта.']).join('\n').replace(/ /g,' ');
+  }
+  form.addEventListener('input',calc);
+  form.addEventListener('reset',function(){setTimeout(calc,0)});
+  document.getElementById('cl-copy').addEventListener('click',function(){
+    var m=document.getElementById('cl-msg'), ok=function(){m.textContent='Скопировано'};
+    if(navigator.clipboard)navigator.clipboard.writeText(LAST).then(ok,function(){m.textContent='Не удалось скопировать'});else m.textContent='Не удалось скопировать';
+  });
+  /* подстановка из шпаргалки «ТОП фич»: численность и зарплата */
+  window.addEventListener('hashchange',function(){var p=window.CALC_PREFILL;if(location.hash==='#calc'&&p){document.getElementById('cl-n').value=p.n;document.getElementById('cl-s').value=p.s;window.CALC_PREFILL=null;calc()}});
+  calc();
+})();
+/* ===== r20: «Раздел полезен?» и кнопка «источник ↓» =====
+   Отзыв уходит той же функции-прокси, что и вопросы (window.ASK_EP). Пока адрес не задан, блоки скрыты. */
+(function(){
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('.sec-src'); if(!b) return;
+    var v=b.closest('section.view'); var all=[].slice.call(v.querySelectorAll('p,div')).filter(function(x){return /^Источник/.test(x.textContent.trim())&&!x.querySelector('p,div')});
+    var t=all[all.length-1]; if(!t) return;
+    t.scrollIntoView({behavior:'smooth',block:'center'}); t.classList.remove('src-flash'); void t.offsetWidth; t.classList.add('src-flash');
+  });
+  var EP=(window.ASK_EP||'').trim(); if(!EP) return;
+  var t0=Date.now(), KEY='pp-fb';
+  var PII=[[/\b\d{20}\b/,'номер счёта'],[/\b(?:\d[ -]?){15,18}\d\b/,'номер карты'],[/(?:\+7|\b8)[\s(-]*\d{3}[\s)-]*\d{3}[\s-]*\d{2}[\s-]*\d{2}\b/,'телефон'],
+           [/\b\d{10}\b|\b\d{12}\b/,'ИНН'],[/[^\s@]+@[^\s@]+\.[a-zа-я]{2,}/i,'почта'],
+           [/(?:^|[^А-Яа-яЁё])(?:ООО|ОАО|ЗАО|ПАО|АО|НКО|АНО|ГУП|МУП|ФГУП)\s*[«"„“]/,'название компании'],[/(?:^|[^А-Яа-яЁё])ИП\s+[А-ЯЁ][а-яё]+/,'ФИО предпринимателя']];
+  function pii(t){for(var i=0;i<PII.length;i++)if(PII[i][0].test(t))return PII[i][1];return ''}
+  function seen(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}}
+  function mark(id){try{var s=seen();s[id]=Date.now();localStorage.setItem(KEY,JSON.stringify(s))}catch(e){}}
+  [].forEach.call(document.querySelectorAll('.fb-box'),function(box){
+    var v=box.closest('section.view'), id=v.id, msg=box.querySelector('.fb-msg');
+    box.hidden=false;
+    var s=seen(); if(s[id]&&Date.now()-s[id]<30*864e5){box.querySelectorAll('.fb-b[data-v]').forEach(function(b){b.hidden=true});msg.textContent='Спасибо, вы уже оценили этот раздел.';return}
+    function title(){var h=v.querySelector('h2');return h?h.childNodes[0].textContent.trim():id}
+    function send(vote,comment){
+      box.querySelectorAll('button').forEach(function(b){b.disabled=true}); msg.className='fb-msg'; msg.textContent='Отправляем…';
+      fetch(EP,{method:'POST',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify({v:1,kind:'fb',vote:vote,q:comment||'',page:id,pageTitle:title(),hp:'',ms:Date.now()-t0})})
+        .then(function(r){return r.json().catch(function(){return {}}).then(function(j){return {s:r.status,j:j}})})
+        .then(function(r){
+          if(r.s===200&&r.j.ok){mark(id);box.querySelectorAll('.fb-b,.fb-more').forEach(function(x){x.hidden=true});msg.textContent=vote==='up'?'Спасибо! Рады, что раздел помог.':'Спасибо! Учтём при обновлении раздела.'}
+          else{box.querySelectorAll('button').forEach(function(b){b.disabled=false});msg.className='fb-msg err';msg.textContent=r.j.error==='pii'?'Похоже, в тексте есть '+(r.j.kind||'персональные данные')+'. Уберите данные клиентов.':'Не получилось отправить. Попробуйте позже.'}
+        })
+        .catch(function(){box.querySelectorAll('button').forEach(function(b){b.disabled=false});msg.className='fb-msg err';msg.textContent='Не получилось отправить. Попробуйте позже.'});
+    }
+    box.addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b||b.disabled) return;
+      if(b.dataset.v==='up') send('up');
+      else if(b.dataset.v==='down'){var m=box.querySelector('.fb-more');m.hidden=false;box.querySelectorAll('.fb-b[data-v]').forEach(function(x){x.hidden=true});m.querySelector('textarea').focus()}
+      else if(b.dataset.act==='send'){var c=box.querySelector('textarea').value.trim();var p=pii(c);if(p){msg.className='fb-msg err';msg.textContent='Похоже, в тексте есть '+p+'. Уберите данные клиентов и сотрудников.';return}send('down',c)}
+    });
+  });
+})();
 /* ===== Обновления базы знаний =====
    Как добавить запись: допишите объект в начало массива UPDATES.
    d — дата (ГГГГ-ММ-ДД), tag — раздел, t — заголовок, href — ссылка на раздел, x — короткое пояснение. */
 var UPDATES=[
+ {d:'2026-11-03',tag:'Новое',t:'Калькулятор «Выгода для коллектива» (бета)',href:'#calc',x:'Сколько сотрудники получат за год: бонусы, связь, скидки по кредитам. Из шпаргалки «ТОП фич» открывается с подставленной численностью и зарплатой.'},
+ {d:'2026-11-03',tag:'Справка',t:'Поиск понимает словоформы, синонимы и опечатки',href:'#home',x:'«комиссия», «кэшбек», «зп», «Prime» теперь находят нужные разделы. Клавиша / открывает поиск.'},
+ {d:'2026-11-03',tag:'Сотрудникам',t:'Лимит бесплатных переводов по СБП — 100 000 ₽ в месяц',href:'#emp-card',x:'Исправлено: 300 000 ₽ из материалов банка не подтвердились.'},
+ {d:'2026-11-03',tag:'Справка',t:'У каждого раздела — дата обновления и ссылка на источник',href:'#biz-money',x:'Строка под заголовком: «Актуально на · обновлено · источник ↓».'},
  {d:'2026-10-29',tag:'Продажа',t:'Возражения «Мы платим наличными» и «У сотрудников в других банках условия лучше»',href:'#objections',x:'Готовые формулировки в разделе «Возражения» и в шпаргалке подбора ТОП фич.'},
  {d:'2026-10-29',tag:'Справка',t:'Сроки акций и пилотов отслеживаются автоматически',href:'#emp-promo',x:'После даты окончания раздел и строка на главной получают пометку «Срок истёк» / «Завершено».'},
  {d:'2026-10-28',tag:'Компании',t:'Конструктор выгод и «Скоро на полке»',href:'#biz-preferences',x:'С 9 октября — Конструктор выгод; скоро — телемедицина и электронная образовательная платформа.'},
@@ -1444,7 +1667,6 @@ var UPDATES=[
 /* ===== Поиск по пакету ===== */
 (function(){
   var btn=document.getElementById('srch-open'); if(!btn) return;
-  function norm(x){return (x||'').toLowerCase().replace(/ё/g,'е').replace(/\s+/g,' ')}
   var idx=null;
   function build(){
     idx=[].slice.call(document.querySelectorAll('section.view')).map(function(v){
@@ -1460,20 +1682,73 @@ var UPDATES=[
   document.body.appendChild(wrap);
   var q=wrap.querySelector('#sr-q'), list=wrap.querySelector('#sr-list'), sel=0, items=[];
   function esc(x){return x.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-  function hl(str,words){var o=esc(str);words.forEach(function(w){if(!w)return;var re=new RegExp('('+w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&').replace(/е/g,'[её]')+')','gi');o=o.replace(re,'<mark>$1</mark>')});return o}
+  /* r20: поиск понимает словоформы, частые варианты написания и опечатки */
+  function norm(x){return ' '+(x||'').toLowerCase().replace(/ё/g,'е').replace(/[^a-zа-я0-9%]/g,' ')+' '} /* длина сохраняется: позиции совпадают с исходным текстом (+1) */
+  var STOP=' и в во на по для с со о об от до к как что это а или ли же из за при у ';
+  /* синонимы и варианты: слово запроса → любой из вариантов (начало слова в тексте) */
+  var SYN={'кэшбек':['кешбэк'],'кэшбэк':['кешбэк'],'кешбек':['кешбэк'],'кешбэк':['кешбэк'],'cashback':['кешбэк'],'кэш':['кешбэк'],
+    'кредитк':['кредитн карт'],
+    'зп':['зарплат','зп'],'заработн':['зарплат','заработн'],'фот':['фот','зарплат'],
+    'prime':['сберпрайм','прайм'],'прайм':['сберпрайм','прайм'],'premier':['сберпремьер','премьер'],'премьер':['сберпремьер','премьер'],
+    'supreme':['supreme'],'суприм':['supreme'],'суприме':['supreme'],
+    'наличка':['наличн'],'нал':['наличн'],
+    'симка':['сим','sim','сбермобайл'],'связь':['связ','сбермобайл'],'мобильн':['мобильн','сбермобайл'],'мобайл':['сбермобайл','мобайл'],
+    'мигрант':['мигрант','иностран','нерезидент'],'иностран':['иностран','нерезидент','мигрант'],'нерезидент':['нерезидент','иностран'],
+    'конкурент':['друг банк','другом банке','другого банка','другие банки','конкурент'],'втб':['втб'],'альфа':['альфа'],
+    'депозит':['вклад','депозит'],'вклад':['вклад'],'процент':['процент','ставк','%'],
+    'врач':['телемедицин','сберздоров','дмс'],'медицин':['телемедицин','дмс','сберздоров'],'страховк':['страхов','дмс'],
+    'мультибанк':['мультиреестр'],'любой банк':['мультиреестр','любой банк'],
+    'рассчетн':['расчетн'],'расчетный счет':['рко','расчетн сч'],'рко':['рко','расчетн сч'],
+    'hr':['hr','кадр','персонал'],'кадры':['кадр','персонал','hr'],'найм':['найм','подбор','кадр'],
+    'бухгалтер':['бухгалтер','1с'],'1c':['1с'],'api':['api'],
+    'бонус':['бонус','спасибо'],'спасибо':['сберспасибо','спасибо'],'тариф':['тариф','стоимост','комисси'],'стоит':['стоимост','бесплатн','комисси'],'цена':['стоимост','тариф','комисси'],'бесплатно':['бесплатн','без комисси']};
+  var END=['иями','ями','ами','иям','ией','иях','ого','его','ому','ему','ыми','ими','ать','ять','ить','ыть','ешь','ете','ала','али','ых','их','ая','яя','ое','ее','ые','ие','ой','ей','ий','ый','ом','ем','ам','ям','ах','ях','ов','ев','ию','ия','ии','ью','ья','ть','ы','и','а','я','о','е','у','ю','ь','й'];
+  function stem(w){if(!/^[а-я]+$/.test(w)||w.length<5)return w;for(var i=0;i<END.length;i++){var e=END[i];if(w.length-e.length>=4&&w.slice(-e.length)===e)return w.slice(0,-e.length)}return w}
+  function alts(w){
+    if(SYN[w])return SYN[w];
+    var s=stem(w); if(SYN[s])return SYN[s];
+    for(var k in SYN){if(k.length>=4&&w.indexOf(k)===0)return SYN[k]}
+    return [s];
+  }
+  /* совпадение: вариант — начало слова (или фраза из начал слов); варианты от 5 букв ищутся и внутри слова: СберСпасибо, СберПрайм */
+  function where(t,a){
+    if(a.indexOf(' ')>-1){var ps=a.split(' ');var m=new RegExp(' '+ps.map(function(p){return p.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'[a-zа-я0-9%]*'}).join(' +')).exec(t);return m?m.index:-1}
+    var p=t.indexOf(' '+a); if(p<0&&a.length>=5){p=t.indexOf(a);if(p>-1)p--} return p;
+  }
+  function has(t,a){return where(t,a)>-1}
+  function lev(a,b,max){if(Math.abs(a.length-b.length)>max)return max+1;var p=[],c,i,j;for(j=0;j<=b.length;j++)p[j]=j;
+    for(i=1;i<=a.length;i++){c=[i];var mn=i;for(j=1;j<=b.length;j++){c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));if(c[j]<mn)mn=c[j]}if(mn>max)return max+1;p=c}return p[b.length]}
+  var VOC=null;
+  function vocab(){if(VOC)return VOC;var o={};idx.forEach(function(d){(d.nt+d.nx).split(/ +/).forEach(function(w){if(w.length>=4)o[w]=1})});VOC=Object.keys(o);return VOC}
+  function fix(w){ /* ближайшее слово из текста пакета для слова без совпадений */
+    var best='',bd=9,max=w.length>=7?2:1;
+    vocab().forEach(function(v){var d=lev(w,v.slice(0,Math.max(w.length,Math.min(v.length,w.length+2))),max);if(d<bd||(d===bd&&v.length<best.length)){bd=d;best=v}});
+    return bd<=max?best:'';
+  }
+  function hl(str,groups){var o=esc(str);groups.forEach(function(g){g.forEach(function(a){if(!a||a.length<2)return;
+    var src=a.split(' ').map(function(p){return p.replace(/[.*+?^${}()|[\]\\]/g,'\\$&').replace(/е/g,'[её]')+'[A-Za-zА-Яа-яЁё0-9%]*'}).join('\\s');
+    o=o.replace(new RegExp('(^|[^A-Za-zА-Яа-яЁё0-9])('+src+')','gi'),'$1<mark>$2</mark>')})});return o}
   function run(){
     if(!idx) build();
-    var raw=norm(q.value).trim(); list.innerHTML=''; items=[]; sel=0;
+    var raw=q.value.trim(); list.innerHTML=''; items=[]; sel=0;
     if(raw.length<2){list.innerHTML='<li class="sr-empty">Введите хотя бы 2 символа. Ищет по всем разделам, возражениям и источникам.</li>';return}
-    var words=raw.split(' ').filter(Boolean);
+    var nq=norm(raw).replace(/ +/g,' '), words=nq.trim().split(' ').filter(function(w){return w&&STOP.indexOf(' '+w+' ')<0});
+    if(!words.length)words=nq.trim().split(' ');
+    for(var k in SYN){if(k.indexOf(' ')>-1&&nq.indexOf(' '+k+' ')>-1){words=words.filter(function(w){return k.split(' ').indexOf(w)<0});words.push(k)}}
+    var fixed=[], groups=words.map(function(w){
+      var g=alts(w);
+      if(!idx.some(function(d){return g.some(function(a){return has(d.nt,a)||has(d.nx,a)})})&&/^[а-я]{4,}$/.test(w)){var f=fix(w);if(f){fixed.push(f);g=alts(f)}}
+      return g;
+    });
     var res=idx.map(function(d){
-      if(!words.every(function(w){return d.nx.indexOf(w)>-1||d.nt.indexOf(w)>-1}))return null;
-      var sc=0;words.forEach(function(w){if(d.nt.indexOf(w)>-1)sc+=10;sc+=Math.min(5,d.nx.split(w).length-1)});
-      var pos=d.nx.indexOf(words[0]); var a=Math.max(0,pos-60); var snip=(a>0?'…':'')+d.text.slice(a,a+170)+'…';
+      if(!groups.every(function(g){return g.some(function(a){return has(d.nt,a)||has(d.nx,a)})}))return null;
+      var sc=0,pos=-1;groups.forEach(function(g){g.forEach(function(a){if(has(d.nt,a))sc+=10;var n=d.nx.split(' '+a).length-1;sc+=Math.min(5,Math.max(n,has(d.nx,a)?1:0));var p=where(d.nx,a);if(p>-1&&(pos<0||p<pos))pos=p})});
+      var a0=Math.max(0,pos-60); var snip=(a0>0?'…':'')+d.text.slice(a0,a0+170)+'…';
       return {d:d,sc:sc,snip:snip};
     }).filter(Boolean).sort(function(x,y){return y.sc-x.sc}).slice(0,10);
-    if(!res.length){list.innerHTML='<li class="sr-empty">Ничего не нашлось. Попробуйте другое слово.</li>';return}
-    list.innerHTML=res.map(function(r,i){return '<li><a href="#'+r.d.id+'"'+(i===0?' class="on"':'')+'><b>'+hl(r.d.title,words)+'<span class="sr-tag">'+esc(r.d.tag)+'</span></b><small>'+hl(r.snip,words)+'</small></a></li>'}).join('');
+    var note=fixed.length?'<li class="sr-empty sr-fix">Показаны результаты для «'+esc(fixed.join(' '))+'»</li>':'';
+    if(!res.length){list.innerHTML='<li class="sr-empty">Ничего не нашлось. Попробуйте другое слово'+(document.getElementById('qa')?' или <a href="#qa">задайте вопрос</a>':'')+'.</li>';return}
+    list.innerHTML=note+res.map(function(r,i){return '<li><a href="#'+r.d.id+'"'+(i===0?' class="on"':'')+'><b>'+hl(r.d.title,groups)+'<span class="sr-tag">'+esc(r.d.tag)+'</span></b><small>'+hl(r.snip,groups)+'</small></a></li>'}).join('');
     items=[].slice.call(list.querySelectorAll('a'));
   }
   var last=null;
@@ -1536,8 +1811,9 @@ var UPDATES=[
     if(more.length) h+='<div class="op-more"><b>Если останется время:</b> '+more.map(function(x){return '<a href="'+x.f.href+'">'+esc(x.f.t0)+'</a>'}).join(' · ')+'</div>';
     if(objs.length) h+='<div class="op-box op-obj"><h4>Отработка возражений</h4>'+objs.map(function(k){return '<p><b>'+esc(OB[k].t)+'</b> '+esc(OB[k].a)+'</p>'}).join('')+'<p class="op-objlink"><a href="#objections">Полные формулировки — в разделе «Возражения» →</a></p></div>';
     h+='<div class="op-box op-discuss"><h4>Важно обсудить с компанией</h4><ul>'+topics.map(function(w){return '<li>'+esc(w)+'</li>'}).join('')+'</ul></div>';
-    h+='<div class="op-actions"><button type="button" id="op-copy">Скопировать текстом</button><button type="button" id="op-print" hidden>Печать / PDF</button><span id="op-msg" role="status"></span></div>';
+    h+='<div class="op-actions"><a href="#calc" id="op-calc" class="op-calc">Посчитать выгоду для коллектива →</a><button type="button" id="op-copy">Скопировать текстом</button><button type="button" id="op-print" hidden>Печать / PDF</button><span id="op-msg" role="status"></span></div>';
     out.innerHTML=h;
+    var oc=document.getElementById('op-calc'); if(oc) oc.onclick=function(){window.CALC_PREFILL={n:{s:30,m:150,l:500,xl:1500}[size]||150,s:{p0:50000,p70:100000,p150:250000,p500:600000}[pay]||80000}};
     out._text=['ТОП фич для компании — '+prof.join(', '),''].concat(top.map(function(x,i){return (i+1)+'. '+x.f.t0+' — '+x.d+(x.why.length?' Почему для них: '+x.why.join(', ')+'.':'')+' Сказать: '+x.f.say})).concat(objs.length?[''].concat(['Отработка возражений:'],objs.map(function(k){return '— '+OB[k].t+' '+OB[k].a})):[]).concat(['','Важно обсудить с компанией:'],topics.map(function(w){return '— '+w})).join('\n');
     var top_=true; try{top_=window.self===window.top}catch(e){top_=false}
     var pb=document.getElementById('op-print'); if(top_){pb.hidden=false;pb.onclick=function(){document.documentElement.classList.add('printing-pick');window.print();setTimeout(function(){document.documentElement.classList.remove('printing-pick')},500)}}
