@@ -51,6 +51,14 @@ button,input,select,textarea{font:inherit;color:inherit}
 .topbar nav a[aria-current="page"]{opacity:1;background:rgba(255,255,255,.12)}
 .topbar .prov{font-size:12px;opacity:.75}
 @media (prefers-color-scheme: dark){ .topbar{background:#0b0e12;color:var(--ink)} .brand,.topbar nav a{color:var(--ink)} }
+/* Телефон: шапка в одну строку высотой ~48px, меню прокручивается вбок */
+@media (max-width:640px){
+  .topbar .in{flex-wrap:nowrap;gap:10px;padding:6px 12px}
+  .brand-t,.topbar .prov{display:none}
+  .topbar nav{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;min-width:0}
+  .topbar nav::-webkit-scrollbar{display:none}
+  .topbar nav a{white-space:nowrap;padding:6px 8px;font-size:13px}
+}
 
 .wrap{max-width:1280px;margin:0 auto;padding:16px 16px 48px;display:grid;gap:16px}
 .grid{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:16px;align-items:start}
@@ -187,7 +195,7 @@ svg text{fill:var(--muted);font-family:var(--font-mono);font-size:10px}
   <div class="in">
     <a class="brand" href="#new" aria-label="Суфлёр — новое выступление">
       <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="9" width="3" height="6" rx="1.5" fill="currentColor"/><rect x="7" y="5" width="3" height="14" rx="1.5" fill="currentColor"/><rect x="12" y="2" width="3" height="20" rx="1.5" fill="#f0a53a"/><rect x="17" y="7" width="3" height="10" rx="1.5" fill="currentColor"/></svg>
-      Суфлёр
+      <span class="brand-t">Суфлёр</span>
     </a>
     <nav>
       <a href="#new" data-nav="new">Новое выступление</a>
@@ -277,7 +285,7 @@ svg text{fill:var(--muted);font-family:var(--font-mono);font-size:10px}
         </div>
         <div class="row2">
           <div class="field"><label for="audience">Аудитория</label>
-            <select id="audience"><option>КСБ</option><option>ММБ</option><option>KeyClients</option><option>Бюджетная организация</option><option>СКМ (Машиностроение)</option><option>Коллектив сотрудников клиента</option><option>Внутренняя: тренинг / коллеги</option></select></div>
+            <select id="audience" required><option value="" selected disabled>— выберите аудиторию —</option><option>КСБ</option><option>ММБ</option><option>KeyClients</option><option>Бюджетная организация</option><option>СКМ (Машиностроение)</option><option>Коллектив сотрудников клиента</option><option>Внутренняя: тренинг / коллеги</option></select></div>
           <div class="field"><label for="format">Формат</label>
             <select id="format"><option>Встреча с руководителем / собственником</option><option>Встреча с бухгалтерией / HR</option><option>Презентация для сотрудников компании</option><option>Вебинар / онлайн-презентация</option><option>Питч на тренинге</option></select></div>
         </div>
