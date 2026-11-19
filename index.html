@@ -523,6 +523,80 @@ footer.site p{margin:0}
 .crumbs a::after,.logo::after{content:"";position:absolute;inset:-11px -6px}
 @media (max-width:1100px){.logo span{display:none}.extras{grid-template-columns:repeat(3,minmax(0,1fr))}}
 
+/* r25: анимация в шапке */
+.hero-anim .slot{position:relative;width:436px;height:170px;border-radius:12px;overflow:hidden;isolation:isolate}
+.hero-anim .eb{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.hero-anim /* ===== A: новая карта ===== */
+.a{background:#06120E;color:#E9F3EE}
+.hero-anim .a .glow{position:absolute;inset:-40%;background:
+ radial-gradient(closest-side at 72% 55%,rgba(39,190,140,.55),transparent 70%),
+ radial-gradient(closest-side at 92% 20%,rgba(46,120,200,.35),transparent 70%);
+ animation:aGlow 8s ease-in-out infinite}
+@keyframes aGlow{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-4%,3%) scale(1.08)}}
+.hero-anim .a svg.rings{position:absolute;left:236px;top:-115px;width:400px;height:400px;animation:aSpin 8s linear infinite}
+.hero-anim .a svg.rings circle{fill:none;stroke-width:1}
+@keyframes aSpin{to{transform:rotate(360deg)}}
+.hero-anim .a .ripple{position:absolute;left:436px;top:85px;width:10px;height:10px;margin:-5px;border-radius:50%;border:1.5px solid rgba(110,230,180,.7);animation:aRip 4s ease-out infinite}
+.hero-anim .a .ripple.r2{animation-delay:-2s}
+@keyframes aRip{0%{transform:scale(1);opacity:.9}100%{transform:scale(34);opacity:0}}
+.hero-anim .a .txt{position:absolute;left:22px;top:22px;width:210px}
+.hero-anim .a .txt .eb{color:#7FE0B7}
+.hero-anim .a .txt h3{margin:10px 0 0;font-family:var(--display);font-weight:700;font-size:19px;line-height:1.15;letter-spacing:-.01em}
+.hero-anim .a .txt h3 span{background:linear-gradient(90deg,#7FE0B7,#5FB8F0,#7FE0B7);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:aTxt 8s linear infinite}
+@keyframes aTxt{to{background-position:-200% 0}}
+.hero-anim .a .txt p{margin:10px 0 0;font-size:12px;color:#A9C2B8;line-height:1.35}
+.hero-anim .a .stage{position:absolute;left:286px;top:13px;width:90px;height:144px;perspective:700px}
+.hero-anim .a .float{width:100%;height:100%;animation:aFloat 4s ease-in-out infinite}
+@keyframes aFloat{0%,100%{transform:translateY(-3px)}50%{transform:translateY(4px)}}
+.hero-anim .a .card{position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:aFlip 8s cubic-bezier(.65,0,.35,1) infinite}
+@keyframes aFlip{0%,38%{transform:rotateY(-16deg) rotateZ(-4deg)}50%,88%{transform:rotateY(164deg) rotateZ(4deg)}100%{transform:rotateY(344deg) rotateZ(-4deg)}}
+.hero-anim .a .face,.hero-anim .a .back{position:absolute;inset:0;border-radius:7px;background-size:cover;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 14px 30px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08);overflow:hidden}
+.hero-anim .a .face{background-image:url(img/anim-face.webp)}
+.hero-anim .a .back{background-image:url(img/anim-back.webp);transform:rotateY(180deg)}
+.hero-anim .a .face::after,.hero-anim .a .back::after{content:"";position:absolute;inset:-20%;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.28) 50%,transparent 60%);transform:translateX(-80%);animation:aGlare 8s ease-in-out infinite}
+@keyframes aGlare{0%,12%{transform:translateX(-80%)}30%,100%{transform:translateX(80%)}}
+.hero-anim /* ===== C: ключевые цифры ===== */
+.c{background:linear-gradient(135deg,#0D5546 0%,#0B4639 55%,#126B4B 100%);color:#fff}
+.hero-anim .c .wave{position:absolute;left:0;right:0;bottom:0;height:170px;opacity:.4}
+.hero-anim .c .wave path{fill:none;stroke:rgba(140,235,190,.35);stroke-width:1.2}
+.hero-anim .c .wave g{animation:cWave 8s linear infinite}
+@keyframes cWave{to{transform:translateX(-200px)}}
+.hero-anim .c .eb{position:absolute;left:22px;top:20px;color:#9FE3C2}
+.hero-anim .c .nums{position:absolute;left:22px;top:44px;height:60px;width:300px;overflow:hidden}
+.hero-anim .c .n{position:absolute;left:0;top:0;font-family:var(--display);font-weight:700;font-size:44px;line-height:60px;letter-spacing:-.02em;white-space:nowrap;opacity:0;animation:cNum 8s cubic-bezier(.6,0,.3,1) infinite}
+.hero-anim .c .n small{font-size:22px;font-weight:600;letter-spacing:0;margin-right:6px;color:#BFF0D6}
+.hero-anim .c .cap{position:absolute;left:22px;top:110px;width:270px;height:40px}
+.hero-anim .c .cap span{position:absolute;left:0;top:0;font-size:13px;line-height:1.35;color:#CDE7DB;opacity:0;animation:cCap 8s ease infinite}
+.hero-anim .c .n:nth-child(2),.hero-anim .c .cap span:nth-child(2){animation-delay:2s}
+.hero-anim .c .n:nth-child(3),.hero-anim .c .cap span:nth-child(3){animation-delay:4s}
+.hero-anim .c .n:nth-child(4),.hero-anim .c .cap span:nth-child(4){animation-delay:6s}
+.hero-anim .c .n:nth-child(1),.hero-anim .c .cap span:nth-child(1){animation-delay:0s}
+@keyframes cNum{0%{opacity:0;transform:translateY(40px)}5%,22%{opacity:1;transform:none}27%,100%{opacity:0;transform:translateY(-40px)}}
+@keyframes cCap{0%,3%{opacity:0;transform:translateY(6px)}8%,21%{opacity:1;transform:none}25%,100%{opacity:0;transform:none}}
+.hero-anim .c .ring{position:absolute;right:26px;top:31px;width:108px;height:108px}
+.hero-anim .c .ring circle{fill:none;stroke-width:6;stroke-linecap:round}
+.hero-anim .c .ring .bgc{stroke:rgba(255,255,255,.12)}
+.hero-anim .c .ring .seg{stroke:#7FE0B7;stroke-dasharray:0 302;transform:rotate(-90deg);transform-origin:54px 54px;animation:cRing 8s linear infinite}
+@keyframes cRing{0%{stroke-dasharray:0 302}100%{stroke-dasharray:302 302}}
+.hero-anim .c .ring .dots circle{fill:rgba(255,255,255,.25);stroke:none}
+.hero-anim .c .ring .lab{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;color:#BFF0D6}
+.hero-anim .c .ring .lab span{position:absolute;opacity:0;animation:cCap 8s ease infinite}
+.hero-anim .c .ring .lab span:nth-child(2){animation-delay:2s}
+.hero-anim .c .ring .lab span:nth-child(3){animation-delay:4s}
+.hero-anim .c .ring .lab span:nth-child(4){animation-delay:6s}
+@media (prefers-reduced-motion:reduce){.hero-anim *,.hero-anim .slot{animation:none!important}}
+.hero-side{display:flex;flex-direction:column;gap:16px;min-width:0}
+.hero-anim{width:100%;aspect-ratio:436/170;position:relative;overflow:hidden;border-radius:12px}
+.hero-anim .slot{position:absolute;left:0;top:0;transform-origin:0 0}
+.hero-anim .slot.a{animation:haA 16s linear infinite}
+.hero-anim .slot.c{animation:haC 16s linear infinite}
+.hero-anim.paused *,.hero-anim.paused{animation-play-state:paused!important}
+@keyframes haA{0%,50.3%{opacity:1}52.8%,97.5%{opacity:0}100%{opacity:1}}
+@keyframes haC{0%,50.3%{opacity:0}52.8%,97.5%{opacity:1}100%{opacity:0}}
+.hero-anim.m-anim{display:none}
+@media (max-width:860px){.hero-anim:not(.m-anim){display:none}.js .m-hub .hero-anim.m-anim{display:block;flex:none}}
+@media (prefers-reduced-motion:reduce){.hero-anim .slot.c{opacity:0}}
+
 </style>
 </head>
 <body>
@@ -553,6 +627,28 @@ footer.site p{margin:0}
         <div class="eyebrow">Зарплатный проект Сбера · пакет продавца</div>
         <h1 class="hub-title">С кем разговор?</h1>
       </div>
+      <div class="hero-anim m-anim" role="img" aria-label="Новый дизайн зарплатной МИР СберКарты с 12.11.2026 и ключевые цифры зарплатного проекта">
+<div class="slot a">
+  <div class="glow"></div>
+  <svg class="rings" viewBox="0 0 400 400"><defs><linearGradient id="rg-m" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5FB8F0" stop-opacity=".55"/><stop offset=".5" stop-color="#3FD39A" stop-opacity=".45"/><stop offset="1" stop-color="#3FD39A" stop-opacity="0"/></linearGradient></defs>
+  <g data-rings stroke="url(#rg-m)"></g></svg>
+  <div class="ripple"></div><div class="ripple r2"></div>
+  <div class="txt"><div class="eb">Новый дизайн · с 12.11.2026</div><h3>Зарплатная<br><span>МИР СберКарта</span></h3><p>Реестр, отделение или СберБанк Онлайн — новая заготовка везде</p></div>
+  <div class="stage"><div class="float"><div class="card"><div class="face"></div><div class="back"></div></div></div></div>
+</div>
+<div class="slot c">
+  <svg class="wave" viewBox="0 0 436 170" preserveAspectRatio="none"><g data-wave></g></svg>
+  <div class="eb">Зарплатный проект Сбера</div>
+  <div class="nums">
+    <div class="n"><small></small>0 ₽</div>
+    <div class="n"><small>до</small>10%</div>
+    <div class="n"><small>от</small>2 мин</div>
+    <div class="n">−2 п.п.</div>
+  </div>
+  <div class="cap"><span>зачисление зарплаты для компании</span><span>кешбэк сотрудникам в категориях СберСпасибо</span><span>выпуск карты в отделении по QR и паспорту</span><span>к ставке по кредиту для зарплатных клиентов</span></div>
+  <div class="ring"><svg viewBox="0 0 108 108"><circle class="bgc" cx="54" cy="54" r="48"/><circle class="seg" cx="54" cy="54" r="48"/></svg><div class="lab"><span>01 / 04</span><span>02 / 04</span><span>03 / 04</span><span>04 / 04</span></div></div>
+</div>
+</div>
       <a class="hub-tile biz" href="#companies">
         <span class="hub-k">11 разделов</span>
         <span class="hub-h">Компании</span>
@@ -588,11 +684,35 @@ footer.site p{margin:0}
         <a class="hero-cta alt" href="#calc">Посчитать выгоду для коллектива <span class="beta-chip" title="В режиме тестирования">Beta</span> →</a>
         <div class="recent" data-recent hidden></div>
       </div>
+      <div class="hero-side">
+      <div class="hero-anim" role="img" aria-label="Новый дизайн зарплатной МИР СберКарты с 12.11.2026 и ключевые цифры зарплатного проекта">
+<div class="slot a">
+  <div class="glow"></div>
+  <svg class="rings" viewBox="0 0 400 400"><defs><linearGradient id="rg-d" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5FB8F0" stop-opacity=".55"/><stop offset=".5" stop-color="#3FD39A" stop-opacity=".45"/><stop offset="1" stop-color="#3FD39A" stop-opacity="0"/></linearGradient></defs>
+  <g data-rings stroke="url(#rg-d)"></g></svg>
+  <div class="ripple"></div><div class="ripple r2"></div>
+  <div class="txt"><div class="eb">Новый дизайн · с 12.11.2026</div><h3>Зарплатная<br><span>МИР СберКарта</span></h3><p>Реестр, отделение или СберБанк Онлайн — новая заготовка везде</p></div>
+  <div class="stage"><div class="float"><div class="card"><div class="face"></div><div class="back"></div></div></div></div>
+</div>
+<div class="slot c">
+  <svg class="wave" viewBox="0 0 436 170" preserveAspectRatio="none"><g data-wave></g></svg>
+  <div class="eb">Зарплатный проект Сбера</div>
+  <div class="nums">
+    <div class="n"><small></small>0 ₽</div>
+    <div class="n"><small>до</small>10%</div>
+    <div class="n"><small>от</small>2 мин</div>
+    <div class="n">−2 п.п.</div>
+  </div>
+  <div class="cap"><span>зачисление зарплаты для компании</span><span>кешбэк сотрудникам в категориях СберСпасибо</span><span>выпуск карты в отделении по QR и паспорту</span><span>к ставке по кредиту для зарплатных клиентов</span></div>
+  <div class="ring"><svg viewBox="0 0 108 108"><circle class="bgc" cx="54" cy="54" r="48"/><circle class="seg" cx="54" cy="54" r="48"/></svg><div class="lab"><span>01 / 04</span><span>02 / 04</span><span>03 / 04</span><span>04 / 04</span></div></div>
+</div>
+</div>
       <div class="stamp">
         <div><b>Актуально на 19.11.2026.</b> Неофициальный материал, собран из информации в открытых источниках. Для передачи клиентам используйте только утверждённые формы офферов и презентаций.</div>
         <div>Ставки и тарифы меняются. Перед встречей сверьте цифры с действующими условиями.</div>
         <div class="upd-widget" data-upd></div>
         <div>Пометки у строк: <span class="flag">Пилот</span> — работает только на части территорий, <span class="flag">РГС · КСБ</span> — только для этих сегментов, <span class="flag new">Новое</span> — недавно запущенная опция.</div>
+      </div>
       </div>
     </div>
 
@@ -1469,6 +1589,19 @@ footer.site p{margin:0}
 
 <footer class="site"><div class="wrap"><p class="disc">Неофициальный материал, собран из информации в открытых источниках. Это информационное саммари по продуктам и услугам Сбера для сотрудников банка; для передачи клиентам используйте только утверждённые формы офферов и презентаций. Не является публичной офертой. ПАО Сбербанк, генеральная лицензия Банка России № 1481. Актуальные условия — на <a href="https://www.sberbank.ru" target="_blank" rel="noopener">sberbank.ru</a>.</p><p>Пакет продавца · Зарплатный проект Сбера · актуально на 19.11.2026 · <a href="#updates">Обновления</a> · <a href="#sources">Источники</a></p></div></footer>
 
+<script>/* r25: анимация в шапке — кольца, волны, масштаб, пауза вне экрана */
+(function(){var hs=document.querySelectorAll('.hero-anim');if(!hs.length)return;
+var r='',w='';for(var x=30;x<=200;x+=7)r+='<circle cx="200" cy="200" r="'+x+'"/>';
+for(var k=0;k<6;k++){var y0=150+k*5,d='M0 '+y0;for(var x2=0;x2<=872;x2+=50)d+=' Q '+(x2+25)+' '+(y0+(k%2?-9:9))+' '+(x2+50)+' '+y0;w+='<path d="'+d+'"/>'}
+[].forEach.call(hs,function(h){
+  [].forEach.call(h.querySelectorAll('[data-rings]'),function(g){g.innerHTML=r});
+  [].forEach.call(h.querySelectorAll('[data-wave]'),function(g){g.innerHTML=w});
+  var ss=h.querySelectorAll('.slot');function fit(){var z=h.clientWidth/436;if(!z)return;for(var i=0;i<ss.length;i++)ss[i].style.transform='scale('+z+')'}
+  fit();if(window.ResizeObserver)new ResizeObserver(fit).observe(h);else window.addEventListener('resize',fit);
+  var vis=true;function upd(){h.classList.toggle('paused',!vis||document.hidden)}
+  if('IntersectionObserver' in window)new IntersectionObserver(function(e){vis=e[0].isIntersecting;upd()}).observe(h);
+  document.addEventListener('visibilitychange',upd);
+});})();</script>
 <script>/* r24: «Новое» живёт 30 дней с даты в data-new */
 (function(){var now=Date.now(),D=864e5;[].forEach.call(document.querySelectorAll('[data-new]'),function(e){var t=Date.parse(e.getAttribute('data-new'));if(isNaN(t)||now-t<=30*D)return;if(e.classList.contains('is-new'))e.classList.remove('is-new');else e.parentNode.removeChild(e)})})();</script>
 <script>window.ASK_EP='';</script>
