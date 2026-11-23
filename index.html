@@ -732,6 +732,84 @@ footer.site p{margin:0}
 @media(max-width:760px) and (prefers-reduced-motion:reduce){#emp-mobile .sm-offer__phone{transform:scale(.48) rotateZ(7deg)}}
 @media print{#emp-mobile .sm-offer{break-inside:avoid;box-shadow:none!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}#emp-mobile .sm-offer *,#emp-mobile .sm-offer::after{animation:none!important}#emp-mobile .sm-offer__was{opacity:0!important}#emp-mobile .sm-offer__now,#emp-mobile .sm-offer__feature{opacity:1!important;transform:none!important;filter:none!important}#emp-mobile .sm-offer__pause{display:none}}
 
+
+/* === SZB Salary Pack micro-banners v1.5: isolated visual component === */
+.sp-micro{--sp-glow:#b3ffd0;--sp-foreground:#f4fff8;--sp-note:#c2e9d5;--sp-line:rgba(180,255,206,.52);position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) minmax(235px,36%);gap:20px;align-items:center;min-width:0;min-height:142px;margin-top:22px;padding:19px 25px;border:1px solid rgba(185,255,205,.23);border-radius:16px;background:linear-gradient(117deg,#092c23,#0e6049 82%,#136b54);color:var(--sp-foreground);box-shadow:0 14px 25px -24px #06291e91}
+.sp-micro::before{content:"";position:absolute;z-index:-1;inset:auto -48px -155px auto;width:320px;height:320px;border:1px solid rgba(184,255,209,.16);border-radius:50%;pointer-events:none}
+.sp-micro::after{content:"";position:absolute;z-index:-1;right:-90px;top:-105px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(130,255,176,.11),transparent 70%);pointer-events:none}
+.sp-micro--mint{--sp-glow:#147a4d;--sp-foreground:#153d2c;--sp-note:#406551;--sp-line:rgba(19,118,69,.42);background:linear-gradient(115deg,#e6f5e9,#cef0dc);border-color:#b4dcc5;box-shadow:0 12px 23px -24px #28533970}
+.sp-micro--mint::before{border-color:rgba(19,118,69,.14)}
+.sp-micro--mint::after{background:radial-gradient(circle,rgba(14,150,78,.10),transparent 70%)}
+.sp-micro--slate{--sp-glow:#b9ffe0;--sp-foreground:#f6fffc;--sp-note:#c0dfd9;--sp-line:rgba(185,255,224,.48);background:linear-gradient(115deg,#102c30,#125b60);border-color:rgba(174,246,220,.26)}
+.sp-copy{min-width:0;z-index:1}.sp-kicker{display:block;font-family:var(--mono);font-size:10px;line-height:1.4;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--sp-note);margin-bottom:8px;overflow-wrap:anywhere}
+.sp-headline{font-family:var(--display);font-size:clamp(17px,2vw,24px);font-weight:700;line-height:1.22;letter-spacing:-.025em;color:var(--sp-foreground);overflow-wrap:break-word;hyphens:auto;text-wrap:pretty}
+.sp-desc{margin-top:7px;max-width:57ch;color:var(--sp-note);font-size:13px;line-height:1.43;overflow-wrap:break-word}
+.sp-scene{position:relative;display:flex;min-width:0;align-items:center;justify-content:center;min-height:94px;padding:0 3px}
+.sp-micro--symbol .sp-scene,.sp-micro--metric .sp-scene{min-height:102px}
+.sp-qualifier{position:absolute;right:17px;bottom:9px;max-width:45%;font-family:var(--mono);font-size:10px;letter-spacing:.01em;color:var(--sp-note);opacity:.9;text-align:right;pointer-events:none}
+/* flow: each step owns independent flexible space, including long Russian words */
+.sp-flow{display:flex;gap:5px;align-items:center;justify-content:center;width:100%;max-width:385px;min-width:0}
+.sp-node{display:flex;flex:1 1 0;min-width:0;min-height:63px;max-width:120px;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:5px;padding:7px 5px;border:1px solid var(--sp-line);border-radius:11px;background:rgba(255,255,255,.065);box-shadow:0 0 14px rgba(171,255,206,.03)}
+.sp-micro--mint .sp-node{background:rgba(255,255,255,.24)}
+.sp-node b{display:block;font-family:var(--body);font-size:13px;font-weight:700;line-height:1.18;color:var(--sp-foreground);overflow-wrap:anywhere;hyphens:auto}
+.sp-node small{display:block;font-family:var(--body);font-size:11px;line-height:1.12;color:var(--sp-note);overflow-wrap:anywhere;hyphens:auto}
+.sp-connector{position:relative;flex:0 0 17px;height:1.5px;background:var(--sp-line);color:var(--sp-glow);border-radius:3px}
+.sp-connector::after{content:"";position:absolute;right:0;top:-3px;width:6px;height:6px;transform:rotate(45deg);border-right:1.7px solid var(--sp-glow);border-top:1.7px solid var(--sp-glow)}
+.sp-connector i{position:absolute;left:0;top:-3px;width:7px;height:7px;background:var(--sp-glow);border-radius:50%;box-shadow:0 0 8px var(--sp-glow);opacity:.85;animation:sp-signal 4.4s ease-in-out infinite;animation-play-state:paused}
+.sp-connector:nth-of-type(4) i{animation-delay:.35s}
+.sp-flow--4 .sp-node{padding-inline:3px}.sp-flow--4 .sp-connector{flex-basis:11px}
+.sp-flow--4 .sp-node b{font-size:12px}.sp-flow--4 .sp-node small{font-size:10px}
+/* figure: generic financial glyphs, never bank logos or an unapproved card design */
+.sp-svg{width:154px;max-width:100%;height:108px;overflow:visible;display:block;color:var(--sp-glow)}
+.sp-svg path,.sp-svg rect,.sp-svg circle{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.sp-svg .sp-ring{stroke-width:1;stroke:var(--sp-line);stroke-dasharray:4 7}
+.sp-svg .sp-float{transform-origin:50% 50%;animation:sp-float 4.6s ease-in-out infinite;animation-play-state:paused}
+.sp-svg .sp-orb{fill:var(--sp-glow);stroke:transparent;animation:sp-glint 4.2s ease-in-out infinite;animation-play-state:paused}
+.sp-svg .sp-delay{animation-delay:.65s}
+.sp-svg .sp-thread{stroke-width:1.5;opacity:.6}
+.sp-svg .sp-star{fill:var(--sp-glow);fill-opacity:.18}
+.sp-metric{display:flex;align-items:center;justify-content:center;gap:15px;width:100%;min-width:0}
+.sp-metric strong{display:block;font-family:var(--display);font-weight:700;font-size:clamp(42px,4.5vw,64px);line-height:1.06;letter-spacing:-.04em;white-space:nowrap;color:var(--sp-foreground);animation:sp-focus 4.6s ease-in-out infinite;animation-play-state:paused}
+.sp-metric span{display:block;max-width:115px;min-width:0;font-family:var(--body);font-size:12px;line-height:1.3;color:var(--sp-note);overflow-wrap:anywhere}
+.sp-micro.is-active .sp-connector i,.sp-micro.is-active .sp-svg .sp-float,.sp-micro.is-active .sp-svg .sp-orb,.sp-micro.is-active .sp-metric strong{animation-play-state:running}
+@keyframes sp-signal{0%,8%{opacity:0;transform:translateX(0)}18%{opacity:1}74%{opacity:1}92%,100%{opacity:0;transform:translateX(16px)}}
+@keyframes sp-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes sp-glint{0%,100%{opacity:.65;transform:scale(.8)}50%{opacity:1;transform:scale(1.17)}}
+@keyframes sp-focus{0%,8%{opacity:.88;transform:translateY(3px)}18%,94%{opacity:1;transform:none}100%{opacity:.88;transform:translateY(3px)}}
+/* Compact content-first layout. Do not squash a desktop two-column diagram to mobile. */
+@media(max-width:720px){
+ .sp-micro{display:flex;flex-direction:column;align-items:stretch;gap:9px;min-height:0;padding:16px 17px 17px;margin-top:16px;border-radius:14px}
+ .sp-kicker{font-size:10px;line-height:1.35;margin-bottom:6px;letter-spacing:.10em}
+ .sp-headline{font-size:clamp(18px,4.8vw,21px);line-height:1.20}
+ .sp-desc{font-size:12.5px;line-height:1.4;margin-top:6px}
+ .sp-scene,.sp-micro--symbol .sp-scene,.sp-micro--metric .sp-scene{width:100%;min-width:0;min-height:74px;max-height:118px;padding:0;margin:0}
+ .sp-micro--symbol .sp-scene{min-height:96px}.sp-svg{height:98px;width:138px}
+ .sp-flow{width:100%;max-width:360px;gap:5px;margin:0 auto}
+ .sp-node{flex:1 1 0;min-width:0;max-width:none;min-height:63px;padding:8px 3px;border-radius:10px}
+ .sp-node b{font-size:13px}.sp-node small{font-size:11px}
+ .sp-connector{flex-basis:12px}
+ .sp-flow--4 .sp-connector{flex-basis:8px}
+ .sp-metric{gap:17px}.sp-metric strong{font-size:clamp(43px,11.5vw,60px)}.sp-metric span{font-size:12px;max-width:150px}
+ .sp-qualifier{position:static;max-width:none;align-self:flex-end;min-height:13px;margin-top:-1px;font-size:10px}
+}
+@media(max-width:360px){
+ .sp-micro{padding:14px 13px 14px;gap:8px}
+ .sp-headline{font-size:18px}.sp-desc{font-size:12px}
+ .sp-node{padding:7px 2px}.sp-node b{font-size:12px}.sp-node small{font-size:10px}
+ .sp-flow{gap:3px}.sp-connector{flex-basis:9px}.sp-flow--4 .sp-connector{flex-basis:6px}
+ .sp-flow--4 .sp-node b{font-size:11px}.sp-flow--4 .sp-node small{font-size:10px}
+ .sp-metric{gap:10px}.sp-metric strong{font-size:clamp(39px,12vw,48px)}.sp-metric span{font-size:11px;max-width:120px}
+}
+@media(prefers-reduced-motion:reduce){.sp-micro *, .sp-micro *::before, .sp-micro *::after{animation:none!important;transition:none!important}.sp-connector i{opacity:1;transform:none}}
+@media print{.sp-micro{display:none!important}}
+/* On expiry, do not animate past events and do not advertise a live promotion. */
+.is-expired > .wrap > .sp-micro,.is-expired .sp-micro{filter:saturate(.50);}
+.is-expired .sp-micro *,.is-expired .sp-micro *::before,.is-expired .sp-micro *::after{animation:none!important}
+.is-expired .sp-micro--symbol[data-sp-section="emp-promo"] .sp-qualifier{font-size:0}
+.is-expired .sp-micro--symbol[data-sp-section="emp-promo"] .sp-qualifier::after{content:"СРОК АКЦИИ ЗАВЕРШЁН";font:500 10px/1.4 var(--mono);letter-spacing:.02em;color:var(--sp-note)}
+/* Small-screen bug present in v1.4: a long partner URL forced four list items 4px beyond viewport. */
+@media(max-width:360px){#emp-partners .ticks,#emp-partners .ticks li{min-width:0;overflow-wrap:anywhere}}
+
 </style>
 </head>
 <body>
@@ -920,6 +998,13 @@ footer.site p{margin:0}
 <section class="view biz" id="biz-money" aria-labelledby="t-biz-money"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>1 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-money">Экономика для компании</h2><p class="intro">Базовые операции зарплатного проекта бесплатны. С этого стоит начинать разговор с финансовым директором.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 28.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">0 ₽<small>за зачисление зарплаты сотрудникам и выплаты самозанятым</small></div></div>
+  <!-- SZB micro-banner v1.5: biz-money; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--mint sp-micro--metric" data-sp-section="biz-money" role="group" aria-label="Кратко о разделе: Выплаты без лишних расходов">
+    <div class="sp-copy"><span class="sp-kicker">ЭКОНОМИКА · КОМПАНИИ</span><div class="sp-headline">Выплаты без лишних расходов</div><p class="sp-desc">Условия зачисления — по действующему тарифу.</p></div>
+    <div class="sp-scene" aria-hidden="true"><div class="sp-metric"><strong>0 ₽</strong><span>зачисление зарплаты</span></div></div>
+    <span class="sp-qualifier">Условия в разделе</span>
+  </div>
+
   <div class="body">
     <section><h3>Что бесплатно</h3><ul class="ticks">
       <li>Перечисление зарплаты сотрудникам и выплаты самозанятым без комиссии.</li>
@@ -946,6 +1031,13 @@ footer.site p{margin:0}
 <section class="view biz" id="biz-requisites" aria-labelledby="t-biz-requisites"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>2 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-requisites">Реквизиты — напрямую из СберБанк Онлайн</h2><p class="intro">Сотрудник с картой или счётом в Сбере сам отправляет реквизиты своего счёта работодателю — прямо в СберБанк Онлайн. Бухгалтерии и HR не нужно собирать номера счетов вручную.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">2 способа<small>QR-код работодателя или ИНН работодателя</small></div></div>
+  <!-- SZB micro-banner v1.5: biz-requisites; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--forest sp-micro--flow" data-sp-section="biz-requisites" role="group" aria-label="Кратко о разделе: Реквизиты без ручного ввода">
+    <div class="sp-copy"><span class="sp-kicker">ДЛЯ HR И БУХГАЛТЕРИИ</span><div class="sp-headline">Реквизиты без ручного ввода</div><p class="sp-desc">Сотрудник передаёт их через приложение.</p></div>
+    <div class="sp-scene" aria-hidden="true"><div class="sp-flow sp-flow--3" aria-hidden="true"><span class="sp-node"><b>QR / ИНН</b><small>способ</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>СБО</b><small>отправка</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>HR</b><small>приём</small></span></div></div>
+    
+  </div>
+
   <div class="body">
     <section class="full"><div class="routes">
       <div class="route"><div class="route-n">1</div><div><h3>По QR-коду работодателя</h3><p>HR заранее формирует в СберБизнесе единый QR-код для договора (Зарплатный проект → Зарплатные карты → Новая карта → Добавить по QR-коду) и размещает памятку. Сотрудник сканирует QR камерой смартфона и подтверждает отправку реквизитов в СберБанк Онлайн.</p></div></div>
@@ -971,6 +1063,13 @@ footer.site p{margin:0}
 <section class="view biz" id="biz-sberbusiness" aria-labelledby="t-biz-sberbusiness"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>3 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-sberbusiness">СберБизнес: инновационный бизнес-ассистент</h2><p class="intro">Всё про зарплатный проект собрано в одном кабинете: реестры, реквизиты сотрудников, статусы выплат, выпуск карт и документы. Типовые операции автоматизированы, а с реестрами можно работать в мобильном приложении.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">из 1С<small>с 21.10.2026 ведомость уходит в Сбер прямо из 1С, статус возвращается туда же</small></div></div>
+  <!-- SZB micro-banner v1.5: biz-sberbusiness; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--forest sp-micro--flow" data-sp-section="biz-sberbusiness" role="group" aria-label="Кратко о разделе: Ведомость прямо из 1С">
+    <div class="sp-copy"><span class="sp-kicker">ЦИФРОВОЙ ПРОЦЕСС</span><div class="sp-headline">Ведомость прямо из 1С</div><p class="sp-desc">Передача реестра и статус — в привычном процессе.</p></div>
+    <div class="sp-scene" aria-hidden="true"><div class="sp-flow sp-flow--3" aria-hidden="true"><span class="sp-node"><b>1С</b><small>реестр</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Сбер</b><small>проверка</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Статус</b><small>ответ</small></span></div></div>
+    <span class="sp-qualifier">Нужна настройка</span>
+  </div>
+
   <div class="body">
     <section><h3>Автоматизация</h3><ul class="ticks">
       <li><b>Новое с 21.10.2026 — ведомость прямо из 1С.</b> Бухгалтер отправляет зарплатную ведомость в Сбер из интерфейса 1С (1С:ДиректБанк), без выгрузки и ручной загрузки, а статус обработки и зачисления возвращается в 1С. Если обмен через Sber API уже был настроен, его нужно настроить заново (<a href="https://sberbusiness.live/news/zarplatnuyu-vedomost-v-sber-mozhno-otpravit-iz-1s" target="_blank" rel="noopener">новость Сбера</a>).</li>
@@ -1003,6 +1102,13 @@ footer.site p{margin:0}
 <section class="view biz" id="biz-cards" aria-labelledby="t-biz-cards"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>4 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-cards">Выпуск карт для сотрудников</h2><p class="intro">Несколько способов передать реквизиты и выпустить карты. Ни один из них не требует организовывать визит всего коллектива в отделение.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 19.11.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">от 2 мин<small>занимает оформление карты в отделении по QR-коду и паспорту</small></div></div>
+  <!-- SZB micro-banner v1.5: biz-cards; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--forest sp-micro--symbol" data-sp-section="biz-cards" role="group" aria-label="Кратко о разделе: Под задачи вашего коллектива">
+    <div class="sp-copy"><span class="sp-kicker">ВЫПУСК КАРТ</span><div class="sp-headline">Под задачи вашего коллектива</div><p class="sp-desc">QR, отделение и выездная выдача — по условиям.</p></div>
+    <div class="sp-scene" aria-hidden="true"><svg class="sp-svg" viewBox="0 0 160 112" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><circle class="sp-ring" cx="80" cy="56" r="51"/><g class="sp-float"><rect x="29" y="23" width="102" height="66" rx="12"/><path d="M30 47h100"/><rect x="42" y="59" width="18" height="14" rx="4"/><path d="M70 67h27"/></g><circle class="sp-orb" cx="126" cy="25" r="6"/></svg></div>
+    
+  </div>
+
   <div class="body">
     <section class="full panel card-new"><h3>Новый дизайн зарплатных карт — с 12.11.2026<span class="flag new" data-new="2026-11-16">Новое</span></h3>
       <div class="cd-grid">
@@ -1050,6 +1156,13 @@ footer.site p{margin:0}
 <section class="view biz" id="biz-preferences" aria-labelledby="t-biz-preferences"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>5 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-preferences">Конструктор преференций</h2><p class="intro">Компания сама выбирает в СберБизнесе, какие дополнительные опции и привилегии получат её сотрудники. Соцпакет собирается под задачи бизнеса.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 28.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">с 9.10<small>Конструктор выгод: бизнес-залы, ДМС, СберСпасибо 5%; скоро — телемедицина и образовательная платформа</small></div></div>
+  <!-- SZB micro-banner v1.5: biz-preferences; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--mint sp-micro--symbol" data-sp-section="biz-preferences" role="group" aria-label="Кратко о разделе: Соберите свой соцпакет">
+    <div class="sp-copy"><span class="sp-kicker">КОНСТРУКТОР ПРЕФЕРЕНЦИЙ</span><div class="sp-headline">Соберите свой соцпакет</div><p class="sp-desc">Выбирайте опции под задачи команды.</p></div>
+    <div class="sp-scene" aria-hidden="true"><svg class="sp-svg" viewBox="0 0 160 112" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><circle class="sp-ring" cx="80" cy="56" r="51"/><g class="sp-float"><rect x="50" y="34" width="60" height="47" rx="13"/><path d="M80 47v21M69 57h22"/><circle cx="34" cy="27" r="11"/><circle cx="126" cy="28" r="11"/><circle cx="122" cy="92" r="9"/></g><path class="sp-thread" d="M45 31L55 39M113 37L117 32M106 80L116 86"/></svg></div>
+    <span class="sp-qualifier">Уточнить доступность</span>
+  </div>
+
   <div class="body">
     <section class="panel"><h3>Что можно подключить</h3><div class="chips">
       <span class="chip">Пакеты услуг для сотрудников</span>
@@ -1080,6 +1193,13 @@ footer.site p{margin:0}
 <section class="view biz" id="biz-citycard" aria-labelledby="t-biz-citycard"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>6 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-citycard">Зарплата на «Карту жителя»</h2><p class="intro">На Северо-Западе зарплату можно зачислять на региональную карту жителя. Сотрудник может пользоваться одной картой для зарплаты, покупок и региональных сервисов.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">ЕКП<small>карты жителя в регионах Северо-Запада</small></div></div>
+  <!-- SZB micro-banner v1.5: biz-citycard; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--forest sp-micro--symbol" data-sp-section="biz-citycard" role="group" aria-label="Кратко о разделе: Одна карта — разные задачи">
+    <div class="sp-copy"><span class="sp-kicker">РЕГИОНАЛЬНЫЕ СЕРВИСЫ</span><div class="sp-headline">Одна карта — разные задачи</div><p class="sp-desc">Возможности зависят от региона и карты.</p></div>
+    <div class="sp-scene" aria-hidden="true"><svg class="sp-svg" viewBox="0 0 160 112" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><circle class="sp-ring" cx="80" cy="56" r="51"/><g class="sp-float"><rect x="26" y="31" width="110" height="61" rx="11"/><path d="M40 70h35"/><path d="M81 13c-14 0-24 10-24 23 0 15 24 34 24 34s24-19 24-34c0-13-10-23-24-23z"/><circle cx="81" cy="36" r="7"/></g></svg></div>
+    <span class="sp-qualifier">Проверить регион</span>
+  </div>
+
   <div class="body">
     <section class="full"><div class="cards3">
       <div class="citycard"><b>Единая карта петербуржца</b><span>Санкт-Петербург</span></div>
@@ -1107,6 +1227,13 @@ footer.site p{margin:0}
 <section class="view biz" id="biz-gig" aria-labelledby="t-biz-gig"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>7 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-gig">Самозанятые, ГПХ и нерезиденты</h2><p class="intro">Самозанятым и нерезидентам по договорам ГПХ тоже можно платить через СберБизнес.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">0 ₽<small>комиссия за выплаты самозанятым</small></div></div>
+  <!-- SZB micro-banner v1.5: biz-gig; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--forest sp-micro--flow" data-sp-section="biz-gig" role="group" aria-label="Кратко о разделе: От реестра до подтверждения">
+    <div class="sp-copy"><span class="sp-kicker">ВЫПЛАТЫ ПО ДОГОВОРАМ</span><div class="sp-headline">От реестра до подтверждения</div><p class="sp-desc">Особенности выплат зависят от статуса получателя.</p></div>
+    <div class="sp-scene" aria-hidden="true"><div class="sp-flow sp-flow--3" aria-hidden="true"><span class="sp-node"><b>Реестр</b><small>данные</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Выплата</b><small>перевод</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Чек</b><small>итог</small></span></div></div>
+    <span class="sp-qualifier">По условиям</span>
+  </div>
+
   <div class="body">
     <section><h3>Самозанятые</h3><ul class="ticks">
       <li>Выплаты без комиссии.</li>
@@ -1129,6 +1256,13 @@ footer.site p{margin:0}
 <section class="view biz" id="biz-team" aria-labelledby="t-biz-team"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>8 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-team">Руководству и коллективу</h2><p class="intro">Зарплатный проект даёт отдельные привилегии руководству компании и инструменты заботы о здоровье для всего коллектива.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">ТОП<small>отдельные привилегии для руководства и топ-менеджмента</small></div></div>
+  <!-- SZB micro-banner v1.5: biz-team; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--mint sp-micro--symbol" data-sp-section="biz-team" role="group" aria-label="Кратко о разделе: Преимущества для разных ролей">
+    <div class="sp-copy"><span class="sp-kicker">РУКОВОДСТВУ И КОМАНДЕ</span><div class="sp-headline">Преимущества для разных ролей</div><p class="sp-desc">У каждой категории сотрудников — свои задачи.</p></div>
+    <div class="sp-scene" aria-hidden="true"><svg class="sp-svg" viewBox="0 0 160 112" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><circle class="sp-ring" cx="80" cy="56" r="51"/><g class="sp-float"><circle cx="80" cy="32" r="14"/><circle cx="40" cy="47" r="10"/><circle cx="120" cy="47" r="10"/><path d="M56 89v-9c0-14 11-23 24-23s24 9 24 23v9H56zM27 87V75c0-10 8-17 17-17M133 87V75c0-10-8-17-17-17"/></g></svg></div>
+    <span class="sp-qualifier">Уточнить критерии</span>
+  </div>
+
   <div class="body">
     <section class="panel"><h3>Для руководства и топ-менеджмента</h3><ul class="ticks">
       <li><b>Пакеты премиального обслуживания</b> СберПремьер и СберПервый: повышенные ставки по вкладам и накопительным счетам, расширенный кешбэк, бизнес-залы, страхование в путешествиях (<a href="#emp-premium">о пакетах СберПремьер и СберПервый</a>).<span class="awardnote">Победитель Frank Premium Banking Award 2026 от Frank RG (Frank Research Group) в номинации «Лучший банк: комплексное решение для премиальных клиентов» (<a href="https://www.bfm.ru/news/621570" target="_blank" rel="noopener">источник</a>).</span></li>
@@ -1149,6 +1283,13 @@ footer.site p{margin:0}
 <section class="view biz" id="biz-hr" aria-labelledby="t-biz-hr"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>9 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-hr">Подбор персонала</h2><p class="intro">Работа.ру, профильная компания экосистемы Сбера, помогает закрыть дефицит кадров, в том числе за счёт иностранных работников.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">6 этапов<small>Работа.ру сопровождает найм: от разрешений до выхода на работу</small></div></div>
+  <!-- SZB micro-banner v1.5: biz-hr; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--forest sp-micro--flow" data-sp-section="biz-hr" role="group" aria-label="Кратко о разделе: От вакансии к сотруднику">
+    <div class="sp-copy"><span class="sp-kicker">ПОДБОР ПЕРСОНАЛА</span><div class="sp-headline">От вакансии к сотруднику</div><p class="sp-desc">Поддержка этапов подбора и оформления.</p></div>
+    <div class="sp-scene" aria-hidden="true"><div class="sp-flow sp-flow--3" aria-hidden="true"><span class="sp-node"><b>Поиск</b><small>вакансия</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Отбор</b><small>кандидат</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Выход</b><small>работа</small></span></div></div>
+    
+  </div>
+
   <div class="body">
     <section><h3>Что делает Работа.ру</h3><ul class="ticks">
       <li>Получение разрешений на привлечение трудовых ресурсов.</li>
@@ -1181,6 +1322,13 @@ footer.site p{margin:0}
 <section class="view biz" id="biz-launch" aria-labelledby="t-biz-launch"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>10 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-launch">Как подключить</h2><p class="intro">Четыре шага от договора до первой зарплаты на картах.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">4 шага<small>договор → QR → реквизиты → реестр</small></div></div>
+  <!-- SZB micro-banner v1.5: biz-launch; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--forest sp-micro--flow" data-sp-section="biz-launch" role="group" aria-label="Кратко о разделе: Путь к первой зарплате">
+    <div class="sp-copy"><span class="sp-kicker">ПОДКЛЮЧЕНИЕ</span><div class="sp-headline">Путь к первой зарплате</div><p class="sp-desc">Четыре шага — от договора до выплаты.</p></div>
+    <div class="sp-scene" aria-hidden="true"><div class="sp-flow sp-flow--4" aria-hidden="true"><span class="sp-node"><b>Договор</b><small>01</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>QR</b><small>02</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Реестр</b><small>03</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Выплата</b><small>04</small></span></div></div>
+    
+  </div>
+
   <div class="body">
     <section class="full"><ol class="steps">
       <li><span><b>Договор.</b> Заявка на зарплатный проект в СберБизнесе (Все продукты и услуги → Ведение счёта → Зарплатный проект) или через клиентского менеджера. Если расчётный счёт компании в другом банке (клиенты РГС и КСБ), зарплатный проект всё равно работает: реестр загружается в СберБизнес, а платёжное поручение на сумму реестра отправляется из банка клиента; тариф 0%.</span></li>
@@ -1198,6 +1346,13 @@ footer.site p{margin:0}
 <section class="view biz" id="biz-anybank" aria-labelledby="t-biz-anybank"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#companies">Компании</a><span>11 из 11</span></div>
   <div class="view-head"><div><h2 id="t-biz-anybank">Мультиреестр — зарплата в любой банк <span class="flag new" data-new="2026-10-22">Новое</span> <span class="flag">РГС · КСБ</span></h2><p class="intro">Новая опция для компаний, у которых сотрудники получают зарплату в разных банках: мультиреестр отправляется из 1С в один клик, а один договор со Сбером закрывает все выплаты.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">0%<small>тариф для клиентов с расчётным счётом в другом банке</small></div></div>
+  <!-- SZB micro-banner v1.5: biz-anybank; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--forest sp-micro--flow" data-sp-section="biz-anybank" role="group" aria-label="Кратко о разделе: Один реестр — разные банки">
+    <div class="sp-copy"><span class="sp-kicker">МУЛЬТИРЕЕСТР · РГС / КСБ</span><div class="sp-headline">Один реестр — разные банки</div><p class="sp-desc">Применимость зависит от сегмента и договора.</p></div>
+    <div class="sp-scene" aria-hidden="true"><div class="sp-flow sp-flow--3" aria-hidden="true"><span class="sp-node"><b>Реестр</b><small>единый</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Сбер</b><small>обработка</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Банки</b><small>выплаты</small></span></div></div>
+    <span class="sp-qualifier">Проверить сегмент</span>
+  </div>
+
   <div class="body">
     <section class="full panel"><h3>Для кого и сколько стоит</h3><p>Опция для клиентов сегментов <b>РГС и КСБ</b> (по внутренним документам банка; подробности — у закреплённого МЗП/СЗП). В материале сентября 2026 года условия описаны так: клиенты сегмента «Крупнейший, крупный и средний бизнес» без РКО в ПАО Сбербанк, а также клиенты любого сегмента из холдингов KeyClients; нужен зарплатный договор «без резервирования» или допсоглашение к уже заключённому.</p><p style="margin-top:10px"><b>Тариф — 0%</b> для клиентов с расчётным счётом в другом банке.</p></section>
     <section><h3>Преимущества</h3><ul class="ticks">
@@ -1227,6 +1382,13 @@ footer.site p{margin:0}
 <section class="view emp" id="emp-card" aria-labelledby="t-emp-card"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>1 из 10</span></div>
   <div class="view-head"><div><h2 id="t-emp-card">Карта и переводы</h2><p class="intro">Базовые банковские операции для зарплатного клиента бесплатны. Обслуживание карты не зависит от объёма покупок.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 16.11.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">0 ₽<small>годовое обслуживание СберКарты МИР, всегда без условий</small></div></div>
+  <!-- SZB micro-banner v1.5: emp-card; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--mint sp-micro--symbol" data-sp-section="emp-card" role="group" aria-label="Кратко о разделе: Одна карта — много задач">
+    <div class="sp-copy"><span class="sp-kicker">ЗАРПЛАТНАЯ КАРТА</span><div class="sp-headline">Одна карта — много задач</div><p class="sp-desc">Зарплата, покупки и ежедневные переводы.</p></div>
+    <div class="sp-scene" aria-hidden="true"><svg class="sp-svg" viewBox="0 0 160 112" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><circle class="sp-ring" cx="80" cy="56" r="51"/><g class="sp-float"><rect x="29" y="23" width="102" height="66" rx="12"/><path d="M30 47h100"/><rect x="42" y="59" width="18" height="14" rx="4"/><path d="M70 67h27"/></g><circle class="sp-orb" cx="126" cy="25" r="6"/></svg></div>
+    
+  </div>
+
   <div class="body">
     <section><h3>Бесплатно</h3><ul class="ticks">
       <li>Снятие наличных до <span class="num">300 000 ₽</span> в сутки в банкоматах Сбера.</li>
@@ -1252,6 +1414,13 @@ footer.site p{margin:0}
 <section class="view emp" id="emp-security" aria-labelledby="t-emp-security"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>2 из 10</span></div>
   <div class="view-head"><div><h2 id="t-emp-security">Безопасность</h2><p class="intro">Зарплата поступает в один из самых надёжных банков страны. В СберБанк Онлайн есть более 30 бесплатных инструментов защиты от мошенников, а на портале СберСова — бесплатное обучение финансовой и киберграмотности.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 22.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">AAA(RU)<small>кредитный рейтинг АКРА, прогноз «Стабильный»</small></div></div>
+  <!-- SZB micro-banner v1.5: emp-security; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--slate sp-micro--symbol" data-sp-section="emp-security" role="group" aria-label="Кратко о разделе: Безопасность в ваших руках">
+    <div class="sp-copy"><span class="sp-kicker">ЗАЩИТА И КОНТРОЛЬ</span><div class="sp-headline">Безопасность в ваших руках</div><p class="sp-desc">Включайте доступные защитные инструменты.</p></div>
+    <div class="sp-scene" aria-hidden="true"><svg class="sp-svg" viewBox="0 0 160 112" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><circle class="sp-ring" cx="80" cy="56" r="51"/><g class="sp-float"><path d="M80 12l41 16v28c0 27-19 43-41 53-22-10-41-26-41-53V28L80 12z"/><path d="M63 60l12 12 25-29"/></g><circle class="sp-orb" cx="117" cy="25" r="6"/></svg></div>
+    
+  </div>
+
   <div class="body">
     <section><h3>Надёжность банка</h3><ul class="ticks">
       <li>ПАО Сбербанк входит в перечень <b>системно значимых кредитных организаций</b> Банка России. Перечень опубликован 07.10.2026: в нём 12 банков, на которые приходится около 80% активов банковского сектора.</li>
@@ -1311,6 +1480,13 @@ footer.site p{margin:0}
 <section class="view emp" id="emp-cashback" aria-labelledby="t-emp-cashback"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>3 из 10</span></div>
   <div class="view-head"><div><h2 id="t-emp-cashback">Кешбэк СберСпасибо</h2><p class="intro">Новые получатели зарплаты на СберКарту получают СберПрайм Зарплатный: на одну категорию больше, чем у обычной карты. С зарплатой от 70 тысяч кешбэк на всё растёт до 1%, лимит до 5 000 бонусов.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 18.11.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">до 10%<small>в категориях повышенного кешбэка, категории выбираются каждый месяц</small></div></div>
+  <!-- SZB micro-banner v1.5: emp-cashback; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--slate sp-micro--symbol" data-sp-section="emp-cashback" role="group" aria-label="Кратко о разделе: Покупки превращаются в бонусы">
+    <div class="sp-copy"><span class="sp-kicker">ПРОГРАММА СБЕРСПАСИБО</span><div class="sp-headline">Покупки превращаются в бонусы</div><p class="sp-desc">Категории и лимиты — по правилам программы.</p></div>
+    <div class="sp-scene" aria-hidden="true"><svg class="sp-svg" viewBox="0 0 160 112" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><circle class="sp-ring" cx="80" cy="56" r="51"/><g class="sp-float"><path class="sp-star" d="M80 16l13 28 31 4-23 21 6 31-27-15-27 15 6-31-23-21 31-4z"/></g><circle class="sp-orb" cx="30" cy="23" r="6"/><circle class="sp-orb sp-delay" cx="133" cy="83" r="5"/></svg></div>
+    <span class="sp-qualifier">Проверить условия</span>
+  </div>
+
   <div class="body">
     <section class="full"><h3>Линейка продуктов для зарплатных клиентов, 2026</h3>
       <div class="tbl"><table>
@@ -1346,6 +1522,13 @@ footer.site p{margin:0}
 <section class="view emp" id="emp-credit" aria-labelledby="t-emp-credit"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>4 из 10</span></div>
   <div class="view-head"><div><h2 id="t-emp-credit">Кредиты и ипотека</h2><p class="intro">Для зарплатных клиентов есть скидки к ставке по кредиту на любые цели, рефинансированию и ипотеке.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 19.11.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">−2 п.п.<small>к ставке по кредиту на любые цели и по рефинансированию</small></div></div>
+  <!-- SZB micro-banner v1.5: emp-credit; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--mint sp-micro--symbol" data-sp-section="emp-credit" role="group" aria-label="Кратко о разделе: Условия под ваши задачи">
+    <div class="sp-copy"><span class="sp-kicker">КРЕДИТЫ И ИПОТЕКА</span><div class="sp-headline">Условия под ваши задачи</div><p class="sp-desc">Скидки и ставки зависят от продукта и клиента.</p></div>
+    <div class="sp-scene" aria-hidden="true"><svg class="sp-svg" viewBox="0 0 160 112" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><circle class="sp-ring" cx="80" cy="56" r="51"/><g class="sp-float"><path d="M36 57l44-37 44 37"/><path d="M49 54v41h62V54"/><rect x="72" y="69" width="17" height="26" rx="2"/><path d="M106 17h18v18"/></g><circle class="sp-orb" cx="130" cy="37" r="6"/></svg></div>
+    <span class="sp-qualifier">Без гарантии ставки</span>
+  </div>
+
   <div class="body">
     <section><h3>Кредиты</h3><ul class="ticks">
       <li>Кредит на любые цели: ставка на 2 п.п. ниже.</li>
@@ -1374,6 +1557,13 @@ footer.site p{margin:0}
 <section class="view emp" id="emp-savings" aria-labelledby="t-emp-savings"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>5 из 10</span></div>
   <div class="view-head"><div><h2 id="t-emp-savings">Вклады и счета</h2><p class="intro">Сбер — лучший банк для сбережений по версии Frank Saving Awards 2025. Для зарплатных клиентов есть отдельный вклад.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">12,65%<small>до, вклад «Зарплатный Максимум» при зарплате на карту Сбера</small></div></div>
+  <!-- SZB micro-banner v1.5: emp-savings; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--mint sp-micro--metric" data-sp-section="emp-savings" role="group" aria-label="Кратко о разделе: Выбирайте подходящий вариант">
+    <div class="sp-copy"><span class="sp-kicker">ВКЛАДЫ И СЧЕТА</span><div class="sp-headline">Выбирайте подходящий вариант</div><p class="sp-desc">Сравните ставку, срок и правила начисления.</p></div>
+    <div class="sp-scene" aria-hidden="true"><div class="sp-metric"><strong>↗</strong><span>варианты сбережений</span></div></div>
+    <span class="sp-qualifier">Ставки меняются</span>
+  </div>
+
   <div class="body">
     <section class="full"><div class="tbl"><table>
       <thead><tr><th>Продукт</th><th class="c">Ставка</th><th>Сумма и срок</th><th>Снятие / пополнение</th><th>Особенность</th></tr></thead>
@@ -1450,6 +1640,13 @@ footer.site p{margin:0}
 <section class="view emp" id="emp-partners" aria-labelledby="t-emp-partners"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>7 из 10</span></div>
   <div class="view-head"><div><h2 id="t-emp-partners">Скидки партнёров</h2><p class="intro">Скидки СберМобайл и СберЗдоровье подключаются в СберБанк Онлайн: «Профиль» → «Ваши привилегии». У СберПраво свои правила акции, у СитиДрайв — промокод.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">−40%<small>на подписку и налоговую декларацию в СберПраво</small></div></div>
+  <!-- SZB micro-banner v1.5: emp-partners; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--slate sp-micro--symbol" data-sp-section="emp-partners" role="group" aria-label="Кратко о разделе: Больше поводов для выгоды">
+    <div class="sp-copy"><span class="sp-kicker">ПАРТНЁРСКИЕ СЕРВИСЫ</span><div class="sp-headline">Больше поводов для выгоды</div><p class="sp-desc">Предложения доступны при выполнении условий.</p></div>
+    <div class="sp-scene" aria-hidden="true"><svg class="sp-svg" viewBox="0 0 160 112" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><circle class="sp-ring" cx="80" cy="56" r="51"/><g class="sp-float"><path d="M35 36h90v16a10 10 0 0 0 0 20v15H35V72a10 10 0 0 0 0-20z"/><path stroke-dasharray="4 6" d="M86 36v51"/><circle cx="61" cy="60" r="10"/><path d="M58 66l6-12"/></g></svg></div>
+    <span class="sp-qualifier">Уточнить предложение</span>
+  </div>
+
   <div class="body">
     <section><h3>Для зарплатных клиентов</h3><ul class="ticks">
       <li><b>СберМобайл:</b> 20% бессрочно на тарифы и в 2 раза больше гигабайт каждый месяц за перенос номера.</li>
@@ -1473,6 +1670,13 @@ footer.site p{margin:0}
 <section class="view emp" id="emp-promo" aria-labelledby="t-emp-promo" data-until="2026-11-30" data-until-text="Приём зарплатных зачислений для акции «185 млн бонусов» завершился 30.11.2026. Не предлагайте акцию клиентам — актуальные акции смотрите на sberbank.ru."><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>8 из 10</span></div>
   <div class="view-head"><div><h2 id="t-emp-promo">185 млн бонусов СберСпасибо</h2><p class="intro">Акция с 01.10.2026 по 25.12.2026. Участвуют клиенты старше 18 лет, новые и действующие получатели зарплаты.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">185 000<small>бонусов каждому победителю, в каждом из двух этапов</small></div></div>
+  <!-- SZB micro-banner v1.5: emp-promo; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--slate sp-micro--symbol" data-sp-section="emp-promo" role="group" aria-label="Кратко о разделе: Проверяйте сроки участия">
+    <div class="sp-copy"><span class="sp-kicker">АКЦИИ И БОНУСЫ</span><div class="sp-headline">Проверяйте сроки участия</div><p class="sp-desc">Даты этапов и правила — в описании акции.</p></div>
+    <div class="sp-scene" aria-hidden="true"><svg class="sp-svg" viewBox="0 0 160 112" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><circle class="sp-ring" cx="80" cy="56" r="51"/><g class="sp-float"><rect x="34" y="24" width="92" height="76" rx="12"/><path d="M34 49h92M57 16v18M103 16v18"/><path d="M52 64h12M76 64h12M100 64h9M52 82h12M76 82h12"/></g><circle class="sp-orb" cx="116" cy="90" r="6"/></svg></div>
+    <span class="sp-qualifier">Сроки важны</span>
+  </div>
+
   <div class="body">
     <section><h3>Как участвовать</h3><ol class="steps">
       <li><span><b>Зарегистрироваться в СберСпасибо.</b> Регистрация в программе лояльности обязательна.</span></li>
@@ -1495,6 +1699,13 @@ footer.site p{margin:0}
 <section class="view emp" id="emp-premium" aria-labelledby="t-emp-premium"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>9 из 10</span></div>
   <div class="view-head"><div><h2 id="t-emp-premium">Высокий доход <span class="flag">Пилот</span></h2><p class="intro">Пилоты доступны в части территорий — точную географию уточняйте у закреплённого МЗП/СЗП. Для клиентов 18+, подключение по акцепту клиента.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">500+<small>тыс. ₽ в месяц — бесплатный СберПремьер 2-го уровня</small></div></div>
+  <!-- SZB micro-banner v1.5: emp-premium; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--slate sp-micro--symbol" data-sp-section="emp-premium" role="group" aria-label="Кратко о разделе: Привилегии по критериям">
+    <div class="sp-copy"><span class="sp-kicker">ПРЕМИАЛЬНЫЕ ВОЗМОЖНОСТИ</span><div class="sp-headline">Привилегии по критериям</div><p class="sp-desc">Региональный пилот: доступность уточняется.</p></div>
+    <div class="sp-scene" aria-hidden="true"><svg class="sp-svg" viewBox="0 0 160 112" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><circle class="sp-ring" cx="80" cy="56" r="51"/><g class="sp-float"><path d="M27 79l14-46 30 25 9-35 9 35 30-25 14 46z"/><path d="M32 86h96v10H32z"/><circle cx="80" cy="21" r="5"/></g><circle class="sp-orb" cx="131" cy="34" r="5"/></svg></div>
+    <span class="sp-qualifier">Пилот</span>
+  </div>
+
   <div class="body">
     <section class="panel" data-until="2027-02-28" data-until-text="Пилот бесплатного СберПрайм завершился 28.02.2027. Условия после пилота уточняйте у закреплённого МЗП/СЗП."><h3>Зарплата от 150 тыс. ₽/мес → СберПрайм бесплатно</h3><ul class="ticks">
       <li>Срок пилота: 10.09.2026 – 28.02.2027.</li>
@@ -1528,6 +1739,13 @@ footer.site p{margin:0}
 <section class="view emp" id="emp-switch" aria-labelledby="t-emp-switch"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>10 из 10</span></div>
   <div class="view-head"><div><h2 id="t-emp-switch">Как перейти на Сбер</h2><p class="intro">Можно оставить свою личную карту Сбера или оформить новую. Реквизиты новой карты видны в СберБанк Онлайн сразу после оформления.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">от 2 мин<small>занимает оформление карты в отделении</small></div></div>
+  <!-- SZB micro-banner v1.5: emp-switch; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--forest sp-micro--flow" data-sp-section="emp-switch" role="group" aria-label="Кратко о разделе: Понятный путь для сотрудника">
+    <div class="sp-copy"><span class="sp-kicker">ПЕРЕХОД НА ЗАРПЛАТУ</span><div class="sp-headline">Понятный путь для сотрудника</div><p class="sp-desc">Способ передачи реквизитов выбирают по условиям.</p></div>
+    <div class="sp-scene" aria-hidden="true"><div class="sp-flow sp-flow--3" aria-hidden="true"><span class="sp-node"><b>Сотрудник</b><small>выбор</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Реквизиты</b><small>передача</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Зарплата</b><small>выплата</small></span></div></div>
+    
+  </div>
+
   <div class="body">
     <section class="full panel"><h3>Без QR-кода: по ИНН работодателя <span class="flag new">Собственная разработка Сбера</span></h3><p>Если у сотрудника уже есть карта или счёт в Сбере, а работодатель обслуживается в СберБизнесе, сотрудник может прямо в своём СберБанк Онлайн ввести ИНН работодателя и отправить реквизиты счёта для выплаты зарплаты. QR-код и визит в отделение не нужны. Это собственная разработка Сбера.</p></section>
     <section class="panel"><h3>Если карта Сбера уже есть</h3><ol class="steps">
@@ -1551,6 +1769,13 @@ footer.site p{margin:0}
 <section class="view neutral" id="pick" aria-labelledby="t-pick"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Подбор</span><span class="flag">Бета-версия</span></div>
   <div class="view-head"><div><h2 id="t-pick">ТОП фич для компании</h2><p class="intro">Отметьте, что знаете о клиенте. Рядом (на телефоне — ниже) сразу соберётся шпаргалка для менеджера: какие возможности рассказать первыми, почему именно этой компании, что сказать и что важно обсудить с компанией.</p></div><div class="big">1 стр.<small>готовая шпаргалка к встрече</small></div></div>
+  <!-- SZB micro-banner v1.5: pick; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--slate sp-micro--flow" data-sp-section="pick" role="group" aria-label="Кратко о разделе: Рекомендации под клиента">
+    <div class="sp-copy"><span class="sp-kicker">ПОДГОТОВКА К ВСТРЕЧЕ</span><div class="sp-headline">Рекомендации под клиента</div><p class="sp-desc">Профиль формирует список аргументов для обсуждения.</p></div>
+    <div class="sp-scene" aria-hidden="true"><div class="sp-flow sp-flow--3" aria-hidden="true"><span class="sp-node"><b>Профиль</b><small>параметры</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Подбор</b><small>приоритет</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Скрипт</b><small>встреча</small></span></div></div>
+    <span class="sp-qualifier">Проверить условия</span>
+  </div>
+
 
   <p class="pick-status" role="note">Подбор основан на сведениях версии 19.11.2026 и не проверяет тарифы в реальном времени. Условия, географию пилотов и доступность продуктов подтвердите перед предложением клиенту.</p>
   <div class="pick">
@@ -1645,6 +1870,13 @@ footer.site p{margin:0}
 <section class="view neutral" id="calc" aria-labelledby="t-calc"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Подбор</span><span class="flag">Бета-версия</span></div>
   <div class="view-head"><div><h2 id="t-calc">Выгода для коллектива</h2><p class="intro">Сколько получат сотрудники за год, если зарплата будет приходить на карту Сбера. Аргумент для собственника и HR: деньги и бонусы считаются отдельно, все допущения видны и меняются.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 06.11.2026</span></p></div><div class="big" id="cl-big">—<small>в год на коллектив, оценка</small></div></div>
+  <!-- SZB micro-banner v1.5: calc; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--slate sp-micro--flow" data-sp-section="calc" role="group" aria-label="Кратко о разделе: Оценка, а не обещание">
+    <div class="sp-copy"><span class="sp-kicker">КАЛЬКУЛЯТОР КОЛЛЕКТИВА</span><div class="sp-headline">Оценка, а не обещание</div><p class="sp-desc">Результат зависит от введённых допущений.</p></div>
+    <div class="sp-scene" aria-hidden="true"><div class="sp-flow sp-flow--3" aria-hidden="true"><span class="sp-node"><b>Ввод</b><small>данные</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Модель</b><small>расчёт</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Оценка</b><small>результат</small></span></div></div>
+    <span class="sp-qualifier">Сценарная модель</span>
+  </div>
+
   <div class="calc">
     <form class="calc-form" id="calc-form" autocomplete="off" novalidate>
       <fieldset>
@@ -1684,6 +1916,13 @@ footer.site p{margin:0}
 <section class="view neutral" id="objections" aria-labelledby="t-obj"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Продажа</span></div>
   <div class="view-head"><div><h2 id="t-obj">Возражения</h2><p class="intro">Краткие ответы на типовые возражения при подписании договора. Каждый ответ опирается на условия из разделов пакета.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 06.11.2026</span></p></div><div class="big">9<small>типовых возражений</small></div></div>
+  <!-- SZB micro-banner v1.5: objections; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--slate sp-micro--flow" data-sp-section="objections" role="group" aria-label="Кратко о разделе: От вопроса — к аргументу">
+    <div class="sp-copy"><span class="sp-kicker">РАБОТА С ВОЗРАЖЕНИЯМИ</span><div class="sp-headline">От вопроса — к аргументу</div><p class="sp-desc">Короткий ответ подкрепляйте проверенным фактом.</p></div>
+    <div class="sp-scene" aria-hidden="true"><div class="sp-flow sp-flow--3" aria-hidden="true"><span class="sp-node"><b>Вопрос</b><small>клиент</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Факт</b><small>проверка</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Ответ</b><small>диалог</small></span></div></div>
+    
+  </div>
+
   <div class="body"><div class="full qa">
     <details open><summary>«У нас уже есть зарплатный банк»</summary><p>Сотрудники могут оставить свою личную карту Сбера: передать реквизиты по QR и принести заявление. Реквизиты можно отправить и прямо в приложении по ИНН работодателя. Если люди получают зарплату в разных банках, для клиентов РГС и КСБ есть опция «Мультиреестр — зарплата в любой банк»: один реестр на всех. Если расчётный счёт компании в другом банке, тариф 0%, а зарплатный договор со Сбером работает без перехода на РКО (<a href="#biz-anybank">условия</a>).</p></details>
     <details><summary>«Бухгалтерии будет больше работы»</summary><p>Напротив: реестр выгружается из 1С и загружается в СберБизнес за 3–4 клика, реквизиты сотрудников поступают в СберБизнес автоматически, расчётные листки сотрудники видят в своём приложении, а с реестрами можно работать в мобильном приложении (<a href="#biz-sberbusiness">подробнее</a>).</p></details>
@@ -1738,6 +1977,13 @@ footer.site p{margin:0}
 <section class="view neutral" id="sources" aria-labelledby="t-src"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Справка</span></div>
   <div class="view-head"><div><h2 id="t-src">Источники и оговорки</h2><p class="intro">Источники цифр и ограничения, которые важно учитывать в разговоре с клиентом.</p></div><div class="big">28.10<small>2026 — дата последнего обновления</small></div></div>
+  <!-- SZB micro-banner v1.5: sources; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--slate sp-micro--flow" data-sp-section="sources" role="group" aria-label="Кратко о разделе: У каждого факта — источник">
+    <div class="sp-copy"><span class="sp-kicker">ПРОВЕРКА ИНФОРМАЦИИ</span><div class="sp-headline">У каждого факта — источник</div><p class="sp-desc">Сверяйте условия и даты перед встречей.</p></div>
+    <div class="sp-scene" aria-hidden="true"><div class="sp-flow sp-flow--3" aria-hidden="true"><span class="sp-node"><b>Факт</b><small>тезис</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Ссылка</b><small>источник</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Сверка</b><small>условия</small></span></div></div>
+    
+  </div>
+
   <div class="body">
     <section><h3>Источники</h3><ul class="ticks">
       <li>Материалы банка по зарплатному проекту (сентябрь–октябрь 2026): привилегии, линейка карт, вклады, кредиты, акции, пилоты, СберБизнес, выпуск карт по QR, сервис зачисления в другие банки, выездная выдача карт.</li>
@@ -1763,6 +2009,13 @@ footer.site p{margin:0}
 <section class="view neutral" id="updates" aria-labelledby="t-upd"><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><span class="tag">Справка</span></div>
   <div class="view-head"><div><h2 id="t-upd">Обновления базы знаний</h2><p class="intro">Что добавили и изменили в пакете — от новых к старым. Каждая запись ведёт в раздел с подробностями. Разделы, обновлённые за последние две недели, отмечены точкой на главной.</p></div><div class="big" id="upd-big">—<small>дата последнего обновления</small></div></div>
+  <!-- SZB micro-banner v1.5: updates; decorative scene has no independent product claim -->
+  <div class="sp-micro sp-micro--slate sp-micro--flow" data-sp-section="updates" role="group" aria-label="Кратко о разделе: Следите за обновлениями">
+    <div class="sp-copy"><span class="sp-kicker">ИСТОРИЯ ИЗМЕНЕНИЙ</span><div class="sp-headline">Следите за обновлениями</div><p class="sp-desc">Смотрите, что добавлено и что нужно перепроверить.</p></div>
+    <div class="sp-scene" aria-hidden="true"><div class="sp-flow sp-flow--3" aria-hidden="true"><span class="sp-node"><b>Проверка</b><small>условия</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Правка</b><small>контент</small></span><span class="sp-connector" aria-hidden="true"><i></i></span><span class="sp-node"><b>Версия</b><small>история</small></span></div></div>
+    
+  </div>
+
   <div class="body"><section class="full"><div class="upd-list" id="upd-list"></div></section></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#sources"><span>Назад</span>← Источники</a><a href="#home"><span>В начало</span>Главная →</a></nav>
 </div></section>
@@ -2277,5 +2530,33 @@ var UPDATES=[
 })();
 </script>
 
+
+<script>
+/* Lightweight visibility controller: only current, onscreen micro-banner animates. */
+(function(){
+  'use strict';
+  var banners=Array.prototype.slice.call(document.querySelectorAll('.sp-micro'));
+  if(!banners.length)return;
+  var io=null;
+  function setState(el,visible){
+    var parent=el.closest('section.view');
+    var active=!!(parent&&parent.classList.contains('on'));
+    el.classList.toggle('is-active',!!(visible&&active&&!parent.classList.contains('is-expired')&&!document.hidden));
+  }
+  if('IntersectionObserver' in window){
+    io=new IntersectionObserver(function(entries){entries.forEach(function(e){setState(e.target,e.isIntersecting)})},{threshold:.08});
+    banners.forEach(function(b){io.observe(b)});
+  }else{
+    function sync(){banners.forEach(function(b){setState(b,!!(b.getClientRects().length&&b.getBoundingClientRect().top<innerHeight&&b.getBoundingClientRect().bottom>0))})}
+    window.addEventListener('hashchange',sync);
+    document.addEventListener('visibilitychange',sync);
+    window.addEventListener('scroll',sync,{passive:true});
+    sync();
+  }
+  // Route updates can happen without a geometry change when the browser restores a view.
+  window.addEventListener('hashchange',function(){banners.forEach(function(b){b.classList.remove('is-active')});if(!io)return;requestAnimationFrame(function(){banners.forEach(function(b){var parent=b.closest('section.view');if(parent&&parent.classList.contains('on')&&b.getBoundingClientRect().top<innerHeight&&b.getBoundingClientRect().bottom>0)setState(b,true)})})});
+  document.addEventListener('visibilitychange',function(){if(document.hidden){banners.forEach(function(b){b.classList.remove('is-active')})}else{banners.forEach(function(b){var parent=b.closest('section.view');if(parent&&parent.classList.contains('on')&&b.getBoundingClientRect().top<innerHeight&&b.getBoundingClientRect().bottom>0)setState(b,true)})}});
+})();
+</script>
 </body>
 </html>
