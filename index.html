@@ -610,6 +610,86 @@ footer.site p{margin:0}
 @media (max-width:860px){.hero-anim:not(.m-anim){display:none}.js .m-hub .hero-anim.m-anim{display:block;flex:none}}
 @media (prefers-reduced-motion:reduce){.hero-anim .slot.c{opacity:0}}
 
+
+/* r26: СберМобайл — автономный анимированный оффер в #emp-mobile (без внешних ассетов) */
+#emp-mobile .sm-offer{--sm-lime:#ACFFBF;--sm-mint:#83EFC1;position:relative;isolation:isolate;overflow:hidden;min-height:350px;margin:28px 0 7px;border:1px solid #2C765A;border-radius:22px;color:#F4FFF7;background:radial-gradient(ellipse at 85% 27%,#1C7A5A 0%,transparent 37%),linear-gradient(120deg,#071E19 0%,#0B3528 55%,#0C4434 100%);box-shadow:0 18px 36px -28px rgba(2,47,32,.45)}
+#emp-mobile .sm-offer *{box-sizing:border-box}
+#emp-mobile .sm-offer::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.28;background-image:linear-gradient(rgba(150,255,191,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(150,255,191,.08) 1px,transparent 1px);background-size:32px 32px;mask-image:linear-gradient(90deg,transparent 25%,black 100%);-webkit-mask-image:linear-gradient(90deg,transparent 25%,black 100%)}
+#emp-mobile .sm-offer::after{content:"";position:absolute;z-index:-1;width:440px;height:440px;top:-250px;right:-120px;border-radius:50%;background:#77E6AC;filter:blur(95px);opacity:.17;pointer-events:none;animation:sm-atmosphere 12s ease-in-out infinite}
+#emp-mobile .sm-offer__copy{position:relative;z-index:2;max-width:680px;padding:30px 32px 25px}
+#emp-mobile .sm-offer__top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-right:56px}
+#emp-mobile .sm-offer__brand{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11px;line-height:1.4;letter-spacing:.09em;font-weight:600;color:#CAFFE1;text-transform:uppercase}
+#emp-mobile .sm-offer__pulse{position:relative;display:inline-block;flex:none;width:7px;height:7px;border-radius:50%;background:#ABFFBF;box-shadow:0 0 0 3px rgba(171,255,191,.12),0 0 16px #8CFFBD}
+#emp-mobile .sm-offer__pulse::before{content:"";position:absolute;inset:-5px;border:1px solid #ABFFBF;border-radius:50%;animation:sm-pulse 2.4s ease-out infinite}
+#emp-mobile .sm-offer__divider{height:12px;width:1px;background:rgba(199,255,219,.38)}
+#emp-mobile .sm-offer__subbrand{font-family:var(--mono);font-size:10px;letter-spacing:.07em;color:#C2DDCF;text-transform:uppercase}
+#emp-mobile .sm-offer__headline{font-family:var(--display);font-size:clamp(24px,3.4vw,39px);font-weight:700;line-height:1.17;letter-spacing:-.025em;max-width:610px;color:#FFF;margin:18px 0 17px;text-wrap:balance}
+#emp-mobile .sm-offer__headline em{font-style:normal;color:var(--sm-lime)}
+#emp-mobile .sm-offer__deal{display:flex;align-items:center;gap:18px;min-height:100px}
+#emp-mobile .sm-offer__price-swap{position:relative;display:flex;align-items:center;min-width:214px;height:92px}
+#emp-mobile .sm-offer__was{position:absolute;left:3px;top:23px;font-family:var(--display);font-size:clamp(29px,3.3vw,44px);font-weight:700;color:#BED9C7;white-space:nowrap;animation:sm-price-out 12s ease-in-out infinite}
+#emp-mobile .sm-offer__was::after{content:"";position:absolute;left:-3px;right:-3px;top:51%;height:3px;background:#ABFFBF;box-shadow:0 0 12px rgba(162,255,184,.7);transform-origin:left;animation:sm-strike 12s ease-in-out infinite}
+#emp-mobile .sm-offer__now{position:absolute;left:0;top:-2px;font-family:var(--display);font-size:clamp(65px,7vw,94px);font-weight:700;line-height:1;letter-spacing:-.06em;white-space:nowrap;color:#B4FFBF;text-shadow:0 0 32px rgba(124,255,174,.37);opacity:0;animation:sm-price-in 12s ease-in-out infinite}
+#emp-mobile .sm-offer__month{max-width:205px;border-left:1px solid rgba(218,255,229,.35);padding-left:16px;color:#D7EFE1;font-size:15px;line-height:1.4}
+#emp-mobile .sm-offer__month b{display:block;font-size:17px;color:white;margin-bottom:2px}
+#emp-mobile .sm-offer__features{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}
+#emp-mobile .sm-offer__feature{display:flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid rgba(191,255,219,.24);border-radius:100px;background:rgba(167,255,203,.09);color:#F6FFF8;font-size:14px;font-weight:600;white-space:nowrap;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+#emp-mobile .sm-offer__feature svg{width:17px;height:17px;flex:none;stroke:#A7FBC1;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#emp-mobile .sm-offer__actions{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-top:20px}
+#emp-mobile .sm-offer__cta{display:inline-flex;align-items:center;justify-content:center;gap:12px;border:0;border-radius:10px;padding:11px 17px;font:600 14px var(--body);color:#0D3425;background:#B4FFBF;cursor:pointer;transition:transform .2s,background .2s}
+#emp-mobile .sm-offer__cta:hover{background:#D6FFDD;transform:translateY(-2px)}
+#emp-mobile .sm-offer__cta svg{width:16px;height:16px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+#emp-mobile .sm-offer__duration{font-size:13px;color:#C3E8D1}
+#emp-mobile .sm-offer__legal{font-size:11px;line-height:1.5;color:#B7D1C4;max-width:620px;margin:14px 0 0}
+#emp-mobile .sm-offer__legal a{color:#D9FFE2;text-decoration:underline;text-underline-offset:2px}
+#emp-mobile .sm-offer__pause{position:absolute;z-index:5;right:17px;top:16px;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(198,250,217,.32);border-radius:50%;background:rgba(6,40,28,.3);color:#E3FFED;cursor:pointer}
+#emp-mobile .sm-offer__pause:hover{background:rgba(188,255,209,.16)}
+#emp-mobile .sm-offer__pause svg{width:15px;height:15px;fill:currentColor}
+#emp-mobile .sm-offer__pause .sm-play{display:none}
+#emp-mobile .sm-offer--paused .sm-offer__pause .sm-pause{display:none}
+#emp-mobile .sm-offer--paused .sm-offer__pause .sm-play{display:block}
+#emp-mobile .sm-offer__visual{position:absolute;z-index:1;right:9px;top:16px;width:328px;height:340px;pointer-events:none}
+#emp-mobile .sm-offer__orbit{position:absolute;width:330px;height:330px;left:8px;top:0;border:1px solid rgba(159,247,185,.22);border-radius:50%;transform:rotate(-23deg);box-shadow:0 0 0 27px rgba(119,244,182,.035),0 0 0 62px rgba(119,244,182,.018);animation:sm-orbit 22s linear infinite}
+#emp-mobile .sm-offer__orbit::before{content:"";position:absolute;inset:18px;border:1px dashed rgba(160,255,198,.3);border-radius:50%}
+#emp-mobile .sm-offer__orbit::after{content:"";position:absolute;left:20px;top:24px;width:13px;height:13px;border-radius:50%;background:#ACFFBF;box-shadow:0 0 24px #70FFA8}
+#emp-mobile .sm-offer__halo{position:absolute;width:230px;height:230px;left:55px;top:65px;border-radius:50%;background:rgba(89,233,147,.3);filter:blur(55px);animation:sm-atmosphere 9s ease-in-out infinite}
+#emp-mobile .sm-offer__phone{position:absolute;left:91px;top:14px;width:173px;height:311px;padding:7px;border-radius:30px;background:linear-gradient(135deg,#9ADDBB 0%,#2C6A55 17%,#143F30 55%,#ABEDC4 100%);box-shadow:18px 21px 44px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.4);transform:perspective(600px) rotateY(-14deg) rotateZ(8deg);transform-origin:center;animation:sm-phone-float 8s ease-in-out infinite}
+#emp-mobile .sm-offer__screen{position:relative;overflow:hidden;height:100%;border-radius:23px;background:radial-gradient(ellipse at 70% 20%,rgba(94,249,162,.4),transparent 43%),linear-gradient(150deg,#0E4436,#051711 75%);box-shadow:inset 0 0 0 1px rgba(218,255,235,.14)}
+#emp-mobile .sm-offer__screen::before{content:"";position:absolute;inset:0;opacity:.65;background:linear-gradient(115deg,transparent 38%,rgba(235,255,244,.1) 47%,transparent 54%);animation:sm-gloss 8s ease-in-out infinite}
+#emp-mobile .sm-offer__island{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:53px;height:13px;border-radius:20px;background:#06150F;box-shadow:0 1px 1px rgba(255,255,255,.12)}
+#emp-mobile .sm-offer__screen-top{position:absolute;top:36px;left:16px;right:14px;font-family:var(--mono);font-size:8px;color:#A5E7C5;letter-spacing:.1em;text-transform:uppercase}
+#emp-mobile .sm-offer__screen-ring{position:absolute;left:19px;top:92px;width:120px;height:120px;border-radius:50%;border:1px solid rgba(184,255,210,.5);box-shadow:0 0 0 13px rgba(91,233,153,.055),0 0 0 29px rgba(91,233,153,.045);animation:sm-ring-glow 6s ease-in-out infinite}
+#emp-mobile .sm-offer__screen-ring::before,#emp-mobile .sm-offer__screen-ring::after{content:"";position:absolute;border:1px solid rgba(166,255,194,.42);border-radius:50%;inset:12px}
+#emp-mobile .sm-offer__screen-ring::after{inset:25px;border-color:rgba(166,255,194,.7)}
+#emp-mobile .sm-offer__screen-signal{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:5px}
+#emp-mobile .sm-offer__screen-signal span{width:6px;border-radius:5px;background:#B2FFC6;box-shadow:0 0 11px rgba(161,255,183,.55);animation:sm-bars 1.6s ease-in-out infinite alternate}
+#emp-mobile .sm-offer__screen-signal span:nth-child(1){height:15px;animation-delay:-.2s}#emp-mobile .sm-offer__screen-signal span:nth-child(2){height:26px;animation-delay:-.5s}#emp-mobile .sm-offer__screen-signal span:nth-child(3){height:39px;animation-delay:-.8s}#emp-mobile .sm-offer__screen-signal span:nth-child(4){height:52px;animation-delay:-1.1s}
+#emp-mobile .sm-offer__screen-bottom{position:absolute;left:16px;right:15px;bottom:23px;display:grid;gap:8px}
+#emp-mobile .sm-offer__screen-bottom strong{font-family:var(--display);font-size:16px;color:#ECFFF4;line-height:1.25}
+#emp-mobile .sm-offer__screen-bottom small{font:10px var(--mono);color:#B0E2C6}
+#emp-mobile .sm-offer__screen-line{height:3px;width:82%;border-radius:4px;background:linear-gradient(90deg,#B9FFCC,#376F59);opacity:.7}
+#emp-mobile .sm-offer__floating{position:absolute;top:245px;left:11px;display:flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid rgba(165,255,193,.48);border-radius:10px;background:rgba(12,66,49,.85);box-shadow:0 10px 30px rgba(0,0,0,.18);font:600 12px var(--body);color:#ECFFF2;backdrop-filter:blur(10px);animation:sm-card-float 6s ease-in-out infinite}
+#emp-mobile .sm-offer__floating b{color:#AAFFC0}
+#emp-mobile .sm-offer--paused *,#emp-mobile .sm-offer--out *{animation-play-state:paused!important}
+#emp-mobile #sm-connect-steps{scroll-margin-top:25px}
+@keyframes sm-price-out{0%,18%{opacity:1;filter:blur(0);transform:translateY(0)}26%,92%{opacity:0;filter:blur(8px);transform:translateY(-15px)}98%,100%{opacity:1;filter:blur(0);transform:translateY(0)}}
+@keyframes sm-price-in{0%,19%{opacity:0;filter:blur(8px);transform:translateY(14px) scale(.9)}28%,90%{opacity:1;filter:blur(0);transform:translateY(0) scale(1)}97%,100%{opacity:0;transform:translateY(-10px)}}
+@keyframes sm-strike{0%,5%{transform:scaleX(0)}17%,100%{transform:scaleX(1)}}
+@keyframes sm-phone-float{0%,100%{transform:perspective(600px) rotateY(-14deg) rotateZ(8deg) translateY(0)}50%{transform:perspective(600px) rotateY(-11deg) rotateZ(5deg) translateY(-10px)}}
+@keyframes sm-bars{to{transform:scaleY(.6);opacity:.5}}
+@keyframes sm-ring-glow{50%{box-shadow:0 0 0 17px rgba(91,233,153,.08),0 0 0 31px rgba(91,233,153,.02)}}
+@keyframes sm-gloss{0%,20%{transform:translateX(-100%)}58%,100%{transform:translateX(100%)}}
+@keyframes sm-orbit{to{transform:rotate(337deg)}}
+@keyframes sm-atmosphere{50%{opacity:.3;transform:scale(1.18)}}
+@keyframes sm-pulse{0%{transform:scale(.5);opacity:.8}80%,100%{transform:scale(1.8);opacity:0}}
+@keyframes sm-card-float{50%{transform:translateY(-8px)}}
+@media(max-width:1020px){#emp-mobile .sm-offer__copy{max-width:calc(100% - 260px)}#emp-mobile .sm-offer__headline{font-size:clamp(23px,3vw,33px)}#emp-mobile .sm-offer__visual{right:-45px;transform:scale(.88);transform-origin:100% 30%}}
+@media(max-width:760px){#emp-mobile .sm-offer{min-height:0;border-radius:18px;margin:22px 0 10px}#emp-mobile .sm-offer__copy{max-width:none;padding:24px 22px 20px}#emp-mobile .sm-offer__headline{font-size:clamp(24px,6vw,33px);max-width:420px;margin:16px 0 12px}#emp-mobile .sm-offer__deal{gap:10px;min-height:78px}#emp-mobile .sm-offer__price-swap{min-width:170px;height:75px}#emp-mobile .sm-offer__now{font-size:73px;top:-3px}#emp-mobile .sm-offer__was{font-size:33px;top:18px}#emp-mobile .sm-offer__month{font-size:13px;max-width:145px;padding-left:11px}#emp-mobile .sm-offer__month b{font-size:15px}#emp-mobile .sm-offer__features{padding-right:0;margin-top:12px}#emp-mobile .sm-offer__feature{font-size:13px;padding:7px 10px}#emp-mobile .sm-offer__visual{position:relative;right:auto;top:auto;width:100%;height:198px;transform:none;overflow:hidden;margin-top:-6px}#emp-mobile .sm-offer__orbit{width:310px;height:310px;left:auto;right:-37px;top:-46px}#emp-mobile .sm-offer__halo{left:auto;right:12px;top:2px}#emp-mobile .sm-offer__phone{left:auto;right:63px;top:-36px;transform:scale(.75) rotateZ(8deg);transform-origin:100% 0;animation:sm-phone-float-small 8s ease-in-out infinite}#emp-mobile .sm-offer__floating{left:29px;top:91px}#emp-mobile .sm-offer__actions{margin-top:17px}#emp-mobile .sm-offer__legal{font-size:11px;margin-top:12px}#emp-mobile .sm-offer__top{padding-right:42px}}
+@keyframes sm-phone-float-small{0%,100%{transform:scale(.75) rotateZ(8deg) translateY(0)}50%{transform:scale(.75) rotateZ(6deg) translateY(-9px)}}
+@media(max-width:380px){#emp-mobile .sm-offer__copy{padding:22px 18px 16px}#emp-mobile .sm-offer__headline{font-size:24px}#emp-mobile .sm-offer__price-swap{min-width:154px}#emp-mobile .sm-offer__now{font-size:64px;top:2px}#emp-mobile .sm-offer__month{font-size:12px;max-width:137px}#emp-mobile .sm-offer__feature{font-size:12px;gap:6px;padding:6px 8px}#emp-mobile .sm-offer__brand{font-size:10px}#emp-mobile .sm-offer__subbrand{font-size:9px}#emp-mobile .sm-offer__visual{height:178px}#emp-mobile .sm-offer__floating{left:15px}}
+@media(prefers-reduced-motion:reduce){#emp-mobile .sm-offer *,#emp-mobile .sm-offer::after,#emp-mobile .sm-offer__pulse::before{animation:none!important;transition:none!important}#emp-mobile .sm-offer__now,#emp-mobile .sm-offer__feature{opacity:1!important;transform:none!important;filter:none!important}#emp-mobile .sm-offer__was{opacity:0!important}#emp-mobile .sm-offer__pause{display:none}#emp-mobile .sm-offer__phone{transform:scale(.75) rotateZ(7deg)}}
+@media print{#emp-mobile .sm-offer{break-inside:avoid;box-shadow:none!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}#emp-mobile .sm-offer *,#emp-mobile .sm-offer::after{animation:none!important}#emp-mobile .sm-offer__was{opacity:0!important}#emp-mobile .sm-offer__now,#emp-mobile .sm-offer__feature{opacity:1!important;transform:none!important;filter:none!important}#emp-mobile .sm-offer__pause{display:none}}
+
 </style>
 </head>
 <body>
@@ -1274,6 +1354,36 @@ footer.site p{margin:0}
 <section class="view emp" id="emp-mobile" aria-labelledby="t-emp-mobile" data-until="2027-12-31" data-until-text="Акция СберМобайл «Для профессионалов» завершилась 31.12.2027. Актуальные условия — на sberbank.ru."><div class="wrap">
   <div class="crumbs"><a href="#home">← Главная</a><a class="tag" href="#employees">Сотрудникам</a><span>6 из 10</span></div>
   <div class="view-head"><div><h2 id="t-emp-mobile">Мобильная связь за 0 ₽</h2><p class="intro">Тариф СберМобайл «Для профессионалов»: плату за связь зарплатным клиентам отменили на срок до 12 месяцев.</p><p class="sec-meta"><span>Актуально на 19.11.2026</span><span>· обновлено 23.10.2026</span><span>· <button type="button" class="sec-src">источник ↓</button></span></p></div><div class="big">0 ₽<small>в месяц вместо 630 ₽, скидка 100% на срок до 12 месяцев</small></div></div>
+
+  <!-- SberMobile: анимированный промобаннер; встроен в существующий #emp-mobile, без новых страниц -->
+  <div class="sm-offer" role="region" aria-label="СберМобайл: скидка 100% на связь для зарплатных клиентов при выполнении условий акции">
+    <button class="sm-offer__pause" type="button" data-sm-pause aria-label="Приостановить анимацию" aria-pressed="false" title="Приостановить анимацию">
+      <svg class="sm-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+      <svg class="sm-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10-6.5z"/></svg>
+    </button>
+    <div class="sm-offer__copy">
+      <div class="sm-offer__top"><span class="sm-offer__brand"><i class="sm-offer__pulse" aria-hidden="true"></i> СберМобайл</span><span class="sm-offer__divider" aria-hidden="true"></span><span class="sm-offer__subbrand">Для профессионалов</span></div>
+      <h3 class="sm-offer__headline">Зарплата в Сбере.<br><em>Связь — за счёт Сбера.</em></h3>
+      <div class="sm-offer__deal">
+        <span class="vh">Абонентская плата: вместо 630 рублей — 0 рублей в месяц при выполнении условий акции.</span>
+        <div class="sm-offer__price-swap" aria-hidden="true"><span class="sm-offer__was">630 ₽</span><strong class="sm-offer__now">0 ₽</strong></div>
+        <div class="sm-offer__month"><b>в месяц</b>Скидка 100% на абонентскую плату</div>
+      </div>
+      <div class="sm-offer__features" aria-label="В тарифе: 50 гигабайт, 300 минут, сохранение номера при переносе">
+        <span class="sm-offer__feature"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17a8 8 0 0 1 16 0M7 17a5 5 0 0 1 10 0M10 17a2 2 0 0 1 4 0"/></svg>50 ГБ</span>
+        <span class="sm-offer__feature"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h3l1.2 4-2 2a15 15 0 0 0 5.8 5.8l2-2 4 1.2v3c0 2-1.5 3-3.5 3A15 15 0 0 1 4 6.5C4 4.5 5 3 7 3z"/></svg>300 минут</span>
+        <span class="sm-offer__feature"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 17h6M9 7h6"/></svg>Свой номер</span>
+      </div>
+      <div class="sm-offer__actions"><button type="button" class="sm-offer__cta" data-sm-connect>Как подключить <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><span class="sm-offer__duration">До 12 месяцев без абонентской платы</span></div>
+      <p class="sm-offer__legal">Скидка действует при соблюдении условий акции, сохранении тарифа и регулярных зарплатных зачислениях; не дольше 12 месяцев и не позднее 31.12.2027. <a href="https://www.sberbank.ru/ru/person/help/zarp_faq/faq-mobilnaya_svyaz" target="_blank" rel="noopener noreferrer">Официальные условия</a>.</p>
+    </div>
+    <div class="sm-offer__visual" aria-hidden="true">
+      <div class="sm-offer__orbit"></div><div class="sm-offer__halo"></div>
+      <div class="sm-offer__phone"><div class="sm-offer__screen"><div class="sm-offer__island"></div><div class="sm-offer__screen-top">SBERMOBILE / LTE</div><div class="sm-offer__screen-ring"><div class="sm-offer__screen-signal"><span></span><span></span><span></span><span></span></div></div><div class="sm-offer__screen-bottom"><small>СВЯЗЬ ВКЛЮЧЕНА</small><strong>Твой номер.<br>Новые возможности.</strong><div class="sm-offer__screen-line"></div></div></div></div>
+      <div class="sm-offer__floating"><b>✓</b> Зарплата → связь</div>
+    </div>
+  </div>
+
   <div class="body">
     <section><h3>Что в тарифе</h3><ul class="ticks">
       <li><span class="num">300</span> минут и <span class="num">50 ГБ</span> интернета в месяц.</li>
@@ -1287,7 +1397,7 @@ footer.site p{margin:0}
       <li>Каждый месяц до окончания акции на карту Сбера приходят зарплатные зачисления.</li>
       <li>Тариф сохраняется без изменений.</li>
     </ul></section>
-    <section class="full"><h3>Как подключить</h3><p>Действующие получатели зарплаты — в СберБанк Онлайн, раздел «Выгода и привилегии». Новые — в отделении банка при оформлении зарплатной карты. Помимо акции, у зарплатных клиентов есть базовая привилегия: бессрочная скидка 20% на все тарифы СберМобайл и в 2 раза больше гигабайт за перенос номера.</p></section>
+    <section class="full" id="sm-connect-steps"><h3>Как подключить</h3><p>Действующие получатели зарплаты — в СберБанк Онлайн, раздел «Выгода и привилегии». Новые — в отделении банка при оформлении зарплатной карты. Помимо акции, у зарплатных клиентов есть базовая привилегия: бессрочная скидка 20% на все тарифы СберМобайл и в 2 раза больше гигабайт за перенос номера.</p></section>
     <section class="full script"><span class="eyebrow">Формулировка для сотрудника</span>«При переносе номера в СберМобайл связь до 12 месяцев бесплатна: 300 минут и 50 ГБ за 0 ₽, пока зарплата поступает на карту Сбера».</section>
   </div>
   <p class="src">Источник: материалы банка.</p>
@@ -2106,6 +2216,22 @@ var UPDATES=[
   form.addEventListener('change',render);
   form.addEventListener('reset',function(){setTimeout(render,0)});
   render();
+})();
+</script>
+
+
+<script>/* r26: кнопки баннера СберМобайл, пауза вне экрана и при скрытой вкладке */
+(function(){
+  var b=document.querySelector('#emp-mobile .sm-offer');if(!b)return;
+  /* Не показывать рекламный баннер после окончания акции. */
+  if(new Date()>=new Date(2028,0,1)){b.hidden=true;return;}
+  var pause=b.querySelector('[data-sm-pause]'),to=b.querySelector('[data-sm-connect]');
+  if(pause)pause.addEventListener('click',function(){var paused=b.classList.toggle('sm-offer--paused');pause.setAttribute('aria-pressed',String(paused));pause.setAttribute('aria-label',paused?'Возобновить анимацию':'Приостановить анимацию');pause.title=paused?'Возобновить анимацию':'Приостановить анимацию'});
+  if(to)to.addEventListener('click',function(){var target=document.getElementById('sm-connect-steps');if(target)target.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})});
+  function updateVisibility(){b.classList.toggle('sm-offer--out',document.hidden||!visible)}
+  var visible=true;
+  if('IntersectionObserver' in window)new IntersectionObserver(function(entries){visible=entries[0].isIntersecting;updateVisibility()},{threshold:0.01}).observe(b);
+  document.addEventListener('visibilitychange',updateVisibility);
 })();
 </script>
 
