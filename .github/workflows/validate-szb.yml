@@ -12,7 +12,7 @@ permissions:
 jobs:
   validate:
     name: Проверка лендинга и PDF
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Скачать файлы репозитория
         uses: actions/checkout@v5
