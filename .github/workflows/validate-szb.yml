@@ -1,39 +1,113 @@
-name: SZB Salary Pack integrity
-on:
-  push:
-    branches: ['main', 'master']
-  pull_request:
-  workflow_dispatch:
-  schedule:
-    - cron: '0 6 * * 1'
-jobs:
-  validate:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - run: python scripts/check_static.py --self-test
-      - run: python scripts/test_links.py
-      - run: pip install playwright==1.57.0
-      - run: python -m playwright install --with-deps chromium
-      - run: python scripts/smoke_browser.py
-  weekly-link-audit:
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-    continue-on-error: true
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - run: python scripts/check_links.py
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: external-links-report
-          path: reports/link_status.json
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          from collections import Counter
+          import subprocess, tempfile, re, sys
+
+          class Audit(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.ids, self.anchors, self.scripts = [], [], []
+                  self.in_script, self.parts = False, []
+              def handle_starttag(self, tag, attrs):
+                  a = dict(attrs)
+                  if a.get('id'): self.ids.append(a['id'])
+                  if tag == 'a' and (a.get('href') or '').startswith('#'):
+                      self.anchors.append(a['href'][1:])
+                  if tag == 'script' and not a.get('src'):
+                      self.in_script, self.parts = True, []
+              def handle_data(self, data):
+                  if self.in_script: self.parts.append(data)
+              def handle_endtag(self, tag):
+                  if tag == 'script' and self.in_script:
+                      self.scripts.append(''.join(self.parts))
+                      self.in_script = False
+
+          html_file = Path('index.html')
+          pdf_file = Path('paket-prodavca-zp.pdf')
+          errors = []
+          if not html_file.is_file():
+              sys.exit('ОШИБКА: index.html не найден в корне репозитория')
+          if not pdf_file.is_file():
+              sys.exit('ОШИБКА: paket-prodavca-zp.pdf не найден в корне репозитория')
+          html = html_file.read_text(encoding='utf-8')
+          p = Audit(); p.feed(html)
+          duplicates = [v for v, n in Counter(p.ids).items() if n > 1]
+          missing = sorted(set(a for a in p.anchors if a and a not in p.ids))
+          if duplicates: errors.append('Дублирующиеся id: ' + ', '.join(duplicates[:15]))
+          if missing: errors.append('Битые внутренние якоря: ' + ', '.join(missing[:15]))
+          if len(re.findall(r'<section\b[^>]*class="[^"]*\bview\b',html)) != 26:
+              errors.append('Число разделов изменилось (ожидается 26)')
+          if html.count('class="sp-micro ') != 25:
+              errors.append('Число мини-баннеров изменилось (ожидается 25)')
+          if 'id="emp-mobile"' not in html or 'class="sm-offer' not in html:
+              errors.append('Не найден основной баннер СберМобайл')
+          if 'paket-prodavca-zp.pdf' not in html:
+              errors.append('В HTML нет ссылки на PDF')
+          if not pdf_file.read_bytes().startswith(b'%PDF-'):
+              errors.append('PDF повреждён или неверный формат')
+          if re.search(r'location\.search\.match\(/\[\?&\]today', html):
+              errors.append('Обнаружена запрещённая подмена даты ?today=')
+          for i, js in enumerate(p.scripts, 1):
+              with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', suffix='.js') as f:
+                  f.write(js); f.flush()
+                  r = subprocess.run(['node', '--check', f.name], capture_output=True, text=True)
+                  if r.returncode: errors.append(f'JavaScript #{i}: {r.stderr.strip()[:200]}')
+          print(f'Проверено: {len(p.anchors)} ссылок, {len(p.scripts)} JS-блоков, 26 разделов, 25 баннеров')
+          if errors:
+              for e in errors: print('ОШИБКА:', e, file=sys.stderr)
+              sys.exit(1)
+          print('Статическая проверка пройдена')
+          PY
+
+      - name: Установить браузер для проверки
+        run: |
+          python -m pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium
+
+      - name: Проверить сайт в Chromium
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          import shutil
+
+          html = Path('index.html').read_text(encoding='utf-8')
+          with sync_playwright() as p:
+              browser = p.chromium.launch(headless=True, executable_path=shutil.which('chromium') or None, args=['--no-sandbox'])
+              total = 0
+              for width in (320, 390, 768, 1440):
+                  page = browser.new_page(viewport={'width': width, 'height': 850})
+                  failures = []
+                  page.on('pageerror', lambda err: failures.append(str(err)))
+                  page.set_content(html, wait_until='load')
+                  for section in ('biz-money','biz-requisites','emp-mobile','pick','calc','objections'):
+                      page.evaluate('h => {location.hash="#"+h;dispatchEvent(new Event("hashchange"))}', section)
+                      assert 'on' in (page.locator('#'+section).get_attribute('class') or '').split(), f'{section}, width {width}'
+                      total += 1
+                  page.evaluate('location.hash="#pick";dispatchEvent(new Event("hashchange"))')
+                  assert page.locator('#onepage .op-top li').count() == 7, f'TOP-7, width {width}'
+                  page.locator('#f-api').evaluate('(el) => {el.checked=true;el.dispatchEvent(new Event("change",{bubbles:true}));}')
+                  assert page.locator('#onepage .op-top li').count() == 7
+                  page.evaluate('location.hash="#calc";dispatchEvent(new Event("hashchange"))')
+                  page.locator('#cl-n').fill('0')
+                  assert 'Проверьте поля' in page.locator('#calc-out').inner_text(), 'Input validation missing'
+                  page.locator('#cl-n').fill('100')
+                  page.locator('#szb-scenario-mode').select_option('potential')
+                  assert 'Проверьте поля' in page.locator('#calc-out').inner_text()
+                  page.locator('#szb-scenario-share').fill('40')
+                  assert 'бонусов СберСпасибо' in page.locator('#calc-out').inner_text()
+                  page.locator('#srch-open').click(force=True)
+                  assert page.locator('.sr-wrap').is_visible()
+                  assert page.evaluate('document.activeElement.id') == 'sr-q'
+                  page.keyboard.press('Escape')
+                  assert page.evaluate('document.activeElement.id') == 'srch-open'
+                  assert not page.evaluate('document.documentElement.scrollWidth > innerWidth'), f'Horizontal overflow at {width}'
+                  assert not failures, failures
+                  total += 8
+                  page.close()
+              browser.close()
+          print(f'Браузерная проверка пройдена: {total} сценариев')
+          PY
