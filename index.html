@@ -817,6 +817,20 @@ footer.site p{margin:0}
 @media(max-width:760px){.kb16c{padding:14px;border-radius:15px}.kb16c-grid{grid-template-columns:1fr}.kb16c-offer{padding:13px}.kb16c h3{font-size:18px}}
 :root[data-theme="dark"] .kb16c{background:linear-gradient(125deg,#0f2f25,#15382b);color:#e8fff1;border-color:#326c50}:root[data-theme="dark"] .kb16c h3,:root[data-theme="dark"] .kb16c-offer h4{color:#edfff3}:root[data-theme="dark"] .kb16c-heading p,:root[data-theme="dark"] .kb16c-eyebrow{color:#bcddc9}:root[data-theme="dark"] .kb16c-offer{background:#14392c;border-color:#33634e}:root[data-theme="dark"] .kb16c-offer p{color:#e2f8e9}:root[data-theme="dark"] .kb16c-offer .kb16c-offer__secondary,:root[data-theme="dark"] .kb16c-offer__meta{color:#b6d5c2}:root[data-theme="dark"] .kb16c-offer__meta a{color:#a1f0c1}:root[data-theme="dark"] .kb16c-offer.kb16c-archived{background:#183529}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-theme="dark"]) .kb16c{background:linear-gradient(125deg,#0f2f25,#15382b);color:#e8fff1;border-color:#326c50}:root:not([data-theme="light"]):not([data-theme="dark"]) .kb16c h3,:root:not([data-theme="light"]):not([data-theme="dark"]) .kb16c-offer h4{color:#edfff3}:root:not([data-theme="light"]):not([data-theme="dark"]) .kb16c-heading p,:root:not([data-theme="light"]):not([data-theme="dark"]) .kb16c-eyebrow{color:#bcddc9}:root:not([data-theme="light"]):not([data-theme="dark"]) .kb16c-offer{background:#14392c;border-color:#33634e}:root:not([data-theme="light"]):not([data-theme="dark"]) .kb16c-offer p{color:#e2f8e9}:root:not([data-theme="light"]):not([data-theme="dark"]) .kb16c-offer .kb16c-offer__secondary,:root:not([data-theme="light"]):not([data-theme="dark"]) .kb16c-offer__meta{color:#b6d5c2}:root:not([data-theme="light"]):not([data-theme="dark"]) .kb16c-offer__meta a{color:#a1f0c1}:root:not([data-theme="light"]):not([data-theme="dark"]) .kb16c-offer.kb16c-archived{background:#183529}}
+
+/* SZB 1.6D: audit status, validation, scenarios, safe manual copy */
+.sec-audit-note{display:inline-block;color:#657669;font-size:12px;margin-left:.35rem}
+.szb-copy-fallback{display:block;width:min(100%,400px);margin-top:8px;font-size:12px;line-height:1.45;color:#224438}
+.szb-copy-fallback input{display:block;max-width:100%;width:100%;margin-top:6px;padding:9px;border:1px solid #7c9b8f;border-radius:8px;font-size:12px}
+.cl-f input[aria-invalid="true"],.szb-invalid{border-color:#bc4040!important;outline:2px solid #bc4040;outline-offset:1px}
+.szb-field-error{color:#9c2929;font-size:12px;margin:4px 0 0;display:block}
+.szb-cal-error{border:1px solid #d79b9b;padding:15px;border-radius:12px;color:#8c2727;background:#fff8f8}
+.szb-scenarios{padding:12px 16px;border:1px solid #c6dfd1;border-radius:15px;margin:12px 0;background:#f7fcf8}
+.szb-scenarios select,.szb-scenarios input{padding:10px;max-width:100%;border:1px solid #a7c2b2;border-radius:10px;font:inherit}
+.szb-scenarios label{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.szb-scenarios p{font-size:12px;margin:8px 0 0;color:#536b5d}
+.szb-archive-warning{padding:8px 11px;margin:10px 0;background:#fff4dd;border-left:3px solid #c79635;border-radius:6px;font-size:12px;color:#714e0c}
+
 </style>
 </head>
 <body>
@@ -833,7 +847,7 @@ footer.site p{margin:0}
       <a href="#bank-site">Сайт банка</a>
       <a href="#sources">Источники</a>
       <button class="srch" type="button" id="srch-open" aria-label="Поиск по пакету" title="Поиск по пакету (клавиша /)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></button>
-      <a class="pdf" href="paket-prodavca-zp.pdf" target="_blank" rel="noopener nofollow">PDF, 4 стр.</a>
+      <a class="pdf" href="paket-prodavca-zp.pdf" target="_blank" rel="noopener nofollow">PDF · пакет продавца</a>
     </nav>
   </div>
 </header>
@@ -889,7 +903,7 @@ footer.site p{margin:0}
       <nav class="hub-links" aria-label="Быстрые ссылки">
         <a href="#objections">Возражения</a>
         <a href="#bank-site">Сайт банка</a>
-        <a href="paket-prodavca-zp.pdf" target="_blank" rel="noopener nofollow">PDF</a>
+        <a href="paket-prodavca-zp.pdf" target="_blank" rel="noopener nofollow">Пакет продавца (PDF)</a>
       </nav>
       <p class="hub-date">Актуально на 19.11.2026 · неофициальный материал</p>
     </section>
@@ -1927,6 +1941,7 @@ footer.site p{margin:0}
       </details>
       <div class="cl-actions"><button type="reset" class="pick-reset">Сбросить</button><button type="button" class="pick-reset" id="cl-copy">Скопировать расчёт</button><span id="cl-msg" role="status"></span></div>
     </form>
+<div class="szb-scenarios" id="szb-scenarios"><label for="szb-scenario-mode"><strong>Сценарий</strong><select id="szb-scenario-mode" aria-label="Сценарий оценки"><option value="base">Базовый — процент из анкеты</option><option value="cautious">Осторожный — укажите свой процент</option><option value="potential">Потенциальный — укажите свой процент</option></select></label><label for="szb-scenario-share" id="szb-scenario-share-wrap" hidden>Доля сотрудников в выбранном сценарии, %<input type="number" id="szb-scenario-share" min="1" max="100" step="1" inputmode="numeric" placeholder="Введите от 1 до 100" value=""></label><p>Коэффициенты для разных сценариев банк не утверждал: в дополнительных сценариях долю участников задаёте вы. Суммы — модельные оценки, не гарантия дохода. Действующая формула и предпосылка до 12 месяцев СберМобайл сохранены по решениям D05 и D09.</p></div>
     <div class="calc-out" id="calc-out" aria-live="polite"></div>
   </div>
   <div class="body"><section class="full"><h3>Что не вошло в расчёт</h3>
@@ -1936,7 +1951,7 @@ footer.site p{margin:0}
       <li>Пилоты для высоких зарплат, проценты по вкладам и накопительным счетам.</li>
       <li>Скидки партнёров, акции и бонусы за участие в них.</li>
     </ul>
-    <p class="cap">Оценка по средним значениям, а не расчёт для конкретного сотрудника. Это не оферта и не обещание клиенту: показывайте компании утверждённые формы, а калькулятор используйте для подготовки разговора. Бонусы СберСпасибо — не рубли: курс обмена и условия трат — на сайте программы. Скидки по кредитам действуют на новые кредиты; ставки зависят от решения банка.</p>
+    <p class="cap">Оценка по средним значениям, а не расчёт для конкретного сотрудника. Допущение 12 месяцев по СберМобайл сохранено по согласованию и может не соответствовать фактическому сроку подключения. Это не оферта и не обещание клиенту: показывайте компании утверждённые формы, а калькулятор используйте для подготовки разговора. Бонусы СберСпасибо — не рубли: курс обмена и условия трат — на сайте программы. Скидки по кредитам действуют на новые кредиты; ставки зависят от решения банка.</p>
   </section></div>
   <div class="fb-box" hidden><span class="fb-q">Раздел полезен?</span><button type="button" class="fb-b" data-v="up"><span aria-hidden="true">👍</span> Да</button><button type="button" class="fb-b" data-v="down"><span aria-hidden="true">👎</span> Нет</button><div class="fb-more" hidden><label class="vh" for="fb-calc">Что улучшить в разделе</label><textarea id="fb-calc" maxlength="500" placeholder="Что улучшить? Необязательно. Без данных клиентов и сотрудников"></textarea><div><button type="button" class="fb-b" data-act="send">Отправить</button></div></div><span class="fb-msg" role="status"></span></div>
   <nav class="pager" aria-label="Соседние разделы"><a href="#pick"><span>Назад</span>← ТОП фич для компании</a><a href="#objections"><span>Дальше</span>Возражения →</a></nav>
@@ -2124,46 +2139,74 @@ for(var k=0;k<6;k++){var y0=150+k*5,d='M0 '+y0;for(var x2=0;x2<=872;x2+=50)d+=' 
       b.addEventListener('click',function(){
         var url=location.origin+location.pathname+'#'+v.id;
         var done=function(){b.textContent='Ссылка скопирована';setTimeout(function(){b.textContent='Скопировать ссылку'},1800)};
-        if(navigator.clipboard){navigator.clipboard.writeText(url).then(done,function(){prompt('Ссылка',url)})}
+        var fallback=function(){var old=c.querySelector('.szb-copy-fallback');if(old)old.remove();
+          var wrap=document.createElement('label');wrap.className='szb-copy-fallback';wrap.textContent='Автоматическое копирование недоступно. Выделите ссылку и скопируйте вручную:';
+          var inp=document.createElement('input');inp.type='text';inp.readOnly=true;inp.value=url;inp.setAttribute('aria-label','Ссылка на раздел для ручного копирования');wrap.appendChild(inp);c.appendChild(wrap);inp.focus();inp.select();};
+        if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done,fallback)}else fallback();
       });
       c.appendChild(b);
     });
   }
 })();
 
-/* ===== Сроки: акции и пилоты с истёкшей датой помечаются автоматически =====
-   Дата берётся из data-until (ГГГГ-ММ-ДД, из справочника фактов). Для проверки: ?today=ГГГГ-ММ-ДД */
-(function(){
-  var q=(location.search.match(/[?&]today=(\d{4}-\d{2}-\d{2})/)||[])[1];
-  var d=new Date(), today=q||(d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'));
-  [].forEach.call(document.querySelectorAll('[data-until]'),function(el){
-    var until=el.getAttribute('data-until'); if(!until||today<=until) return;
-    var txt=el.getAttribute('data-until-text')||'Срок истёк';
-    el.classList.add('is-expired');
-    /* r21: замена на нейтральную формулировку; через 7 дней строка уходит с главной, раздел выпадает из листания */
-    var alt=el.querySelector('template.ua'); if(alt){el.innerHTML=alt.innerHTML;el.classList.add('is-alt');return}
-    var g=new Date(until+'T00:00:00Z'); g.setUTCDate(g.getUTCDate()+7); var gone=today>g.toISOString().slice(0,10);
-    if(gone&&el.matches('li')){el.hidden=true;return}
-    if(gone&&el.matches('section.view')) el.setAttribute('data-gone','');
-    if(el.matches('section.view')){
-      var b=document.createElement('div'); b.className='exp-banner'; b.setAttribute('role','note');
-      b.innerHTML='<b>Срок истёк.</b> '; b.appendChild(document.createTextNode(txt));
-      var vh=el.querySelector('.view-head'); vh.parentNode.insertBefore(b,vh);
-    } else if(el.matches('li')){
-      var tt=el.querySelector('.tt'); if(tt){var f=document.createElement('span'); f.className='exp-flag'; f.textContent='Завершено'; f.title=txt; tt.appendChild(f)}
-    } else if(el.matches('section.panel')){
-      var h=el.querySelector('h3'); var f2=document.createElement('span'); f2.className='exp-flag'; f2.textContent='Завершено'; h.appendChild(f2);
-      var n=document.createElement('p'); n.className='exp-note'; n.textContent=txt; h.parentNode.insertBefore(n,h.nextSibling);
-    } else {
-      var n2=document.createElement('span'); n2.className='exp-note'; n2.textContent='Внимание: '+txt+'.'; el.appendChild(n2);
-    }
-  });
-  [].forEach.call(document.querySelectorAll('section.view[data-gone]'),function(gv){
-    var pg=gv.querySelector('.pager'); if(!pg) return; var pr=pg.querySelector('a:first-child'), nx=pg.querySelector('a:last-child');
-    [].forEach.call(document.querySelectorAll('.pager a[href="#'+gv.id+'"]'),function(a){ if(gv.contains(a)) return;
-      var src=(a===a.parentNode.lastElementChild)?nx:pr; if(!src||src.getAttribute('href')==='#'+gv.id) return;
-      a.setAttribute('href',src.getAttribute('href')); a.innerHTML=src.innerHTML; });
-  });
+
+/* 1.6D: current local date only. No URL-controlled clock. Idempotent refresh. */
+(function(){'use strict';
+  var todayPrev='';
+  function todayString(){var d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');}
+  function refresh(){
+    var today=todayString();
+    if(today===todayPrev)return;
+    todayPrev=today;
+    [].forEach.call(document.querySelectorAll('[data-until]'),function(el){
+      var until=el.getAttribute('data-until');if(!until||today<=until)return;
+      var txt=el.getAttribute('data-until-text')||'Срок истёк';
+      var g=new Date(until+'T00:00:00Z');g.setUTCDate(g.getUTCDate()+7);
+      var gone=today>g.toISOString().slice(0,10);
+      if(gone&&el.matches('li'))el.hidden=true;
+      if(gone&&el.matches('section.view'))el.setAttribute('data-gone','');
+      if(el.dataset.szbExpiryDone==='yes')return;
+      el.dataset.szbExpiryDone='yes';el.classList.add('is-expired');
+      var alt=el.querySelector('template.ua');
+      if(alt){el.innerHTML=alt.innerHTML;el.classList.add('is-alt');return;}
+      if(el.matches('section.view')){
+        var vh=el.querySelector('.view-head');if(vh&&!el.querySelector('.exp-banner')){
+          var b=document.createElement('div');b.className='exp-banner';b.setAttribute('role','note');
+          b.innerHTML='<b>Срок истёк.</b> ';b.appendChild(document.createTextNode(txt));
+          vh.parentNode.insertBefore(b,vh);
+        }
+      }else if(el.matches('li')){
+        var tt=el.querySelector('.tt');if(tt&&!tt.querySelector('.exp-flag')){var f=document.createElement('span');f.className='exp-flag';f.textContent='Завершено';f.title=txt;tt.appendChild(f);}
+      }else if(el.matches('section.panel')){
+        var h=el.querySelector('h3');if(h&&!h.querySelector('.exp-flag')){
+          var f2=document.createElement('span');f2.className='exp-flag';f2.textContent='Завершено';h.appendChild(f2);
+          var n=document.createElement('p');n.className='exp-note';n.textContent=txt;h.parentNode.insertBefore(n,h.nextSibling);
+        }
+      }else if(!el.querySelector('.exp-note')){
+        var n2=document.createElement('span');n2.className='exp-note';n2.textContent='Внимание: '+txt+'.';el.appendChild(n2);
+      }
+    });
+    [].forEach.call(document.querySelectorAll('section.view[data-gone]'),function(gv){
+      var pg=gv.querySelector('.pager');if(!pg)return;
+      var pr=pg.querySelector('a:first-child'),nx=pg.querySelector('a:last-child');
+      [].forEach.call(document.querySelectorAll('.pager a[href="#'+gv.id+'"]'),function(a){
+        if(gv.contains(a))return;
+        var src=a===a.parentNode.lastElementChild?nx:pr;
+        if(!src||src.getAttribute('href')==='#'+gv.id)return;
+        a.setAttribute('href',src.getAttribute('href'));a.innerHTML=src.innerHTML;
+      });
+    });
+    var sm=document.querySelector('#emp-mobile .sm-offer');if(sm&&today>='2028-01-01')sm.hidden=true;
+    if(typeof window.SZB_KB_REFRESH==='function')window.SZB_KB_REFRESH();
+    if(typeof window.SZB_CAL_REFRESH==='function')window.SZB_CAL_REFRESH();
+  }
+  var timer;
+  function schedule(){clearTimeout(timer);var now=new Date();var midnight=new Date(now.getFullYear(),now.getMonth(),now.getDate()+1,0,0,1);timer=setTimeout(function(){refresh();schedule()},Math.max(1000,midnight-now));}
+  window.SZB_REFRESH_DATE=function(){refresh();schedule()};
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)window.SZB_REFRESH_DATE()});
+  window.addEventListener('pageshow',window.SZB_REFRESH_DATE);
+  window.addEventListener('focus',window.SZB_REFRESH_DATE);
+  window.SZB_REFRESH_DATE();
 })();
 /* ===== Калькулятор выгоды для коллектива (бета) ===== */
 (function(){
@@ -2172,8 +2215,8 @@ for(var k=0;k<6;k++){var y0=150+k*5,d='M0 '+y0;for(var x2=0;x2<=872;x2+=50)d+=' 
           thr:'70',l70:'5 000',lb:'2 000',r70:'1%',rb:'0,5%'};
   function n(s){return parseFloat(String(s).replace(/[^\d,.-]/g,'').replace(',','.').replace(/\.+$/,''))||0}
   var P={mp:n(CF.mp),mm:n(CF.mm),cr:n(CF.cr),mo:n(CF.mo),thr:n(CF.thr)*1000,l70:n(CF.l70),lb:n(CF.lb),r70:n(CF.r70),rb:n(CF.rb)};
-  var q=(location.search.match(/[?&]today=(\d{4}-\d{2}-\d{2})/)||[])[1], d0=new Date();
-  var today=q||(d0.getFullYear()+'-'+String(d0.getMonth()+1).padStart(2,'0')+'-'+String(d0.getDate()).padStart(2,'0'));
+  var d0=new Date();
+  var today=[d0.getFullYear(),String(d0.getMonth()+1).padStart(2,'0'),String(d0.getDate()).padStart(2,'0')].join('-');
   var mobileOn=today<=CF.mu;
   var out=document.getElementById('calc-out'), big=document.getElementById('cl-big');
   function v(id,min,max){var x=n(document.getElementById(id).value);if(isNaN(x))x=0;return Math.min(max,Math.max(min,x))}
@@ -2183,9 +2226,36 @@ for(var k=0;k<6;k++){var y0=150+k*5,d='M0 '+y0;for(var x2=0;x2<=872;x2+=50)d+=' 
   function ppl(x){var k=Math.round(x),m10=k%10,m100=k%100;return num(k)+' '+((m10===1&&m100!==11)?'человек':(m10>=2&&m10<=4&&(m100<10||m100>=20))?'человека':'человек')}
   function fmtD(s){return s.split('-').reverse().join('.')}
   var LAST='';
+  var scenarioMode=document.getElementById('szb-scenario-mode'),scenarioShare=document.getElementById('szb-scenario-share'),scenarioWrap=document.getElementById('szb-scenario-share-wrap');
+  function inputError(input){
+    var raw=input.value.trim(),num=Number(raw), min=Number(input.min||0),max=input.max?Number(input.max):Infinity;
+    if(!raw||!Number.isFinite(num)||num<min||num>max||input.validity.badInput||input.validity.stepMismatch||
+       (['cl-n','cl-sh','cl-spend','cl-mob','cl-cr','cl-mo','szb-scenario-share'].includes(input.id)&&!Number.isInteger(num)))
+      return 'Укажите корректное значение от '+(input.min||0)+' до '+(input.max||'допустимого значения')+'.';
+    return '';
+  }
+  function validate(){
+    form.querySelectorAll('input[type=number]').forEach(function(x){x.removeAttribute('aria-invalid');var p=x.closest('label');if(p){var old=p.querySelector('.szb-field-error');if(old)old.remove();}});
+    scenarioShare.removeAttribute('aria-invalid');
+    var fields=Array.prototype.slice.call(form.querySelectorAll('input[type=number]'));
+    if(scenarioMode.value!=='base')fields.push(scenarioShare);
+    var bad=[];
+    fields.forEach(function(field){var error=inputError(field);if(!error)return;bad.push(field);field.setAttribute('aria-invalid','true');
+      var p=field.closest('label');if(p){var m=document.createElement('span');m.className='szb-field-error';m.textContent=error;p.appendChild(m);}
+    });
+    if(bad.length){out.innerHTML='<div class="szb-cal-error" role="alert">Проверьте поля расчёта. До исправления некорректные суммы не показываются.</div>';big.innerHTML='—<small>исправьте параметры расчёта</small>';LAST='';return false;}
+    return true;
+  }
   function calc(){
+    var d=new Date();today=[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
+    mobileOn=today<=CF.mu;
+    scenarioWrap.hidden=scenarioMode.value==='base';
+    if(!validate())return;
     var N=v('cl-n',1,200000), S=v('cl-s',0,5e6), sh=v('cl-sh',0,100)/100, sp=v('cl-spend',0,100)/100,
         mb=v('cl-mob',0,100)/100, cr=v('cl-cr',0,100)/100, crs=v('cl-crs',0,1e8), mo=v('cl-mo',0,100)/100, mos=v('cl-mos',0,1e9), fee=v('cl-fee',0,5)/100;
+    var chosenScenario=scenarioMode.value;
+    if(chosenScenario!=='base')sh=Number(scenarioShare.value)/100;
+    var scenarioName={base:'Базовый',cautious:'Осторожный',potential:'Потенциальный'}[chosenScenario]||'Базовый';
     var M=N*sh, hi=S>=P.thr, rate=(hi?P.r70:P.rb)/100, lim=hi?P.l70:P.lb;
     var bon1=Math.min(S*sp*rate,lim)*12, bonAll=bon1*M;
     var rows=[];
@@ -2205,7 +2275,7 @@ for(var k=0;k<6;k++){var y0=150+k*5,d='M0 '+y0;for(var x2=0;x2<=872;x2+=50)d+=' 
     h+='</tbody></table>';
     if(comp>0) h+='<div class="cl-comp"><b>Компании:</b> зачисление в Сбере бесплатное, сейчас комиссия '+(fee*100).toLocaleString('ru-RU')+'% — это около <b>'+rub(comp)+'</b> в год.</div>';
     out.innerHTML=h;
-    LAST=['Выгода для коллектива — оценка (бета) · '+fmtD(today),
+    LAST=['Выгода для коллектива — оценка (бета) · '+fmtD(today), 'Сценарий: '+scenarioName+'; доля переходящих на зарплату: '+Math.round(sh*100)+'% (задано пользователем).',
       'Сотрудников: '+num(N)+', средняя зарплата '+rub(S)+', перейдут '+Math.round(sh*100)+'% ('+ppl(M)+')',
       'Деньгами: '+rub(rubAll)+' в год; бонусами СберСпасибо: '+num(bonAll)+' в год; на одного: '+rub(per)+' + '+num(perB)+' бонусов']
       .concat(rows.map(function(r){return '— '+r.t+': '+(r.b?num(r.y)+' бонусов':rub(r.y))+' ('+r.how+')'}))
@@ -2213,6 +2283,9 @@ for(var k=0;k<6;k++){var y0=150+k*5,d='M0 '+y0;for(var x2=0;x2<=872;x2+=50)d+=' 
       .concat(['Оценка по средним допущениям, не оферта.']).join('\n').replace(/ /g,' ');
   }
   form.addEventListener('input',calc);
+  scenarioMode.addEventListener('change',calc);
+  scenarioShare.addEventListener('input',calc);
+  window.SZB_CAL_REFRESH=calc;
   form.addEventListener('reset',function(){setTimeout(calc,0)});
   document.getElementById('cl-copy').addEventListener('click',function(){
     var m=document.getElementById('cl-msg'), ok=function(){m.textContent='Скопировано'};
@@ -2444,7 +2517,15 @@ var UPDATES=[
   wrap.addEventListener('click',function(e){if(e.target===wrap)close();var a=e.target.closest('a');if(a)setTimeout(close,0)});
   q.addEventListener('input',run);
   wrap.addEventListener('keydown',function(e){
-    if(e.key==='Escape'){e.preventDefault();close()}
+    if(e.key==='Tab'){
+      var all=Array.prototype.slice.call(wrap.querySelectorAll('input:not([disabled]),button:not([disabled]),a[href]'));
+      all=all.filter(function(el){return !el.hidden&&el.getClientRects().length>0;});
+      if(all.length){var first=all[0],lastNode=all[all.length-1];
+        if(e.shiftKey&&(document.activeElement===first||!wrap.contains(document.activeElement))){e.preventDefault();lastNode.focus();}
+        else if(!e.shiftKey&&(document.activeElement===lastNode||!wrap.contains(document.activeElement))){e.preventDefault();first.focus();}
+      }
+    }
+    else if(e.key==='Escape'){e.preventDefault();close()}
     else if((e.key==='ArrowDown'||e.key==='ArrowUp')&&items.length){e.preventDefault();items[sel].classList.remove('on');sel=(sel+(e.key==='ArrowDown'?1:-1)+items.length)%items.length;items[sel].classList.add('on');items[sel].scrollIntoView({block:'nearest'})}
     else if(e.key==='Enter'&&document.activeElement===q&&items[sel]){e.preventDefault();location.hash=items[sel].getAttribute('href');close()}
   });
@@ -2611,28 +2692,46 @@ var UPDATES=[
 })();
 </script>
 
-<script>/* SZB 1.6C: lifecycle for newly added KB claims only. Preserves previous data-until logic. */
-(function(){
-  'use strict';
+<script id="szb-kb-lifecycle">
+/* v1.6D: unknown expiry is not perpetual validity; preserve approved claim wording. */
+(function(){'use strict';
   var offers=Array.prototype.slice.call(document.querySelectorAll('.kb16c-offer'));
-  function dateOrNull(value){if(!/^\d{4}-\d{2}-\d{2}$/.test(value||''))return null;var parts=value.split('-').map(Number),d=new Date(parts[0],parts[1]-1,parts[2],23,59,59,999);return d.getFullYear()===parts[0]&&d.getMonth()===parts[1]-1&&d.getDate()===parts[2]?d:null;}
-  function sync(){
-    var now=new Date();
-    offers.forEach(function(item){
-      var until=dateOrNull(item.getAttribute('data-kb16c-valid-until'));
-      var meta=item.querySelector('.kb16c-validity');
-      var badge=item.querySelector('.kb16c-state');
-      if(until&&now>until){
-        item.classList.add('kb16c-archived');item.dataset.kb16cStatus='expired';
-        if(badge){badge.className='kb16c-state kb16c-state--expired';badge.textContent='Срок истёк';}
-        var b=item.querySelector('.kb16c-offer__body p');
-        if(b){b.textContent=item.getAttribute('data-kb16c-archive-text')||'Предложение завершено. Условия указаны для истории.';}
-        if(meta)meta.textContent='Архив · исключить из рекомендаций';
-      }else if(until&&meta){meta.textContent='Действует до '+until.toLocaleDateString('ru-RU');}
-    });
-  }
-  sync(); document.addEventListener('visibilitychange',function(){if(!document.hidden)sync()});window.addEventListener('pageshow',sync);
+  function dateOrNull(value){if(!/^\d{4}-\d{2}-\d{2}$/.test(value||''))return null;var p=value.split('-').map(Number),d=new Date(p[0],p[1]-1,p[2],23,59,59,999);return d.getFullYear()===p[0]&&d.getMonth()===p[1]-1&&d.getDate()===p[2]?d:null;}
+  offers.forEach(function(item){
+    var reviewed=item.getAttribute('data-kb16c-verified-at')||'2026-11-23';
+    if(!item.hasAttribute('data-kb16c-next-review')){
+      var d=dateOrNull(reviewed);if(d){d.setDate(d.getDate()+30);item.setAttribute('data-kb16c-next-review',[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-'));}
+    }
+    item.dataset.kb16cValidityType=item.getAttribute('data-kb16c-valid-until')?'dated':'unknown';
+  });
+  function sync(){var now=new Date();offers.forEach(function(item){
+    var until=dateOrNull(item.getAttribute('data-kb16c-valid-until'));
+    var next=dateOrNull(item.getAttribute('data-kb16c-next-review'));
+    var meta=item.querySelector('.kb16c-validity'),badge=item.querySelector('.kb16c-state');
+    if(until&&now>until){
+      item.classList.add('kb16c-archived');item.dataset.kb16cStatus='expired';
+      if(badge){badge.className='kb16c-state kb16c-state--expired';badge.textContent='Срок истёк';}
+      if(!item.dataset.kb16cArchivedOnce){var p=item.querySelector('.kb16c-offer__body p');if(p)p.textContent=item.getAttribute('data-kb16c-archive-text')||'Предложение завершено. Архив';item.dataset.kb16cArchivedOnce='yes';}
+      if(meta)meta.textContent='Архив · исключить из рекомендаций';
+    }else if(until&&meta){meta.textContent='Действует до '+until.toLocaleDateString('ru-RU');}
+    else if(next){
+      var due=now>next;
+      if(meta)meta.textContent=due?'Требуется повторное подтверждение · срок проверки '+next.toLocaleDateString('ru-RU'):'Следующая сверка условий · '+next.toLocaleDateString('ru-RU');
+      if(due&&badge){badge.className='kb16c-state kb16c-state--review';badge.textContent='Условия требуют подтверждения';item.dataset.kb16cStatus='review';}
+    }
+  });}
+  window.SZB_KB_REFRESH=sync;sync();
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)sync();});window.addEventListener('pageshow',sync);
 })();
+</script>
+
+<script id="szb-verification-annotation">
+(function(){'use strict';document.querySelectorAll('.view .sec-meta').forEach(function(meta){
+  if(!/Актуально на 19\.11\.2026/.test(meta.textContent))return;
+  if(meta.querySelector('.sec-audit-note'))return;
+  var b=document.createElement('span');b.className='sec-audit-note';b.textContent='· часть данных обновлена выборочно; условия проверяйте по источникам';
+  meta.appendChild(b);
+});})();
 </script>
 </body>
 </html>
