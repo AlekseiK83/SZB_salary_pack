@@ -1,3 +1,35 @@
+name: SZB Salary Pack integrity
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Проверка лендинга и PDF
+    runs-on: ubuntu-latest
+    steps:
+      - name: Скачать файлы репозитория
+        uses: actions/checkout@v5
+
+      - name: Установить Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          package-manager-cache: false
+
+      - name: Установить Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Проверить HTML, ссылки, PDF и JavaScript
+        shell: bash
         run: |
           python - <<'PY'
           from pathlib import Path
