@@ -11,31 +11,36 @@ permissions:
 
 jobs:
   validate:
-    name: Проверка лендинга и PDF
+    name: HTML, PDF и проверка в браузере
     runs-on: ubuntu-24.04
+    timeout-minutes: 20
     steps:
-      - name: Скачать файлы репозитория
+      - name: Получить код репозитория
         uses: actions/checkout@v5
 
-      - name: Установить Node.js
+      - name: Настроить Node.js
         uses: actions/setup-node@v5
         with:
           node-version: '22'
-          package-manager-cache: false
 
-      - name: Установить Python
+      - name: Настроить Python
         uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
-      - name: Проверить HTML, ссылки, PDF и JavaScript
+      - name: Установить инструменты для PDF
+        run: python -m pip install 'pypdf>=5,<8'
+
+      - name: Проверить HTML, PDF, ссылки и JavaScript
         shell: bash
         run: |
           python - <<'PY'
           from pathlib import Path
           from html.parser import HTMLParser
           from collections import Counter
-          import subprocess, tempfile, re, sys
+          from pypdf import PdfReader
+          import subprocess, tempfile, re, sys, hashlib
+          from datetime import date
 
           class Audit(HTMLParser):
               def __init__(self):
@@ -56,41 +61,128 @@ jobs:
                       self.scripts.append(''.join(self.parts))
                       self.in_script = False
 
+          errors = []
           html_file = Path('index.html')
           pdf_file = Path('paket-prodavca-zp.pdf')
-          errors = []
-          if not html_file.is_file():
-              sys.exit('ОШИБКА: index.html не найден в корне репозитория')
-          if not pdf_file.is_file():
-              sys.exit('ОШИБКА: paket-prodavca-zp.pdf не найден в корне репозитория')
+          if not html_file.is_file() or not pdf_file.is_file():
+              sys.exit('ОШИБКА: index.html и paket-prodavca-zp.pdf должны быть в КОРНЕ репозитория')
           html = html_file.read_text(encoding='utf-8')
-          p = Audit(); p.feed(html)
-          duplicates = [v for v, n in Counter(p.ids).items() if n > 1]
-          missing = sorted(set(a for a in p.anchors if a and a not in p.ids))
-          if duplicates: errors.append('Дублирующиеся id: ' + ', '.join(duplicates[:15]))
-          if missing: errors.append('Битые внутренние якоря: ' + ', '.join(missing[:15]))
-          if len(re.findall(r'<section\b[^>]*class="[^"]*\bview\b',html)) != 26:
-              errors.append('Число разделов изменилось (ожидается 26)')
+          parser = Audit(); parser.feed(html)
+          duplicates = [v for v, count in Counter(parser.ids).items() if count > 1]
+          missing = sorted({a for a in parser.anchors if a and a not in parser.ids})
+          if duplicates: errors.append('Дублирующиеся id: ' + ', '.join(duplicates[:10]))
+          if missing: errors.append('Битые якоря: ' + ', '.join(missing[:10]))
+          if len(re.findall(r'<section\b[^>]*class="[^"]*\bview\b', html)) != 26:
+              errors.append('Ожидалось 26 разделов')
           if html.count('class="sp-micro ') != 25:
-              errors.append('Число мини-баннеров изменилось (ожидается 25)')
+              errors.append('Ожидалось 25 мини-баннеров')
           if 'id="emp-mobile"' not in html or 'class="sm-offer' not in html:
-              errors.append('Не найден основной баннер СберМобайл')
+              errors.append('Отсутствует баннер СберМобайл')
           if 'paket-prodavca-zp.pdf' not in html:
-              errors.append('В HTML нет ссылки на PDF')
-          if not pdf_file.read_bytes().startswith(b'%PDF-'):
-              errors.append('PDF повреждён или неверный формат')
+              errors.append('В HTML отсутствует ссылка на PDF')
           if re.search(r'location\.search\.match\(/\[\?&\]today', html):
-              errors.append('Обнаружена запрещённая подмена даты ?today=')
-          for i, js in enumerate(p.scripts, 1):
+              errors.append('Найдена подмена даты ?today=')
+          if '<meta name="robots" content="noindex' not in html:
+              errors.append('Пропал метатег noindex')
+          for index, js in enumerate(parser.scripts, 1):
               with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', suffix='.js') as f:
                   f.write(js); f.flush()
-                  r = subprocess.run(['node', '--check', f.name], capture_output=True, text=True)
-                  if r.returncode: errors.append(f'JavaScript #{i}: {r.stderr.strip()[:200]}')
-          print(f'Проверено: {len(p.anchors)} ссылок, {len(p.scripts)} JS-блоков, 26 разделов, 25 баннеров')
+                  result = subprocess.run(['node', '--check', f.name], capture_output=True, text=True)
+              if result.returncode:
+                  errors.append(f'Ошибка JS #{index}: {result.stderr.strip()[:250]}')
+
+          try:
+              pdf = PdfReader(str(pdf_file))
+              links = sum(len((page.get('/Annots') or [])) for page in pdf.pages)
+              text = ' '.join((page.extract_text() or '') for page in pdf.pages)
+              if len(pdf.pages) != 4: errors.append('PDF: ожидается 4 страницы')
+              stamp = re.search(r'Редакция\s+(\d{2})\.(\d{2})\.(\d{4})', text)
+              if not stamp:
+                  errors.append('PDF: нет даты редакции — возможно, загружен старый документ')
+              else:
+                  day, month, year = map(int, stamp.groups())
+                  try:
+                      if date(year, month, day) < date(2026, 11, 24):
+                          errors.append('PDF: дата редакции старше согласованной 24.11.2026')
+                  except ValueError:
+                      errors.append('PDF: некорректная дата редакции')
+              if links < 4: errors.append('PDF: отсутствуют ожидаемые кликабельные источники')
+          except Exception as exc:
+              errors.append('Не удалось открыть PDF: ' + str(exc))
+          other_pdf = Path('release/paket-prodavca-zp.pdf')
+          if other_pdf.is_file():
+              h = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
+              if h(pdf_file) != h(other_pdf):
+                  print('ПРЕДУПРЕЖДЕНИЕ: PDF в корне отличается от копии в release. Сайт использует КОРНЕВОЙ файл.')
+          print(f'HTML: {len(parser.anchors)} якорей, {len(parser.scripts)} JS-блоков, 26 разделов, 25 баннеров')
           if errors:
-              for e in errors: print('ОШИБКА:', e, file=sys.stderr)
+              for error in errors: print('ОШИБКА:', error, file=sys.stderr)
               sys.exit(1)
-          print('Статическая проверка пройдена')
+          print('HTML и PDF: проверка пройдена')
           PY
 
-      - name: Установить браузер для проверки
+      - name: Установить Chromium для браузерных тестов
+        shell: bash
+        run: |
+          python -m pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium
+
+      - name: Проверить разделы, подбор, калькулятор и поиск
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          import shutil
+
+          HTML = Path('index.html').read_text(encoding='utf-8')
+          with sync_playwright() as p:
+              # Prefer the pinned Playwright browser; local QA can use system Chromium.
+              executable = p.chromium.executable_path
+              if not Path(executable).is_file():
+                  executable = shutil.which('chromium') or shutil.which('chromium-browser')
+              assert executable, 'Chromium отсутствует: шаг установки браузера завершился с ошибкой'
+              browser = p.chromium.launch(headless=True, executable_path=executable, args=['--no-sandbox'])
+              passed = 0
+              for width in (320, 390, 768, 1440):
+                  page = browser.new_page(viewport={'width': width, 'height': 850})
+                  errors = []
+                  page.on('pageerror', lambda e: errors.append(str(e)))
+                  page.set_content(HTML, wait_until='load')
+                  for ident in ('biz-money', 'biz-requisites', 'emp-mobile', 'pick', 'calc', 'objections'):
+                      page.evaluate('(h) => {location.hash="#"+h;window.dispatchEvent(new Event("hashchange"))}', ident)
+                      assert 'on' in (page.locator('#'+ident).get_attribute('class') or '').split(), f'Раздел {ident} не открылся при {width}px'
+                      passed += 1
+                  page.evaluate('location.hash="#pick";window.dispatchEvent(new Event("hashchange"))')
+                  assert page.locator('#onepage .op-top li').count() == 7
+                  assert not any('Sber API' in x for x in page.locator('#onepage .op-top .op-t').all_inner_texts())
+                  page.locator('#f-api').evaluate('(el)=>{el.checked=true;el.dispatchEvent(new Event("change",{bubbles:true}));}')
+                  assert page.locator('#onepage .op-top li').count() == 7
+                  page.locator('#f-api').evaluate('(el)=>{el.checked=false;el.dispatchEvent(new Event("change",{bubbles:true}));}')
+                  passed += 3
+                  page.evaluate('location.hash="#calc";window.dispatchEvent(new Event("hashchange"))')
+                  page.locator('#cl-n').fill('0')
+                  assert 'Проверьте поля' in page.locator('#calc-out').inner_text()
+                  page.locator('#cl-n').fill('100')
+                  page.locator('#szb-scenario-mode').select_option('potential')
+                  assert 'Проверьте поля' in page.locator('#calc-out').inner_text()
+                  page.locator('#szb-scenario-share').fill('40')
+                  assert 'бонусов СберСпасибо' in page.locator('#calc-out').inner_text()
+                  passed += 3
+                  page.locator('#srch-open').click(force=True)
+                  assert page.locator('.sr-wrap').is_visible()
+                  assert page.evaluate('document.activeElement.id') == 'sr-q'
+                  page.keyboard.press('Shift+Tab')
+                  assert page.evaluate('document.activeElement.id') == 'sr-x'
+                  page.keyboard.press('Tab')
+                  assert page.evaluate('document.activeElement.id') == 'sr-q'
+                  page.keyboard.press('Escape')
+                  assert page.evaluate('document.activeElement.id') == 'srch-open'
+                  passed += 5
+                  assert not errors, errors
+                  assert not page.evaluate('document.documentElement.scrollWidth>window.innerWidth'), f'Горизонтальная прокрутка при {width}px'
+                  passed += 2
+                  page.close()
+              browser.close()
+          print(f'Chromium: {passed} тестов пройдено')
+          PY
