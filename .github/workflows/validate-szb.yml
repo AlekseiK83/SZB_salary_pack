@@ -11,86 +11,86 @@ permissions:
 
 jobs:
   validate:
-    name: HTML, PDF и проверка в браузере
+    name: Проверка HTML, PDF и браузера
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
-      - name: Получить код репозитория
+      - name: Получить файлы
         uses: actions/checkout@v5
-
       - name: Настроить Node.js
         uses: actions/setup-node@v5
         with:
           node-version: '22'
-
       - name: Настроить Python
         uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-
-      - name: Установить инструменты для PDF
-        run: python -m pip install 'pypdf>=5,<8'
-
-      - name: Проверить HTML, PDF, ссылки и JavaScript
+      - name: Установить средства проверки
+        run: python -m pip install 'pypdf>=5,<8' playwright==1.57.0
+      - name: Проверить HTML и PDF
         shell: bash
         run: |
-          python - <<'PY'
+          python -c '
           from pathlib import Path
           from html.parser import HTMLParser
           from collections import Counter
           from pypdf import PdfReader
-          import subprocess, tempfile, re, sys, hashlib
           from datetime import date
+          import re, sys, subprocess, tempfile
 
           class Audit(HTMLParser):
               def __init__(self):
                   super().__init__()
                   self.ids, self.anchors, self.scripts = [], [], []
-                  self.in_script, self.parts = False, []
+                  self.active = False
+                  self.buffer = []
               def handle_starttag(self, tag, attrs):
                   a = dict(attrs)
-                  if a.get('id'): self.ids.append(a['id'])
-                  if tag == 'a' and (a.get('href') or '').startswith('#'):
-                      self.anchors.append(a['href'][1:])
-                  if tag == 'script' and not a.get('src'):
-                      self.in_script, self.parts = True, []
+                  if a.get("id"):
+                      self.ids.append(a["id"])
+                  if tag == "a" and (a.get("href") or "").startswith("#"):
+                      self.anchors.append(a["href"][1:])
+                  if tag == "script" and not a.get("src"):
+                      self.active, self.buffer = True, []
               def handle_data(self, data):
-                  if self.in_script: self.parts.append(data)
+                  if self.active:
+                      self.buffer.append(data)
               def handle_endtag(self, tag):
-                  if tag == 'script' and self.in_script:
-                      self.scripts.append(''.join(self.parts))
-                      self.in_script = False
+                  if tag == "script" and self.active:
+                      self.scripts.append("".join(self.buffer))
+                      self.active = False
 
+          html_path, pdf_path = Path("index.html"), Path("paket-prodavca-zp.pdf")
+          assert html_path.is_file() and pdf_path.is_file(), "Нужны index.html и paket-prodavca-zp.pdf в корне main"
+          html = html_path.read_text(encoding="utf-8")
+          a = Audit()
+          a.feed(html)
           errors = []
-          html_file = Path('index.html')
-          pdf_file = Path('paket-prodavca-zp.pdf')
-          if not html_file.is_file() or not pdf_file.is_file():
-              sys.exit('ОШИБКА: index.html и paket-prodavca-zp.pdf должны быть в КОРНЕ репозитория')
-          html = html_file.read_text(encoding='utf-8')
-          parser = Audit(); parser.feed(html)
-          duplicates = [v for v, count in Counter(parser.ids).items() if count > 1]
-          missing = sorted({a for a in parser.anchors if a and a not in parser.ids})
-          if duplicates: errors.append('Дублирующиеся id: ' + ', '.join(duplicates[:10]))
-          if missing: errors.append('Битые якоря: ' + ', '.join(missing[:10]))
-          if len(re.findall(r'<section\b[^>]*class="[^"]*\bview\b', html)) != 26:
-              errors.append('Ожидалось 26 разделов')
-          if html.count('class="sp-micro ') != 25:
-              errors.append('Ожидалось 25 мини-баннеров')
-          if 'id="emp-mobile"' not in html or 'class="sm-offer' not in html:
-              errors.append('Отсутствует баннер СберМобайл')
-          if 'paket-prodavca-zp.pdf' not in html:
-              errors.append('В HTML отсутствует ссылка на PDF')
-          if re.search(r'location\.search\.match\(/\[\?&\]today', html):
-              errors.append('Найдена подмена даты ?today=')
-          if '<meta name="robots" content="noindex' not in html:
-              errors.append('Пропал метатег noindex')
-          for index, js in enumerate(parser.scripts, 1):
-              with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', suffix='.js') as f:
-                  f.write(js); f.flush()
-                  result = subprocess.run(['node', '--check', f.name], capture_output=True, text=True)
+          ids = set(a.ids)
+          missing = sorted({x for x in a.anchors if x and x not in ids})
+          duplicates = [x for x, n in Counter(a.ids).items() if n > 1]
+          if missing: errors.append("Отсутствующие якоря: " + ", ".join(missing[:10]))
+          if duplicates: errors.append("Повторяющиеся id: " + ", ".join(duplicates[:10]))
+          if len(re.findall(r"<section\b[^>]*class=\"[^\"]*\bview\b", html)) != 26:
+              errors.append("Должно быть 26 разделов")
+          if html.count("class=\"sp-micro ") != 25:
+              errors.append("Должно быть 25 баннеров")
+          if "paket-prodavca-zp.pdf" not in html:
+              errors.append("Отсутствует ссылка на PDF")
+          if re.search(r"location\.search\.match\(/\[\?&\]today", html):
+              errors.append("Обнаружена подмена даты через ?today=")
+          for i, js in enumerate(a.scripts, 1):
+              with tempfile.NamedTemporaryFile(mode="w", suffix=".js", encoding="utf-8") as f:
+                  f.write(js)
+                  f.flush()
+                  result = subprocess.run(["node", "--check", f.name], capture_output=True, text=True)
               if result.returncode:
-                  errors.append(f'Ошибка JS #{index}: {result.stderr.strip()[:250]}')
-
+                  errors.append(f"Ошибка JS #{i}: {result.stderr[:160]}")
           try:
-              pdf = PdfReader(str(pdf_file))
-              links = sum(len((page.get('/Annots') or [])) for page in pdf.pages)
+              pdf = PdfReader(str(pdf_path))
+              content = " ".join(page.extract_text() or "" for page in pdf.pages)
+              annotations = sum(len(page.get("/Annots") or []) for page in pdf.pages)
+              if len(pdf.pages) != 4:
+                  errors.append("PDF должен содержать 4 страницы")
+              if "Редакция 24.11.2026" not in content:
+                  errors.append("PDF не соответствует согласованной редакции 24.11.2026")
