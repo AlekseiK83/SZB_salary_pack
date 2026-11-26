@@ -1,0 +1,66 @@
+# E01: independent post-publication verification. Does not deploy or modify Pages.
+name: SZB Salary Pack published version
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 8 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: szb-pages-verification
+  cancel-in-progress: false
+
+jobs:
+  verify-published:
+    name: Сверить файлы на GitHub Pages с main
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Получить основную ветку
+        uses: actions/checkout@v5
+      - name: Настроить Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Сверить HTML, PDF, изображения и шрифты по SHA-256
+        shell: bash
+        run: |
+          python -c '
+          from pathlib import Path
+          from urllib.request import Request, urlopen
+          from urllib.parse import quote
+          import hashlib
+          import os
+          import re
+          
+          site = "https://alekseik83.github.io/SZB_salary_pack"
+          sha = os.environ.get("GITHUB_SHA", "manual")[:12]
+          html = Path("index.html").read_text(encoding="utf-8")
+          assets = sorted(set(re.findall(r"(?:fonts|img)/[a-zA-Z0-9_.-]+\.(?:woff2|webp|jpg|jpeg|png)", html)))
+          paths = ["index.html", "paket-prodavca-zp.pdf"] + assets
+          print("Checking published GitHub Pages files:", len(paths), flush=True)
+          for name in paths:
+              local = Path(name)
+              if not local.is_file():
+                  raise SystemExit("Local asset missing: " + name)
+              url = site + "/" + quote(name, safe="/") + "?szb_v=" + sha
+              req = Request(url, headers={"User-Agent": "SZB-Pages-Verification/1.6E", "Accept-Encoding": "identity", "Cache-Control": "no-cache"})
+              try:
+                  with urlopen(req, timeout=25) as response:
+                      status = response.status
+                      published = response.read()
+              except Exception as exc:
+                  raise SystemExit("Cannot download " + name + ": " + str(exc)) from exc
+              if status != 200:
+                  raise SystemExit("HTTP " + str(status) + " for " + name)
+              actual = hashlib.sha256(published).hexdigest()
+              expected = hashlib.sha256(local.read_bytes()).hexdigest()
+              if actual != expected:
+                  raise SystemExit("Published content differs: " + name + " (live " + actual[:12] + ", repo " + expected[:12] + "). Check Pages source main/(root), publishing status and CDN cache.")
+              print("OK", name, "SHA256", expected[:12], flush=True)
+          print("PUBLISHED_SITE_MATCHES_MAIN")
+          '

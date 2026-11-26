@@ -114,6 +114,7 @@ jobs:
           from pathlib import Path
           from playwright.sync_api import sync_playwright
           import shutil
+          from datetime import datetime, timezone
 
           html = Path("index.html").read_text(encoding="utf-8")
           with sync_playwright() as p:
@@ -158,10 +159,39 @@ jobs:
                   page.keyboard.press("Escape")
                   assert page.evaluate("document.activeElement.id") == "srch-open", f"Escape, экран {width}"
                   passed += 5
+                  # E04: реальный поиск, запрос без результатов и повторное открытие.
+                  page.locator("#srch-open").click(timeout=10000)
+                  page.locator(".sr-wrap").wait_for(state="visible", timeout=5000)
+                  page.locator("#sr-q").fill("СберМобайл")
+                  assert page.locator("#sr-list a[href=\"#emp-mobile\"]").count() > 0, f"Результаты поиска, экран {width}"
+                  page.locator("#sr-q").fill("никогданевстречающеесяслово999")
+                  assert "Ничего не нашлось" in page.locator("#sr-list").inner_text(), f"Пустой поиск, экран {width}"
+                  page.keyboard.press("Escape")
+                  page.locator("#srch-open").click(timeout=10000)
+                  assert page.locator("#sr-q").input_value() == "", f"Повторное открытие поиска, экран {width}"
+                  page.keyboard.press("Escape")
+                  passed += 3
                   assert not js_errors, f"Ошибки JS: {js_errors}"
                   assert not page.evaluate("document.documentElement.scrollWidth > innerWidth"), f"Горизонтальная прокрутка {width}"
                   passed += 2
                   page.close()
+              # E02: даты тестируются через часы браузера, без URL-подмены ?today=.
+              dates = browser.new_page(timezone_id="Europe/Moscow")
+              dates.clock.install(time=datetime(2026, 11, 30, 12, tzinfo=timezone.utc))
+              dates.set_content(html, wait_until="load")
+              assert "is-expired" not in (dates.locator("#emp-promo").get_attribute("class") or ""), "Акция закрылась до окончания срока"
+              passed += 1
+              dates.clock.set_fixed_time(datetime(2026, 12, 1, 12, tzinfo=timezone.utc))
+              dates.evaluate("window.SZB_REFRESH_DATE()")
+              assert "is-expired" in (dates.locator("#emp-promo").get_attribute("class") or ""), "Акция не помечена завершённой 01.12"
+              assert dates.locator("[data-until=\"2026-11-30\"]").first.count() == 1
+              passed += 1
+              dates.clock.set_fixed_time(datetime(2026, 12, 9, 12, tzinfo=timezone.utc))
+              dates.evaluate("window.SZB_REFRESH_DATE()")
+              assert dates.locator("#emp-promo").get_attribute("data-gone") is not None, "Просроченный раздел не помечен после 7 дней"
+              assert dates.locator("li[data-until=\"2026-11-30\"]").first.is_hidden(), "Просроченная акция осталась на главной"
+              passed += 2
+              dates.close()
               browser.close()
           print(f"Chromium: {passed} проверок пройдено")
           '
